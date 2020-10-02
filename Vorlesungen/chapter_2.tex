@@ -1,0 +1,1018 @@
+%! TEX root=../algebra.tex
+\graphicspath{{Images/}}
+
+\chapter{Kommutative Ringe}
+
+\section{Ringe}
+
+\begin{definition}
+	Ein \emph{Ring} ist eine Menge $R$ ausgestattet mit Elementen $0 \in R$, $1 \in R$ und drei Abbildungen
+	\[
+		\begin{cases}
+			+: R \times R \to R\\
+			-: R \to R\\
+			\cdot: R \times R \to R
+		\end{cases}
+	\]
+	so dass folgende Axiome gelten.
+
+	$(R,+)$ ist eine abelsche Gruppe mit neutralem Element $0$ und Inversem $-$ d.h.
+	\begin{gather*}
+		(a+b) + c = a + (b+c)\\
+		0 + a = a\\
+		(-a) + a = 0\\
+		a + b = b + a
+	\end{gather*}
+	für alle $a,b,c \in R$.
+
+	$(R,\cdot)$: Assoziativität $(a\cdot b) \cdot c = a \cdot (b \cdot c)$ und Einselement $1 \cdot a = a = a \cdot 1$.
+
+	Distributivität: $a ( b + c) = ab + ac$ und $(b+c) a = ba + ca$.
+
+	Falls zusätzlich Kommutativität von $\cdot$ gilt: $ab = ba$, dann sprechen wir von einem \emph{kommutativen Ring}.
+\end{definition}
+
+\begin{remark}
+	\begin{itemize}	
+		\item $0$ ist eindeutig durch die Axiome bestimmt. 
+		\item Ebenso ist $-a$ durch die Axiome für jedes $a \in R$ eindeutig bestimmt.\\
+		\item $0 \neq 1$ wurde nicht verlangt.
+		\item $0 \cdot a = 0$ für jedes $a \in R$ :
+			 \begin{align*}
+				 0 \cdot a = (0+0) \cdot a = 0\cdot a + 0 \cdot a \implies 0 = 0 \cdot a
+			.\end{align*}
+	\end{itemize}
+\end{remark}
+
+\begin{convention}
+	\begin{itemize}
+		\item Klammern bei $+$ (und ebenso bei $\cdot$) lassen wir auf Grund der Assoziativität der Addition (Mult.) weg also $a+b+c+d$.
+		\item Punktrechnung vor Strichrechnung, d.h. $a\cdot b +c = (a\cdot b) + c$.
+		\item Den Multiplikationspunkt lässt man oft weg.
+	\end{itemize}
+\end{convention}
+
+\begin{notation}
+	\begin{gather*}
+		0\cdot a = 0 \quad 1\cdot a = a \quad 2\cdot a = a+a \quad 3\cdot a = a+a+a\\
+		(n+1) = n\cdot a + a, (-n) \cdot a = -(n\cdot a) \text{ für } n \in \N
+	.\end{gather*}
+	Dies definiert eine Abbildung $\Z \times R \to R, (n,a) \mapsto n\cdot a$.
+	Diese erfüllt:  $(m+n) \cdot a = m\cdot a + n \cdot a$, $n \cdot (a+b) = n\cdot a + n \cdot b$.
+
+	Ebenso definieren wir
+	\begin{gather*}
+		a^{0} = 1_{R} \quad a^{1} = a \quad a^2 = a\cdot a \quad a^{n+1} = a^{n} \cdot a \text{ für } n \in \N
+	\end{gather*}
+	Diese erfüllt
+	\[
+		a^{m+n} = a^{m} + a^{n} \quad (a^{m})^{n} = a^{m\cdot n} \quad (ab)^{n} = a^{n} b^{n}
+	\] 
+	in kommutativen Ringen.
+\end{notation}
+
+\begin{definition}
+	Angenommen $R,S$ sind Ringe und $f: R \to S$ ist eine Abbildung.
+	Wir sagen $f$ ist ein \emph{Ringhomomorphismus} falls
+	\begin{gather*}
+		f(1_{R}) = 1_{S} \quad f(a+b) = f(a) + f(b) \quad f(a\cdot b) = f(a) \cdot f(b)
+	\end{gather*}
+	für alle $a,b \in R$.
+	Falls $f$ invertierbar ist, so nennen wir $f$ einen \emph{Ringisomorphismus}.
+\end{definition}
+
+\begin{remark}
+	$f(0_{R} = 0_{S}$ denn $f(0_{R}) = f(0+0) = f(0) + f(0) \geq 0_{S} = f(0_{R})$.\\
+	$f(-a) = -f(a)$ für $a \in R$ (ähnlicher Beweis).
+\end{remark}
+
+\begin{definition}
+	Sei $R$ ein Ring und $S \subseteq R$ auch ein Ring. 
+	Wir sagen $S$ ist ein \emph{Unterring}, falls $\id: S \to R, s \mapsto s$ ein Ringhomomorphismus ist.
+\end{definition}
+
+\begin{eg}[Ringe]
+	\begin{enumerate}[(1)]
+		\item $R = \{0\}$. Hier ist $0 = 1$.
+		\item $\Z \subseteq \Q \subseteq \R \subseteq \C$ sind jeweils Unterringe.
+		\item Sei $V$ ein Vektorraum, dann ist
+			\[
+				\End(V) = \{f: V \to V \text{ linear}\} 
+			\] 
+			ein Ring, wobei $+$ punkteweise definiert wird und $\cdot$ die Verknüpfung ist.
+		\item $\mat_{n,n}(\Q)$ bzw. $\R,\C,\Z$.
+		\item Sei $m \geq 1$. Dann ist $Z_{m} = \Z / Z_{m}$ ein Ring.
+			Wenn dies die Übersicht erhöht können wir die Restklasse $[a]_{\equiv \mod m}$ einer Zahl $a$ einfach mit $\overline{a}$. In dieser Notation haben wir
+			\[
+			\overline{a}+ \overline{b} = \overline{a+b} \quad \overline{a} \cdot \overline{b} = \overline{ab}
+			.\]
+		\item $\Z$-adjungiert-$i$ : $\Z[i] = \{a+ib: a,b \in \Z\} \subseteq \C$.\\
+			$\Z$-adjungiert-$\sqrt{2}$ : $\Z[\sqrt{2}] = \{a + b\sqrt{2} : a,b \in \Z \} \subseteq \R$.
+			\[
+				(a+b \sqrt{2} ) (c+d\sqrt{2} ) = ac + 2bd + (ad+bc)\sqrt{2} 
+			.\] 
+		\item Sei $X$ eine Menge und $R = \Z^{X} = \{f: X \to \Z\}$ mit punktweise Operationen. Dies ist ein kommutativer Ring
+			z.B. $C([0,1]) = \{f: [0,1] \to \C \text{ stetig}\}$.
+
+			Antibeispiel: $C_{0}(\R) = \{f: \R \to \C \text{ stetig und } \lim_{\abs{x} \to \infty} f(x) = 0\}$ ist kein Ring
+
+	\end{enumerate}
+\end{eg}
+
+\begin{eg}[Ringhomomorphismen]
+	\begin{enumerate}[(1)]
+		\item $R = \{0\} \stackrel{f}{\to} \Z, 0 \mapsto 0$, $0_{R} = 1_{R} \mapsto f(1_{R}) = f(0_{R}) = 0_{\Z} \neq 1_{\Z}$
+		\item $R \to \{0\}, a \mapsto 0$ ist ein Ringhomomorphismus.
+		\item $\Z \to R, n \mapsto n\cdot 1_{R}$ ist ein Ringhomomorphismus.
+		\item $\Z \to \Q \to \R \to \C$ da Unterringe.
+		\item $\R \to \mat_{n,n}(\R), t \mapsto t I_{n}$. Umgekehrt geht nicht.
+		\item $C([0,1] \to \C, f \mapsto f(x_0)$ für ein festes $x_0 \in [0,1]$ 
+		\item $\Z \to \Z_{m}, a \mapsto \overline{a}$
+		\item $\mat_{n,n}(\C) \to \End(\C^{n}), A \mapsto (x \in \C^{n} \mapsto A x)$ ist ein RIngisomorphismus.
+	\end{enumerate}
+\end{eg}
+
+\begin{lemma}
+	Falls in einem Ring $R$ gilt $0=1$, dann ist  $R = \{0\}$.
+\end{lemma}
+
+\begin{proof}
+	Sei $a \in R$. Dann gilt $a = a\cdot 1 = a \cdot 0 = 0$
+\end{proof}
+
+\begin{lemma}[Binomialformel]
+	Sei $R$ ein Ring und $a,b \in R$ mit $ab = ba$ (z.B. weil $R$ kommutativ ist).
+	Dann gilt für jedes $n \in \N$ $(a+b)^{n} = \sum_{k=0}^{n} \binom{n}{k} a^{k} b^{n-k}$.
+\end{lemma}
+
+\begin{proof}
+	Die Eigenschaften von $\binom{n}{k}$ sind bekannt, und damit funktioniert der übliche Beweis.
+\end{proof}
+
+Falls $n = 2$ ist und $(a+b)^2 = a^2 + 2ab + b^2$ gilt. Dann folgt $ab = ba$.
+
+\begin{attention}
+Ab nun werden wir nur kommutative Ringe betrachten.
+\end{attention}
+
+\section{Einheiten, Teilbarkeit, Quotientenkörper (Seite 34)}
+\begin{eg}
+	In $\Z_{15}$ gilt $\overline{3} \cdot \overline{15} = \overline{15} = \overline{0}$ aber  $\overline{3} \neq \overline{0} \neq \overline{5}$.
+\end{eg}
+
+\begin{definition}
+	Sei $R$ ein Ring. Ein Element $a \in \R \setminus \{0\}$ heißt ein Nullteiler falls es ein $b \in \R \setminus \{0\} $ mit $ab = 0$ gibt.
+\end{definition}
+
+\begin{definition}
+	Ein kommutativer Ring heißt ein Integritätsbereich falls $0 \neq 1$ und falls aus $ab = ac$ und $a\neq 0$ $b = c$ folgt (Kürzen).
+\end{definition}
+
+\begin{lemma}
+	Sei $R$ ein kommutativer Ring mit $0 \neq 1$. Dann ist $R$ ein Integritätsbereich gdw. $R$ keine Nullteiler besitzt.
+\end{lemma}
+
+\begin{proof}
+	Angenommen R ist ein Integritätsbereich und $a \in R \setminus \{0\}, b \in R$ erfüllt $a\cdot b = 0 \implies a\cdot b = a\cdot 0 \implies b = 0$.
+	Also kann es keine Nullteiler geben.
+
+	Angenommen $R$ hat keine Nullteiler und $a,b,c \in R, a \neq 0$ erfüllen $ab = ac \implies ab - ac = 0, a(b-c) = 0 \implies b = c$.
+\end{proof}
+
+\begin{eg}
+	\begin{enumerate}
+		\item $\Z \subseteq \Q \subseteq \R \subseteq \C$ 
+		\item Antibeispiel: $C([0,1])$ ist kein Integritätsbereich.
+		\item Wann ist $\Z_{m}$ ein Integritätbereich?
+	\end{enumerate}
+\end{eg}
+
+\begin{definition}
+	Sei $R$ ein kommutativer Ring und  $a,b \in R$.
+	Wir sagen \emph{$a$ teilt  $b$}, $a \vert b$ [in $R$] falls es ein $c$ in $R$ gibt mit $b = a \cdot c$.
+\end{definition}
+
+\begin{definition}
+	Wir sagen $a \in R$ ist eine \emph{Einheit} falls $a \vert 1 \Leftrightarrow \exists b	$ mit $ab = 1 \Leftrightarrow \exists a^{-1} \in R$.
+	Einheiten mit $R^{x} = \{a \in R \mid a \vert 1\} $
+\end{definition}
+
+\begin{remark}
+	$R^{x}$ bildet eine Gruppe, $1 \in R^{x}$, $a,b \in R^{x} \implies (ab)(a^{-1} b^{-1}) = a a^{-1} b b^{-1} = 1 \implies a b \in R^{x}$.
+\end{remark}
+
+\begin{eg}
+	\begin{enumerate}
+		\item $\C^{x} = \C \setminus \{0\}$ 
+		\item $\Z^{x} = \{\pm 1\}$ 
+		\item $\Z[i]^{x} = \{1,-1, i, -i\} $ 
+		\item $\Z[\sqrt{2}]^{x} = ?$. Aufjedenfall enthält es $(1+\sqrt{2})(\sqrt{2} -1) = 1$.
+	\end{enumerate}
+\end{eg}
+
+\begin{definition}
+	Ein \emph{Körper (field)} $K$ ist ein kommutativer Ring in dem $0 \neq 1$ und jede Zahl ungleich Null eine multiplikative Inverse besitzt.
+\end{definition}
+
+\begin{lemma}
+	Ein Körper ist ein Integritätsbereich.
+\end{lemma}
+
+\begin{proof}
+	Angenommen $a \neq  0, b,c \in R$.
+	\[
+	ab = ac \stackrel{a^{-1}}{\implies} a^{-1} a b = a^{-1} a c \implies b = c
+	.\] 
+\end{proof}
+
+\begin{proposition}
+	Sei $m \geq 1$ eine natürliche Zahl.
+	Dann ist $\Z_{m}$ ein Körper genau dann wenn $m$ eine Primzahl ist.
+\end{proposition}
+
+\begin{proof}
+	Falls $m=1$ ist, dann ist $\Z_{1} = \{\overline{0}\}$ sicher kein Körper (da $0 \neq 1$ gelten muss).\\
+	Falls $m = ab$ mit $a,b < m$, dann ist $\overline{0} = \overline{m} = \overline{a} \overline{b}$ mit $\overline{a} \neq 0 \neq \overline{b}$.
+	Also hat $\Z_{m}$ Nullteiler, ist kein Integritätsbereich und kein Körper.
+
+	Sei nun $m$ eine Primzahl und $\overline{a} \neq 0$. Sei $d = \ggT(m,a)$.
+	Nahc Definition ist $d \geq 1$ ein Teiler von $m$.
+	Falls $d = m$ wäre, dann folgt $m \vert a \implies \overline{a} = \overline{0}$ \contra.
+	Also ist $d = 1$. Nach dem Lemma vom letzten Mal folgt daraus, 
+	dass es $k,l \in \Z$ mit $1 = k \cdot m + l \cdot a$. Modulo $m$ ist die $\overline{1} = \overline{l} \cdot \overline{a}$.
+	Dies zeigt, dass $\overline{a} \neq 0$ die multiplikative Inverse $l$ besitzt.
+\end{proof}
+
+\begin{theorem}[Quotientenkörper (S.38)]
+	Sei $R$ ein Integritätsbereich. Dann gibt es einen Körper $K$, der $R$ enthält und so dass $K = \{\frac{p}{q}: p,q \in R , q \neq 0\}$.
+	z.B. für $R = \Z$ haben wir $K = \Q$.
+\end{theorem}
+
+\begin{proof}
+	Wir definieren die Relation $\sim$ auf $X = R \times (R \setminus \{0\} )$ :
+	\[
+		(a,b) \sim (p,q) \Leftrightarrow aq = pb \quad [\text{in } R] \quad [\text{versteckt wollen wir } \frac{a}{b} = \frac{p}{q}]
+	.\]
+	Äquivalenzrelation:
+	\begin{itemize}
+		\item $(a,b) \sim (a,b)$ denn $ab = ab$.
+		\item $(a,b) \sim (p,q) \implies (p,q) \sim (a,b)$ denn $aq = pb$ ist $pb = aq$.
+		\item $(a,b) \sim (p,q)$ und $(p,q) \sim (m,n)$.
+			$aq = pb$ und $pn = mq$. Multipliziere erste mit $n$ und zweite mit $b$.
+			\[
+				aqn = pbn = pnb = mqb \implies aqn = mqb \stackrel{q \neq 0}{\implies} an = mb
+			.\] 
+			und somit $(a,b) \sim (m,n)$.
+	\end{itemize}
+	Wir definieren $K = X / \sim$ und die Elemente $0_{K} = [(0,1)]_{\sim}$  und $1_{K} = [(1,1)]_{\sim}$.
+	und die Operationen $+$ und $\cdot$:
+	\begin{align*}
+		&[(a,b)]_{\sim} + [(p,q)]_{\sim} = [(aq + pb, bq)]_{\sim}\\
+		&[(a,b)]_{\sim} \cdot [(p,q)]_{\sim} = [(ap,bp)]_{\sim}
+	.\end{align*}
+	Diese Operationen sind wohldefiniert (für $+$ siehe Buch).
+
+	Angenommen $(a,b) \sim (a',b'), (p,q) \sim (p',q')$ somit $ab' = a'b$ und $pq' = p'q$.
+	Schließlich multipliziere beide Gleichungen  $(a p) (b'q') = (a'p') (b q)$ und somit $(ap,bq) \sim (a'p',b'q')$.
+
+	Wir überprüfen Schritt für Schritt die Axiome eines Körpers:
+	\begin{itemize}
+		\item Kommutativität der Addition:
+			\begin{align*}
+				[(a,b)]_{\sim} + [(p,q)]_{\sim} = [(aq+pb,bp)]_{\sim} = [(pq+aq,qb)]_{\sim} = [(p,q)]_{sim} + [(a,b)]_{\sim}
+			.\end{align*}
+			unter Verwendung der Kommutativität der Addition und Multiplikation in $R$.
+	\end{itemize}
+	$K$ ist sogar ein Körper.
+	\[
+		[(0,1)]_{\sim} \neq [(1,1)]_{\sim} \text{ da } 0\cdot 1 \neq  1\cdot 1 \text{ in } R
+	\] 
+	Falls $[(a,b)]_{\sim} \neq [(0,1)]_{\sim}$, dann ist $[(a,b)]_{\sim}^{-1} = [(b,a)]_{\sim}$, da 
+	\[
+		[(a,b)]_{\sim} \cdot [(b,a)]_{\sim} = [(ab,ab)]_{\sim} = [(1,1)]_{\sim}
+	\]
+\end{proof}
+
+	Ab sofort schreiben wir $\frac{a}{b} = [(a,b)]_{\sim}$.
+	Wir identifizieren $a \in R$ mit $\frac{a}{1} \in K$. Hierzu bemerken wir, dass $\iota: a \in R \mapsto \frac{a}{1} \in K $ ein injektiver Ringhomomorphismus ist.
+
+\begin{proof}
+	Angenommen $a\neq 0$, dann gilt $\frac{a}{1} \neq  \frac{0}{1}$.
+	Also gilt $\ker \iota = \{0\} $ und $\iota $ ist injektiv.
+
+	$\iota(1) = \frac{1}{1} = 1_{K}$ und $\iota(a+b) = \frac{a+b}{1} = \frac{a}{1} + \frac{b}{1} = \iota(a) + \iota(b)$ sowie
+	$\iota(ab) = \frac{a\cdot b}{1\cdot 1} = \iota(a) \iota(b)$
+\end{proof}
+
+\begin{definition}
+	Sei $K$ ein Körper und $L \subseteq K$ ein Unterring der auch ein Körper ist. Dann nennen wir $L$ auch einen \emph{Unterkörper}.
+\end{definition}
+
+\begin{ex}
+	Verwenden sie SageMath um herauszufinden für welche $p=2,3,\ldots,100$ er ein $g \in (\Z / p \Z)^{X}$ mit
+	\[
+		(\Z / p \Z)^{X} = \{g^{k} : k = 0,1,\ldots\} 
+	\]
+	gibt ($k < p$ genügt)?
+\end{ex}
+
+\section{Ring der Polynome (Seite 41)}
+Im Folgenden ist $R$ immer ein kommutativer Ring. Wir wollen einen neuen Ring, den Ring $R[X]$ der Polynome
+in der Variablen $X$ und Koeffizienten in $R$ definieren.
+
+\begin{eg}
+	Sei $K = \F_{2} = \{\overline{0},\overline{1}\} = \Z / 2\Z$. Dann soll $X^2+ X $ \emph{nicht} das Nullpolynom sein,
+	obwohl die zugehörige Polynomfunktion gleich $0$ ist: 
+	\begin{align*}
+		&0 \in \F_{2} \mapsto 0^2 + 0 = 0\\ 
+		&1 \in \F_{2} \mapsto 1^2 + 1 = 1+1 = 0
+	\end{align*}
+	Wir verwenden die Koeffizienten um Polynome zu definieren.
+\end{eg}
+
+\begin{definition}
+	Sei $R$ ein kommutativer Ring. Wir definieren den \emph{Ring der formalen Potentreihen} (in einer Variable über dem Ring $R $) als 
+	\begin{enumerate}
+		\item die Menge aller Folgen $\left(a_{n}\right)^{\infty}_{n=0} \in R^{\N}$
+		\item $0 = \left(0\right)^{\infty}_{n=0}, 1 = (1,0,0,\ldots)$ 
+		\item $+: \left(a_{n}\right)^{\infty}_{n=0} + \left(b_{n}\right)^{\infty}_{n=0} = (a_{n} + b_{n})^{\infty}_{n=0}$ 
+		\item $\cdot: \left(a_{n}\right)^{\infty}_{n=0} \cdot \left(b_{n}\right)^{\infty}_{n=0} = \left(c_{n}\right)^{\infty}_{n=0} $ wobei
+			\[
+				c_{n} = \sum_{i=0}^{n} a_{i} b_{n-i} = \sum_{\substack{i+j=n \\ i,j \geq 0}}^{\infty} a_{i} b_{j}
+			.\] 
+	\end{enumerate}
+	Die Menge aller Folgen mit $a_{n} = 0$ für alle hinreichend großen $n \geq 0$ wird als der \emph{Polynomring} (in einer Variable und über $R$ ) bezeichnet.
+\end{definition}
+
+\begin{proof}
+	Wir überprüfen die Axiome welche die Multiplikation betreffen und überlsassen die anderen dem Leser.
+	\begin{enumerate}
+		\item $a\cdot b = b\cdot a$ gilt, denn $\sum_{i+j=n} a_{i} b_{j} = \sum_{i+j=n} b_{i} a_{j}$.
+		\item $(1\cdot a)_{n} = \sum_{i+j=n} 1_{i} a_{j} = a_{n}$, da $1_{i} = 0$ außer wenn  $i=0$.
+		\item $\underbrace{(ab)c}_{=d} = a(bc)$ gilt, denn
+			\[
+				d_{n} = \sum_{i+j = n} \underbrace{(ab)_{i}}_{= \sum_{k+l = i} a_{k} b_{l}} c_{i} = \sum_{i+j+k=n} a_{i} b_{j} c_{k}
+			\] 
+			ohne Klammern wegen Assoziativität von $\cdot $ in $R$. Rechts ergibt sich dieselbe Antwort.
+		\item \[((a+b)\cdot c)_{n} = \sum_{i+j=n} \underbrace{(a+b)_{i} c_{j}}_{a_{i} c_{j} + b_{i} c_{j}} = \sum_{i+j=n} a_{i} c_{j} + \sum_{i+j=n} b_{i} c_{j} = (ac +bc)_{n}\]
+	\end{enumerate}
+	Des Weiteren überprüfen wir, dass der Polynomring unter $+$ und $\cdot $ abgeschlossen ist:\\
+	Angenommen $a,b$ sind Polynome, so dass $a_{i} = 0$ für $i > I$ und $b_{j} = 0$ für $j > J$.
+	Draus folgt 
+	\[
+		(a+b)_{n} = 0 \text{ für } n > \max(I,J) \qquad (a\cdot b)_{n} = 0 \text{ für } n > I+J
+	\]
+	denn $(a\cdot b)_{n} = \sum_{i+j=n} \underbrace{a_{i} b_{j}}_{=0}$. Falls $a_{i} b_{j} \neq  0$ wäre, dann würde $a_{i}\neq 0$ und $b_{j} \neq 0$ folgen,
+	was widerum $i \leq I, j \leq J$ und damit $n=i+j \leq I+J$ impliziert.
+\end{proof}
+
+\begin{notation}
+	Wir ühren ein neues Symbol, eine Variable, z.B. $X$ ein und identifizieren $X$ mit
+	\begin{align*}
+		X^{0} = 1 = (1,0,0,\ldots) \quad X^{1} = (0,1,0,0,\ldots) \quad X^2 = (0,0,1,0,\ldots) \quad \ldots
+	.\end{align*}
+	Allgemeiner: Sei $a$ ein Polynom, dann ist
+	\[
+		X \cdot a = (0,a_0,a_1,a_2,\ldots)
+	\]
+	denn $(X\cdot a)_{n} = \sum_{i+j=n} X_{i} a_{j} = a_{n-1}$ 
+	da $X = 0$ außer wenn $i = 1$ ist. $(X\cdot a)_{0} = X_0\cdot a_0 = 0$.
+
+	Wir schreiben $R[X] = \{\sum_{i=0}^{n} a_{i} X^{i} : n \in \N, a_0,\ldots,a_{n} \in R\}$ ($R$-adjungiert-$X$) für den \emph{Ring der Polynome in der Variablen $X$}
+	und $R[\![ X ]\!] = \{\sum_{n=0}^{\infty} a_{i} X^{i} : a_0,a_1,\ldots \in R\} $ für den \emph{Ring der formalen Potenzreihen in der Variable $X$}
+\end{notation}
+
+\begin{definition}
+	Sei $p \in R[X] \setminus \{0\}$. Der Grad von $p$ $\deg(p)$ ist gleich $n \in \N$ falls $p_{n} \neq 0$ ist und
+	$p_{k} = 0$ für $k> n$. In diesem Fall nennen wir $p_{n}$ auch den \emph{führenden Koeffizienten}.
+	
+	Wir definieren $\deg(0) = - \infty$.
+\end{definition}
+
+\begin{proposition}
+	Sei $R$ ein Integritätsbereich. Dann ist $R[X]$ auch ein Integritätsbereich.
+	Des weiteren gilt für $p,q \in R[X] \setminus \{0\} $ 
+	\begin{itemize}
+		\item $\deg(pq) = \deg(p) + \deg(q)$ und der führende Koeffizient von $pq$ ist das Produkt der führenden Koeffizienten von $p$ und $q$.
+		\item $\deg(p+q) \leq \max(\deg(p), \deg(q))$ 
+		\item Falls $p \mid q$, dann gilt $\deg(p) \leq \deg(q)$.
+	\end{itemize}
+\end{proposition}
+
+\begin{proof}
+	Sei $f = p\cdot q$, also $f_{n} = \sum_{i+j} p_{i} p_{j} $ für alle $n \in \N$.
+	\begin{itemize}
+		\item Angenommen $n > \deg(p) + \deg(q) \implies p_{i} p_{j} = 0$ für alle $i+j = n \implies f_{n} = 0$.
+		\item Angenommen $n = \deg(p) + \deg(q)$. Behauptung: $f_{n} = p_{\deg(p)} q_{\deg(q)}$ (führende Koeffizienten $\in R \setminus \{0\} $) da
+			 \[
+				 f_{n} = \sum_{i+j = \deg(p) + \deg(q)} p_{i} q_{j}
+			\] 
+			Falls $i < \deg(p)$ ist, so ist $j > \deg(q) \implies q_{i} = 0$ und vize versa.
+
+			Somit ist $f_{n} \neq 0$, da $R$ ein Integritätsbereich ist.
+	\end{itemize}
+	Diese beiden Punkte beweisen $\deg(f) = \deg(p\cdot q) = \deg(p) + \deg(q)$ also die erste Behauptung in der Proposition.
+
+	Angenommmen $p \mid q$, dann gibt es ein Polynom $g$ so dass $q = p \cdot g$ ist $\deg(q) = \deg(p) + \underbrace{\deg(g)}_{\geq 0} \geq \deg(p)$.
+	Beweise die dritte Aussage in der Proposition.
+
+	Angenommen $p = \sum_{n=0}^{\deg(p)} p_{n} X^{n}, q = \sum_{n=0}^{\deg(q)} q_{n} X^{n}$, dann ist
+	\[
+		p+q = \sum_{n=0}^{\max(\deg(p),\deg(q))} (p_{n} + q_{n}) X^{n}
+	.\] 
+	Daraus folgt $\deg(p+q) \leq \max(\deg(p), \deg(q))$.
+\end{proof}
+
+\begin{definition}
+	Sei $K$ ein Körper. Dann wird der Quotientenkörper von $K[X]$ als der \emph{Körper der rationalen Funktionen}
+	$K(X) = \{\frac{f}{g} : f,g \in K[x], g \neq 0\} $ bezeichnet.
+\end{definition}
+
+Wenn wir obige Konstruktion (des Polynomrings) iterieren, erhalten wir den Ring der Polynome in mehreren Variablen
+\[
+	R[X_1,X_2,\ldots,X_{d}] := (R[X_1])[X_2][X_3]\ldots[X_{d}]
+.\] 
+Falls $R = K$ ein Körper ist, definieren wir auch
+\[
+	K(X_1,X_2,\ldots,X_{d}) = \operatorname{Quot}(K[X_1,\ldots,X_{d}])
+.\] 
+
+\begin{remark}
+	Auf $R[X_1,\ldots,X_{d}]$ gibt es mehrere Grad-Funktionen
+	\begin{align*}
+		&\deg(x_1), \deg(x_2), \ldots \deg(x_{d})\\
+		&\deg_{\text{total}}(f) = \max \{m_1+\ldots+m_{d} \mid f_{m_1,\ldots,m_{d}} \neq 0\} 
+	\end{align*}
+	für $f = \sum_{m_1,\ldots,m_{d}} f_{m_1,\ldots,m_{d}} X_1^{m_1}\ldots X_{d}^{m_{d}}$.
+	z.B.
+	\begin{align*}
+		\deg_{\text{total}}(1+X_1^{3} + X_2 X_3) = 3 \qquad \deg_{X_2}(1+X_1^{3} + X_2 X_3) = 1
+	.\end{align*}
+\end{remark}
+
+\begin{theorem}
+	Seien $R,S$ zwei kommutative Ringe. Ein Ringhomomorphismus $\Phi$ von $R[x]$ nach $S$ ist eindeutig durch seine Einschränkung
+	$\varphi = \Phi \mid_{R}$ und durch das Element $x = \Phi(X) \in S$ bestimmt. Des weiteren definiert
+	\[
+		\Phi(\sum_{n=0}^{\infty} a_{n} X^{n} = \sum_{n=0}^{\infty} \phi(a_{n}) x^{n} \tag{$*$}
+	\] 
+	einen Ringhomomorphismus falls $\varphi: R \to S$ ein Ringhomomorphismus ist und $x \in S$ beliebig ist.
+\end{theorem}
+
+\begin{proof}
+	Sei $\Phi: R[X] \to S$ ein Ringhomomorphismus, $\varphi = \Phi \mid_{R}, x = \Phi(X) \in S$.
+	Dann gilt
+	\[
+		\Phi(\sum_{n=0}^{\infty} a_{n} X^{n} = \sum_{n=0}^{\infty} \Phi(a_{n} X^{n}) = \sum_{n=0}^{\infty} \varphi(a_{n} x^{n}
+	\]
+	wie im Satz behauptet. Dies zeigt bereits den ersten Teil des Satzes, da die rechte Seite der Formel nur $\varphi$ und $x = \Phi(X)$ benötigt.
+
+	Sei nun $\varphi : R \to S$ ein Ringhomomorphismus und $x \in S$ beliebig.
+	Wir verwenden $(*)$ um $\Phi$ zu definieren $\Phi: R[X] \to S$ ist nun definiert.
+	\begin{itemize}
+		\item $\Phi(1) = \phi(1_{R}) \underbrace{x^{0}}_{= 1_{S}} = 1_{S}$.
+		\item \begin{align*}\Phi(a+b) = \Phi(\sum_{n=0}^{\infty} (a_{n} + b_{n}) X^{n} = \sum_{n=0}^{\infty} \varphi(a_{n}+b_{n}) x^{n}\\
+			= \sum_{n=0}^{\infty} \varphi(a_{n}) x^{n} + \sum_{n=0}^{\infty} \varphi(b_{n}) x^{n}
+			= \Phi(a) + \Phi(b)
+		\end{align*}
+	\item 
+		\begin{align*}
+			&\Phi(a\cdot b) = \Phi(\sum_{n=0}^{\infty} (\sum_{i+j=n} a_{i} b_{j}) X^{n} ) = 
+			\sum_{n=0}^{\infty} \underbrace{\varphi(\sum_{i+j=n} a_{i} b_{j})}_{\sum_{i+j =n} \varphi(a_{i}\varphi(b_{j})} x^{n}\\
+			&=\sum_{i,j} \varphi(a_{i}) \varphi(b_{j}) x^{i+j} 
+			= (\sum_{i} \varphi(a_{i}) x^{i})(\sum_{j} \varphi(b_{j}) x^{j})
+			= \Phi(a) \Phi(b)
+		.\end{align*}
+	\end{itemize}
+	Also ist $\Phi$ in der Tat ein Ringhomomorphismus von $R[X]$ nach $S$.
+\end{proof}
+
+\begin{notation}
+	Wir schreiben für zwei kommutative Ringe $R,S$ 
+	\[
+		\hom_{Ring}(R,S = \{ \varphi: R \to S \mid \varphi \text{ ist ein Ringhomomorphismus}\} 
+	\] 
+	in dieser Notation können wir obigen Satz in der Form
+	\[
+		\hom_{Ring}(R[X],S) \cong \hom_{Ring}(R,S) \times S
+	\] 
+	schreiben. Dies kann iteriert werden:
+	\[
+		\hom_{Ring} (R[x_1,\ldots,x_{d}],S) \cong \hom_{Ring}(R,S) \times \underbrace{S\times \ldots \times S}_{d-\text{mal}}
+	.\] 
+\end{notation}
+
+\begin{eg}
+	Falls wir $R = S$ und $\varphi = \id$ setzen, so erhalten wir für jedes $a \in R$ die entsprechende Auswertungsabbildung
+	\[
+		\text{ev}_{a} : f \mapsto f(a) = \sum_{n=0}^{\infty} f_{n} a^{n}
+	.\] 
+	Wenn wir $a \in R$ variieren, ergibt sich auch eine Abbildung
+	\[
+		\Psi: f \in R[X] \to \left(f(\cdot): \begin{cases}
+			R \to R\\
+			a \mapsto f(a)
+		\end{cases}\right) \in R^{R}
+	.\]
+	Wir statten $R^{R}$ mit den punktweise Operationen aus, womit $\Psi: R[X] \to R^{R}$ ein Ringhomomorphismus ist.
+	
+	Falls $\abs{R} < \infty$ und $R \neq \{0\}$, so kann $\Psi$ nicht injektiv sein. 
+\end{eg}
+
+\begin{eg}
+	Sei $R = \Z$ und $S = \sfrac{\Z}{m\Z}[X]$ für ein $m \geq 1$.
+	Dann gibt es einen Ringhomomorphismus
+	\[
+		f \in \Z[X] \mapsto \overline{f} = \sum_{n=0}^{\infty} (f_{n} \mod m) X^{n} \in \sfrac{\Z}{m\Z}[X^{n}]
+	.\]
+	Hier ist $\varphi: \Z \to \sfrac{\Z}{m\Z} [X], a \mapsto a \mod m$.
+\end{eg}
+
+\begin{eg}
+	$R = \C, S = \C[X], \varphi(a) = \overline{a}, a \in \C$.
+	\[
+		f \in \C[X] \mapsto \sum_{n=0}^{\infty} \overline{f_{n}} X^{n} \in \C[X]
+	.\] 
+	ist sogar ein Ringautomorphismus.
+\end{eg}
+
+\section{Ideale und Faktorringe}
+
+\begin{definition}
+	Sei $R$ ein kommutativer Ring.
+	Ein Ideal in $R$ ist eine Teilmenge $I \subseteq R$ so dass
+	\begin{enumerate}[(i)]
+		\item $0 \in I$ 
+		\item $a,b \in I \implies a + b \in I$
+		\item $a \in I, x \in R \implies xa \in I$
+	\end{enumerate}
+\end{definition}
+
+\begin{eg}
+	Seien $R,S$ zwei kommutative Rine und $\varphi: R \to S$ ein Ringhomomorphismus. Dann ist
+	\[
+		\ker(\varphi) = \{a \in R \mid \varphi(a) = 0\} 
+	\] 
+	ein Ideal.
+
+	Beweis von (iii): Falls $a \in \ker(\varphi), x \in R$ dann gilt $\varphi(xa) = \varphi(x) \underbrace{\varphi(a)}_{=0} = 0 \implies  xa \in \ker(\varphi)$.
+\end{eg}
+
+\begin{theorem}
+Sei $R$ ein kommutativer Ring un $I \subseteq R$ ein Ideal.
+\begin{enumerate}
+	\item Die Relation $a \sim b \Leftrightarrow a - b \in I$ ist eine Äquivalenzrelation auf $R$.
+		Wir schreiben auch $a \equiv b \mod I$ für die Äquivalenzrelation und $\sfrac{R}{I}$ für den Quotienten, den wir Faktorring nennen wollen.
+	\item Die Addition, Multiplikation, das Negative induzieren wohldefinierte Abbildungen
+		\[
+			\sfrac{R}{I} \times \sfrac{R}{I} \to \sfrac{R}{I} \qq{bzw.} \sfrac{R}{I} \to \sfrac{R}{I}
+		.\] 
+	\item Mit diesen Abbildungen, $0_{\sfrac{R}{I}} = [0]_{\sim}, 1_{\sfrac{R}{I}} = [1]_{\sim}$ ist $\sfrac{R}{I}$ ein Ring und die kanoische Projektion
+		$p: R \to \sfrac{R}{I}$ mit $a \in R \mapsto [a]_{\sim} = a + I$ ist ein surjektiver Ringhomomorphismus.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	$1):$ \begin{enumerate}
+		\item $a \sim a$ dann $a\cdot a = 0 \in I$.\\
+		\item$a \sim b \implies b \sim a$ denn $b-a = \underbrace{(-1)}_{\in R}\underbrace{(a-b)}_{\in I} \in I$\\
+		\item $a \sim b$ und $b \sim c \implies a \sim c$ denn $a-c = \underbrace{(a-b)}_{\in I} + \underbrace{(b-c)}_{\in I} \in I$
+	\end{enumerate}
+	Also ist $\sim$ eine Äquivalenzrelation und wir können den Quotienten $\sfrac{R}{\sim} = \sfrac{R}{I}$ betrachten.
+
+	$2):$
+	Wir zeigen, dann $+: \sfrac{R}{I} \times \sfrac{R}{I} \to \sfrac{R}{I}$ wohldefiniert ist:
+	\[
+		[ a ]_{\sim} + [ b ]_{\sim} = [ a+b ]_{\sim}
+	\]
+	über die Identifikation $[ a ]_{\sim} \rightsquigarrow a, [ b ]_{\sim} \rightsquigarrow b$ und $(a,b) \mapsto a+b \mapsto [ a+b ]_{\sim}$.
+
+	Also müssen wir zeigen: $a \sim a'$, $b \sim b' \implies a+b \sim a' + b'$. Dies gilt da
+	$a-a' \in I, b-b' \in I \implies (a+b) - (a'-b') \in I$ wegen Eigenschaft (ii) von Idealen. 
+
+	Angenommen $a \sim a', b \sim b' \implies ab \sim a'b'$.
+	\begin{align*}
+		ab - a'b' = ab - a'b + a'b - a'b' = b \underbrace{(a-a')}_{\in I} + a'\underbrace{(b-b')}_{\in I} \in I
+	.\end{align*}
+	wegen (iii) in der Def von Idealen
+	Dies zeigt, dass die Multiplikation von Restklassen
+	\[
+		[a]_{\sim} \cdot [b]_{\sim} = [a\cdot b]_{\sim}
+	\] 
+	wohldefiniert ist.
+	Der Beweis für $-a$ ist analog, oder ergibt sich aus der Multiplikation mit $[-1]_{\sim}$.
+	Dies beweist $2)$.
+
+	$3)$: Da die Ringaxiome nur Gleichungen enthalten, sind die Ringaxiome in $\sfrac{R}{I}$ direkte Konsequenzen der Ringaxiome in $R$:
+	z.B. Kommutativität von $+$ in $\sfrac{R}{I}$
+	\[
+		 [a] + [b] = [a+b] = [b+a] = [b] + [a]
+	\] 
+	wobei das zweite Gleich wegen der Kommutativität in $R$ gilt.
+
+	Alle anderen Axiome folgen auf dieselbe Weise. 
+	Des Weiteren gilt für die Projektion $p: R \to \sfrac{R}{I}, a \mapsto [a]_{\sim}$ 
+	\begin{align*}
+		&p(0) = [0]_{\sim}, p(1) = [1]_{\sim}\\
+		&p(a+b) = [a+b]_{\sim} = [a]_{\sim} + [b]_{\sim} = p(a) + p(b)\\
+		&p(a\cdot b) = [a\cdot b]_{\sim} = [a]_{\sim} \cdot [b]_{\sim} = p(a)\cdot p(b)
+	\end{align*}
+	Also ist $p: R \to \sfrac{R}{I}$ ein Ringhomomorphismus.
+\end{proof}
+
+\begin{eg}
+	\begin{itemize}
+		\item $I = \Z_{m} \subseteq \Z$ ist ein Ideal
+		\item $I = R, I = \{0\}$ (Nullideal) sind Ideale in einem beliebigen kommutativen Ring.
+	\end{itemize}
+\end{eg}
+
+\begin{lemma}
+	Sei $I \subseteq R$ ein Ideal in einem kommutativen Ring. Dann gilt 
+	\[
+	I = R \Leftrightarrow 1 \in I \Leftrightarrow I \cap R^{X} \neq \emptyset
+	.\] 
+\end{lemma}
+
+\begin{proof}
+	\enquote{$\impliedby$}: Angenommen $u = v^{-1} \in I$ und $v \in R, a \in R$. Dann gilt
+	\[
+	a = a \cdot \underbrace{v\cdot u}_{=1} \in I
+	.\] 
+	Da $a \in R$ beliebig war folgt also $I = R$.
+\end{proof}
+
+\begin{eg}
+	Welche Ideale gibt es in einem Körper?
+	Nur $\{0\}$ und $K$. Da jede andere Teilmenge von $K$ eine Einheit besitzt (Lemma).
+\end{eg}
+
+\begin{definition}
+	Sei $R$ ein kommutativer Ring und seien $a_1,\ldots,a_{n} \in R$. Dann wird
+	\[
+		I = (a_1,\ldots,a_{n}) = \{x_1 a_1 + x_2 a_2 + \ldots + x_{n} a_{n} : x_1,\ldots,x_{n} \in R\} 
+	\] 
+	das von $a_1,\ldots,a_{n}$ \emph{erzeugte Ideal} genannt.
+
+	Für $a \in I$ wird $I = (a) = Ra$ das von $a$ \emph{erzeugte Hauptideal} genannt.
+\end{definition}
+
+\begin{lemma}
+	Sei $R$ ein kommutativer Ring.
+	\begin{enumerate}[1)]
+		\item $(a) \subseteq (b) \Leftrightarrow b \mid a$ 
+		\item Falls $R $ ein Integritätsbereich ist, dann gilt $(a) = (b) \Leftrightarrow \exists u \in R^{x}$ mit $b = ua$
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Angenommen $(a) \subseteq (b)$ wie in 1). Da $a = 1\cdot a \in (a)$ folgt $a \in (b) = Rb$.
+	Also gilt $a = x \cdot b$ für ein $x \in R$, also $b \mid a$.
+
+	Falls umgekehrt $b \mid a$, dann ist $a \in (b) \implies (a) = R a \subseteq (b)$.
+
+	Die Implikation $\impliedby$ in $2)$ folgt aus $1)$.
+	Also nehmen wir nun and, dass $(a) = (b)$.
+	Dies impliziert $a = xb$ und  $b = ya$ für $x,y \in R$.
+	Daraus folgt $a = x b = xy a$.\\
+	Falls  $a = 0$ ist, so ist auch $b = 0$ und wir setzen $u = 1$.\\
+	Falls $a \neq 0$, so können wir kürzen und erhalten $1 = xy$ also $x,y \in R^{X}$ und wir setzen $u = y$.
+\end{proof}
+
+\begin{eg}
+	Sei $R = C_{\R}([0,3])$.
+	\[
+	a = \begin{cases}
+		-x+1 &\text{ für } x \in [0,1]\\
+		0 &\text{ für } x \in (1,2)\\
+		x-2 &\text{ für } x \in [2,3]
+	\end{cases} \qquad b = \begin{cases}
+		x-1 &\text{ für } x \in [0,1]\\
+		0 &\text{ für } x \in (1,2)\\
+		x-2 &\text{ für } x \in [2,3]
+	\end{cases}
+	.\] 
+	Behauptung: $(a) = (b)$ aber $b \not\in R^{X} a$.
+	Es gilt $a \in (b)$, denn $a = b  \cdot f$ und $b = a \cdot f$ für
+	\[
+	f = \begin{cases}
+		
+		-1 &\text{ für } x \in [0,1]\\
+		2x-3 &\text{ für } x \in (1,2)\\
+		1 &\text{ für } x \in [2,3]
+	\end{cases}
+\]
+	$b \not\in R^{X} a$ folgt aus dem Zwischenwertsatz.
+\end{eg}
+
+Falls $I \subseteq R$ ein Ideal ist und $a \in R$, dann ist die Restklasse für Äuivalent modulo $I$ gleich
+\[
+	[a]_{N} = \{x \in R: x \sim a\} = a + I
+.\] 
+
+\begin{theorem}[Erster Isomorphiesatz]
+	Angenommen $R,S$ sind kommutative Ringe und $\varphi: R  \to S$ ist ein Ringhomomorphismus.
+	\begin{enumerate}
+		\item Dann induziert $\varphi$ einen Ringisomorphismus
+			\[
+				\overline{\varphi}: \sfrac{R}{\ker(\varphi)} \to \Im(\varphi) = \varphi(R) \subseteq S
+			\] 
+			so dass $\varphi = \overline{\varphi} \circ p$ wobei $p : R \to \sfrac{R}{\ker(\varphi)}$ die kanonische Projektion ist (Diagramm links).
+		\item Sei $I \subseteq \ker(\varphi)$ ein Ideal in $R$.
+			Dann induziert $\varphi$ einen Ringhomomorpismus $\overline{\varphi}: \sfrac{R}{I} \to S$ mit $\varphi = \overline{\varphi} \circ p_{I}$ (Diagramm rechts).
+			Des weiteren gilt $\ker(\overline{\varphi}) = \sfrac{\ker(\varphi)}{I}$ und $\Im(\overline{\varphi}) = \Im(\varphi)$
+	\end{enumerate}
+	\[
+	\begin{tikzcd}
+		R \arrow[d, "p"] \arrow[r, "\varphi"]                      & S \\
+		\sfrac{R}{\ker(\varphi)} \arrow[ru, "\overline{\varphi}"'] &  
+	\end{tikzcd}\qquad\qquad
+	\begin{tikzcd}
+		R \arrow[d, "p_{I}"] \arrow[r, "\varphi"]      & S \\
+		\sfrac{R}{I} \arrow[ru, "\overline{\varphi}"'] &  
+	\end{tikzcd}
+	\]
+\end{theorem}
+
+\begin{proof}
+	Wir beginnen mit $2)$ und definieren $\overline{\varphi}(x+I) = \varphi(x)$.
+	Dies ist wohldefiniert: Falls $x + I = y + I $ ist, so ist $x-y \in I \subseteq \ker(\varphi)$.
+	Daher gilt $\varphi(x) - \varphi(y) = \varphi(x-y) = 0$.\\
+	Da $\varphi$ ein Ringhomomorphismus ist, gilt
+	\begin{align*}
+		&\varphi(1_{R}) = 1_{S} \implies \overline{\varphi}(1+I) = 1_{S}\\
+		&\varphi(x+y) = \varphi(x) + \varphi(y) \implies \overline{\varphi}(X+I + y + I) = \varphi(x+I) + \varphi(y+I)\\
+		&\varphi(xy) = \varphi(x) \varphi(y) \implies \overline{\varphi}((x+I)(y+I) = \overline{\varphi}(xy+I) = \varphi(xy) = \varphi(x)\varphi(y) = \overline{\varphi}(x+I)
+		\overline{\varphi}(y+I)
+	\end{align*}
+	$\varphi = \overline{\varphi} \circ p_{I}$ denn für $x \in R$ gilt $p_{I}(x) = x + I$,
+	$\overline{\varphi} \circ p_{I}(x) = \overline{\varphi}(x+I) = \varphi(x)$ nach Definition von $\overline{\varphi}$.
+	Da dies für alle $x \in R$ gilt ergibt sich obiges und das kommutative Diagramm.
+
+	\begin{align*}
+		&\ker(\overline{\varphi}) = \{x+I: \underbrace{\varphi(x)}_{\overline{\varphi}(x+I)} = 0\} = \ker(\sfrac{\varphi}{I})\\
+		&\Im(\overline{\varphi}) = \{\overline{\varphi}(x): x \in \sfrac{R}{I}\} =\{\varphi(x): x \in R\} = \Im(\varphi)
+	\end{align*}
+	Dies beweist $2)$ vom Satz.
+
+	Wir wollen nun $1)$ beweisen und wenden $2)$ für $I = \ker(\varphi)$ an.
+	Also ist $\overline{\varphi}(x+\ker(\varphi)) = \varphi(x)$ für $x + \ker(\varphi) \in \sfrac{R}{\ker(\varphi)}$ 
+	ein Ringhomomorphismus mit Bild $\Im(\varphi)$.
+
+	Hier gilt $\ker(\overline{\varphi}) = \sfrac{\ker(\varphi)}{\ker(\varphi)} = \{0 + \ker(\varphi)\} $, also ist $\overline{\varphi}$ injektiv.
+	Daher ist $\overline{\varphi}$ ein Ringhomomorphismus von $\sfrac{R}{\ker(\varphi)}$ nach $\Im(\varphi)$ wie in $1)$ behauptet.
+\end{proof}
+
+\begin{remark}
+	Sei $I_{0} \subseteq R$ ein Ideal in einem kommutativen Ring.
+	Dann gibt es eine Korrespondenz (kanonische Bijektion) zwischen Idealen in $\sfrac{R}{I_{0}}$ und Idealen in $R$, die $I_0$ enthalten.
+	\begin{align*}
+		I \subseteq R, I_0 \subseteq I \quad &\mapsto \quad \sfrac{I}{I_0} = \{x+ I_0: x \in I\} \subseteq \sfrac{R}{I_0}\\
+		J \subseteq \sfrac{R}{I_0} \quad &\mapsto \quad p_{I_0}^{-1}(J) \subseteq R \qquad (p_{I_0}: \begin{cases}
+			R \to \sfrac{R}{I_0}\\
+			x \mapsto x + I_0
+		\end{cases})
+	.\end{align*}
+\end{remark}
+
+\begin{definition}
+	Wir sagen zwei Ideale $I, J$ in einem kommutativen Ring sind \emph{coprim}, falls $I+J = R$ ist.
+	D.h. $\exists a \in I, b \in J $ mit $1 = a + b$.
+\end{definition}
+
+\begin{eg}
+	$I = (p)$ und $J = (q) \subseteq \Z = R$ falls $p,q$ verschiedene (positive) Primzahlen sind.
+\end{eg}
+
+\begin{proposition}[Chinesischer Restsatz]
+	Sei $R$ ein kommutativer Ring und seien $I_1, \ldots, I_{n}$ paarweise coprime Ideale.
+	Dann ist der Ringhomomorphismus $\varphi: R \to \sfrac{R}{I_1} \times  \ldots \times \sfrac{R}{I_{n}}$ mit
+	$x \mapsto (x+I_1,\ldots,x+I_{n})$ surjektiv mit $\ker(\varphi) = I_1 \cap \ldots \cap I_{n}$.
+
+	Dies induziert einen Ringisomorphismus $\sfrac{R}{I_1 \cap \ldots \cap I_{n}} \to  \sfrac{R}{I_1} \times \ldots \times \sfrac{R}{I_{n}}$.
+\end{proposition}
+
+\begin{proof}
+	Dass der Kern $\ker(\varphi)$ genau $I_1 \cap \ldots \cap I_{n}$ ist, ergibt sich aus den Definitionen.
+	Wir zeigen, dass $ \varphi$ surjektiv ist.
+	Hierfür wollen wir für jedes $i \in \{1,\ldots,n\} $ ein $x_{i} \in R$ finden so dass
+	\[
+		\varphi(x_{i}) = (0+I_{1},\ldots,\underbrace{1+I_{i}}_{i\text{-te Stelle}},\ldots, 0+I_{n})
+	.\] 
+	Zur Vereinfachung der Notation betrachten wir den Fall $i = 1$.
+
+	\textbf{Behauptung:} $I_1$ und $I_2 \cap \ldots I_{n}$ sind coprim, d.h. es existieren $a \in I_1$ und $b \in I_2 \cap \ldots I_{n}$ so dass $a+b = 1$.\\
+	Aus der Behauptung folgt, dass $x_1 = b$ erfüllt:
+	\[
+		\varphi(x_1) = (b + I_1, b+I_2,\ldots,b+I_{n}) = (1+ I_1, 0 + I_2, \ldots, 0+I_{n})
+	\] 
+	wegen der Definiton von $b$ und $a + b = 1$.
+
+	Wir zeigen die Behauptung mittels Induktion nach $n$ :\\
+	$n=2$ : $I_1$ und $I_2$ sind coprim. Dies gilt nach Annahme in der Proposition.\\
+	Induktionsschritt ($n-1 \to n$): Wir nehmen an, dass $I_1$ und $I_2 \cap \ldots I_{n-1}$ coprim sind, d.h. es gibt
+	$a \in I_1$, $b \in I_2 \cap \ldots, I_{n-1}$ mit $a+b = 1$.
+	Des weiteren ist $I_1$ coprim zu $I_{n}$, d.h. es gibt $c \in I_1, d \in I_{n}$ mit $c+d=1$.
+	\begin{align*}
+		\implies a+b (\underbrace{c+d}_{=1}) = 1 \implies \underbrace{a+bc}_{\in I_1} + \underbrace{bd}_{\in I_2 \cap \ldots I_{n-1} \cap I_{n}} = 1
+	.\end{align*}
+	Folgt $I_1$ ist coprim zu $I_2 \cap \ldots \cap I_{n}$,
+	Also haben wie die Behauptung mittels Induktion gezeigt.
+
+	Wir können $x_1,\ldots,x_{n}$ wie oben verwenden um die Surjektivität zu zeigen:
+	Sei $(a_1 + I_1,\ldots,a_{n} + I_{n}) \in \sfrac{R}{I_1} \times \ldots \times \sfrac{R}{I_{n}}$ beliebig.
+	Dann gilt
+	\[
+		\varphi(a_1 x_1 + \ldots + a_{n} x_{n}) = (a_1 x_1 + \ldots + a_{n} x_{n} + I_1, \ldots, a_1 x_1 + \ldots + a_{n} x_{n} + I_{n})
+		= (a_1 + I_1, a_2 + I_2,\ldots,a_{n} + I_{n})
+	.\] 
+	da $x_i$ modulo $I_i$ gleich $1$ ist und ansonsten $x_{i} \in I_{j}$ ($j \neq i$) gilt und daher $x_{i}$ modulo $I_{j}$ gleich $0$ ist.
+\end{proof}
+
+\section{Charakteristik eines Körpers}
+Sei $K$ ein Körper. Dann gibt es einen Ringhomomorphismus $ \varphi: \Z \to K$ mit $\begin{cases}
+	n \in \N \mapsto \underbrace{1+\ldots+1}_{n-\text{mal}}\\
+	-n \in \N \mapsto -(\underbrace{1+\ldots+1}_{n-\text{mal}})
+\end{cases}$
+
+Sei $I = \ker(\varphi)$ so, dass $\sfrac{\Z}{I} \equiv \Im(\varphi) \subseteq K$.
+Da $K$ ein Körper ist, ist $\Im(\varphi)$ ein Integritätsbereich.
+
+\begin{lemma}
+	Sei $I \subseteq \Z$ ein Ideal. Dann gilt $I = (m)$ für ein $m \in \N$. 
+	Der Quotient ist ein Integritätsbreich genau dann wenn $m = 0$ oder $m$ eine Primzahl ist.
+\end{lemma}
+
+\begin{proof}
+	Falls $I \cap  \N_{> 0} = \{\} $ ist, so ist $I = (0)$. 
+	Ansonsten können wir das kleinste Element $m$ in $I \cap  \N_{> 0}$ finden .
+	Falls $n \in I$ ist, so können wir Division mit Rest anwenden und erhalten
+	$\underbrace{n}_{\in I} = \underbrace{k \cdot m}_{\in I} + r$ für $k \in \Z, r \in \{0,\ldots,m-1\}$.
+	Folgt $r \in I \implies r = 0$ da $m$ das kleinste Element von $I \cap \N_{> 0}$ war.
+	Da $n \in I$ beliebig war, folgt $I = (m)$.
+
+	Falls $m = a\cdot b$ für $a,b < m$ ist, so ist $\sfrac{\Z}{(m)}$ kein Integritätsbereich, da $(a+(m))(b+(m)) = ab + (m) = 0 + (m)$  ist.
+	Falls $m > 0$ eine Primzahl ist, so ist $\sfrac{\Z}{(m)}$ ein Körper und damit auch ein Integritätsbereich.
+\end{proof}
+
+\begin{definition}
+	Sei $K$ ein Körper. Wir sagen, dass $K$ Charakteristik $0$ hat, falls $\varphi: \Z \to K$ injektiv ist.
+	Wir sagen, dass $K$ Charakteristik $p \in N_{> 0} $ hat falls $\varphi: \Z \to K$ den Kern $(p)$ hat.
+\end{definition}
+
+\begin{eg}
+	Charakteristik $ 0$: $\Q,\R,\C,\ldots$ 
+	Wenn $K$ Charakteristik $0$ hat, dann enthält $K$ eine isomorphe Kopie von $\Q$.\\
+	Charakteristik $p$ : $\F_{p} = \sfrac{\Z}{(p)}, \F_{p}(X)$
+\end{eg}
+
+\begin{proposition}
+	Sei $K$ ein Körper mit Charakteristik $p > 0$.
+	Dann ist die \emph{Frobeniusabbildung} $F: x \in K \to x^{p} \in K$ ein Ringhomomorphismus.
+	Falls $\abs{K} < \infty$, dann ist $F$ ein Ringautomorphismus.
+\end{proposition}
+
+\begin{proof}
+	Es gilt $F(0) = 0^{p}, F(1) = 1^{p} = 1, F(xy) = (xy)^{p} = x^{p} y^{p} = F(x) F(y)$.
+	Wir müssen noch $F(x+y) = F(x) + F(y)$ zeigen.
+	\[
+		(x+y)^{p} = x^{p} + \underbrace{\binom{p}{1}}_{=p\cdot 1_{K} = 0} x^{p-1} y + \binom{p}{2} x^{p-2} y^2 + \ldots + \binom{p}{p-1} x y^{p-1} + y^{p} = x^{p} + y^{p} 
+		\quad [\text{in } K]
+	.\] 
+	\textbf{Behauptung:} Für $0 < k < p$ gilt $p \mid \binom{p}{k}$ 
+	\[
+		\binom{p}{k} = \frac{p!}{k! (p-k)!} = \frac{p (p-1) \ldots (p-k+1)}{k!} \implies k! \binom{p}{k} = p (p-1) \ldots (p-k+1) = 0 \mod p
+	.\]
+	aber $k! \mod p \neq 0$. Da Rechnen modulo $p$ einen Körper definiert, erhalten wir $k! \not\equiv 0, k! \binom{p}{k} \equiv 0 \mod p \implies \binom{p}{k} \equiv 0 \mod p$.
+	Folgt $p \mid \binom{p}{k}$.
+
+	Wenn $\abs{K} < \infty$, dann ist $F $ auch surjektiv!
+	Warum: $\ker(f) \subseteq K$ ist ein Ideal $\implies \ker(F) = \{0\}$ und $F$ ist injektiv.
+	Wenn $\abs{K} < \infty$, folgt aus der Injektivität auch die Surjektivität.
+\end{proof}
+
+\section{Primideale und Maximalideale}
+\begin{definition}
+	Sei $R$ ein kommutativer Ring, und sei $I \subseteq R$ ein Ideal.
+	Wir sagen $I$ ist ein \emph{Primideal}, falls $\sfrac{R}{I}$ ein Integritätsbreich ist.
+	Wir sagen $I$ ist ein \emph{Maximalideal}, falls $\sfrac{R}{I}$ ein Körper ist.
+\end{definition}
+
+\begin{proposition}
+	Sei $I \subseteq R$ ein Ideal in einem kommutativen Ring.
+	\begin{enumerate}[1)]
+		\item Dann ist $I$ ein Primideal genau dann wenn $I \neq R$ und für alle $a,b \in R$ gilt $ab \in I \implies a in I $ oder $b \in I$.
+		\item Dann ist $I$ ein Maximalideal genau dann wenn $I \neq R$ und es gibt kein Ideal $J$ mit $I \subsetneq J \subsetneq R$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}[1)]
+		\item $I$ ist ein Primideal $\Leftrightarrow \sfrac{R}{I} \neq \{0+I\} $ und $([ a ] [ b ] = 0 \implies [ a ] = 0$ oder $[ b ] = 0 \Leftrightarrow$
+			$I \neq R$ und $(ab \in I \implies a \in I$ oder $b \in I$.
+		\item $I$ ist ein Maximalideal $\Leftrightarrow \sfrac{R}{I}$ ist ein Körper $\Leftrightarrow I \neq R$ und es gibt kein Ideal $J \subseteq R$ mit 
+			$I \subsetneq J \subsetneq R$.
+	\end{enumerate}
+	Letztes \enquote{genau dann wenn}: $\implies$: Sei  $J \subseteq R$ ein Ideal un $I \subseteq J$ un $x \in J \setminus I$. 
+	Dann ist $x+I \in \sfrac{R}{I} \setminus \{0+I\} $ ist invertierbar
+	in $\sfrac{R}{I}$, also $(x+I)^{-1} = y+I$ Daraus folgt $\underbrace{x}_{\in J}y -1 \in I \subseteq J \implies 1 \in J$, also $J = R$.\\
+	$\impliedby$: Angenommen $x+I \neq  0+I$, dann können wir $J = (x)+I$ definieren.
+	Dies ist ein Ideal $ I \subsetneq J \subseteq R$. Also ist $J = R$ und es gibt ein $y \in R$ mit $xy + I = 1 + I$
+\end{proof}
+
+\begin{eg}
+	In $R = \Z$ gilt:
+	\begin{itemize}
+		\item $I =(m)$ ist ein Primideal $\Leftrightarrow m=0$ oder $m=\pm p$ eine Primzahl ist.
+		\item $I=(m)$ ist ein Maximalideal $\Leftrightarrow m= \pm p$ eine Primzahl ist.
+	\end{itemize}
+	z.B. $(0) \leq (2) $ mit $(0)$ Primideal und $(2)$ Prim- und Maximalideal.
+\end{eg}
+
+\begin{eg}
+	Sei $K$ ein Körper und $a_1,\ldots,a_{n} \in K$. Wir definieren dass Ideal 
+	\[
+		I = (X_1 - a_1,\ldots,X_{n} - a_{n}) \subseteq K[X_1,\ldots,X_{n}]
+	\] 
+	Dann ist $I$ ein Maximalideal, und ist gleich dem Kern $\ker(\Ev_{a_1,\ldots,a_{n}})$ des Auswertungshomomorphismus
+	\[
+		\Ev_{a_1,\ldots,a_{n}}(f) = f(a_1,\ldots,a_{n})
+	.\] 
+	\begin{proof}
+	$I \subseteq \ker(\Ev_{a_1,\ldots,a_{n}})$ da $\Ev(X_{j} - a_{j}) = a_{j} - a_{j} = 0$ für $j = 1,\ldots,n$.
+	Sei nun $f \in \ker(\Ev_{a_1,\ldots,a_{n}})$. 
+	\[
+		f = \sum a_{(k_1,\ldots,k_{n})} X_1^{k_1} \ldots X_{n}^{k_{n}}
+	\]
+	Wir schreiben $X_{j}^{k_{j}} = (a_{j} + X_{j} - a_{j})^{k_{j}} = a_{j}^{k_{j}} + \underbrace{k_{j} a_{j}^{k_{j}-1} (X_{j} - a_{j}) + \ldots}_{\in I}$.\\
+	Also gilt $X_{j}^{k_{j}} + I = a_{j}^{k_{j}} + I$ 
+	\[
+		\implies f + I = \underbrace{\sum a_{(k_1,\ldots,k_{n})} a_1^{k_1}\ldots a_{n}^{k_{n}}}_{f(a_1,\ldots,a_{n}) = 0} + I \in I
+	\]
+	Weiters folgt $I = \ker(\Ev_{a_1,\ldots,a_{n}})$
+	\[
+		\implies \sfrac{K[X_1,\ldots,X_{n}]}{I} = \sfrac{K[X_1,\ldots,X_{n}]}{\ker(\Ev_{a_1,\ldots,a_{n}})} \cong K
+	\]
+	ist ein Körper $\implies I$ ist ein Maximalideal.
+	\end{proof}
+\end{eg}
+
+\begin{remark}
+	Der Hilbert'sche Nullstellensatz besagt, dass jedes Maximalideal in $\C[X_1,\ldots,X_{n}]$ von dieser Gestalt ist.
+\end{remark}
+
+\begin{theorem}
+	Sei $R$ ein kommutativer Ring, und $I \subsetneq R$ ein Ideal. Dann existiert ein Maximalideal $m \supseteq I$.
+	Insbesondere existiert in jedem Ring $R \neq [0]$ ein Maximalideal.
+\end{theorem}
+
+\begin{proof}
+	Wir werden das Zornsche Lemma verwenden. Hierzu definieren wir
+	\[
+	X = \{J \subsetneq R \mid J \text{ ist ein Ideal und } I \subseteq J\} 
+	\]
+	und betrachten die Inklusion von Teilmengen als unsere Relation auf $X$.
+	Wir müssen zeugen, dass jede Kette $K$ in $X$ eine obere schranke besitzt.
+	Falls $K = \emptyset$, dann ist $I \in X$ eine obere Schranke.
+	Sei nun $K$ eine nichtleere Kette in $X$.
+
+	Wir behaupten, dass $\widetilde{J} = \bigcup_{J \in K} J$ eine obere Schranke von $K$ in $X$ darstellt.
+	Für jedes $J \in K$ gilt $J \subseteq \widetilde{J}$ nach Definition von $\widetilde{J}$.
+	Weiters gilt:
+	\begin{itemize}
+		\item $\widetilde{J} \neq R$ weil ($J \in K \implies 1 \not\in J$ ) gilt $1 \not\in \widetilde{J}$ 
+		\item $\widetilde{J} \supseteq I,$ weil $K \neq \emptyset$, also ein $J \in K$ existiert, welches nach Definition von $X \supseteq K$ $I$ enthalten muss.
+		\item $\widetilde{J}$ ist auch ein Ideal.
+			\begin{itemize}
+				\item $0 \in \widetilde{J}$ da $0 \in I \subseteq \widetilde{J}$ 
+				\item Sei $x \in R$ und $a \in \widetilde{J}$, dann gibt es ein $J \in K$ mit $a \in J$.
+					Dies impliziert $xa \in J \subseteq \widetilde{J}$.
+				\item Sei un $a,b \in \widetilde{J}$, dann gibt es ein $J_{a} \in K$ mit $a \in J_{a}$ und $J_{b} \in K$ mit $b \in J_{b}$,
+					Da $K$ eine Kette ist, gilt $J_{a} \subseteq J_{b}$ oder $J_{a} \supseteq J_{b}$ also entweder $a,b \in J_{b} \implies a + b \in J_{b} \subseteq \widetilde{J}$ oder
+					$a,b \in J_{a} \implies a+b \in J_{a} \subseteq \widetilde{J}$.
+			\end{itemize}
+	\end{itemize}
+	Somit ist $\widetilde{J}$ eine obere Schranke in $X$.
+	Zusammenfassend folgt $X$ ist induktiv geordnet, also existiert nach dem Zorn'schen Lemma ein maximales Element in $X$, d.h. es existiert ein Ideal $m$,
+	welches  $I$ enthält, nicht gleich $R$ ist und so sodass es zwischen $m$ und $R$ kein weiteres Ideal gibt.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
