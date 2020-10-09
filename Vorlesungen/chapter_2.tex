@@ -801,7 +801,7 @@ Falls $I \subseteq R$ ein Ideal ist und $a \in R$, dann ist die Restklasse für 
 	.\] 
 	Zur Vereinfachung der Notation betrachten wir den Fall $i = 1$.
 
-	\textbf{Behauptung:} $I_1$ und $I_2 \cap \ldots I_{n}$ sind coprim, d.h. es existieren $a \in I_1$ und $b \in I_2 \cap \ldots I_{n}$ so dass $a+b = 1$.\\
+	\textbf{Behauptung:} $I_1$ und $I_2 \cap \ldots \cap I_{n}$ sind coprim, d.h. es existieren $a \in I_1$ und $b \in I_2 \cap \ldots I_{n}$ so dass $a+b = 1$.\\
 	Aus der Behauptung folgt, dass $x_1 = b$ erfüllt:
 	\[
 		\varphi(x_1) = (b + I_1, b+I_2,\ldots,b+I_{n}) = (1+ I_1, 0 + I_2, \ldots, 0+I_{n})
@@ -901,7 +901,7 @@ Da $K$ ein Körper ist, ist $\Im(\varphi)$ ein Integritätsbereich.
 \begin{proposition}
 	Sei $I \subseteq R$ ein Ideal in einem kommutativen Ring.
 	\begin{enumerate}[1)]
-		\item Dann ist $I$ ein Primideal genau dann wenn $I \neq R$ und für alle $a,b \in R$ gilt $ab \in I \implies a in I $ oder $b \in I$.
+		\item Dann ist $I$ ein Primideal genau dann wenn $I \neq R$ und für alle $a,b \in R$ gilt $ab \in I \implies a \in I $ oder $b \in I$.
 		\item Dann ist $I$ ein Maximalideal genau dann wenn $I \neq R$ und es gibt kein Ideal $J$ mit $I \subsetneq J \subsetneq R$.
 	\end{enumerate}
 \end{proposition}
@@ -975,7 +975,7 @@ Da $K$ ein Körper ist, ist $\Im(\varphi)$ ein Integritätsbereich.
 	Wir müssen zeugen, dass jede Kette $K$ in $X$ eine obere schranke besitzt.
 	Falls $K = \emptyset$, dann ist $I \in X$ eine obere Schranke.
 	Sei nun $K$ eine nichtleere Kette in $X$.
-
+	
 	Wir behaupten, dass $\widetilde{J} = \bigcup_{J \in K} J$ eine obere Schranke von $K$ in $X$ darstellt.
 	Für jedes $J \in K$ gilt $J \subseteq \widetilde{J}$ nach Definition von $\widetilde{J}$.
 	Weiters gilt:
@@ -996,6 +996,156 @@ Da $K$ ein Körper ist, ist $\Im(\varphi)$ ein Integritätsbereich.
 	Zusammenfassend folgt $X$ ist induktiv geordnet, also existiert nach dem Zorn'schen Lemma ein maximales Element in $X$, d.h. es existiert ein Ideal $m$,
 	welches  $I$ enthält, nicht gleich $R$ ist und so sodass es zwischen $m$ und $R$ kein weiteres Ideal gibt.
 \end{proof}
+
+\section{Unterring}
+\begin{definition}
+	Sei $R$ ein Ring und $S \subseteq R$ auch ein Ring. Wir sagen $S$ ist ein \emph{Unterring} falls $\id: S \to R, s \mapsto s$ 
+	ein Ringhomomorphismus ist.
+	
+	\textbf{Alternativ Definition:}
+	Sei $R$ ein Ring und $S \subseteq R$. Dann ist $S$ ein Unterring falls
+	\begin{enumerate}
+		\item $0,1 \in S$.
+		\item $a-b \in S$ für alle $a,b \in S$.
+		\item $a\cdot b \in S$ für alle $a,b \in S$.
+	\end{enumerate}
+\end{definition}
+
+\begin{notation}
+	Sei $S \subseteq R$ ein Unterring in einem Ring $R$.
+	Seien $a_1,\ldots,a_{n} \in R$. Wir definieren
+	\[
+		S[a_1,\ldots,a_{n}] = \bigcap_{\substack{T \subseteq R \text{ Unterring}\\ T \supseteq S\\ a_1,\ldots,a_{n} \in T}} T 
+	.\] 
+	genannt \enquote{s-adjungiert $a_1,\ldots,a_{n}$}.
+	\[
+	= \Ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}]) = \{\sum_{k_1,\ldots,k_{n} \in M} c_{k_1,\ldots,k_{n}} a_1^{k_1} \ldots a_{n}^{k_{n}} \} 
+	.\] 
+	mit $\abs{M} < \infty, M \subseteq \N^{n}, c_{k_1,\ldots,k_{n}} \in S$.
+\end{notation}
+
+\begin{proof}[Beweis von $\subseteq$]
+	Wir wissen aus der Serie, dass $S[a_1,\ldots,a_{n}]$ ein Unterring ist, der nach Definition $S$ und $s_1,\ldots,a_{n}$ enthält.
+	Auch wissen wir, dass $\Ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}])$ ein Unterring ist (da $S[x_1,\ldots,x_{n}]$ ein Ring ist und $\Ev_{a_1,\ldots,a_{n}}$ ein Ringhomomorphimus ist).
+	Also tritt $T = \Ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}])$ als eine der Mengen im Durchschnitt auf und wir erhalten
+	\[
+		S[a_1,\ldots,a_{n}] \subseteq \Ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}])
+	.\] 
+\end{proof}
+
+\begin{proof}[Beweis von $\supseteq$]
+	Wir wissen $S[a_1,\ldots,a_{n}]$ ist ein Unterring.
+	Ebenso haben wir $S$ und $a_1,\ldots,a_{n}$ sind in diesem Unterring enthalten. Folgt
+	\[
+		\sum_{(k_1,\ldots,k_{n}) \in M} \underbrace{c_{k_1,\ldots,k_{n}}}_{\in S} a_1^{k_1} \ldots a_{n}^{k_{n}} \subseteq S[a_1,\ldots,a_{n}]
+	.\] 
+	Durch variieren von $M \subseteq \N^{n}, \abs{M} < \infty$ und der Koeffizienten zeigt $\supseteq$.
+\end{proof}
+
+\begin{eg}
+	\begin{itemize}
+		\item $\Z[\frac{1}{2}] = \{\frac{a}{2^{n}} : a \in \Z, n \in \N\} \subseteq \Q$.
+		\item $\Z[i] = \{a+ib : a,b \in \Z\} \subseteq \C$. 
+		\item $\Z[\sqrt{2}] = \{a + \sqrt{2} b: a,b \in \Z\} \subseteq \R$.
+		\item $\Q[\sqrt{2}] = \{a+\sqrt{2} b: a,b \in \Q\} \subseteq \R$
+			ist ein Körper:
+			\[
+			\frac{a + \sqrt{2} b}{\underbrace{c + \sqrt{2} d}_{\neq 0}} \frac{c- \sqrt{2} d}{c - \sqrt{2} d}
+			= \frac{ac - 2bd + \sqrt{2} (ad-bc)}{c^2 - 2 d^2}
+			\] 
+			mit Nenner in $\Q$.
+	\end{itemize}
+\end{eg}
+
+\section{Matrizen}
+Sei $R$ ein kommutativer Ring, $m,n \in N_{> 0}$.
+Dann bezeichnen wir die Menge $\mat_{mn}(R)$ als die Menge aller $m \times n$-Matrizen
+\[
+\begin{pmatrix} 
+a_{11} &\ldots &a_{1n}\\
+\vdots &\ddots &\vdots\\
+a_{m_1} &\ldots &a_{mn}
+\end{pmatrix} 
+.\] 
+mit Koeffizienten oder Eintragungen $a_{11},\ldots,a_{mn} \in R$.
+Für $m=n$ i definieren wir auch auf $\mat_{mm}(R)$ auf übliche Weise die Addition und Multipliaktion.
+Dies definiert auf $\mat_{mm}(R)$ gemeinsam mit dem Einselement $I_{m} = (\delta_{ij})_{i,j}$ eine Ringstruktur.
+Sobald $m > 1$ sit, ist dieser Ring nichtkommutativ.
+
+Die Einheiten in $\mat_{mm}(R)$ werden auch als invertierbare Matrizen bezeichnet.
+Die Menge wird auch die allgemeine lineare Gruppe vom Grad $m$ über $R$ genannt:
+\[
+	\operatorname{Gl}_{m}(R) = \mat_{mm}(R)^{\times} = \{A \in \mat_{mm}(R) \mid \text{es existiert ein } B \in \mat_{mm}(R) \text{ mit } AB = BA = I_{n}\}   
+.\] 
+
+
+\begin{proposition}[Meta]
+	Jede Rechenregel für Matrizen über $R$ die nur $+,-,\cdot,0,1$ beinhalten, gilt auch über einem beliebigen kommutativen Ring.
+\end{proposition}
+
+\begin{proposition}
+	Sei $R$ ein kommutativer Ring
+	\begin{itemize}
+		\item $\mat_{mm}(R)$ erfüllt die Ringaxiome, also z.B. $A(BC) = (AB)C$
+		\item $\det(AB) = \det(A) \det(B)$
+		\item  $A \widetilde{A} = \widetilde{A} A = \det(A) I_{m}$, wobei $\widetilde{A}$ die komplementäre Matrix
+			\[
+				\widetilde{A} = ((-1)^{i+j} \det(A_{ji}))_{i,j}
+			.\] 
+		\item $\charak_{A}(A) = 0$ für das charakteristische Polynom $\charak_{A}(X) = \det(X I_{m} - A)$ einer Matrix $A$.
+	\end{itemize}
+\end{proposition}
+
+\begin{remark}
+	$\det(A)$ , jeder Koeffizient von $A(BC), (AB)C, A  \widetilde{A}, \widetilde{A} A, \det(A) I, \charak_{A}(X)$, $ \charak_{A}(A)$ 
+	hängt polynomiell von den Eintragungen von $A,B,C$ ab, wobei die Koeffizienten in $\Z$liegen z.B.
+	\[
+		\det(A) = \sum_{\sigma \in S_{n}} \underbrace{\sgn(\sigma)}_{\in \Z}
+			a_{1 \sigma(1)} a_{2 \sigma(2)} \ldots a_{n \sigma(n)}
+		\]
+		welche Monome in den Eintragungen von $A$ sind.
+\end{remark}
+
+\begin{lemma}
+	Wenn ein Polynom $f \in \R[X_1,\ldots,X_{n}]$ auf ganz $\R^{n}$ verschwindet, dann ist $f=0$.
+\end{lemma}
+
+\begin{proof}
+	Sei $f= \sum_{k_1,\ldots,k_{n}} c_{k_1,\ldots,k_{n}} X_1^{k_1} \ldots X_{n}^{k_{n}}$ ein Polynom für das die zugehörige Polynomfunktion
+	$f: \R^{n} \to \R, (a_1,\ldots,a_{n}) \mapsto f(a_1,\ldots,a_{n})$ verschwindet.
+	Dies gilt dann auch für jede partielle Ableitung von $f$.
+	Sei $(l_1,\ldots,l_{n}) \in \N^{n}$ mit $k_{i} \geq l_{i}$ für $i \in \{1,\ldots,n\} $. Dann gilt
+	\begin{align*}
+		0 &= \partial_{x_1}^{l_1} \ldots \partial_{x_{n}}^{l_{n}} f(0)\\
+		&= \sum_{k_1,\ldots,k_{n}} c_{k_1,\ldots,k_{n}} k_1 (k_1-1) \ldots (k_1-l_1 +1) x_1^{k_1-l_1} \ldots 
+		k_{n} (k_{n} -1) \ldots (k_{n} - l_{n} +1) x_{n}^{k_{n} - l_{n}}\\
+		&= c_{l_1,\ldots, l_{n}} l_1! \ldots l_{n}!
+	\end{align*}
+	Da dies für alle $(l_1,\ldots,l_{n})$ gilt, folgt $f=0$.
+\end{proof}
+
+\begin{remark}
+	Das Lemma gilt analog für jeden Körper $K$ mit $\abs{K} = \infty$.
+\end{remark}
+
+\begin{proof}[Beweis der Proposition]
+	Wir bemerken zuerst, dass
+	\begin{itemize}
+		\item Jede Eintragung von $A(BC) - (AB)C$ ein Polynom mit ganzzahligen Koeffizienten in den Variablen
+			\[
+			a_{11},\ldots,a_{mm},b_{11},\ldots,b_{mm},c_{11},\ldots,c_{mm} 
+			\] 
+			ist.
+		\item $\det(AB) - \det(A) \det(B)$ ein Polynom mit ganzzahligen Koeffizienten in den Variablen $a_{11},\ldots,a_{mm}, b_{11}, \ldots, b_{mm}$ ist.
+		\item jede Eintragung von $A \widetilde{A} - (\det(A)) I_{m}$ (oder $\widetilde{A} A - (\det(A)) I_{m}$) ein Polynom mit ganzzahligen Koeffizienten in den Variablen $a_{11},\ldots,a_{mm}$ ist.
+		\item jede Eintragung von $\charak_{A}(A)$ ein Polynom mit ganzzahligen Koeffizienten in den Variablen $a_{11},\ldots,a_{mm}$ ist.
+	\end{itemize}
+	Für $R = \R$ wissen wir, dass diese Polynome ausgewertet an einer beliebigen Stelle gleich Null sind.
+	D.h. mit dem Lemma sind bereits die Polynome gleich Null.
+	Wenn wir den Ringhomomorphismus von $\Z$ nach $R$ auf die Koeffizienten anwenden, erhalten wir wieder das Nullpolynom.
+	$\implies$ All diese Gleichungen gelten auch für Matrizen über $R$.
+\end{proof}
+
 
 
 

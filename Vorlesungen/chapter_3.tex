@@ -1,0 +1,321 @@
+%! TEX root=../algebra.tex
+\graphicspath{{Images/}}
+
+\chapter{Faktorisierungen von Ringen}
+\emph{Buch Seiten 83-114}.
+Wir wollen in diesem Kapitel Ringe mit eindeutiger Primfaktorzerlegung betrachten.
+Im Folgenden ist $R$ immer ein Integritätsbereich.
+
+\begin{definition}[Wiederholung]
+	$a \mid b \Leftrightarrow \exists  c $ mit $b=ac$ für $a,b \in R$.\\
+	$a \in R^{\times}$ ist eine Einheit $\Leftrightarrow a \mid 1$.
+\end{definition}
+
+\begin{definition}
+	Wir sagen $p \in R \setminus \{0\}$ ist \emph{irreduzibel}, falls $p \not\in R^{\times}$ und für alle $a,b \in R$ gilt
+	$p = ab \implies a \in R^{\times}$ oder $b \in R^{\times}$.
+\end{definition}
+
+\begin{definition}
+	Wir sagen $p \in R \setminus \{0\}$ ist \emph{prim} falls $(p)$ ein Primideal ist, in anderen Worten
+	falls $p \not\in R^{\times}$ und für alle $a,b \in R$ gilt $p \mid ab \implies p \mid a$ oder $p \mid b$.
+\end{definition}
+
+\begin{lemma}
+	Sei $R$ ein Integritätsbereich. Dann ist jedes prim $p \in R$ auch irreduzibel.
+\end{lemma}
+
+\begin{proof}
+	Angenommen $p \in R \setminus \{0\} $ ist prim und angenommen $p =ab$ (wie in der Definition von irreduzibel).
+	Daraus folgt $p \mid ab \implies p \mid a $ oder $p \mid b$.\\
+	Angenommen $p \mid a$, dann ist $a = p \cdot c$ für ein $c \in R$.
+	Folgt $p = p \cdot c \cdot b \implies 1 = c \cdot b$ weil $R$ ein Integritätsbereich ist, also $b,c \in R^{\times}$.
+	Des Weiteren ist auch $p \not\in  R^{\times}$. Also ist $p$ irreduzibel.
+\end{proof}
+
+\begin{remark}
+	Die Umkehrung des Lemmas stimmt im Allgemeinen nicht.
+	Wenn sie doch stimmt, so hilft dies für die Eindeutigkeit in einer Primfaktorzerlegung.
+	Siehe später in 3.3.
+\end{remark}
+
+\section{Euklidische Ringe}
+\begin{definition}
+	Ein Integritätsbereich $R$ heißt ein \emph{Euklidischer Ring} falls es eine gradfunktion $N: R \setminus \{0\}  \to \N$ gibt,
+	so fass die beiden folgenden Eigenschaften gelten:
+	\begin{itemize}
+		\item \emph{Gradungleichung}: $N(f) \leq N(fg)$ für alle $f,g \in \R \setminus \{0\} $.
+		\item \emph{Division mit Rest}: Für $f,g \in R$ mit $f \neq  0$ gibt es $q,r \in R$ mit $g = q\cdot f + r$ wobei $r = 0$ oder $N(r) < N(f)$ ist.
+			Wir nennen $r$ den \emph{Rest} (bei Division durch $f $).
+	\end{itemize}
+\end{definition}
+
+\begin{eg}
+	\begin{enumerate}[1)]
+		\setcounter{enumi}{-1}
+		\item z.B. erfüllt jeder Körper $K$ mit $N(f) = 0$ für alle $f \in K$ diese Axiome
+			(uninteressant, da es hier nur Einheiten und keine irreduziblen oder primen Elemente gibt).
+		\item Der $R = \Z$ und $N(n) = \abs{n}$ für $n \in \Z$ (erfüllt alle Eigenschaften auf Grund bekannter Eigenschaften von $\Z$ ).
+		\item Sei  $K$ ein Körper, $R=K[x]$ und $N(f) = \deg(f)$ für $f \in R \setminus \{0\} $.
+		\item Sei $R = \Z[i]$ der Ring der \emph{Gausschen ganzen Zahlen} und $N(a+ib) = \abs{a+ib}^2$
+		\item Sei $R = \Z[\sqrt{2}]$ und $N(a + \sqrt{2} b) = \abs{a^2 - 2 b^2}$ für $a + \sqrt{2} b \in R$ (algebraische Zahlentheorie betrachtet solche Beispiele).
+	\end{enumerate}
+\end{eg}
+
+\begin{proof}[Beweis von Beispiel $2$]\leavevmode
+	\begin{itemize}
+		\item Gradungleichung: Seien $f,g \in K[X] \setminus \{0\} $. Dann gilt
+			\[
+				N(fg) = \deg(fg) = \deg(f) + \underbrace{\deg(g)}_{\geq 0} \geq \deg(f) = N(f)
+			.\]
+		\item Division mit Rest:
+			Sei $f \neq 0, g \in R = K[X]$. Dann gibt es $q,r \in K[ X ] $ mit $g =fq + r$ und $\deg(r) < \deg(f)$.
+			\begin{proof}
+				Falls $\deg(g) < \deg(f)$, dann setzen wir $q=0$ $r=g$.
+				Wir verwenden Induktion nach $\deg(g)$. Obiger Fall ist unser Induktionsanfang.\\
+				Sei $m \in \N$ und angenommen wir haben Division mit Rest bereits für alle Polynome mit Grad  $< m$ bewiesen.
+				Sei $g \in K[X]$ mit Grad $\deg(g) = m$.
+				Aufgrund des Induktionsanfangs haben wir $m \geq \deg(f) =: n$.\\
+				Sei $g = g_{m} X^{m} + \ldots$, $f = f_{n} X^{n} + \ldots$. Wir definieren 
+				\[
+					\widetilde{g} = g - \underbrace{g_{m} f_{n}^{-1} X^{m-m} f}_{\substack{\text{hat führenden Koeffizient } g_{m}\\ \text{und auch Grad $m$ (wie g) }}}
+				.\] 
+				womit $\deg(\widetilde{g}) < \deg(g) = m$. Auf Grund der Induktionsvorraussetzung können wie $\widetilde{q}$ und $\widetilde{r}$ finden, so dass
+				\begin{align*}
+					&\widetilde{g} = f \widetilde{q} + \widetilde{r} \qquad \deg(\widetilde{r}) < \deg(f)\\
+					&g - g_{m} f_{n}^{^{-1}} X^{m-n} f = f \widetilde{g} + \widetilde{r}\\
+					&g = f (\underbrace{g_{m} f_{n}^{-1} X^{m-1} + \widetilde{q}}_{=q}) + \underbrace{\widetilde{r}}_{=r}
+				\end{align*}
+				Dies beendet den Induktionsschritt.
+			\end{proof}
+	\end{itemize}
+\end{proof}
+
+\begin{eg}[Bsp für Polynomdivision]
+	$g = x^{6} + x^{4} + 4x^3 + 2$, $f = x^2  + 5$ 
+	\[
+		\begin{array}{cccccccccc}
+			&x^{6} + &0 x^{5} + &x^{4} + &3 x^3 + &0 x^2+ &0 x + &2 &: &x^2 + 5 = x^{4} - 4 x^{2} + 3x\\
+			&-x^{6} & &- 5 x^{4} \\\cline{1-4}
+			& & &-4 x^{4} &+ 4x^3 &+ 0 x^2 & &+ 2\\
+			& & &-4 x^{4} & &+20x^2\\ \cline{4-8}
+			 & & & &4x^3 &+ 20x^2 &+ 0x &+ 2\\
+			 & & & &-3x^3 & &- 15x\\ \cline{5-8}
+			 & & & & &20x^2 &- 15x &+2\\
+			 & & & & &-20x^2 & &- 100\\ \cline{6-8}
+			 & & & & & &-15x &- 98 &= r
+		\end{array}
+	\]
+\end{eg}
+
+\begin{proof}[Beweis von Beispiel $3$ ]
+	$R = \Z[i]$ der Ring der Gausschen ganzen Zahlen
+	\begin{align*}
+		N(a+ib) = \abs{a+ib}^2 &\text{ für } a + ib \in \Q[i] \\
+		\in \N &\text{ für } a+ib \in \Z[i]\\
+		N(z\cdot w) = N(z) N(w) &\text{ für } z,w \in \Q[i]\\
+		N(z) = 0  \Leftrightarrow z = 0 &\text{ multiplikativ} 
+	\end{align*}
+
+	\textbf{Normungleichung:} Sei $z,w \in \Z[i] \setminus \{0\}$. Dann gilt
+	\[
+		N(zw) = N(z) \underbrace{N(w)}_{\geq 1} \geq N(z)
+	.\] 
+	\begin{lemma}
+		Die Division mit Rest gilt in $\Z[i]$.
+	\end{lemma}
+	\begin{proof}
+		Seien $f,g \in \Z[i], f \neq 0$. Wir definieren $z = \frac{g}{f} \in \Q[i], z = a+ib$ f+r $a,b \in \Q$.
+		Sei $[r] = $ die beste Näherung von $r \in \Q$ innerhalb von $\Z$.
+		Definiere $q = [a] + i[b] \in \Z[i]$. Dann gilt 
+		\begin{align*}
+			\abs{z-q} \leq \sqrt{\underbrace{(a- [a])}_{\leq \frac{1}{2}}^2 + \underbrace{(b+[b])}_{\leq \frac{1}{2}}^2} \leq \frac{1}{\sqrt{2}} \qq{ und }
+			N(z-q) < 1
+		\end{align*}
+		Definiere $t = g - f q \implies g = fq + r$. Dann gilt
+		\begin{align*}
+			N(r) = \abs{r}^2 = \abs{g-fq}^2 = \abs{f}^2 \underbrace{\abs{z-q}^2}_{< 1} < N(f)
+		.\end{align*}
+	\end{proof}
+\end{proof}
+
+\begin{proof}[Beweis von Beispiel $4$]
+	Der Ring $R = \Z [\sqrt{2}] = \{a + \sqrt{2} b: a,b \in \Z\}$ ist ein euklidischer Ring.
+	Wir definieren $\phi: a + \sqrt{2} b \in \Q[\sqrt{2}] \mapsto \begin{pmatrix} 
+		a & 2b\\ b & a
+	\end{pmatrix} \in \mat_{22}(\Q)$.
+	Dann ist $\phi$ ein Ringhomomorphismus.
+	In der Tat ist $\phi$ auch $\Q$-linear, 
+	\begin{align*}
+		&\phi(1) = \begin{pmatrix} 
+			1 &0\\ 0 &1
+		\end{pmatrix} = I_2\\
+		&\phi(\sqrt{2}) = \begin{pmatrix} 
+			0 &2\\ 1 &0
+		\end{pmatrix}, \phi(\sqrt{2})^2 = \begin{pmatrix} 
+			0 &2\\ 1 &0
+		\end{pmatrix}  = 2I_2 = \phi(\sqrt{2}^2)
+	\end{align*} 
+	daraus folgt $\phi(fg) = \phi(f) \phi(g)$ für $f,g \in \Q[\sqrt{2}]$.
+	Wir definieren die Normfunktion
+	\begin{align*}
+		N(f) = \abs{\det(\phi(f))} = \abs{\det(\begin{pmatrix} 
+				a & 2b\\ b &a
+		\end{pmatrix} )} = \abs{a^2 - 2b^2}
+	.\end{align*}
+	mit $f = a + \sqrt{2} b \in \Q[\sqrt{2}]$.
+	Daher gilt $N(fg) = N(f)N(g)$ für $f,g \in \Q[\sqrt{2}]$.
+	Des weiteren filt $N(f) \geq 1$ für $f \in \Z[\sqrt{2}]$ 
+	Folgt die Normungleichung 
+	\[
+		N(fg) = N(f) \underbrace{N(g)}_{\geq 1} \geq N(f)
+	\]
+	für $g \in \Z[\sqrt{2}] \setminus \{0\} $.
+	\begin{lemma}
+		In $\Z[\sqrt{2}]$ filr die Division mit Rest.
+	\end{lemma}
+	\begin{proof}
+		Seien $f,g \in \Z[\sqrt{2}], f \neq 0$ und $z= \frac{g}{f} = a + \sqrt{2} b \in \Q[\sqrt{2}]$ mit $a,b \in \Q$.
+		Wir definieren $q = [a] + \sqrt{2} [b] \in \Z[\sqrt{2}]$. Dann gilt
+		\begin{align*}
+			N(z-q) = \abs{(a-[a])^2 - 2 (b-[b])^2} \leq \frac{1}{4} + 2 \frac{1}{4} < 1
+		.\end{align*}
+		Der restliche Beweis läuft analog zu $\Z[i]$.
+	\end{proof}
+\end{proof}
+
+\begin{theorem}
+	In einem Euklidischen Ring ist jedes Ideal ein Hauptideal.
+\end{theorem}
+
+\begin{proof}
+	Sei $I \subseteq R$ ein Ideal in einem Euklidischen Ring $R$.
+	Falls $I = \{0\}$, so ist $I = (0)$ ein Hauptideal.
+	Wir nehmen nun an, dass $I \neq \{0\}$.
+	Wir definieren $f \in I$ als ein Element mit $N(f) = \min \{\underbrace{N(g) : g \in I \setminus \{0\}}_{\subseteq \N \text{ nichtleer}}\}$.
+
+	\textbf{Behauptung:} $I = (f)$. Da $f \in I$ ist, gilt auch $(f) \subseteq I$.
+	Für die Umkehrung nehmen wir an, dass $g \in I$. 
+	Nach Division mit Rest gibt es  $q,r \in R$ mit $g = q f + r$ und $r = 0$ oder $N(r) < N(f)$.
+
+	Falls $r = 0$ ist, so ergibt sich $g = qf \in (f)$.\\
+	Falls $r \neq 0$ ist, so ergibt sich 
+	\[
+		r = \underbrace{g}_{\in I} - q \underbrace{f}_{\in I} \in I
+	\]
+	mit $N(r) < N(f)$.
+	Aber dies widerspricht der Definition von $f$.
+	Folgt $I = (f)$ wie behauptet und dies ist der Satz.
+\end{proof}
+
+\section{Hauptidealring}
+\begin{definition}
+	Sei $R$ ein Integritätsbereich. Dann heißt $R$ ein \emph{Hauptidealring} falls jedes Ideal in $R$ ein Hauptideal ist.
+\end{definition}
+
+\begin{eg}
+	Jeder euklidische Ring ist ein Hauptidealring.
+\end{eg}
+
+\begin{remark}
+	Der Ring $\Z[\frac{1}{2}(1+i\cdot \sqrt{163})]$ ist ein Hauptidealring und kann nicht zu einem Euklidischen Ring gemacht werden.
+\end{remark}
+
+\begin{proposition}
+	Sei $R$ ein Hauptidealring. Für je zwei Elemente $f,g \in R \setminus \{0\} $ gibt es einen größten gemeinsamen Teiler $d$ mit $(d) = (f) + (g)$.
+\end{proposition}
+
+\begin{definition}
+	Seien $f,g,d \in R \setminus \{0\} $. Wir sagen $d $ ist ein gemeinsamer Teiler von $f$ und $g$ falls $d \mid f$ und $d \mid g$.
+	Wir sagen $d$ ist ein größter gemeinsamer Teiler falls $d$ ein gemeinsamer Teiler ist und jeder gemeinsame Teiler $t$ auch $d$ teilt.
+\end{definition}
+
+\begin{remark}
+	Zwei ggT's unterscheiden sich um eine Einheit (wenn $R$ ein Integritätsbereich ist).
+\end{remark}
+
+\begin{proof}
+	Da $I = (f) + (g)$ ein Ideal ist und $R$ ein Hauptidealring ist, gibt es ein $d \in R$ mit $I = (d) = (f) + (g)$.
+	Daraus folgt, $(f) \subseteq (d)$ und damit $d \mid f$. Genauso $(g) \subseteq (d)$ und damit $d \mid g$.
+	Also ist $d$ ein gemeinsamer Teiler.
+	Falls $t \in R$ ein weiterer gemeinsamer Teiler von $f$ und $g$ ist, so folgt $(f) \subseteq (t), (g) \subseteq (t)$ und somit
+	$(d) = (f) + (g) \subseteq (t)$ und damit $t \mid d$.
+	Also ist $d$ ein größter gemeinsamer Teiler.
+\end{proof}
+
+In einem Euklidischen Ring kann man einen ggT von $f,g \in R \setminus \{0\} $ durch den \emph{euklidischen Algorithmus} bestimmen.
+\begin{enumerate}[1)]
+	\setcounter{enumi}{-1}
+	\item Falls $N(f) > N(g)$, so vertauschen wir $f$ und $g$. 
+		Also dürfen wir annehmen, dass $N(f) \leq N(g)$.
+	\item Dividiere $g$ durch $f$ mit Rest: $g = q f + r$
+	\item Falls $r = $ ist, so ist $f$ ein ggT und der Algorithmus stoppt.
+	\item Falls $r\neq 0$ ist, so ersetzen wir $(f,g)$ durch $(r,f)$ und springen nach $1)$.
+\end{enumerate}
+
+\begin{lemma}
+	Der Euklidische Algorithmus (wie oben beschrieben) endet nach endlich vielen Schritten und berechnet einen ggT.
+\end{lemma}
+
+\begin{proof}
+	Nach Schritt $0)$ gilt $\min(N(f), N(g)) = N(f)$. 
+	Bei jedem Durchlauf von $1)-3)$ wird diese natürliche Zahl echt kleiner.
+	Nach endlich vielen Schritten müssen wir also im Fall $2)$ sein.
+
+	Im Schritt $0)$ ändern wir $I = (f) + (g)$ nicht.
+	In $1)$ erhalten wir $q,r \in R$ mit $r = g- qf \in I$, $f \in I$.
+	Außerdem ist $f \in I' = (r) + (f), g = qf + r \in I'$.
+	Dies impliziert $(f) + (g) = I = I' = (r)+(f)$.
+	Also ändert sich das Ideal $I$ nicht während des Algorithmus.
+	Nach endlich vielen Schritten erreichen wir Falls $2)$ im Algorithmus:
+	\[
+		I = (f) + (g) = (a) + (b)
+	.\] 
+	mit $f,g$ den ursprünglichen Elementen und $a,b$ denen nach endlich vielen Schritten.
+	Nun gilt $b = q \cdot a + \underbrace{0}_{r=0}$ und somit $I = (f) + (G) = (a)$.
+	Mit dem Beweis von der Proposition folgt $a$ ist ein ggt von $f$ und $g$ und $a$ ist dann auch der Output vom Algorithmus.
+\end{proof}
+
+\begin{theorem}[Prime Elemente]
+	Sei $R$ ein Hauptidealring.
+	\begin{enumerate}[1)]
+		\item Dann ist $p \in R \setminus \{0\} $ prim genau dann wenn $p$ irreduzibel ist.
+		\item Jedes $f \in R \setminus \{0\} $ lässt sich als Produkt einer Einheit und endlich vielen primen Elementen schreiben.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Beweis von $1)$ ]
+	Wir wissen bereits, dass jedes prime Element irreduzibel ist (siehe Lemma in $3.0$).
+	Wir nehmen nun an, dass $p \in R \setminus \{0\} $ irreduzibel ist.
+	Wie nehmen weiters an, dass $p \mid ab$ für $a,b \in R$.
+	Falls $p \mid a$, so gibt es nichts zu beweisen.
+	Also nehmen wir an, dass $p \nmid a$.
+
+	Sei $d$ ein ggT von $p$ und $a$, also insbesondere ist $d \mid p = d \cdot e$.
+	Da $p$ irreduzibel ist gilt $d \in R^{\times}$ oder $e \in R^{\times}$.
+	Angenommen $e \in R^{\times}$ dann folgt $d = p e^{-1}$ also $p \mid d, d \mid a$ folgt $p \mid a$ was unserer Annahme widerspricht.
+
+	Somit ist $d \in R^{\times}$. $d = x p + y a$ für $x,y \in R$ da dies nach der Proposition in einem Hauptidealring gilt.
+	Multipliziert man dies $b d^{-1}$ so erhält man
+	\[
+		b = \underbrace{x b d ^{-1} p}_{p \mid -''-} + \underbrace{y d ^{-1} a b}_{p \mid ab}
+	.\] 
+	Somit folgt $p \mid b$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
