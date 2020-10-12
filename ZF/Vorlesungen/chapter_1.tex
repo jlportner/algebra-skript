@@ -1,0 +1,182 @@
+%! TEX root=../algebra.tex
+\graphicspath{{Images/}}
+
+\chapter{Einführung}
+\section{Algebra}
+\paragraph{Was ist Algebra?}
+\begin{enumerate}
+	\item Gruppen und Wirkungen
+	\item Ringe und Module
+	\item Körpertheorie
+\end{enumerate}
+\paragraph{Wozu ist Algebra gut?}
+Zentrale Grundlage für die reine Mathematik.
+
+\paragraph{Was sind die möglichen Ziele dieser Vorlesung?}
+Grundlagen schaffen. Viele tolle Sätze und Zusammenhänge schaffen.
+
+\section{Geschichtlicher Überblick}
+Algebra vom Arabischen al-gabr, \enquote{das Zusammenfügen gebrochener Teile} (Äquivalenzumformungen).
+
+Epochen:
+\begin{enumerate}
+	\item Babylonier ca. $2000$ v.Chr.
+	\item Griechen $600$ v. - $300$ v.Chr.
+	\item Inder 5. - 7. Jhdt.
+	\item Araber 8. - 13. Jhdt.
+	\item Italiener 16. Jhdt.
+	\item Leibniz
+	\item Lineare Algebra 
+	\item E. Galois
+	\item E. Noether ($\sim 1930$)
+\end{enumerate}
+
+\section{Polynomielle Gleichungen}
+\paragraph{Quadratische Gleichung}
+\begin{align*}
+	x^2 + p x + q = 0 \implies x^2 + 2 \frac{p}{2} x + \frac{p^2}{4} = \frac{p^2}{4} - q \implies (x+\frac{p}{2})^2 = \frac{p^2}{4}-q
+	\implies x = -\frac{p}{2} \pm \sqrt{\frac{p^2}{4} - q} 
+\end{align*}
+
+\paragraph{Kubische Gleichung}
+$a,b,c$ gegeben.
+\begin{align*}
+	x^3 + a x^2 + b x + c = 0 
+\end{align*}
+Wir setzen $x = y - \frac{a}{3}$, dann ist
+\begin{align*}
+	&x^3 = (y-\frac{a}{3})^3 = y^3 - 3 \frac{a}{3} y^2 + 3 (\frac{a}{3})^3 y - (\frac{a}{3})^3\\
+	&a x^2 = a(y-\frac{a}{3})^2 = a (y^2 - 2 \frac{a}{3} y + (\frac{a}{3})^2)\\
+	&bx = \ldots\\
+	\cline{1-2}
+	&y^3 + py + q = 0
+\end{align*}
+Ansatz: $y = g+h$.
+\begin{align*}
+	g^3 + 4g^2 h + 4 g h^2 + h^3 + p (g+h)  + q = 0\\
+	\underbrace{g^3 + h^3 + q}_{=0} + \underbrace{(3gh + p)}_{=0} (g+h) = 0\\
+	g^3 + h^3 = -q \qq{und} gh = -\frac{p}{3}
+.\end{align*}
+Sei $G = g^3, H = h^3$. Dann folgt $G+H = -q$ und $GH = -(\frac{p}{3})^3$
+Folgt $G(-q-G) = -\frac{p^3}{27}$. Dies können wir mit der Quadratischen Gleichung lösen.
+Die sich daraus ergebende Formel wird auch die Cardano-Formel genannt.
+Hat eine Kubischegleichung drei reelle Lösungen so verwendet jede Lösungsformel zur Berechnung dieser Komplexe Zahlen (Casus Irreduzibiles).
+
+\paragraph{Quadratische Gleichung}
+Diese wurde kurz danach von Ferrari gelöst. Herleitung siehe Buch.
+
+\paragraph{Gleichung 5. Grades}
+1824 Abel: es kann keine Formel mit Wurzelausdrücken geben.\\
+1830 Galois: Vollständige Erklärung und Erfindung der Gruppentheorie zu diesem Zweck.
+
+\section{Zahlentheorie}
+\[
+\N \subseteq \Z \subseteq \Q \subseteq \R \subseteq \C
+\] 
+wobei $\N$ die $0$ enthält. In $\N$ und in $\Z$ gibt es Primzahlen.
+\begin{theorem}
+	Es gibt in $\Z$ eine eindeutige Primfaktorzerlegung.
+	Jede Zahl $n \in \Z \setminus \{0\}$ lässt sich als Produkt
+	\[
+	n = \epsilon \cdot p_1^{k_1} \cdot \ldots \cdot p_{l}^{k_{l}}
+	.\] 
+	schreiben, wobei $\epsilon = \pm 1$, $l \in \N$, $p_1,\ldots,p_{l} > 0$ Primzahlen sind und $k_1,\ldots,k_{l} \in \N_{> 0}$ sind.
+	Diese Darstellung ist bis auf die Reihenfolge der Primzahlen eindeutig.
+\end{theorem}
+
+Welche Zahle in $\N$ sind Summen von zwei Quadratzahlen?
+z.B. $3$ geht nicht, $5 = 4+1$
+
+Was sind die Primzahlen in $\Z[i] = \{a + ib: a,b \in \Z\} \subseteq \C$?
+z.b. $5 = (2+i)(2-i)$ ist keine Primzahl in $\Z[i]$, $3$ ist eine.
+
+Sehr nützlich für diese Frage ist:
+\begin{definition}
+	Wir schreiben für $a,b,m \in \Z$, dass $a \equiv b \mod m$ falls $m$ die Differenz $b-a$ teilt (also falls es ein  $k \in \Z$ gibt mit $b-a = k m $)
+\end{definition}
+
+Dies definiert eine \emph{Äquivalenzrelation} (für festes $m \in \Z$).
+Der Quotientenraum wird mit 
+\[
+	\Z_{m} = \Z / \Z_{m} = \{a + \Z_{m}: a \in \Z\} 
+\]
+bezeichnet.
+
+\begin{lemma}
+	Addition und Multiplikation auf $\Z$ definieren auch wohldefinierte Addition und Multiplikation auf $\Z_{m}$.
+	D.h. für festes $m$ gilt: $a_1 \equiv a_2$ und $b_1 \equiv b_2 \mod m \implies a_1 + b_1 \equiv a_2 + b_2$ und $a_1 \cdot b_1 \equiv a_2 \cdot b_2$ modulo $m$.
+\end{lemma}
+
+\begin{proof}
+	Nach Annahme gilt
+	\begin{align*}
+		&a_2 - a_1 = km\\
+		&b_2 - b_1 = lm\\
+		\cline{1-2}
+		&(a_2+b_2) - (a_1+b_1) = (k+l)m
+	\end{align*}
+	was bedeutet $a_1 + b_1 \equiv a_2 + b_2 \mod m$.
+	Multiplikation analog.
+\end{proof}
+
+\begin{lemma}
+	Die einzigen Quadratzahlen in $\Z_4$ sin $0$ und $1$.
+	Daher sind die Zahlen $3,7,11,15,19,\ldots$ keine Summen von zwei Quadratzahlen in $\N$.
+\end{lemma}
+
+\begin{proof}
+	$0^2 \equiv 0, 1^2 \equiv 1, 2^2 \equiv 0, 3^2 \equiv 1$ modulo $4$.
+	Wenn $n = k^2 + l^2$ dann gilt modulo $4$, dass
+	\[
+	n \equiv k^2 + l^2 \equiv \begin{cases}
+		0\\ 1
+	\end{cases}+\begin{cases}
+		0\\ 1
+	\end{cases} \equiv 0,1,2 \mod 4
+	.\] 
+	Also können die Zahlen $3,7,11,\ldots \equiv 3 \mod 4$ keine Summen von zwei Quadratzahlen sein.
+\end{proof}
+
+\subsection{Kurze Diskussion zu ggT}
+\begin{proposition}
+	Für je zwei natürliche Zahlen $a,b \in \N_{>0}$ gibt es einen größten gemeinsamen Teiler $d > 0$.
+	Dieser erfüllt $\Z a + \Z b = \Z d$.
+\end{proposition}
+
+\begin{proof}
+	Wir bemerken zuerst, dass $I = \Z a + \Z b = \{k a + l b: k,l \in \Z\} $ unter Addition und Multiplikation mit Elementen in $\Z$ abgeschlossen ist.
+	Da $\N$ wohlgeordnet ist gibt es in $I \cap \N_{> 0}$ ein kleinstes Element $d > 0$.
+	Sei nun $m \in I$. Dann können wir in $\Z$ Division mit Rest verwenden, d.h.
+	\[
+		\underbrace{m}_{\in I} = k\underbrace{d}_{\in I} + r \quad k \in \Z, r \in \{0,\ldots,d-1\} 
+	.\] 
+	Also ist auch $k \cdot d$ in $I$ und daher $r = m - kd \in I$, $r \geq 0$ und $r < d$. Folgt $r = 0$ wegen der Definition von $d \in I \cap \N_{>0}$ als das kleinste Element.
+	Somit ist $I \subseteq \Z d \subseteq I \implies I = \Z d$.
+	Wir überprüfen noch, dass $d$ der größte gemeinsame Teiler von $a$ und $b$ ist.\\
+	$a \in I = \Z d \implies a = k d$, also $d \vert a$. \\
+	$b \in I = \Z d \ldots$, also $d \vert b$.\\
+	Also ist $d$ gemeinsamer Teiler. Angenommen $f$ ist ein weiterer gemeinsamer Teiler von $a$ und $b$.
+	Da $d \in I$ gibt es $k,l \in \Z$ mit $d = k a + l b$. Folgt $f \vert a$ und $f \vert b$ und daher $f \vert d$, somit $f \leq d$.
+
+\end{proof}
+
+\section{Geometrie}
+Alte Griechen sahen Geometrie und Zahlentheorie getrennt.
+
+Descartes (1986-1649): Kann man $\sqrt[3]{2}$ oder $20^{\circ}$ mit Zirkel und lineal konstruieren.
+
+Klassifikation von Geometrie im Erlanger Programm Klein $1872$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
