@@ -129,7 +129,7 @@ Im Folgenden ist $R$ immer ein Integritätsbereich.
 		Sei $[r] = $ die beste Näherung von $r \in \Q$ innerhalb von $\Z$.
 		Definiere $q = [a] + i[b] \in \Z[i]$. Dann gilt 
 		\begin{align*}
-			\abs{z-q} \leq \sqrt{\underbrace{(a- [a])}_{\leq \frac{1}{2}}^2 + \underbrace{(b+[b])}_{\leq \frac{1}{2}}^2} \leq \frac{1}{\sqrt{2}} \qq{ und }
+			\abs{z-q} \leq \sqrt{\underbrace{(a- [a])^2}_{\leq \frac{1}{2}} + \underbrace{(b+[b])^2}_{\leq \frac{1}{2}}} \leq \frac{1}{\sqrt{2}} \qq{ und }
 			N(z-q) < 1
 		\end{align*}
 		Definiere $t = g - f q \implies g = fq + r$. Dann gilt
@@ -172,7 +172,7 @@ Im Folgenden ist $R$ immer ein Integritätsbereich.
 	\]
 	für $g \in \Z[\sqrt{2}] \setminus \{0\} $.
 	\begin{lemma}
-		In $\Z[\sqrt{2}]$ filr die Division mit Rest.
+		In $\Z[\sqrt{2}]$ gilt die Division mit Rest.
 	\end{lemma}
 	\begin{proof}
 		Seien $f,g \in \Z[\sqrt{2}], f \neq 0$ und $z= \frac{g}{f} = a + \sqrt{2} b \in \Q[\sqrt{2}]$ mit $a,b \in \Q$.
@@ -302,6 +302,209 @@ In einem Euklidischen Ring kann man einen ggT von $f,g \in R \setminus \{0\} $ d
 	.\] 
 	Somit folgt $p \mid b$.
 \end{proof}
+
+\begin{theorem}
+	Sei $R$ ein Hauptidealring und $p \in R$ irreduzibel.
+	Dann ist $(p)$ ein Maximalideal. Insbesondere ist $p$ prim.
+\end{theorem}
+
+\begin{proof}
+	Sei $R$ ein Hauptideal Ring und $p \in R$ irreduzibel.
+	Sei $J \subseteq R$ ein Ideal mit $J \supsetneq (p)$.
+	Da  $R$ ein Hauptidealring ist, gibt es ein $d \in R$ mit $J = (d) \supsetneq (p)$.
+	Also gibt es ein $c$ mit $p = d \cdot c$.
+	Also folgt $d \in R^{\times}$ oder $c \in R^{\times}$ (da $p$ irreduzibel ist).
+
+	Falls $c \in R^{\times}$ ist, so ist $d = p \cdot c^{-1} \in (p)$ und damit $J = (d) = (p)$ - ein Widerspruch zur Annahme an  $J$.
+
+	Also gilt $d \in R^{\times}$ und $1 = d d^{-1} \in (d) = J = R$.
+	Da $J \subseteq R$ mit $(p) \subsetneq J$ beliebig war, ist $ (p)$ ein Maximalideal.
+\end{proof}
+
+Für den Beweis vom Satz über Prime Elemente Eigenschaft 2 verwenden wir:
+\begin{proposition}
+	Sei $R$ ein Hauptidealring und seien $J_0 \subseteq J_1 \subseteq J_2 \subseteq \ldots$ eine austeigende Kette von Idealen in $R$.
+	Dann gibt es ein $n \in \N$ mit $J_{m} = J_{n}$ für alle $m \geq n$.
+\end{proposition}
+
+\begin{proof}
+	Wir definieren $J = \bigcup_{n \in \N} J_{n}$ und erhalten, dass $J$ ein Ideal ist.
+	Da $R$ ein Hauptidealring ist, gibt es also ein $d \in R$ mit $J = (d)$.
+	Also gibt es ein $n \in \N$ mit $d \in J_{n}$. Daraus folgt 
+	\[
+		J = \bigcup_{i \in \N} J_{i} = (d) \subseteq J_{n} \subseteq J_{m} \subseteq J = (d)
+	.\] 
+	für alle $m \geq n$.
+
+\end{proof}
+
+\begin{proof}[Beweis vom Satz über Prime Elemente Eigenschaft 2]
+	Sei $f \in R \setminus \{0\} $. Für diesen Beweis sagen wir, dass $f$ \emph{zerlegbar} ist.
+	Falls sich $f$ als ein Produkt einer Einheit und endlich vielen ($n \in \N$) irreduziblen Elementen schreiben lässt.
+	Falls $f \in R^{\times}$ ($n = 0$) oder $f$ irreduzibel ($n = 1$) ist, so ist $f$ zerlegbar.
+
+	Wir beweisen die Aussage mit einem Widerspruchsbeweis und nehmen an $f \in R \setminus \{0\} $ sei nicht zerlegbar.
+	Also ist $f$ nicht irreduzibel, $f = f_0 = f_1 \widetilde{f_1}$ wobei $f_1$, $\widetilde{f_1} \not\in R^{\times}$.
+	Falls $f_1$ und $\widetilde{f_1}$ beider zerlegbar wären, so würde dies auch für $f$ folgen.
+
+	O.B.d.A. dürfen wir also annehmen, dass $f_1$ nicht zerlegbar ist.
+	Wir iterieren dieses Argument und erhalten
+	\begin{align*}
+		f_0 = f_1 \widetilde{f_1} \quad f_1 = f_2 \widetilde{f_2} \quad f_2 = f_3 \widetilde{f_3} \ldots
+	.\end{align*}
+	mit $f_0, f_1,f_2,f_3,\ldots$ nicht zerlegbar und $\widetilde{f_1}, \widetilde{f_2}, \widetilde{f_3},\ldots \not\in  R^{\times}$.
+
+	Es gilt $f_{n+1} \mid f_{n}$ und daher $(f_{n}) \subseteq (f_{n+1})$ für alle $n \in \N$.
+	Wir wenden also die Proposition von vorhin an und erhalten, dass es ein $n \in \N$ mit $(f_{n}) = (f_{n+1})$ gibt.
+	Da $R$ ein Integritätsbereich ist, folgt aus $(f_{n}) = (f_{n+1})$, dass sich $f_{n}$ und $f_{n+1}$ multiplikativ um eine Einheit unterscheiden.
+	Also gilt 
+	\[
+	\frac{f_{n}}{f_{n+1}} = \widetilde{f_{n+1}} \in R^{\times}
+	,\] 
+	was den Konstruktion von $f_{n}, \widetilde{f_{n}}$ widerspricht.
+	Dieser Widerspruch zeigt, dass jedes Element $f \in R \setminus \{0\} $ wie im Satz formuliert zerlegbar ist.
+\end{proof}
+
+%ZFE begin include
+\begin{eg}
+	Einige Primzahlen in $\Z[i]$, z.B. sind $1\pm i,3,2\pm i$ Primzahlen in $\Z[i]$.
+	%TODO maybe das über Z[i] 09.faktor S5
+
+	$2$ ist keine Primzahl in $\Z[i]$, da $2 = (1+i)(1-i)$.
+	$5$ ist auch keine Primzahl in $\Z[i]$, da $5 = (2+i)(2-i)$.
+
+	Nach dem ersten folgenden Lemma ergibt sich nun, dass $1 \pm i$, $2 \pm i$ Primzahlen in $\Z[i]$ sind.
+	Nach dem zweiten Lemma sind $3,7$ Primzahlen in $\Z[i]$.
+\end{eg}
+%ZFE end include
+
+\begin{lemma}
+	Sei $z \in \Z[i]$ so dass $N(z) = p \in \N$ eine Primzahl in $\N$ ist.
+	Dann ist $z$ irreduzibel (also prim) in $\Z[i]$.
+\end{lemma}
+
+\begin{proof}
+	Angenommen $z = u \cdot v$ ist ein Produkt von $u,v \in \Z[i]$.
+	Dann ist $p = N(z) = \underbrace{N(u)}_{\in \N} \cdot \underbrace{N(v)}_{\in\N}$ und daher $N(u) = 1$ ($u \in \Z[i]^{\times}$ ) oder $N(v) = 1$ ($v \in \Z[i]^{\times}$ ).
+\end{proof}
+
+\begin{lemma}
+	Angenommen $p \in \N$ ist eine Primzahl in $\N$, die sich \emph{nicht} als Summe zweier Quadratzahlen schreiben lässt.
+	Dann ist $p$ auch eine Primzahl in $\Z[i]$.
+\end{lemma}
+
+\begin{proof}
+	Wir zeigen, dass $p$ in $\Z[i]$ irreduzibel ist.
+	Also angenommen $p = z \cdot w$ für $z,w \in \Z[i]$.
+	Dann folgt $N(p) = N(z) N(w) = p^2$ und damit $N(z) \mid p^2$ in $\N$, womit $N(z)),N(w) \in \{1,p,p^2\} $ ist.
+	Dabei ist aber $N(z) = N(a+ib) = a^2 + b^2 = p$ nicht möglich.
+	Also gilt $N(z),N(w) \in \{1,p^2\}$ und es folgt $N(z) = 1$ (und $N(w) = p^2$ ) oder $N(w) = 1$ (und $N(z) = p^2$ ).
+	Also ist $z \in \Z[i]^{\times}$ oder $w \in \Z[i]^{\times }$.
+\end{proof}
+
+\begin{eg}
+	Im Ring der Poynome $K[x]$ mit einer Variable über einem Körper $K$ gibt es irreduzible Elemente:
+	\begin{enumerate}[{Grad} 1:]
+		\item jedes Polynom vom Grad $1$ ist irreduzibel.
+		\item ein Polynom vom Grad $2$ ist irreduzibel genau dann wenn es keine Nullstellen im Körper $K$ hat.
+		\item selbes wie bei Grad $2$.
+		\item das betrachten von Nullstellen ist nicht mehr ausreichend. 
+	\end{enumerate}
+	Dies hängt stark vom Körper $K$ ab.
+\end{eg}
+
+\section{Faktorielle Ringe}
+
+\begin{definition}
+	Ein Integritätsbereich $R$ heißt ein \emph{faktorieller Ring} falls jedes $a \in R \setminus \{0\}$ sich als ein Produkt von einer Einheit
+	und endlich vielen Primelemente von $R$ schreiben lässt: $a = u, p_1,\ldots,p_{m}$ für $u \in R^{\times}, m \in \N, p_1,\ldots p_{m} \in R$ prim.
+\end{definition}
+
+\begin{eg}
+	Jeder Euklidische und jeder Hauptidealring.
+	Es gibt noch weitere Bsp, wir werden zeigen, dass z.B. $\Z[x,y,z]$ ein faktorieller Ring ist.
+\end{eg}
+
+\begin{proposition}
+	Sei $R$ ein faktorieller Ring.
+	Dann ist $p \in R \setminus \{0\} $ irreduzibel gdw. $p$ prim ist.
+\end{proposition}
+
+\begin{proof}
+	$\impliedby$: \checkmark schon gezeigt\\
+	$\implies$: Sei also $p$ irreduzibel. Dann ist $p = u \cdot  q_1,\ldots,q_{n}$ ein Produkt einer Einheit
+	$u \in R^{\times}$ und Primelementen $q_1,\ldots, q_{n} \in R$ nach Annahme an $R$.
+	Da $p$ irreduzibel ist folgt $n =1$ und $(p) = (q_1)$, womit $(p)$ ein Primideal ist und $p$ selbst ein Primelement ist.
+\end{proof} 
+
+\begin{corollar}
+	Sei $R$ ein Integritätsbereich. Dann ist $R$ faktoriell gdw. jedes Element von $R \setminus \{0\} $ eine Zerlegung als ein Produkt
+	von einer Einheit und endlich vielen irreduziblen Elementen besitzt und jedes irreduzible Element auch ein Primelement ist.
+\end{corollar}
+
+\begin{definition}
+	Sei $R$ ein kommutativer Ring und $a,b \in R$.
+	Wir sagen $a,b$ sind \emph{assoziiert} und schreiben $a \sim b$ falls es eine Einheit
+	$u \in R^{\times}$ gibt mit $a = u b$.
+\end{definition}
+
+\begin{lemma}
+	Dies definiert eine Äquivalenzrelation auf $R$.
+\end{lemma}
+
+\begin{proof}
+	\begin{itemize}
+		\item $a \sim a$ da $a = 1 \cdot a$ und $1 \in R^{\times}$.
+		\item $a \sim b \implies b \sim a$: Gilt  $a = u b \implies b = u^{-1} b$ mit $u^{-1} \in R^{\times}$-
+		\item $a \sim b$ und $b \sim c \implies a \sim c$ : Gilt $a = ub$ und $b = vc \implies a = (uv)c$ mit $uv \in R^{\times}$. Also $a \sim c$.
+	\end{itemize}
+\end{proof}
+
+\begin{lemma}
+	Sei $R$ ein Integritätsbereich. Seien $p,q \in R \setminus \{0\} $ irreduzibel und $p \mid q$.
+	Dann gilt $p \sim q$.
+\end{lemma}
+
+\begin{proof}
+	Nach Annahme gibt es ein $a \in R$ mit $q = a \cdot p$.
+	Da $q$ irreduzibel ist folgt $a \in R^{\times}$ oder $p \in R^{\times}$.
+	Da $p$ irreduzibel ist, kann $p \in R^{\times}$ nicht gelten.
+	Also ist $a \in R^{\times}$ und $p \sim q$.
+\end{proof}
+
+\begin{definition}[Wh.]
+	Für $n \in \N_{> 0}$. sei $S_{n}$ die \emph{symmetrische Gruppe} auf der Menge $\{1,\ldots,n\}$, d.h.
+	\[
+	S_{n} = \{ \sigma: \{1,\ldots, n\} \to \{1,\ldots,n\} \text{ bijektiv}\} 
+	.\] 
+\end{definition}
+
+\begin{theorem}[Eindeutige Primfaktorzerlegung]
+	Sei $R$ ein faktorieller Ring, dann besitzt jedes nichttriviale Element von $R$ eine bist auf Permutation und Assoziierung 
+	eindeutige Primfaktorzerlegung.
+
+	Genauer gilt also für jedes $a \in R \setminus \{0\} $ gibt es eine Einheit $u \in R^{\times}$, $m \in \N$, und
+	Primelemente $p_1,\ldots,p_{m}$ mit $a = u p_1 \ldots p_{m}$.\\
+	Falls $a = v q_1 \ldots q_{n}$ eine weitere Zerlegung ist, wobei $v \in R^{\times}$, $n \in \N$ und $q_1,\ldots,q_{n}$ prim sind,
+	dann gibt es $\sigma \in S_{n}$ so dass $q_{j} \sim p_{\sigma(j)}$ für $j = 1,\ldots,n$ und $m = n$.
+\end{theorem}
+
+	Die Existenz der Zerlegung ist die Definition von \enquote{faktorieller Ring}.
+	Wir nennen $p_1,\ldots p_{m}$ die Primfaktorzerlegung von $a$.
+
+\begin{proof}[Beweis der Eindeutigkeit]
+	
+\end{proof}
+
+
+
+
+
+
+
+
+
+
 
 
 
