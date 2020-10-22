@@ -493,8 +493,416 @@ Für den Beweis vom Satz über Prime Elemente Eigenschaft 2 verwenden wir:
 	Wir nennen $p_1,\ldots p_{m}$ die Primfaktorzerlegung von $a$.
 
 \begin{proof}[Beweis der Eindeutigkeit]
-	
+	Angenommen $a = u p_1 \ldots p_{m} = v q_1 \ldots q_{n}$ mit $u,v \in R^{\times}, m,n \in \N$ und
+	$p_1,\ldots,p_{m}, q_1,\ldots, q_{n}$ Primelemente in $R$.
+	Falls $n = 0$ ist, so ist $a = v \in R^{\times}$.
+	Daraus folgt aber auch $m = 0$
+	(Falls $m > 0$ wäre, so folgt mit $p_1 \mid a$ und $a \mid 1$ dass $p_1 \mid 1$ - ein Widerspruch zur Annahme an $p_1$ prim).
+
+	Wir verwenden Induktion nach $n$ und nehmen an, dass die Eindeutigkeit 
+	bereits gilt falls eine der beiden Zerlegungen weniger als $n$ Faktoren besitzt.
+	Wir nehmen an $n > 0$.
+	Da $a = u p_1 \ldots p_{m} = v q_1 \ldots q_{n}$ gilt $q_{n} \mid a$.
+	Da $q_{n}$ ein Primelement von $R$ ist, gibt es einen Index $i = \sigma(n)$, so dass $q_{n} \mid p_{\sigma(n)}$.
+	Nach einem Lemma vom letzten Mal folgt daraus $q_{n} \sim p_{\sigma(n)}$.
+	Wir verwenden nun die Induktionsannahme für
+	\[
+		\frac{a}{q_{n}} = \underbrace{u \frac{p_{\sigma(n)}}{q_{n}}}_{\in R^{\times}} p_1 \ldots p_{\sigma(n) -1} p_{\sigma(n) + 1} \ldots p_{m} = 
+		v q_1 \ldots q_{n-1}
+	.\] 
+	Es folgt $n-1 = m-1$ und es gibt eine Bijektion 
+	\[
+		\sigma: \{1,\ldots,n-1\} \to \{1,\ldots, \sigma(n)-1, \sigma(n) + 1, \ldots, m\} 
+	\] 
+	so dass $q_{j} \sim p_{\sigma(j)}$ für $j = 1,\ldots,n-1$.
+	Dies gilt auch für $j = n$.
+	Dies beendet den Induktionsschritt.
 \end{proof}
+
+\begin{definition}
+	Sei $R$ ein faktorieller Ring.
+	Wir sagen $P \subseteq R$ ist eine \emph{Repräsentantenmenge} (der Primelemente) falls jedes $p \in P$ ein Primelement in $R$ ist
+	und es zu jedem Primelement $q \in R$ ein eindeutig bestimmtes $p \in P$ gibt mit $q \sim p$.
+\end{definition}
+
+\begin{eg}
+	Für $R = \Z$ betrachten wir $P = \{p \in \Z \text{ prim und positiv}\} $.
+	Für $R = K[x]$ betrachten wir 
+	\[
+		P = \{f \in K[x] \text{ irreduzibel und $f$ normiert}\} 
+	.\] 
+	Normiert: Der führende Koeffizient von $f$ ist gleich $1$.\\
+	Für $R = \Z[i]$ verwenden wir $P = \{a+ib : a,b \in \Z, a+ib \text{ prim und } -a < b \leq a\} $
+\end{eg}
+
+\begin{lemma}
+	Sei $R$ ein faktorieller Ring.
+	Dann existiert eine Repräsentantenmenge.
+\end{lemma}
+
+\begin{proof}
+	Wir verwenden das Auswahlaxiom für die Menge $\{[p]_{\sim}: p \in R \text{ prim}\} $ und erhalten
+	$P$ als Bild der Auswahlfunktion.
+\end{proof}
+
+\begin{theorem}[Eindeutige Primfaktorzerlegung]
+	Sei $R$ ein faktorieller Ring und $P \subseteq R$ eine Repräsentantenmenge.
+	Dann besitzt jedes $a \in R \setminus \{0\}$ eine eindeutige Primfaktorzerlegug
+	der Form 
+	\[
+		a = u \prod_{p \in P} p^{n_p} \left[ = u \prod_{\substack{p \in P\\ n_{p} > 0}} p^{n_{p}}  \right]
+	\] 
+	wobei $n_{p} = 0$ für alle bis auf endlich viele $p \in P$.
+\end{theorem}
+
+\begin{proof}[Beweis der Existenz]
+	Falls $a \in R^{\times}$ so setzen wir $u = a$ und $n_{p} = 0$ für alle $p \in P$.
+	Ansonsten ist $a = u p_1 \ldots p_{n}$, wie in der Definitin von faktoriellen Ringen.
+	Zu jedem $p_{j}$ gibt es ein eindeutig bestimmtes $p \in P$ mit $p_{j} \sim p$.
+	Damit erhalten wird
+	\[
+		a = \underbrace{u \frac{p_1 \ldots p_{m}}{\prod_{p \in P} p^{n_{p}} }}_{\in R^{\times}} \prod_{p \in P} p^{n_{p}}
+	\] 
+	wobei $n_{p} = \#j$ mit $p_{j} \sim p$.
+\end{proof}
+
+\begin{proof}[Beweis der Eindeutigkeit]
+	Angenommen $a = u \prod_{p \in P} p^{n_{p}} = v \prod_{p \in P} p^{n_{p}'}$.
+	Falls $n_{p}' = 0$ für alle $p \in  P$, so ist $a = v \in R^{\times}$ und $n_{p} = 0$ für alle $p \in P$ und $a = u$.
+
+	Ansonsten ist $n_{p}' > 0$ für ein $p_0 \in P$ und daher gilt $p_0 \mid a = u \prod_{p \in P} p^{n_{p}}$,
+	was $n_{p_0} > 0$ impliziert auf Grund der Eigenschaften der Repräsentantenmenge.
+	Wir verwenden Induktion nach $\sum_{p \in P} n_{p}' $.
+\end{proof}
+
+\begin{lemma}
+	Sei $R$ ein faktorieller Ring und $P \subseteq R$ eine Repräsentantenmenge.
+	Sei $a = u \prod_{p \in P} p^{m_{p}}$ und $b = v \prod_{p \in P} p^{n_{p}}$.
+	Dann gilt $a \mid b$ gdw. $m_{p} \leq n_{p}$ für alle $p \in P$.
+\end{lemma}
+
+\begin{proof}
+	\enquote{$\implies$}: $b = ac$ und $c = w \prod_{p \in P} p^{k_{p}}$. Dann folgt
+	\begin{align*}
+		v  \prod_{p \in P} p^{n_{p}} = b = u w \prod_{p \in P} p^{m_{p} + k_{p}}
+	\end{align*}
+	und daher $n_{p} = m_{p} + k_{p} \geq m_{p}$ für alle $p \in P$.
+
+	\enquote{$\impliedby$}: Wir definieren $c = v u^{-1} \prod_{p \in P} p^{n_{p} - m_{p}} \in R$.
+	Dann gilt
+	\[
+	a c = u \prod_{p \in P} p^{m_{p}} \cdot v u^{-1} \prod_{p \in P} p^{n_{p} - m_{p}} = v \prod_{p \in P} p^{n_{p}} = b
+	.\] 
+	also $a \mid b$.
+\end{proof}
+
+\begin{proposition}[ggT]
+	Sei $R$ ein faktorieller Ring mit Repräsentantenmenge $P$.
+	Dann existiert für jedes Paar $a,b \in R$, nicht beide $0$,
+	ein ggT. Falls $a = u \prod_{p \in P} p^{m_{p}}, b = v \prod_{p \in P} p^{n_{p}}$ ist, so ist
+	$\prod_{p \in P} p^{\min(m_{p},n_{p})}$ ein ggT von $a$ und $b$.
+\end{proposition}
+
+\begin{proof}
+	Wir haben $d \mid a$ und $d \mid b$ auf Grund des Lemmas.
+	Falls $t = w \prod_{p \in P} p^{k_{p}}$ ein weiterer gemeinsamer Teiler von $a$ und $b$ ist,
+	so folgt $k_{p} \leq m_{p}$, $k_{p} \leq n_{p}$ und damit $k_{p} \leq \min(m_{p}, n_{p})$ für alle $p \in P$.
+	Daraus folgt $t \mid d$.
+\end{proof}
+
+Wir können analog den ggT von mehreren Elementen $a_1,\ldots, a_{l} \in R$ definneren und die obige Proposition gilt analog.
+
+\begin{definition}
+	Sei $R$ ein faktorieller Ring. Wir sagen $a_1,\ldots,a_{l} \in R$ sind \emph{coprim} falls $1$ ein ggT von
+	$a_1,\ldots,a_{l}$ ist, oder äquivalenterweise falls es zu jedem Primelement $p$ in $R$ 
+	ein $a_{j}$ gibt so dass $a_{j}$ nicht durch $p$ teilbar ist.
+\end{definition}
+
+\begin{corollar}
+	Sei $R$ ein faktorieller Ring mit Quotientenkörper $K$.
+	Dann hat jedes $x \in K$ eine Darstellung $x = \frac{a}{b}$ mit $a,b \in R$ coprim, $b \neq 0$.
+\end{corollar}
+
+\begin{proof}
+	Angenommen $x = \frac{\widetilde{a}}{\widetilde{b}} \in K$ und sei $d$ der ggT von $\widetilde{a}$ und $\widetilde{b}$.
+	Wir definieren $a = \frac{\widetilde{a}}{d}$ und $b = \frac{\widetilde{b}}{d}$ und erhalten, dass $a,b$ coprim
+	sind und 
+	\[
+	x = \frac{\widetilde{a}}{\widetilde{b}} = \frac{\frac{\widetilde{a}}{d}}{\frac{\widetilde{b}}{d}} = \frac{a}{b}
+	.\] 
+\end{proof}
+
+\begin{corollar}
+	Sei $R$ faktoriell und $K = \operatorname{Quot}(R)$. Dann hat jedes $x \in K$ eine Darstellung der Form 
+	\[
+	x = u \prod_{p \in P} p^{n_{p}}
+	,\]
+	wobei $n_{p} \in \Z$ und gleich $0$ für alle bis auf endlich viele $p \in P$ ist.
+\end{corollar}
+
+\begin{eg}[Ein Gegenbeispiel]
+Wir definieren $R = \Z[i \sqrt{5}] \subseteq K = \Q[i \sqrt{5}] \subseteq \C$.
+Also  $R = \{a + i \sqrt{5} b : a,b \in \Z\}$.
+Zerlegungen der $6$ :
+\begin{align*}
+	6 = 2 \cdot 3 = (1+ i \sqrt{5} )(1 - i \sqrt{5} )
+.\end{align*}
+\begin{enumerate}
+	\item Behauptung: $2,3, 1 \pm i \sqrt{5} $ sind alle irreduzibel in $R$.
+	\item Behauptung: $2 \not\sim 1 \pm i \sqrt{5}$ und $3 \not\sim 1 \pm i \sqrt{5}$.
+\end{enumerate}
+
+\begin{proof}[Beweis der 2. Behauptung]
+	 \begin{align*}
+		\frac{1 \pm i \sqrt{5} }{2} = \frac{1}{2} \pm i \sqrt{5} \frac{1}{2} \not\in R \qq{ und }
+		\frac{1 \pm i \sqrt{5} }{3} = \frac{1}{3} \pm i \sqrt{5} \frac{1}{3} \not\in R
+	.\end{align*}
+	Folgt die 2. Behauptung.
+\end{proof}
+
+\textbf{$2$ ist irreduzibel:}\\
+Angenommen $2 = z \cdot w$, $z,w \in R$.
+Wir verwenden die Normfunktion $N(a+i \sqrt{5} b) = \abs{a + i\sqrt{5} b}^2 = a^2 + 5b^2$ für $a+i \sqrt{5} b \in R$ hat
+diese Normfunktion Werte in $\N$.
+\begin{align*}
+	\implies 4 = N(2) = N(z) N(w) \implies N(z), N(w) \in \{1,2,4\}
+.\end{align*}
+$2$ kann nicht sein also $\{N(z), N(w)\} = \{1,4\} $.
+Falls $N(z) = 1$ ist, so ist $z \pm 1$ eine Einheit in $R$.
+Analog für $N(w) = 1$.
+
+\textbf{$3$ ist irreduzibel:}\\
+Analog: $N(z) = 3 = a^2 + 5 b^2$ ist nicht möglich.
+
+\textbf{Auch $1 \pm i \sqrt{5}$ sind irreduzibel:}\\
+$1 \pm i \sqrt{5} = zw \implies N(1 \pm i \sqrt{5} ) = 6 = N(z)N(w) \implies N(z)N(w) \in \{1,\cancel{2,3},6\} $
+Also ist $z$ oder $w$ eine Einheit in $R$.
+
+Beispiele dieser Art führten zur Erfindung von \enquote{idealisierten Primfaktoren} (heute Primideale).
+$(6) = (2,1+ i\sqrt{5})^2(3,1+i\sqrt{5} )(3,1-i\sqrt{5})$
+\end{eg}
+
+\section{Einige algebraische Euklidische Ringe}
+Alle Beispiele, die wir hier betrachten wollen,leben in einem quadratischen Zahlenkörper:
+$ K = \Q[\sqrt{d}] = \{a + b\sqrt{d} :a,b \in \Q \} $ mit $d \in \Z$, das kein Quadrat ist.
+Isomorph dazu $\sfrac{\Q[x]}{(x^2-d)}$.
+
+Wir definieren auf $K$ die Konjugation $\tau: K \to K, a+ b\sqrt{d} \mapsto a- b \sqrt{d}$.
+Dies definiert einen Körperautomorphismus.
+
+\begin{proof}
+	Wir definieren $\Ev_{\sqrt{d}}: \Q[x] \to K, f \mapsto f(\sqrt{d})$.
+	$\Ev_{\sqrt{d}}(x^2-d) = 0$.
+	Da $x^2-d$ keine Nullstellen in $\Q$ hat (Annahme an $d$), ist $x^2-d$ irreduzibel/prim in $\Q[x]$.
+	Daher folgt $(x^2-d)$ ist ein Maximalideal.
+	Gemeinsam mit $(x^2-d) \subseteq \ker(\Ev_{\sqrt{d}})$, erhalten wir $(x^2-d) = \ker(\Ev_{\sqrt{d}})$.
+	Der erste Isomorphiesatz ergibt nun
+	\[
+		\sfrac{\Q[x]}{(x^2-d)} = \sfrac{\Q[x]}{\ker(\Ev_{\sqrt{d}})} \stackrel{\varphi_{+}}{\cong} \Q[\sqrt{d}] = K
+	.\]
+	Beweis Körperautomorphismus:
+	\[
+		\begin{tikzcd}
+			K \arrow[r, "\varphi_{+}"] \arrow[rr, "\tau", bend right] & {\sfrac{\Q[x]}{(x^2-d)}} \arrow[r, "\varphi_{-}"] & K         \\
+			\sqrt{d} \arrow[r, maps to]                                & X+(x^2+d) \arrow[r, maps to]                       & -\sqrt{d}
+		\end{tikzcd}
+	\]
+	Wobei der Isomorphismus $\varphi_{+}$ Auswertungen bei $\sqrt{d}$ verwendet und analog
+	dazu der Isomorphismus $\varphi_{-}$ Auswertungen bei $\sqrt{-d}$ verwendet.
+\end{proof}
+
+%TODO maybe copy slide 1
+
+Auf $K$ definieren wir die Normfunktion
+\[
+	N(a+b \sqrt{d} ) = (a+b \sqrt{d} )(a-b \sqrt{d}) = a^2 - d b^2 
+\]
+so dasss $N : K \to \Q$ multiplikativ ist, daher 
+\[
+	N(zw) = (zw) \underbrace{\tau(zw)}_{\tau(z) \tau(w)} = N(z) N(w) \qq{ für } z,w \in K
+.\] 
+Weiters $N(z) = 0 \Leftrightarrow z = 0$ für alle $z = a + b + \sqrt{d} \in K $.
+
+Wir werden den Ring $R = \Z[\sqrt{d}]$ betrachten und wollen $\phi(z) = \abs{N(z)}$ als Gradfunktion verwenden.
+
+\begin{theorem}
+	Für $d = -1, -2, 2, 3$ ist  $R = \Z[\sqrt{d}]$ ein Euklidischer Ring, wobei wir $\phi(z) = \abs{N(z)}$ als Gradfunktion verwenden.
+\end{theorem}
+
+\begin{proof}
+	Seien $f,g \in R, f \neq 0$. Wir definieren $z = \frac{g}{f} \in \Q[\sqrt{d}] = a+b \sqrt{d}$ mit $a,b \in \Q$.
+	Wir definieren $q = \underbrace{[a]}_{\in \Z} + \underbrace{[b]}_{\in \Z} \sqrt{d} \in R$ als die beste Approximation.
+	Dann gilt 
+	\begin{align*}
+		\phi(z-q) = \abs{N(z-q)} = \abs{(\underbrace{a-[a]}_{\leq \frac{1}{2}})^2 - d (\underbrace{b-[b]}_{\leq \frac{1}{2}})^2 } \leq \frac{1}{4} + \abs{d} \frac{1}{4} < 1 \tag{$*$}
+	\end{align*}
+	für $d = -1,-2,2$.
+	Für $d = 3$ gilt in $(*)$ Gleichheit, aber da die beiden Ausdrücke im Absolutbetrag verschiedene Vorzeichen haben,
+	gilt auch hier $\phi(z-q) < 1$.
+
+	Wir definieren $r = g - f \cdot q \in \Z[\sqrt{d}]$, und erhalten $g = fq + r$ und 
+	\[
+		\phi(r) = \abs{N(r)} = \abs{N(g-f\cdot q) } = \abs{N(f) N(z-q)} < \abs{N(f)} = \phi(f)
+	.\] 
+\end{proof}
+
+Sei $R = \Z[\sqrt{d}]$.
+\begin{lemma}
+	Es gilt $u \in R^{\times} \Leftrightarrow N(u) = \pm 1$.
+\end{lemma}
+
+\begin{lemma}
+	Falls $z \in R$ eine Primzahl in $\Z$ als Norm hat, so ist $z$ in $R$ irreduzibel.
+\end{lemma}
+
+\begin{lemma}
+	Falls $p \in \Z$ eine Primzahl in $\Z$ ist, so dass weder  $p$ noch $-p$ eine Norm von einem Element
+	iin $R$ ist, so ist $p$ ein irreduzibles Element in $R$.
+\end{lemma}
+
+\begin{proof}[Beweis von Lemma 1]
+	Sei $u \in R^{\times}$. Dann gibt es $v \in R^{\times}$ mit $uv = 1$. Daraus folgt $\underbrace{N(u)}_{\in \Z} \underbrace{N(v)}_{\in \Z} = N(uv) = 1$ 
+	und daher $N(u) = \pm 1$.
+
+	Angenommen  $u \in R$ erfüllt $N(u) = \pm 1$. Dann gilt $u \cdot (\pm \tau(u)) = \pm N(u) = 1$ also $u^{-1} = \pm \tau(u)$.
+\end{proof}
+
+\begin{proof}[Beweis von Lemma 2]
+	Angenommen $z \in R$ erfüllt $N(z) = p$, wobei $p \in \Z$ eine Primzahl ist.
+	Angenommen $z = v\cdot w$ für $v,w \in R$. Dann folgt $p = N(z) = N(v) N(w)$.
+	Da $p \in \Z$ irreduzibel in $\Z$ ist, folgt daraus $\underbrace{N(v) = \pm 1}_{v \in R^{\times}}$ oder $\underbrace{w = \pm 1}_{w \in R^{\times}}$.
+\end{proof}
+
+\begin{proof}[Beweis von Lemma 3]
+	Sei $p \in \Z$ prim und weder $p $ noch $-p$ eine Norm.
+	Angenommen $p = vw$ für $v,w \in R$. Dann folgt $p^2 = N(p) = N(v) N(w)$.
+	Da $p$ eine Primzahl ist folgt daraus $N(v), N(w) \in \{\pm 1, \pm p, \pm p^2\}$.
+	Wobei $\pm p$ nach Annahme nicht auftritt. 
+	Also gilt $\underbrace{N(v) = \pm 1}_{v \in R^{\times}}$ (und  $N(w) = \pm p^2$) oder $\underbrace{N(w) = \pm 1}_{w \in R^{\times}}$ (und $N(v) = \pm p^2$ ).
+\end{proof}
+
+\begin{theorem}[Gausssche ganze Zahlen]
+	Sei $R = \Z[i]$ der Ring der Gausschen ganzen Zahlen.
+	Dann ist $R$ ein Euklidischer Ring. Wir können in $R$ die Repräsentantenmenge
+	\[
+	p = \{z = a + ib \in R \mid z \text{ prim, } -a < b \leq a\} 
+	\] 
+	verwenden. Diese Menge $P$ enthält
+	\begin{itemize}
+		\item (Ramified): $z = 1+i$ mit $2 = -i (1+i)^2$
+		\item (Inert): $p \in \N$ prim mit $p \equiv 3 \mod 4$,
+			z.B. $3,7,11,\ldots$.
+		\item (Split): $z = a \pm b i$ prim in $R$, wobei $a,b \in \N, b < a$ und
+			$a^2 + b^2 = p = 1 \mod 4$ mit $p \in \N$ prim. $p = (a+ib)(a-ib)$ 
+			z.B. $5,13,\ldots$
+	\end{itemize}
+\end{theorem}
+
+\begin{lemma}
+	Sei $p \in \N$ prim. Dann ist $(p-1)! \equiv -1 \mod p$ .
+\end{lemma}
+
+\begin{proof}
+	\begin{align*}
+		(p-1)! = \prod_{k=1}^{p-1} k \stackrel{(*)}{=} 1 \cdot \left(\prod_{\substack{1 < a < p < p-1\\ a\cdot b = 1 \mod p}} (ab) \right) \cdot (p-1) \equiv -1 \mod p
+	.\end{align*}
+	Wann gilt $x = x^{-1}$ für $x \in \F_{p}^{\times}$? 
+	\[
+		x = x^{-1} \Leftrightarrow x^2 = 1 \Leftrightarrow x^2 -1 = 0 \Leftrightarrow (x+1)(x-1) = 0 \Leftrightarrow x = \pm 1
+	\] 
+	in $\F_{p}$ ist. Dies beweist $(*)$.
+\end{proof}
+
+\begin{proposition}
+	Sei $p \in \N$ kongruent $1 \mod 4$.
+	Dann gibt es in  $\F_{p}$ zwei Lösungen der quadratischen Gleichung $x^2 = -1$.
+\end{proposition}
+
+\begin{eg}
+	$p = 5, x = 2 \implies x^2 = 4 = -1 $ in $\F_{5}$.\\
+	$p = 13, x = 5 \implies x^2 = 25 = -1$ in $\F_{13}$.
+\end{eg}
+
+\begin{proof}
+	Wir definieren $x = \left( \frac{p-1}{2} \right)!$ in $\F_{p}$.
+	Dann gilt
+	\begin{align*}
+		x^2 = 1 \cdot 2 \cdot 3 \cdot \ldots \cdot \left(p-\frac{1}{2}\right) \cdot\underbrace{ \left( \frac{p-1}{2} \right) \ldots \cdot 3 \cdot 2 \cdot 1
+		}_{\frac{p-1}{2} - \text{Faktoren}} \cdot (-1)^{\frac{p-1}{2}}
+	.\end{align*}
+	und $\frac{p-1}{2}$ ist gerade.
+	\begin{align*}
+		&= 1 \cdot 2 \cdot 3 \cdot \ldots \cdot  \left( \frac{p-1}{2} \right) \left( - \frac{p-1}{2} \right) \ldots (-3) \cdot (-2) \cdot (-1)\\
+		&= 1 \cdot 2 \cdot 3 \cdot \ldots \cdot  \left( \frac{p-1}{2} \right) \left( \frac{p-1}{2} +1 \right) \ldots (p-3) \cdot (p-2) \cdot (p-1)\\
+		&= (p-1)! = -1 \text{ in } \F_{p}
+	.\end{align*}
+\end{proof}
+
+\begin{corollar}
+	Sei $p \in \N$ kongruent $1 \mod 4$. Dann ist $p$ keine Primzahl in $\Z[i]$.
+\end{corollar}
+
+\begin{proof}
+	Wir betrachten $\sfrac{\Z[i]}{(p)} \cong \sfrac{\F_{p}[x]}{(x^2+1)}, a+ib + (p) \mapsto a+b X \mod p$.
+	Aber $x^2 +1$ ist über $\F_{p}$ nicht irreduzibel, da $x^2 +1$ zwei Nullstellen in $\F_{p}$ hat (siehe Proposition).
+	Also ist $\sfrac{\Z[i]}{(p)}$ kein Integritätsbereich und $p$ kein Primelement.
+\end{proof}
+
+\begin{proof}[Alternativer Beweis]
+	Angenommen $a \in \Z$ erfüllen $a^2 \equiv -1 \mod p$.
+	Insbesondere gilt damit $p \mid (a^2 +1) = (a^2 - i^2) = (a+i)(a-i)$.
+	Da aber $a \in \Z$ ist, gilt $p \nmid (a+i)$ und $p \nmid (a-i)$.
+\end{proof}
+
+\begin{proof}[Beweis der Beschreibung der Primzahlen in ${\Z[i]}$]
+	$N(1+i) = 2$ und Lemma 2 zeigt, dass $1+i$ irreduzibel , also prim, ist.
+	Angenommen $p \in \N$ ist kongruent $3 \mod 4$. Dann gilt 
+	\[
+		p \not\equiv a^2 + b^2 \in \{0,1,2 \mod 4\} 
+	\]
+	für $a,b \in \Z$ gilt $a^2 \equiv 0,1 \mod 4$.
+	Also ist $p$ (und auch $-p$ ) keine Norm $N(a+ib) = a^2 + b^2 > 0$ eines Elements von $Z[i]$.
+	Lemma 3 zeigt also, dass $p$ eine Primzahl in $\Z[i]$ ist.
+
+	Sei nun $p \in \N$ kongruent $1 \mod 4$ und prim in $\Z$. 
+	Dann ist $p$ keine Primzahl in $\Z[i]$ wegen dem Korollar.
+	Also kann Lemma  3 nicht angewendet werden und daher gibt es ein $z \in \Z[i]$ mit $\underbrace{N(z)}_{> 0} = p$.
+	Anders formuliert haben wir also $a,b \in \Z$ mit $p = a^2 + b^2$ gefunden.
+	O.B.d.A. dürfen wir $a,b \in \N$ und $b<a$ annehmen.
+	Dann gilt $a+ib, a-ib \in P$, $p = (a+ib)(a-ib)$ und $a \pm ib$ sind nicht assoziiert, da $\pm 1, \pm i$ die einzigen Einheiten sind
+	und der Winkel zwischen $a+ib$ und $a-ib$ echt kleiner als $90^{\circ}$ ist.
+	%TODO image 11. seite 10
+
+	Wir zeigen noch, dass obige drei Fälle alle Primzahlen in $P \subseteq \Z[i]$ liefern.
+	Angenommen $z \in \Z[i]$ ist eine Primzahl.
+	Dann ist $n = N(z) = z \overline{z}$ eine natürliche Zahl.
+	Sei $p \in \N$ ein Primfaktor von $n$.
+	\begin{itemize}
+		\item $p = 2 \implies 2 = (1+i)(1-i) \mid n = z \overline{z} \implies (1+i) \mid z \overline{z} \implies 1+i \mid z$ oder $1+i \mid \overline{z}$.
+			Folgt $1-i \mid z$. Also $1+i \sim z$ und  $1+i \sim 1-i \sim z$.
+		\item  $p \equiv 3 \mod 4$: Und  $p \mid z \overline{z}$ und $p$ ist prim in $\Z[i]$.
+			Also $p \mid z$ oder $p \mid \overline{z}$. Und somit $p \sim z$.
+		\item  $p \equiv 1 \mod 4$: $(a+ib) \mid p = (a+ib)(a-ib) \mid z \overline{z}$. Folgt
+			$a+ib \mid z \implies a+ib \sim z$  oder $a+ib \sim \overline{z} \implies a-ib \mid z \implies a-ib \sim z$.
+	\end{itemize} 
+\end{proof}
+
+\begin{theorem}
+	Im $R_{falsch} = \Z[\sqrt{3}i]$ funktioniert Division mit Rest nicht wie in den obigen Fällen.
+	Aber in $R_{richtig} = \Z[\zeta] = \{a+b \zeta : a,b \in \Z\} $ für $\zeta = \frac{1+\sqrt{3} i}{2}$ funktionert dies wieder.
+\end{theorem}
+
+\begin{proof}[Beweis Skizze]
+%TODO image 11. seite 12
+
+$z = \frac{g}{f} = (a+\frac{1}{2}) + (b+\frac{1}{2}) \sqrt{3} i$, $a,b \in \Z$ hat Abstand $1$ zu allen Elementen von $\Z[\sqrt{3}i]$.
+Beweis scheitert für $R_{falsch}$.
+
+Aber in diesem Fall ist $z \in R_{richtig}$ und deswegen hat es Abstand $0$ zu sich selbst. Beweis klappt nun .
+
+\end{proof}
+
+
 
 
 
