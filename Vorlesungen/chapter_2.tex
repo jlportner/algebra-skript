@@ -35,7 +35,7 @@
 \begin{remark}
 	\begin{itemize}	
 		\item $0$ ist eindeutig durch die Axiome bestimmt. 
-		\item Ebenso ist $-a$ durch die Axiome für jedes $a \in R$ eindeutig bestimmt.\\
+		\item Ebenso ist $-a$ durch die Axiome für jedes $a \in R$ eindeutig bestimmt.
 		\item $0 \neq 1$ wurde nicht verlangt.
 		\item $0 \cdot a = 0$ für jedes $a \in R$ :
 			 \begin{align*}
@@ -235,7 +235,7 @@ Ab nun werden wir nur kommutative Ringe betrachten.
 	Falls $m = ab$ mit $a,b < m$, dann ist $\overline{0} = \overline{m} = \overline{a} \overline{b}$ mit $\overline{a} \neq 0 \neq \overline{b}$.
 	Also hat $\Z_{m}$ Nullteiler, ist kein Integritätsbereich und kein Körper.
 
-	Sei nun $m$ eine Primzahl und $\overline{a} \neq 0$. Sei $d = \ggT(m,a)$.
+	Sei nun $m$ eine Primzahl und $\overline{a} \neq 0$. Sei $d = \gcd(m,a)$.
 	Nahc Definition ist $d \geq 1$ ein Teiler von $m$.
 	Falls $d = m$ wäre, dann folgt $m \vert a \implies \overline{a} = \overline{0}$ \contra.
 	Also ist $d = 1$. Nach dem Lemma vom letzten Mal folgt daraus, 
@@ -308,13 +308,13 @@ Ab nun werden wir nur kommutative Ringe betrachten.
 	Sei $K$ ein Körper und $L \subseteq K$ ein Unterring der auch ein Körper ist. Dann nennen wir $L$ auch einen \emph{Unterkörper}.
 \end{definition}
 
-\begin{ex}
+\begin{eg}
 	Verwenden sie SageMath um herauszufinden für welche $p=2,3,\ldots,100$ er ein $g \in (\Z / p \Z)^{X}$ mit
 	\[
 		(\Z / p \Z)^{X} = \{g^{k} : k = 0,1,\ldots\} 
 	\]
 	gibt ($k < p$ genügt)?
-\end{ex}
+\end{eg}
 
 \section{Ring der Polynome (Seite 41)}
 Im Folgenden ist $R$ immer ein kommutativer Ring. Wir wollen einen neuen Ring, den Ring $R[X]$ der Polynome
@@ -549,7 +549,7 @@ Falls $R = K$ ein Körper ist, definieren wir auch
 \end{definition}
 
 \begin{eg}
-	Seien $R,S$ zwei kommutative Rine und $\varphi: R \to S$ ein Ringhomomorphismus. Dann ist
+	Seien $R,S$ zwei kommutative Ringe und $\varphi: R \to S$ ein Ringhomomorphismus. Dann ist
 	\[
 		\ker(\varphi) = \{a \in R \mid \varphi(a) = 0\} 
 	\] 
@@ -909,7 +909,7 @@ Da $K$ ein Körper ist, ist $\Im(\varphi)$ ein Integritätsbereich.
 \begin{proof}
 	\begin{enumerate}[1)]
 		\item $I$ ist ein Primideal $\Leftrightarrow \sfrac{R}{I} \neq \{0+I\} $ und $([ a ] [ b ] = 0 \implies [ a ] = 0$ oder $[ b ] = 0 \Leftrightarrow$
-			$I \neq R$ und $(ab \in I \implies a \in I$ oder $b \in I$.
+			$I \neq R$ und ($ab \in I \implies a \in I$ oder $b \in I$).
 		\item $I$ ist ein Maximalideal $\Leftrightarrow \sfrac{R}{I}$ ist ein Körper $\Leftrightarrow I \neq R$ und es gibt kein Ideal $J \subseteq R$ mit 
 			$I \subsetneq J \subsetneq R$.
 	\end{enumerate}
@@ -934,13 +934,13 @@ Da $K$ ein Körper ist, ist $\Im(\varphi)$ ein Integritätsbereich.
 	\[
 		I = (X_1 - a_1,\ldots,X_{n} - a_{n}) \subseteq K[X_1,\ldots,X_{n}]
 	\] 
-	Dann ist $I$ ein Maximalideal, und ist gleich dem Kern $\ker(\Ev_{a_1,\ldots,a_{n}})$ des Auswertungshomomorphismus
+	Dann ist $I$ ein Maximalideal, und ist gleich dem Kern $\ker(\ev_{a_1,\ldots,a_{n}})$ des Auswertungshomomorphismus
 	\[
-		\Ev_{a_1,\ldots,a_{n}}(f) = f(a_1,\ldots,a_{n})
+		\ev_{a_1,\ldots,a_{n}}(f) = f(a_1,\ldots,a_{n})
 	.\] 
 	\begin{proof}
-	$I \subseteq \ker(\Ev_{a_1,\ldots,a_{n}})$ da $\Ev(X_{j} - a_{j}) = a_{j} - a_{j} = 0$ für $j = 1,\ldots,n$.
-	Sei nun $f \in \ker(\Ev_{a_1,\ldots,a_{n}})$. 
+	$I \subseteq \ker(\ev_{a_1,\ldots,a_{n}})$ da $\ev(X_{j} - a_{j}) = a_{j} - a_{j} = 0$ für $j = 1,\ldots,n$.
+	Sei nun $f \in \ker(\ev_{a_1,\ldots,a_{n}})$. 
 	\[
 		f = \sum a_{(k_1,\ldots,k_{n})} X_1^{k_1} \ldots X_{n}^{k_{n}}
 	\]
@@ -949,9 +949,9 @@ Da $K$ ein Körper ist, ist $\Im(\varphi)$ ein Integritätsbereich.
 	\[
 		\implies f + I = \underbrace{\sum a_{(k_1,\ldots,k_{n})} a_1^{k_1}\ldots a_{n}^{k_{n}}}_{f(a_1,\ldots,a_{n}) = 0} + I \in I
 	\]
-	Weiters folgt $I = \ker(\Ev_{a_1,\ldots,a_{n}})$
+	Weiters folgt $I = \ker(\ev_{a_1,\ldots,a_{n}})$
 	\[
-		\implies \sfrac{K[X_1,\ldots,X_{n}]}{I} = \sfrac{K[X_1,\ldots,X_{n}]}{\ker(\Ev_{a_1,\ldots,a_{n}})} \cong K
+		\implies \sfrac{K[X_1,\ldots,X_{n}]}{I} = \sfrac{K[X_1,\ldots,X_{n}]}{\ker(\ev_{a_1,\ldots,a_{n}})} \cong K
 	\]
 	ist ein Körper $\implies I$ ist ein Maximalideal.
 	\end{proof}
@@ -1019,17 +1019,17 @@ Da $K$ ein Körper ist, ist $\Im(\varphi)$ ein Integritätsbereich.
 	.\] 
 	genannt \enquote{s-adjungiert $a_1,\ldots,a_{n}$}.
 	\[
-	= \Ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}]) = \{\sum_{k_1,\ldots,k_{n} \in M} c_{k_1,\ldots,k_{n}} a_1^{k_1} \ldots a_{n}^{k_{n}} \} 
+	= \ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}]) = \{\sum_{k_1,\ldots,k_{n} \in M} c_{k_1,\ldots,k_{n}} a_1^{k_1} \ldots a_{n}^{k_{n}} \} 
 	.\] 
 	mit $\abs{M} < \infty, M \subseteq \N^{n}, c_{k_1,\ldots,k_{n}} \in S$.
 \end{notation}
 
 \begin{proof}[Beweis von $\subseteq$]
-	Wir wissen aus der Serie, dass $S[a_1,\ldots,a_{n}]$ ein Unterring ist, der nach Definition $S$ und $s_1,\ldots,a_{n}$ enthält.
-	Auch wissen wir, dass $\Ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}])$ ein Unterring ist (da $S[x_1,\ldots,x_{n}]$ ein Ring ist und $\Ev_{a_1,\ldots,a_{n}}$ ein Ringhomomorphimus ist).
-	Also tritt $T = \Ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}])$ als eine der Mengen im Durchschnitt auf und wir erhalten
+	Wir wissen aus der Serie, dass $S[a_1,\ldots,a_{n}]$ ein Unterring ist, der nach Definition $S$ und $a_1,\ldots,a_{n}$ enthält.
+	Auch wissen wir, dass $\ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}])$ ein Unterring ist (da $S[x_1,\ldots,x_{n}]$ ein Ring ist und $\ev_{a_1,\ldots,a_{n}}$ ein Ringhomomorphimus ist).
+	Also tritt $T = \ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}])$ als eine der Mengen im Durchschnitt auf und wir erhalten
 	\[
-		S[a_1,\ldots,a_{n}] \subseteq \Ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}])
+		S[a_1,\ldots,a_{n}] \subseteq \ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}])
 	.\] 
 \end{proof}
 
@@ -1080,7 +1080,7 @@ Die Menge wird auch die allgemeine lineare Gruppe vom Grad $m$ über $R$ genannt
 
 
 \begin{proposition}[Meta]
-	Jede Rechenregel für Matrizen über $R$ die nur $+,-,\cdot,0,1$ beinhalten, gilt auch über einem beliebigen kommutativen Ring.
+	Jede Rechenregel für Matrizen über $\R$ die nur $+,-,\cdot,0,1$ beinhalten, gilt auch über einem beliebigen kommutativen Ring.
 \end{proposition}
 
 \begin{proposition}
@@ -1098,7 +1098,7 @@ Die Menge wird auch die allgemeine lineare Gruppe vom Grad $m$ über $R$ genannt
 
 \begin{remark}
 	$\det(A)$ , jeder Koeffizient von $A(BC), (AB)C, A  \widetilde{A}, \widetilde{A} A, \det(A) I, \charak_{A}(X)$, $ \charak_{A}(A)$ 
-	hängt polynomiell von den Eintragungen von $A,B,C$ ab, wobei die Koeffizienten in $\Z$liegen z.B.
+	hängt polynomiell von den Eintragungen von $A,B,C$ ab, wobei die Koeffizienten in $\Z$ liegen z.B.
 	\[
 		\det(A) = \sum_{\sigma \in S_{n}} \underbrace{\sgn(\sigma)}_{\in \Z}
 			a_{1 \sigma(1)} a_{2 \sigma(2)} \ldots a_{n \sigma(n)}

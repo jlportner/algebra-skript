@@ -1,0 +1,80 @@
+%%% DOCUMENT TYPE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper]{report}
+
+%%% PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Encoding
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Geometry
+
+\usepackage{geometry} % edit margins of paper
+\usepackage{setspace} % edit line spacing
+\usepackage{fancyhdr} % header, footer
+\usepackage{titlesec} % edit format of titles
+
+% Images
+\usepackage[pdftex]{graphicx} % image locations
+
+% Visual
+
+\usepackage[dvipsnames]{xcolor} % colors
+\usepackage{pgf,tikz} % graphics
+\usetikzlibrary{quotes}
+\usetikzlibrary{cd}
+\usetikzlibrary{babel}
+
+\usepackage[framemethod=tikz]{mdframed} % frames, better theorems
+
+% Math
+
+\usepackage{amsmath} % math tools
+\usepackage{amssymb} % math symbols
+\usepackage{amsthm} % thereoms
+\usepackage{mathtools} % math tools
+\usepackage{xfrac} %More Fractions
+
+% Referencing
+
+\usepackage{nameref}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+% Useful
+
+\usepackage[shortlabels]{enumitem} % enumerations
+
+% Other
+
+\usepackage{lastpage} % get number of last page
+\usepackage{physics}
+\usepackage{bbm}
+\usepackage[makeroom]{cancel} %crossing stuff out
+\usepackage{stmaryrd}
+
+%%% MARGINS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\geometry{a4paper, left=25mm, right=25mm, top=10mm, bottom=20mm, includehead}
+
+%%% COLORS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{setup/colors.tex}
+
+%%% CAPTIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{setup/captions.tex}
+
+%%% SHORTCUTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{setup/shortcuts.tex}
+
+%%% FORMATTING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{setup/formatting.tex}
+
+%%% LANGUAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{setup/languages/DE.tex}

@@ -42,7 +42,7 @@ Im Folgenden ist $R$ immer ein Integritätsbereich.
 \section{Euklidische Ringe}
 \begin{definition}
 	Ein Integritätsbereich $R$ heißt ein \emph{Euklidischer Ring} falls es eine gradfunktion $N: R \setminus \{0\}  \to \N$ gibt,
-	so fass die beiden folgenden Eigenschaften gelten:
+	so dass die beiden folgenden Eigenschaften gelten:
 	\begin{itemize}
 		\item \emph{Gradungleichung}: $N(f) \leq N(fg)$ für alle $f,g \in \R \setminus \{0\} $.
 		\item \emph{Division mit Rest}: Für $f,g \in R$ mit $f \neq  0$ gibt es $q,r \in R$ mit $g = q\cdot f + r$ wobei $r = 0$ oder $N(r) < N(f)$ ist.
@@ -129,10 +129,10 @@ Im Folgenden ist $R$ immer ein Integritätsbereich.
 		Sei $[r] = $ die beste Näherung von $r \in \Q$ innerhalb von $\Z$.
 		Definiere $q = [a] + i[b] \in \Z[i]$. Dann gilt 
 		\begin{align*}
-			\abs{z-q} \leq \sqrt{\underbrace{(a- [a])^2}_{\leq \frac{1}{2}} + \underbrace{(b+[b])^2}_{\leq \frac{1}{2}}} \leq \frac{1}{\sqrt{2}} \qq{ und }
+			\abs{z-q} \leq \sqrt{\underbrace{(a- [a])^2}_{\leq \frac{1}{2}} + \underbrace{(b-[b])^2}_{\leq \frac{1}{2}}} \leq \frac{1}{\sqrt{2}} \qq{ und }
 			N(z-q) < 1
 		\end{align*}
-		Definiere $t = g - f q \implies g = fq + r$. Dann gilt
+		Definiere $r = g - f q \implies g = fq + r$. Dann gilt
 		\begin{align*}
 			N(r) = \abs{r}^2 = \abs{g-fq}^2 = \abs{f}^2 \underbrace{\abs{z-q}^2}_{< 1} < N(f)
 		.\end{align*}
@@ -249,7 +249,7 @@ In einem Euklidischen Ring kann man einen ggT von $f,g \in R \setminus \{0\} $ d
 	\item Falls $N(f) > N(g)$, so vertauschen wir $f$ und $g$. 
 		Also dürfen wir annehmen, dass $N(f) \leq N(g)$.
 	\item Dividiere $g$ durch $f$ mit Rest: $g = q f + r$
-	\item Falls $r = $ ist, so ist $f$ ein ggT und der Algorithmus stoppt.
+	\item Falls $r = 0$ ist, so ist $f$ ein ggT und der Algorithmus stoppt.
 	\item Falls $r\neq 0$ ist, so ersetzen wir $(f,g)$ durch $(r,f)$ und springen nach $1)$.
 \end{enumerate}
 
@@ -417,7 +417,7 @@ Für den Beweis vom Satz über Prime Elemente Eigenschaft 2 verwenden wir:
 
 \begin{definition}
 	Ein Integritätsbereich $R$ heißt ein \emph{faktorieller Ring} falls jedes $a \in R \setminus \{0\}$ sich als ein Produkt von einer Einheit
-	und endlich vielen Primelemente von $R$ schreiben lässt: $a = u, p_1,\ldots,p_{m}$ für $u \in R^{\times}, m \in \N, p_1,\ldots p_{m} \in R$ prim.
+	und endlich vielen Primelemente von $R$ schreiben lässt: $a = u \cdot  p_1 \cdot \ldots \cdot p_{m}$ für $u \in R^{\times}, m \in \N, p_1,\ldots p_{m} \in R$ prim.
 \end{definition}
 
 \begin{eg}
@@ -437,10 +437,10 @@ Für den Beweis vom Satz über Prime Elemente Eigenschaft 2 verwenden wir:
 	Da $p$ irreduzibel ist folgt $n =1$ und $(p) = (q_1)$, womit $(p)$ ein Primideal ist und $p$ selbst ein Primelement ist.
 \end{proof} 
 
-\begin{corollar}
+\begin{corollary}
 	Sei $R$ ein Integritätsbereich. Dann ist $R$ faktoriell gdw. jedes Element von $R \setminus \{0\} $ eine Zerlegung als ein Produkt
 	von einer Einheit und endlich vielen irreduziblen Elementen besitzt und jedes irreduzible Element auch ein Primelement ist.
-\end{corollar}
+\end{corollary}
 
 \begin{definition}
 	Sei $R$ ein kommutativer Ring und $a,b \in R$.
@@ -618,10 +618,10 @@ Wir können analog den ggT von mehreren Elementen $a_1,\ldots, a_{l} \in R$ defi
 	ein $a_{j}$ gibt so dass $a_{j}$ nicht durch $p$ teilbar ist.
 \end{definition}
 
-\begin{corollar}
+\begin{corollary}
 	Sei $R$ ein faktorieller Ring mit Quotientenkörper $K$.
 	Dann hat jedes $x \in K$ eine Darstellung $x = \frac{a}{b}$ mit $a,b \in R$ coprim, $b \neq 0$.
-\end{corollar}
+\end{corollary}
 
 \begin{proof}
 	Angenommen $x = \frac{\widetilde{a}}{\widetilde{b}} \in K$ und sei $d$ der ggT von $\widetilde{a}$ und $\widetilde{b}$.
@@ -632,13 +632,13 @@ Wir können analog den ggT von mehreren Elementen $a_1,\ldots, a_{l} \in R$ defi
 	.\] 
 \end{proof}
 
-\begin{corollar}
+\begin{corollary}
 	Sei $R$ faktoriell und $K = \operatorname{Quot}(R)$. Dann hat jedes $x \in K$ eine Darstellung der Form 
 	\[
 	x = u \prod_{p \in P} p^{n_{p}}
 	,\]
 	wobei $n_{p} \in \Z$ und gleich $0$ für alle bis auf endlich viele $p \in P$ ist.
-\end{corollar}
+\end{corollary}
 
 \begin{eg}[Ein Gegenbeispiel]
 Wir definieren $R = \Z[i \sqrt{5}] \subseteq K = \Q[i \sqrt{5}] \subseteq \C$.
@@ -691,14 +691,14 @@ Wir definieren auf $K$ die Konjugation $\tau: K \to K, a+ b\sqrt{d} \mapsto a- b
 Dies definiert einen Körperautomorphismus.
 
 \begin{proof}
-	Wir definieren $\Ev_{\sqrt{d}}: \Q[x] \to K, f \mapsto f(\sqrt{d})$.
-	$\Ev_{\sqrt{d}}(x^2-d) = 0$.
+	Wir definieren $\ev_{\sqrt{d}}: \Q[x] \to K, f \mapsto f(\sqrt{d})$.
+	$\ev_{\sqrt{d}}(x^2-d) = 0$.
 	Da $x^2-d$ keine Nullstellen in $\Q$ hat (Annahme an $d$), ist $x^2-d$ irreduzibel/prim in $\Q[x]$.
 	Daher folgt $(x^2-d)$ ist ein Maximalideal.
-	Gemeinsam mit $(x^2-d) \subseteq \ker(\Ev_{\sqrt{d}})$, erhalten wir $(x^2-d) = \ker(\Ev_{\sqrt{d}})$.
+	Gemeinsam mit $(x^2-d) \subseteq \ker(\ev_{\sqrt{d}})$, erhalten wir $(x^2-d) = \ker(\ev_{\sqrt{d}})$.
 	Der erste Isomorphiesatz ergibt nun
 	\[
-		\sfrac{\Q[x]}{(x^2-d)} = \sfrac{\Q[x]}{\ker(\Ev_{\sqrt{d}})} \stackrel{\varphi_{+}}{\cong} \Q[\sqrt{d}] = K
+		\sfrac{\Q[x]}{(x^2-d)} = \sfrac{\Q[x]}{\ker(\ev_{\sqrt{d}})} \stackrel{\varphi_{+}}{\cong} \Q[\sqrt{d}] = K
 	.\]
 	Beweis Körperautomorphismus:
 	\[
@@ -838,9 +838,9 @@ Sei $R = \Z[\sqrt{d}]$.
 	.\end{align*}
 \end{proof}
 
-\begin{corollar}
+\begin{corollary}
 	Sei $p \in \N$ kongruent $1 \mod 4$. Dann ist $p$ keine Primzahl in $\Z[i]$.
-\end{corollar}
+\end{corollary}
 
 \begin{proof}
 	Wir betrachten $\sfrac{\Z[i]}{(p)} \cong \sfrac{\F_{p}[x]}{(x^2+1)}, a+ib + (p) \mapsto a+b X \mod p$.
@@ -893,7 +893,7 @@ Sei $R = \Z[\sqrt{d}]$.
 \end{theorem}
 
 \begin{proof}[Beweis Skizze]
-%TODO image 11. seite 12
+%TODO image 11.faktor seite 12
 
 $z = \frac{g}{f} = (a+\frac{1}{2}) + (b+\frac{1}{2}) \sqrt{3} i$, $a,b \in \Z$ hat Abstand $1$ zu allen Elementen von $\Z[\sqrt{3}i]$.
 Beweis scheitert für $R_{falsch}$.
@@ -901,6 +901,173 @@ Beweis scheitert für $R_{falsch}$.
 Aber in diesem Fall ist $z \in R_{richtig}$ und deswegen hat es Abstand $0$ zu sich selbst. Beweis klappt nun .
 
 \end{proof}
+
+%TODO maybe übersicht 12.faktor S1
+
+
+\section{Polynomringe}
+\emph{Seite 108}
+
+\begin{theorem}[Gauss]
+	Falls $R$ ein faktorieller Ring ist, so ist auch $R[x]$ ein faktorieller Ring.
+\end{theorem}
+
+\begin{corollary}
+	Der Ring $\Z[x_1,\ldots,x_{n}]$ und der Ring $K[x_1,\ldots,x_{n}]$ für einen Körper $K$ sind faktoriell,
+\end{corollary}
+
+\begin{definition}
+	Sei $R$ ein faktorieller Ring und $f \in \R[x] \setminus \{0\}$.
+	Dann nennen wir den ggT der Koeffizienten von $f$ den \emph{Inhalt $I(f)$ von $f$ }
+	(welcher bis auf Einheiten in $R$ eindeutig bestimmt ist).
+
+	Wir sagen $f$ ist \emph{primitv} falls $I(f) \sim 1$.
+\end{definition}
+
+\begin{eg}
+	Sei $R = \Z$. Dann ist $I(2x+2) \sim 2$ und  $3x+2$ ist primitv.
+\end{eg}
+
+\paragraph{Beobachtungen}
+\begin{itemize}
+	\item Jedes normierte Polynom is primitiv.
+	\item Für $a \in R \setminus \{0\}, f \in R[x] \setminus \{0\} $ gilt $I(af) \sim a I(f)$.
+	\item Falls  $f \in R[x]$ irreduzibel ist, so ist entweder
+		$f \in R$ oder $f$ ist primitiv.
+		(Grad $f = 0 \implies f \in R$, Grad $f > 0 \implies f = a f^{*}, a \in R, f^{*}$ primitv.
+		Folgt $a$ oder $f^{*}$ ist eine Einheit $\implies$ $\deg(f^{*}) = \deg(f) > 0$ also $f^{*}$ ist keine Einheit)
+\end{itemize}
+
+\begin{lemma}
+	Sei $R$ ein faktorieller Ring und $K = \operatorname{Quot}(R)$.
+	Dann hat jedes  $f \in K[x] \setminus \{0\} $ eine Darstellung $f = d f^{*}$ 
+	wobei $d \in K^{\times}$ und $f^{*} \in R[x]$ ist primitiv.
+	Diese Darstellung ist bis auf Assoziierung eindeutig:\\
+	Falls $f = d_1 f_1^{*} = d_2 f_2^{*}$, $d_1,d_2 \in K^{\times}$,
+	$f_1^{*},f_2^{*} \in R[x]$ primitv, dann ist $d_1 \sim_{R} d_2, f_1^{*} \sim_{R} f_2^{*}$.
+	
+	Wobei $\sim_{R}$  assoziiert über eine Einheit in $R$ bedeutet.
+\end{lemma}
+
+\begin{proof}
+	Sei $f = \sum_{i=0}^{n} \underbrace{a_{i}}_{\in K} x^{i} \in K[x] \setminus \{0\} $ und $a_{i} = \frac{b_{i}}{c_{i}}$ für $b_{i},c_{i} \in R, c_{i} \neq 0$ für $i = 0,\ldots,n$.
+	Wir definieren 
+	 \[
+		 g = \left( \prod_{i=0}^{n} c_{i} \right) f \in R[x]
+	\] 
+	Sei $\underbrace{d}_{\in R} \sim I(g)$ ein ggT der Koeffizienten von $g$.
+	Dann ist $g = d' g^{*}$ für ein primitives $g^{*} \in R[x]$.
+	\[
+		\implies f = \underbrace{\frac{d'}{\prod_{i=0}^{n} c_{i}}}_{d} \underbrace{g^{*}}_{f^{*}} \qq{mit} d \in K^{\times }, f^{*} \in R[x] \text{ primitv}
+	.\] 
+	Wir erhalten die Existenzaussage im Lemma.
+
+	Sei nun $f = d_1 f_1^{*} = d_2 f_2^{*}$.
+	Wir schreiben $\frac{d_1}{d_2} = \frac{a_1}{a_2}$ mit $a_1,a_2 \in R$ coprim.
+	\[
+		f_2^{*} = \frac{d_1}{d_2} f_1^{*} = \frac{a_1}{a_2} f_1^{*} \implies a_1 f_1^{*} = a_2 f_2^{*} \implies a_1 \sim I(a_1 f_1^{*}) \sim I(a_2 f_2^{*}) \sim a_2
+	.\]
+	Aus $a_1,a_2$ coprim folgt nun $a_1 \sim 1 \sim a_2$.
+
+	Wir haben also $\frac{d_1}{d_2} \in R^{\times}$ gezeigt was genau $d_1 \sim_{R} d_2$ und $f_1^{*} \sim_{R} f_2^{*}$ bedeutet.
+\end{proof}
+
+\begin{definition}
+	Für $f \in K[x] \setminus \{0\} $ nennen wir das $d \in K^{\times}$ mit $f = d f^{*}, f^{*} \in R[x]$ primitiv, wieder den \emph{Inhalt von $f$}.
+\end{definition}
+
+\begin{proposition}[Gauss]
+	Sei $R$ faktoriell. Für $f,g \in R[x]$ gilt $I(fg) \sim I(f) I(g)$.
+	Insbesondere ist das Produkt von primitiven Elementen von $R[x]$ wieder primitiv.
+\end{proposition}
+
+\b
+Im folgenden werden wir die \enquote{Reduktion der Koeffizienten} verwenden:
+Für ein $p \in R$ gibt es einen Ringhomomorphismus $f \in R[x] \mapsto f_{\mod p} \in \sfrac{R}{(p)}[x], \sum_{i=0}^{n} a_{i} X^{i} \mapsto \sum_{i=0}^{n} (a_{i} + (p)) X^{i}$.
+Dies folgt aus dem Satz von 4. VO %TODO proper reference,
+(wobei $\varphi(a) = a + (p)$ und $\Phi(X) = X$).
+
+\begin{proof}
+	 Wir zeigen zuerst die zweite Aussage der Proposition.
+	 Seien also $f,g \in R[x]$ primitive Polynome.
+	 Sei $p \in R$ ein Primelement. Dann gilt $f_{\mod p} \neq 0$ und $g_{\mod p} \neq 0$.
+	 Da $p$ ein Primelement ist, ist $\sfrac{R}{(p)}$ ein Integritätsbereich.
+	 Daraus folgt, dass $\sfrac{R}{(p)}[x]$ auch ein Integritätsbereich ist.
+	 Daher ist also
+	 \[
+		 (fg)_{\mod p} = f_{\mod p} g _{\mod p} \neq 0
+	 .\]
+	 Anders formuliert, sind also nicht alle Koeffizienten von $fg$ durch $p$ teilbar.
+	 Da $p \in R$ ein beliebiges Primelement war, sehen wir, dass $fg$ ein primitives Polynom ist.
+
+	 Seien nun $f,g \in K[x] \setminus \{0\} $ beliebig.
+	 Dann gilt $f = a f^{*}, g = b g^{*}$ für $a \sim I(f), b \sim I(g)$, $f^{*},g^{*} \in R[x]$ primitiv.
+	  \[
+		  \implies fg = ab \underbrace{f^{*}g^{*}}_{\in R[x]}
+	 \] 
+	 ist primitiv.
+	 Aus der Eindeutigkeit im Lemma folgt nun $I(fg) \sim_{R} ab \sim_{R} I(f) I(g)$
+\end{proof}
+
+\begin{theorem}[Gauss]
+	Sei $R$ ein faktorieller Ring. Dann ist auch $R[x]$ faktoriell.
+	Des Weiteren hat $R[x]$ genau die beiden Typen von Primelementen:
+	\begin{itemize}
+		\item $p \in R$ prim ist auch ein Primelement von $R[x]$.
+		\item $f \in R[x]$ primitiv so dass $f$ irreduzibel als Element von $K[x]$ ist,
+			ist ein Primelement von $R[x]$.
+	\end{itemize}
+\end{theorem}
+
+\begin{corollary}
+	Sei $f \in R[x]$ primitiv. Dann ist $f$ irreduzibel als Element von $R[x]$ gdw. $f$ ist irreduzibel als Element von $K[x]$.
+\end{corollary}
+
+\begin{proof}
+	Wir zeigen zuerst, dass die beiden Typen von Primelementen im Satz tatsächlich Primelemente von $R[x]$ sind.
+	\begin{itemize}
+		\item Sei $p \in R$ ein Primelement. Dann ist 
+			\[
+				\sfrac{R[x]}{(p)_{R[x]}} \cong \sfrac{R}{(p)_{R}}[x] \tag{$*$}
+			.\]
+			Warum: $\Phi: R[x] \to \sfrac{R}{(p)_{R}}[x], f \mapsto f_{\mod p}$ ist ein Ringhomomorphismus.
+			Der Kern von $\Phi$ besteht aus allen $f \in R[x]$ so dass $p$ alle Koeffizienten teilt - oder aus $\ker(\Phi) = (p)_{R[x]}$.
+			Also folgt $(*)$ aus dem ersten Isomorphiesatz.
+
+			Da $\sfrac{R}{(p)_{R}}[x]$ ein Integritätsbereich ist, folgt, dass $p \in R[x]$ ein Primelement ist.
+
+		\item Sei $f \in R[x]$ primitiv und als Element von $K[x]$ irreduzibel.
+			Wir wollen zeigen, dass $f$ ein Primelement in $R[x]$ ist.
+
+			Angenommen $f \mid gh$ in $R[x]$ für $g,h \in R[x]$.
+			Folgt $f \mid gh $ in $K[x]$, da $gh = qf$ für $q \in R[x] \subseteq K[x]$.
+			Da $f \in K[x]$ irreduzibel/prim ist, folgt $f \mid g$ oder $f \mid h$.
+			O.B.d.A. nehmen wir an $f \mid g$. Dann existiert ein $q \in K[x]$ mit $g = q f$.
+			Aus der Proposition folgt 
+			\[
+				I(q) \sim_{R} I(q) \underbrace{I(f)}_{\sim_{R} 1} \sim_{R} I(qf) \sim_{R} I(g) \in R
+			\]
+			also auch $I(q) \in R$. Da $q \sim I(q) q^{*}$ folgt also $q \in R[x]$.
+			Wir sehen also $f \mid g$ in $R[x]$.
+
+			Also sehen wir, dass $f$ ein Primelement von $R[x]$ ist. 
+	\end{itemize}
+	Als nächstes wollen wir zeigen, dass jedes irreduzible Element $f \in R[x]$ ein Element vom Typ $1$ oder Typ $2$ wie im Satz ist.
+	Da diese Elemente bereits als Primelemente in $R[x]$ bekannt sind, folgt daraus insbesondere dass alle irreduziblen Elemente in $R[x]$ auch
+	Primelemente sind.
+
+	Sei also $f \in R[x]$ irreduzibel.
+	\begin{itemize}
+		\item Falls $\deg(f) = 0$ ist, so ist $f \in R$ irreduzibel ($R[x]^{\times} = R^{\times}$).
+			Also ist $f \in R$  prim nach Annahme an $R$ und $f$ ist vom Typ $1$ und prim in $R[x]$.
+		\item Sei nun $\deg(f) > 0$. Daraus folgt $f$ ist primitiv.
+			Wir müssen zeigen, dass $f$ als Element von $K[x]$ irreduzibel ist.
+			Dann ist $f$ vom Typ $2$ und prim in $R[x]$.
+	\end{itemize}
+\end{proof}
+
+
+
 
 
 
