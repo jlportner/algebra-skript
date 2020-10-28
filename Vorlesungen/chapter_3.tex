@@ -1063,21 +1063,128 @@ Dies folgt aus dem Satz von 4. VO %TODO proper reference,
 		\item Sei nun $\deg(f) > 0$. Daraus folgt $f$ ist primitiv.
 			Wir müssen zeigen, dass $f$ als Element von $K[x]$ irreduzibel ist.
 			Dann ist $f$ vom Typ $2$ und prim in $R[x]$.
+
+			%TODO fix stern oder Kreuz ab hier
+			Angenommen $f = gh$ für $g,h \in K[x]$.
+			Nach einem früheren Lemma gilt $g = c g^{*}, h = d h^{*}$ $c,d \in K,g^{*}, h^{*} \in R[x]$ primitiv.
+			$\implies f = (cd) g^{*} h^{*}$, wobei $g^{*}, h^{*}$ primitiv ist (siehe frühere Proposition).
+			$I(f) \sim 1 \sim cd$, womit $cd \in R^{\times}$.
+			Also ist $f = (cd g^{*}) h^{*}$ eine Zerlegung von $f$ als Produkt von $cd g^{*} \in R[x]$ und $h^{*} \in R[x]$.
+			Da $f$ in $R[x]$ irreduzibel ist, ist $cdg^{*}$ oder $h^{*}$ eine Einheit in $R[x]$.
+			Dies zeigt, dass $f$ in $K[x]$ irreduzibel ist.
 	\end{itemize}
+	Es bleibt zu zeigen, dass jedes $f \in R[x] \setminus \{0\} $ ein endliches Produkt von endlich vielen Primelementen von $R[x]$ ist.
+	Auf Grund des früheren Lemmas gilt $f = df^{*}$, wobei $d \in R \setminus \{0\} $ und $f^{*} \in R[x]$ primitiv ist.
+	$d \in R \setminus \{0\} $ ist dabei ein endliches Produkt von Primelementen in $R$ (welche Primelemente in $R[x]$ vom Typ I sind und einer Einheit) 
+	- weil  $R$ faktoriell ist.
+	$f^{*} \in R[x]$ ist ein endliches Produkt von Primelementen vom Typ II und einer Einheit - wir können dies mittels Induktion nachdem Grad beweisen.\\
+	$\deg(f^{*}) = 0 \implies f^{*} \in R^{*}$ (Produkt ohne Primfaktoren)\\
+	$\deg(f^{*}) = 1 \implies f^{*}$ ist selbst irreduzibel, da $f^{*}$ primitiv ist und als Element von $K[x]$ irreduzibel ist.
+	
+	Falls die Aussage für alle primitiven Elemente vom Grad kleiner als  $\deg(f^{*})$ von bekannt ist, so unterscheiden wir die Fälle
+	\begin{itemize}
+		\item $f^{*}$ ist irreduzibel \checkmark.
+		\item $f^{*} = gh$ für $g,h \in R[x]$ (automatisch primitiv) beide nicht Einheiten.
+	\end{itemize}
+	Nach Induktionsannahme sind daher sowohl $g$ als auch $h$ endliche Produkte von Primelementen,
+	womit dies auch für $f^{*}$ gilt.
 \end{proof}
 
+\begin{lemma}
+	Sei $K$ ein Körper und $a \in K$. Dann gilt für jedes $f \in K[x]$ 
+	\[
+		f(x) = (x-a)g(x) + r \qq{ für } g(x) \in K[x], r \in K
+	.\]
+	Daher gilt $f(a) = 0 \Leftrightarrow (x-a) \mid f(x)$.
+\end{lemma}
 
+\begin{proposition}
+	Sei $K$ ein Körper. Dann sind lineare Polynome der Form $x-a$ für $a \in K$ irreduzibel als Elemente von $K[x]$.
+	Für quadratische ($\deg(f) = 2$ ) und kubische ($\deg(f) = 3$) Polynome  $f \in K[x]$ gilt
+	\begin{center}
+		$f$ ist irreduzibel $\Leftrightarrow$ $f$ hat keine Nullstelle ($\forall a \in K$ gilt $f(a) \neq 0$ )
+	\end{center}
+\end{proposition}
 
+\begin{proof}
+	$\impliedby$: Falls $\deg(f) \in \{2,3\}$ und $f = g h$, $g,h \not\in K[x]^{\times}$,
+	dann gilt $\deg(f) = \deg(g) + \deg(h)$ und daher ist mindestens ein Faktor von Grad $1$.  
+	Falls $\deg(g) = 1$ ist, so hat $g$ eine Nullstelle und $f(x) = g(x) h(x)$ ebenso.
 
+	$\implies$: Falls $f$ irreduzibel ist, so kann $f$ wegen dem Lemma keine Nullstelle haben.
+\end{proof}
 
+\begin{theorem}[Fundamentalsatz der Algebra]
+	Jedes Polynom $f \in \C[x]$ mit $\deg(f) > 0$ hat eine Nullstelle in $\C$.
 
+	Die irreduziblen Elemente von $\C[x]$ sind genau die linearen Polynome.
+	Insbesondere hat jedes $f \in \C[x]$ eine Faktorisierung in Linearfaktoren
+	\[
+		f(x) = a \prod_{j=1}^{\deg(f)} (x-z_{j})
+	.\] 
+	für gewisse $a \in C \setminus \{0\}$ und $z_1,\ldots,z_{\deg(f)} \in \C$.
+\end{theorem}
 
+\begin{corollary}[Fundamentalsatz für $\R$ ]
+	Ein Polynom in $\R[x]$ ist irreduzibel gdw. entweder $\deg(f) = 1$ ist oder $\deg(f) = 2$ ist und $f$ keine Nullstellen in $\R$ besitzt.
+\end{corollary}
 
+\begin{proof}
+	Wir müssen $\implies$ beweisen. Nach obigem Satz gibt es für jedes $f \in \R[x]$ mit $\deg(f) > 0$ eine Nullstelle $z \in \C$.
+	Falls $z = a \in R$ ist, so folgt $(x-a) | f(x)$ also $f(x) \sim (x-a)$.
+	Falls $z \not\in \R$ ist, so folgt $0 = \overline{0} = \overline{f(z)} = f(\overline{z})$.
+	Daher hat $f(x)$ in $\C[x]$ die Teiler $x-z$ und $x-\overline{z}$.
+	\[
+		\implies (x-z)(x-\overline{z}) = (x^2 - (\underbrace{z+\overline{z}}_{2 \Re(z)}) x + \underbrace{\overline{z}z}_{\abs{z}^2}) \mid f(x) \text{ in } \C[x]
+	\] 
+	und auch in $\R[x]$ z.B. wegen der Polynomdivision.
+	Daher gilt $f(x) \sim (x^2 - (2\Re(z)x + \abs{z}^2)$ und $\deg(f) = 2$, $f$ hat keine reellen Nullstellen.
+\end{proof}
 
+\begin{proposition}
+	Sei $R$ ein faktorieller Ring. Sei $f \in R[x]$ und $\frac{a}{b} \in K$ mit $b \neq 0, (a,b)$ coprim.
+	Falls $f(\frac{a}{b}) = 0$ ist, so ist $b$ ein Teiler von führenden Koeffizienten von $f$ und $a$ ein Teiler vom konstanten Term von $f$.
+\end{proposition}
 
+\begin{proof}
+	Wir nehmen an $f(\frac{a}{b}) = 0$ an. Also gilt $(x-\frac{a}{b}) \mid f(x)$ in  $K[x]$.
+	Und auch $(bx-a) \mid f(x)$ in $K[x]$. Dann gilt sogar $(bx-a) \mid f(x) $ in $R[x]$.
 
+	Denn: Angenommen $f(x) = (bx-a) h(x)$ für $h(x) \in K[x]$.
+	Für den Inhalt der Polynome gilt daher $I(f) \in R$.
+	\[
+		I(f) = I((bx-a) h(x)) \sim I(bx-a) I(h) \sim I(h) \in R (h = c h^{*}, c \sim I(h))
+	.\] 
+	Also folgt $h(x) \in R[x]$ und daher $(bx-a) \mid f(x)$ in $R[x]$.
 
+	Also $f(x) = (bx-a) h(x)$ für $h(x) \in R[x]$.
+	$\implies$ führende Koeffizient von $f = b \cdot ( \text{führender Koeffizient von }h)$. 
+	Und Konstanter Term von $f = -a \cdot (\text{konstanter Term von } h)$.
+\end{proof}
 
+\begin{eg}
+	Für welche $a \in \Z$ ist $f_{a}(x) = x^2 + ax +1 \in \Z[x]$ irreduzibel?\\
+	Wegen der Proposition ist eine Nullstelle von $f_{a}(x)$ in $\Q$ automatisch $\pm 1$ ($f_{a}(\frac{p}{q}) = 0 \implies p \mid 1, q \mid 1 \implies \frac{p}{q} = \pm 1$ ).
+	\[
+		f_{a}(1) = 2 + a 1 = 0 \Leftrightarrow a = -2 \qquad f_{a}(-1) = 2-a = 0 \Leftrightarrow a = 2
+	.\] 
+	Hier ist $f_{a}$ reduzibel.
+	Für $a \in \Z \setminus \{\pm 2\}$ ist $f_{a} \in \Z[x]$ irreduzibel ($f_{a}$ ist primitiv und $f_{a} \in \Q[x]$ ist irreduzibel da $f_{a}$ keine Nullstellen hat).
+\end{eg}
+
+\begin{eg}
+	Sei $K$ ein Körper. Dann ist $f(x,y) = y^3 - x^{5} \in K[x,y]$ irreduzibel.
+	In diesem Fall wollen wir das Diskutierte für $R = K[x]$ verwenden und den Polynomring $R[y]$.
+	Wir bemerken zuerst, dass $f \in R[y]$ primitiv ist (da $f$ als Polynom in $y$ normiert ist und Koeffizienten in $K[x]$ besitzt).
+	Daher (Korollar von Satz von Gauss) ist $f \in R[y]$ irreduzibel gdw. $f$ als Element von $\underbrace{\quot(R)}_{K[x]}[y]$ irreduzibel ist.
+
+	Wir nehmen an, $f$ ist nicht irreduzibel als Element von $K(x)[y]$.
+	Also muss $f$ eine Nullstelle in $K (x)$ besitzen. Seien $p,q \in K[x]$ coprim, $q \neq 0$ mit $f(\frac{p}{q}) = 0$.
+	Folgt $q \mid 1$. Also o.B.d.A. $q = 1$ und $f(p) = 0$, $f(y) = y^3 - x^{5} \implies p(x)^3 = x^{5}$ in $K[x]$.
+	Insbesondere $p(x) \mid x^{5}$, also $p(x) = a x^{k} \implies p(x)^3 = a^3 x^{3k} = x^{5}$ ist unmöglich.
+	Dieser Widerspruch zeigt, dass $f(y)$ keine Nullstelle in $K(x)$ hat.
+	Folgt $f(y)$ ist irreduzibel als Element von $K(x)[y]$ und primitiv in $(K[x])[y]$ und daher irreduzibel in $K[x,y]$.
+\end{eg}
 
 
 
