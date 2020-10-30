@@ -1186,6 +1186,151 @@ Dies folgt aus dem Satz von 4. VO %TODO proper reference,
 	Folgt $f(y)$ ist irreduzibel als Element von $K(x)[y]$ und primitiv in $(K[x])[y]$ und daher irreduzibel in $K[x,y]$.
 \end{eg}
 
+\begin{proposition}
+	Sei $R$ ein faktorieller Ring und $p \in R$ ein Primelement.
+	Angenommen $f \in R[x]$ erfülle:
+	\begin{itemize}
+		\item $f$ primitiv
+		\item $\deg(f) = \deg(f_{\mod p})$ mit $f_{\mod p} \in \sfrac{R}{(p)}[x]$
+		\item $f_{\mod p} \in \frac{R}{(p)} [x]$ ist irreduzibel
+	\end{itemize}
+	Dann ist $f \in R[x]$ ein Primelement.
+\end{proposition}
+
+\begin{proof}
+	Angeonmmen $f = gh$ für $g,h \in R[x]$.
+	Dann ist auch $f_{\mod p} = g_{\mod p} h_{\mod p}$ in $\sfrac{R}{(p)}[x]$.
+	Da $f_{\mod p}$ irreduzibel ist, folgt nun, dass $g_{\mod p}$ oder $h_{\mod p}$ eine Einheit in $\sfrac{R}{(p)}[x]$ sein muss.
+	Also insbesondere gilt $\deg(g_{\mod p}) = 0$ oder $\deg(h_{\mod p}) = 0$.
+	O.B.d.A. ist $\deg(g_{\mod p}) = 0$. Also $g \equiv a \mod p$ für ein $a \in R$.
+	Wir behaupten, dass dies $\deg(g)= 0$ impliziert.
+	Dies impliziert, dass $g \mid I(f) \sim 1$ womit $g \in R^{\times} = R[x]^{\times}$ ist.
+	Da dies für beliebige Zerlegungen von $f$ gilt, folgt daraus, dass $f$ irreduzibel ist.
+	Da  $R[x]$ faktoriell ist, ist $f$ also auch ein Primelement.
+
+	\begin{proof}[Beweis der Behauptung]
+		Zu zeigen $g \equiv a \mod p \implies \deg(g) = 0$ mit $a \in R$ \\
+		Angenommen dies stimmt nicht. Dann ist der führende Koeffizient von $g$ durch $p$ telbar.
+		Aber dann ist auch der führende Koeffizient von $f$ (gleich dem Produkt der führenden Koeffizienten von $g$ und $h$ )
+		durch $p$ teilbar. Dies widerspricht der Annahme, dass $\deg(f) = \deg(f_{\mod p})$ ist.
+	\end{proof}
+\end{proof}
+
+\begin{eg}
+	Sei $f(x) = x^{4} + 3x^3 - x^2 +1 \in \Z[x]$.
+	Wir wählen $p = 5$ und wollen zeigen, dass $f$ alle Vorraussetzungen der Proposition erfüllt $\implies f$ ist irreduzibel in $\Z[x]$.
+	\begin{itemize}
+		\item primitiv \checkmark
+		\item $\deg(f_{\mod 5}) = 4 = \deg(f)$ \checkmark
+	\end{itemize}
+	Wir müssen noch zeigen, dass $f_{\mod 5} \in \F_{5}[x]$ irreduzibel ist.
+
+	Linearfaktoren als Teiler ? Dies tritt genau dann ein wenn $f_{\mod 5}$ in $\F_{5}$ eine Nullstelle hat.
+	\begin{align*}
+		f(0) = 1 \neq 0 \text{ in } \F_{5} \quad f(1) = 4 \neq 0 \text{ in } \F_{5} \quad \ldots
+	.\end{align*}
+	Insbesondere folgt daraus, dass es keine Zerlegung der Form linear mal kubisch in $\F_{5}[x]$ gibt.
+
+	Wir müssen noch überprüfen, dass es keine Zerlegung der Form quadratisch mal quadratisch gibt.
+	Überprüfe dies mit Sage oder per Hand.
+
+	Eine alternative Beweismethode für die Irreduzibilität von $f(x) = x^{4} + 3 x^3 - x^2 + 1 \in \Z[x]$.
+	\begin{itemize}
+		\item $p = 2$: $x^{4} + 3x^3 - x^2 + 1 = x^{4} + x^3 + x^2 + 1 \mod 2 = (x+1)(x^3 + x + 1)$ beide Faktoren irreduzibel.
+		\item $p=3$: $x^{4} + 3x^3 - x^2 + 1 = x^{4} + 2x^2 + 1 \mod 3 = (x^2 +1)^2$ ist irreduzibel.
+	\end{itemize}
+	\begin{claim}
+		Aud der Rechnung oben für $p=2$ und $p=3$ folgt, dass $f(x) \in \Z[x]$ irreduzibel ist.
+	\end{claim}
+	Falls $f = gh$, $g,h \in \Z[x]$, keine Einheit, führende Koeffizienten $\pm 1$, wäre, so wäre 
+	$f_{\mod 2} = g_{\mod 2} h_{\mod 2} \implies g_{\mod 2} = \begin{cases}
+		x+1\\ x^3+x+1
+	\end{cases}$. Und somit $\deg(g) \in \{1,3\}$. Mittels $p=3$ folgt analog $\deg(g) = 2$. \contra
+\end{eg}
+
+\begin{theorem}[Eisenstein-Kriterium]
+	Sei $R$ ein faktorieller Ring und $p \in R$ ein Primelement.
+	Sei $f(x) = \sum_{i=0}^{n} a_{i} x^{i}$  primitiv mit $n \geq 1, p \nmid a_{n}$, $p \mid a_{i}$ für $i = 0,\ldots,n-1$ und $p^2 \nmid a_0$.
+	Dann ist $f$ irreduzibel.
+\end{theorem}
+
+\begin{proof}
+	Angenomenn $f = gh$ für $g,h \in R[x]$ beide keine Einheiten.
+	Da $f$ primitiv ist, gilt dies auch für $g$ und $h$, womit $k := \deg(g) > 0$ und $l := \deg(h) > 0$ ist und $k+l = n$
+	Modulo $p$ folgt
+	\[
+	f_{\mod p} = a_{n} x^{n} = g_{\mod p} h_{\mod p}
+	.\] 
+	Wir betrachten diese Gleichung als Faktorisierung in $\quot(\sfrac{R}{(p)})[x]$, wo $a_{n} \neq 0$ eine Einheit und $x$ ein Primfaktor ist.
+	Es folgt, dass $g_{\mod p} = b x^{k'}, k' < k, b \neq 0$ und $h_{\mod p} = c x^{l'}, l' < l, c \neq 0$.
+	Des Weiteren gilt $k' + l' = n$, also $k' = k > 0$ und $l' = l > 0$.
+	Daraus folgt nun, dass $p$ den konstanten Term von $g$ und dauch den konstanten Ter von $h$ teilt.
+	Für $f = g h$ folgt daraus, dass der konstante term 
+	\[
+		a_0 = (\text{konstanter Term von } g)(\text{konstanter Term von } h)
+	\]
+	durch $p^2$ teilbar ist. Dies widerspricht unserer Annahme an $f$ und wir erhalten, dass $f$ irreduzibel ist.
+\end{proof}
+
+\begin{eg}
+	Das Polynom $x^{n} - 2 \in \Z[x]$ ist für jedes $n \geq 1$ irreduzibel.
+	Dies folgt aus dem Eisensteinkriterium für $p = 2$.
+\end{eg}
+
+\begin{corollary}
+	Für jede Primzahl $p \in \N$ ist das $p$-te Kreisteilungspolynom
+	\[
+		\Phi_{p}(x) = 1 + x+ x^2 + \ldots + x^{p-1} = \frac{x^{p} -1}{x-1}
+	\] 
+	in $\Z[x]$ irreduzibel.
+\end{corollary}
+
+\begin{proof}
+	Wir wollen das Eisenstein-Kriterium für
+	\[f(y) = \frac{(y+1)^{p}-1}{y} = y^{-1} \left(\sum_{k=0}^{p} \binom{p}{k} y^{k}-1 \right) = \sum_{k=1}^{p} \binom{p}{k} y^{k-1}
+	\]
+	anwenden. Für $k = p$ ist $\binom{p}{p} = 1$ also ist $f$ normiert und primitiv.
+	Des Weiteren wissen wir $p \mid \binom{p}{k}$ für $k= 1,\ldots,p-1$.
+	Der konstante Term von $f$ entspricht $k=1$ und ist daher durch $\binom{p}{1} = p$ gegeben.
+	Dieser ist nicht durch $p^2$ teilbar, womit $f \in \Z[y]$ irreduzibel ist.
+
+	Wir wollen  \enquote{$x=y+1$} verwenden: Die Ringe
+	\[
+		\Psi: \Z[y] \stackrel{\sim}{\rightarrow} \Z[x]
+	,\] 
+	sind isomorph, wobei wir jeweils den Auswertungshomomorphismus verwenden um beide Abbildungen zu definieren:
+	\[
+		\Psi(\underbrace{f(y)}_{\in \Z[y]}) = f(x-1) \in \Z[x] \qquad \widetilde{\Psi}(\underbrace{g(x)}_{\in \Z[x]}) = g(y+1) \in \Z[y]
+	.\]
+	Da $f \in \Z[y]$  irreduzibel ist und $\Phi_{p}(x)$ das Bild von $f$ unter diesem Isomorphismus ist, folgt die Irreduzibilität von $\Phi_{p}(x)$.
+\end{proof}
+
+\begin{eg}
+	Für jedes $n \geq 1$ ist 
+	\[
+		f(x,y,z) = x^{n} + y^{n} - z^{n} \in \C[x,y,z]
+	\] 
+	irreduzibel.
+	Wir setzen $R = \C[y,z]$ und $p = y-z \in R$.
+	Als Element von $R[x]$ ist $f$ normiert und daher primitv.
+	Da es abgesehen vom führenden Koeffizienten von $f$ nur noch den konstanten Term gibt müssen wir $p \mid y^{n} - z^{n}$ und $p^2 \nmid y^{n} - z^{n}$ zeigen:
+	\[
+		y^{n} - z^{n} = (y-z)(y^{n-1} + y^{n-2} z + \ldots + y z ^{n-2} + z^{n-1})
+	\] 
+	also $p \mid y^{n} - z^{n}$.
+	\begin{claim}
+		$(y-z)$ teilt $(y^{n-1} + y^{n-2} z + \ldots + y z ^{n-2} + z^{n-1})$ \emph{nicht}.
+	\end{claim}
+	$(y^{n-1} + y^{n-2} z + \ldots + y z ^{n-2} + z^{n-1})$ modulo  $y-z$ ist gleich $n z^{n-1}$, was nicht durch $y-z$ teilbar ist.
+\end{eg}
+
+\begin{remark}
+	Für $p \in \N$ prim gilt allerdings
+	\[
+		(x+y-z)^{p} = x^{p} + y^{p} - z^{p} \in \F_{p}[x,y,z]
+	.\]
+	nicht irreduzibel.
+\end{remark}
 
 
 
