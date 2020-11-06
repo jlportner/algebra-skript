@@ -1,0 +1,451 @@
+%! TEX root=../algebra.tex
+\graphicspath{{Images/}}
+
+\chapter{Gruppentheorie}
+\section{Definition und Beispiele}
+
+\begin{definition}
+	Eine Menge $G$ gemeinsam mit einer Abbildung $\cdot : G \times G \to G$ heißt eine Gruppe falls folgende Axiome erfüllt sind:
+	\begin{enumerate}
+		\item Assoziativität: $\forall a,b \in G: (a \cdot  b) \cdot  c = a \cdot (b \cdot c)$
+		\item Einheit: $\exists e \in G \forall a \in G: e \cdot a = a \cdot e = a$
+		\item Inverse: $\forall a \in G \exists x \in G: a \cdot  x = x \cdot a = e$ (wobei $e$ wie in 2) ist)
+	\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+	Sei $G$ eine Gruppe.  Die Einheit $e$ wie in 2) ist eindeutig bestimmt durch $e \cdot  a = a$
+	für alle $a \in G$, oder  auch durch $e \cdot e = e$. Für jedes $a \in G$ ist die Inverse $x \in G$ durch
+	$a \cdot x = e$ eindeutig bestimmt, wie schreiben $a^{-1} = x$.
+	Insbesondere gilt $e^{-1} = e$, $(a^{-1})^{-1} = a$ und $(ab)^{-1} = b^{-1} a^{-1}$ für alle $a,b \in G$.
+\end{lemma}
+
+\begin{remark}
+	Wir bezeichnen die Einheit auch als das Einselement und schreiben $e = e_{G} = 1 = 1_{G}$.
+\end{remark}
+
+\begin{proof}
+	Angenommen $f \in G$ erfüllt $f \cdot a = a$ für alle $a \in G$ und $e \in G$ erfüllt Axiom 2).
+	Dann gilt $f \stackrel{2)}{=} f \cdot e = e$.
+
+	Angenommen $f \in G$ erfüllt $f \cdot f = f$. Wir multiplizieren mit $f^{-1}$ wie in Axiom 3) und erhalten
+	\[
+		f = f \cdot (\underbrace{f \cdot f^{-1}}_{e}) = (f \cdot f) \cdot f^{-1} = f \cdot f^{-1}= e
+	.\] 
+	Angenommen $a \cdot y = e$ und $x$ ist wie in Axiom 3). Dann gilt
+	\[
+		x \cdot (a \cdot y) = x \cdot e = x \Leftrightarrow (\underbrace{x\cdot a}_{e} ) \cdot y = x \Leftrightarrow x = y
+	.\] 
+\end{proof}
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $a,b \in G$. Falls $ab = ba$ gilt, so sagen wir, dass $a$ und $b$ kommutieren.
+	Falls alle Paare in $G$ \emph{kommutieren}, so heißt $G$ \emph{kommutativ} oder auch \emph{abelsch}.
+\end{definition}
+
+\begin{remark}
+	Für abelsche Gruppen verwenden wir manchmal auch additive Notation $+ : G \times G \to G$.
+\end{remark}
+
+\begin{definition}
+	Für eine Gruppe $G$ und $a \in G$ definiere wir die Potenzen von $a$ durch
+	\[
+	a^{k} := \begin{cases}
+		\underbrace{a \cdot \ldots \cdot a}_{k-\text{fache}} &\text{für } k > 0\\
+		e &\text{für } k=0\\
+		\underbrace{a^{-1} \cdot \ldots \cdot ^{-1}}_{\abs{k}-\text{fache}} &\text{für } k < 0
+	\end{cases}
+	\qq{für alle} k \in Z
+	.\] 
+\end{definition}
+
+\begin{lemma}[Potenzregel]
+	\begin{enumerate}[a)]
+		\item $a^{k} a^{l} = a^{k+l}$ für $k \in \Z$.
+		\item $(a^{k})^{l} = a^{k l}$ für  $k \in \Z$.
+		\item Falls $a,b \in G$ kommutieren so kommutieren auch $a^{k}$ und $b^{l}$ und es gilt $(ab)^{k} = a^{k} b^{k}$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Für $k,l \geq 0$ mittels Induktion nach $l$ :
+	\begin{enumerate}
+		\item IA: $a^{k} a^{0} = a^{k+0}$ \\
+			IS: $a^{k} a^{l+1} = a^{k} a^{l} a = a^{k+l} a = a^{k+l+1}$ per rekursiver Definition
+		\item IA: $(a^{k})^{0} = e = a^{k \cdot 0}$\\
+			IS: $(a^{k})^{l+1} = (a^{k})^{l} a^{k} = a^{kl} a^{k} \stackrel{a)}{=} = a^{k(l+1)}$ 
+		\item IA: $a b^{0} = b^{0} a$ \\
+			IS: $a b^{l+1} = a b^{l} b = b^{l} a b = b^{l} b a = b^{l+1} a$ also  $a$ kommutiert mit  $b^{l}$.\\
+		IA: $(ab)^{0} = e = a^{0} b^{0}$\\ 
+			IS: $(ab)^{k+1} = (ab)^{k} (ab) = a^{k} b^{k} a b = a^{k+1} b^{k+1}$
+	\end{enumerate}
+	Beweis für negative Potenzen analog.
+\end{proof}
+
+\begin{lemma}[Gleichungen und Kürzen]
+	Für alle $a,b \in G$ existiert ein eindeutig bestimmtes $x \in G$ mit $ax = b$, nämlich $x = a^{-1} b$.
+	Für alle $a,b,c \in G$ gilt $a=b \Leftrightarrow ac = bc \Leftrightarrow ca = cb$.
+\end{lemma}
+
+\begin{proof}
+	Angenommen $ax=b$, dann gilt  $\underbrace{a^{-1} a}_{e} x = a^{-1} b \implies x = a^{-1} b$.
+	Und in der Tat gilt $a (a^{-1} b) = b$. 
+
+	$\implies$ trivial\\
+	$\impliedby$: Angenommen $ac = bc$, dann gilt $(ac) c^{-1} = (bc) c^{-1} \implies ae = be \implies a = b$.
+\end{proof}
+
+\begin{definition}
+	Angenommen $G_1, G_2$ sind Gruppen.
+	Ein \emph{Homomorphismus} von $G_1$ nach $G_2$ ist eine Abbildung $\varphi: G_1 \to G_2$ mit
+	$\varphi(ab) = \varphi(a) \varphi(b)$ für alle $a,b \in G$.
+	Wir definieren den \emph{Kern} $\ker(\varphi) = \varphi^{-1} \{e_{G_2}\} = \{a \in G \mid \varphi(a) = e_{G_2}\} $
+	und das \emph{Bild} $\Im(\varphi) = \varphi(G_1) = \{b \in G_2 \mid \exists a \in G \text{ mit } \varphi(a) = b\} $.
+	Falls $\varphi$ bijektiv ist, so sprechen wir auch von einem \emph{Isomorphismus} der Gruppen
+	und sagen $G_1$ und $G_2$ sind \emph{isomorph }.
+\end{definition}
+
+\begin{definition}
+	Sei $G$ eine Gruppe. Eine Untergruppe von $G$ ist eine nichtleere Teilmenge $H \subseteq G$ mit $a b^{-1} \in H$ für alle $a,b \in H$. Wir schreiben $H < G$.
+\end{definition}
+
+\textbf{Übung.} Sei $G$ eine Gruppe und $H \subseteq G$. Äquivalent sind:
+\begin{enumerate}[1)]
+	\item $H$ ist eine Untergruppe
+	\item $e \in H$, und $a,b \in H \implies ab \in H$ und $a^{-1} \in H$ 
+	\item $H$ ist eine Gruppe und $\iota: H \to G$ ist ein Homomorphismus.
+\end{enumerate}
+Falls $\abs{H} < \infty$, so ist auch folgende Aussage mit obigen Aussagen äquivalent:
+\begin{enumerate}[1)]
+	\setcounter{enumi}{3}
+	\item $H$ ist nichtleer, und $a,b \in H \implies ab \in H$.
+\end{enumerate}
+
+\begin{eg}
+	Für einen Homomorphismus $\varphi: G_1 \to G_2$ ist $\ker(\varphi)$ eine Untergruppe von $G_1$
+	und $\Im(\varphi)$ eine Untergruppe von $G_2$.
+\end{eg}
+
+\begin{eg}
+	\begin{enumerate}
+		\item $\{1\} $ 
+		\item Addition in Ringen (und Körper) und Vektorräume.
+		\item Die Gruppe $R^{\times}$ der Einheiten in einem Ring.
+			Insbesondere $K^{\times} = K \setminus \{0\}$ für einen Körper.
+			Also $\R^{x} = \R \setminus \{0\}$ bzw $\C^{\times} = \C \setminus \{0\}$.
+		\item Sei $M$ eine nichtleere Menge. Dann ist $\bij(M) = \{\varphi: M \to M \text{ bijektiv}\} $ eine Gruppe (bzgl. Verknüpfung der Abbildungen).
+			Falls $M = \{1,\ldots,n\}$ für ein $n \geq 1$, so nennen wir $\sym_{n} = S_{n} = \bij(\{1,\ldots,b\})$ auch die \emph{symmtrische Gruppe}.
+		\item Sei $M$ eine nichtleere Menge mit \enquote{einer Struktur}. Dann ist 
+			\[
+				\operatorname{Aut}(M) = \{\varphi: M \to M \text{ bijektiv \& \enquote{strukturerhaltend} }\} 
+			\] 
+			oft eine Gruppe.
+			\begin{center}
+				\begin{tabu} to \linewidth {X|X[2.5]}
+					$M$ \& Struktur auf $M$ 			& $\aut(M)$\\ \hline
+					$M$ \& ohne Struktur 				& $\bij(M)$\\
+					$V$ Vektorraum über einem Körper 	& $\GL(V)$\\
+				$K \supseteq \Q$ ein Körper 			& $\gal(K:\Q) = \{\varphi: K \to K : \Q\text{-linear, bijektiv und }\varphi(ab) = \varphi(a) \varphi(b)\} $ 
+														(Galois-Gruppe von $K$)\\
+					$G$ eine Gruppe 					& $\aut(G) = \{\varphi: G \to G \underbrace{\text{ Isomorphismus von $G$ nach $G$}}_{\text{Automorphismus von } G}\} $\\
+					Affine reele Ebene 					& $\GL_2(\R) \ltimes \R^2$ \\
+					Euklidische reelle Ebene  			& $O_2(\R) \ltimes \R^2$\\
+					Sphärische Geometrie 				& $O_3(\R)$\\
+					Hyperbolische Geometrie 			& $\SO_{2,1}(\R), P \GL_{2}(\R)$\\ %TODO no idea if that is right
+					\qquad \qquad\quad \vdots \\
+					Topologischer-Raum $X$ 				& $\text{Homöo}(X) = \{\varphi: X\to X \text{ bijektiv, stetig, } \varphi^{-1} \text{ stetig}\} $\\
+					Mannigfaltigkeit $M$				& $\operatorname{Diffeo}^{\infty}(M) = \{\varphi: M \to M$ bijektiv, stetig, glatt und ebenso  $\varphi^{-1}\} $\\
+					$M =$ regelmäßiges Polygon in $\R^2$ & Diedergruppe $D_{n} = \{$ lineare Abb. in $\GL_2(\R)$, die $M$ auf sich abbilden $\} $ \\
+					$M = $ Platonische Körper im $\R^3$ \\
+					$M =$ Zauberwürfel Rubik's Cube		& Bewegungen des Zauberwürfels
+				\end{tabu}
+			\end{center}
+		\item Sei $K$ ein Körper. Dann ist
+			\[
+				\GL_{n}(K) = \{A \in \mat_{nn}(K) : A \text{ invertierbar}\} 
+			\]
+			ein Gruppe. Falls $V$ ein $n$-dimensionaler Vektorraum über $K$ ist, so ist $\GL(V)$ isomorph zu $\GL_{n}(K)$ 
+			- dies ist mit der Auswahl einer Basis von $V$ gleichzusetzen.
+			Des Weiteren ist 
+			\[
+				\det: \GL_{n}(K) \to K^{\times}
+			.\] 
+			ein Gruppenhomomorphismus und $\ker(\det) = \operatorname(SL)_{n}(K)$.
+		\item .
+			\begin{center} 
+				\begin{tabu} to \linewidth {XX}
+					$(0,\infty) < R^{\times}$ ist eine Untergruppe. &$S^{1} = \{z \in \C \mid \abs{z} = 1\} = \ker(\abs{\cdot}) < \C^{\times}$ ist eine Untergruppe.\\
+					$\exp: \R \to \R^{\times }$ ist ein Homomorphismus. &$\exp: \C  \to \C^{\times}$ ist ein Homomorphismus. $\ker(\exp) = 2\pi i \Z$ 
+				\end{tabu} 
+			\end{center}
+		\item $G_1 \times G_2$ ist eine Gruppe (komponenetenweisen Operationen) falls $G_1,G_2$ Gruppen sind.
+	\end{enumerate}
+\end{eg}
+
+\begin{lemma}
+	Sei $G$ eine Gruppe und $a \in G$. Dann definiert $k \in \Z \mapsto a^{k} \in G$ einen Gruppenhomomorphismus.
+	Entweder ist $\varphi$ injektiv oder es gibt ein $n_0 > 0$ mit $\ker(\varphi) = (n_0) = \Z n_0$.
+\end{lemma}
+
+\begin{definition}
+	Falls $\varphi$ wie im Lemma injektiv ist, so sagen wird, dass $a$ \emph{unendliche Ordnung} hat.
+	Falls $\ker(\varphi) = (n_0)$ mit $n_0 > 0$ ist, so sagen wir, dass $a$ \emph{Ordnung $n_0$} hat.
+\end{definition}
+
+\begin{proof}
+	$\varphi: n \mapsto a^{n}$ ist ein Homomorphismus wegen dem zweiten Lemma von heute.
+	\begin{remark}
+		$I = \ker(\varphi)$ ist ein Ideal in $\Z$ und eine Untergruppe.
+		Angenommen  $k \in I$ und $n \in \Z$. Dann gilt $\varphi(n^{k}) = a^{nk} = (a^{k})^{n} = e$ und daher $nk \in I$.
+		Entweder $I = (0)$ oder $I = (n_0)$ für $n_0 > 0$:\\
+		$I = (0)$ dann ist $\varphi$ injektiv:
+		Angenommen $\varphi(m) = \varphi(n) \Leftrightarrow \varphi(m-n) = e \Leftrightarrow m-n \in I = (0) \implies m=n$.
+	\end{remark}
+\end{proof}
+
+\begin{eg}
+	z.B. hat
+	$\begin{pmatrix} 
+		1 & 1\\ 0 &1
+	\end{pmatrix} \in \GL_2(\R)$ unendliche Ordnung und  $\begin{pmatrix} 
+		0 &-1\\ 1 & 0
+	\end{pmatrix} \in \GL_2(\R)$ hat Ordnung $4$.
+\end{eg}
+
+\section{Konjugation}
+
+\begin{lemma}
+	Sei $G$ eine Grupee.
+	\begin{enumerate}[a)]
+		\item Für jedes $g \in G$ ist $\gamma_{g}: G \to G, x \mapsto g x g^{-1}$ ein Automorphismus von $G$, welche ein \emph{innerer Automorphismus} genannt wird.
+		\item Die Abbildung $g \in G \mapsto \gamma_{g} \in \aut(G)$ ist ein Homomorphismus.
+			Der Kern von $\Phi$ ist das Zentrum $Z_{G} = \{g \in G \mid \text{ für alle $x \in G$ gilt } gx = xg\} $.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Für $g,x,y \in G$ gilt 
+	\[
+		\gamma_{g}(x y) = g x y g^{-1} = g x g^{-1} g y g^{-1} = \gamma_{g}(x) \gamma_{g}(y)
+	.\]
+	Also ist $\gamma_{g}$ ein Homomorphismus $G \to G$.
+	Für $g,h,x \in G$ gilt 
+	\[
+		\gamma_{g}(\gamma_{h}(x) = g (\gamma_{h}(x)) g^{-1} = g (h x h^{-1}) g = (gh) x (gh)^{-1} = \gamma_{gh}(x)
+	.\]
+	Insbesondere gilt
+	\[
+		\gamma_{g} \cdot \gamma_{g^{-1}}(x) = \gamma_{g g^{-1}}(x) = \gamma_{e}(x) = \id(x)
+	.\] 
+	und daher $\gamma_{g} \gamma_{g^{-1}} = \id = \gamma_{g^{-1}} \gamma_{g}$.
+	Also ist $\gamma_{g}$ ein Automorphismus und a) ist bewiesen.
+
+	Für b) haben wir bereits gezeigt, dass $\Phi: G \to  \aut(G)$ ein Homomorphismus ist:
+	\[
+		\Phi(gh) = \gamma_{gh} = \gamma_{g} \cdot \gamma_{h} = \Phi(g) \Phi(h)
+	.\] 
+	Des Weiteren gilt
+	\[
+		\ker(\Phi) = \{g \in G \mid \gamma_{g} = \id\}  = \{g \in G \mid \underbrace{g x g^{-1} = x}_{gx = xg} \text{ für alle } x \in G\} 
+	.\] 
+\end{proof}
+
+\begin{definition}
+	Sei $G$ ein Gruppe und $g \in G$. Dann ist die Menge der Fixpunkte $\gamma_{g}$ gleich dem Zentralisator von $g$ :
+	\[
+		\operatorname{Cent}_{g} = \{x \in G \mid gx = xg\} 
+	.\] 
+\end{definition}
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $x,y \in G$.
+	Wir sagen $x,y$ sind \emph{zueinander konjugiert}, falls es ein $g \in G$ mit $g x g^{-1} = y$.
+\end{definition}
+
+\begin{lemma}
+	\enquote{Konjugiert sein} definiert eine Äquivalenzrelation auf jeder Gruppe.
+\end{lemma}
+
+\begin{proof}
+	Übung
+\end{proof}
+
+\begin{eg}
+	\begin{enumerate}[a)]
+		\item Sei $G = \GL_{n}(\C)$. Zwei Matrizen $A,B$ sind konjugiert falls es ein $g \in \GL_{n}(\C)$ gibt mit $g A g^{-1} = B$.
+			Dies gilt genau dann, wenn $A$ und $B$ dieselbe Jordan-Normalform hat.
+		\item Sei $G = U_{n}(\C) = \{A \in \GL_{n}(\C) \mid A^{*} A = A A^{*} = I\} $.
+			Jedes $g \in G$ ist mittels einem Element von $G$ diagonalisierbar.
+			$\implies$ Konjugationsklassen für $G$ können wir durch Elemente von $(S^{1})^{n}$ modulo Vertauschung der Koordinaten beschreiben.
+	\end{enumerate}
+\end{eg}
+
+Manchmal ist $G$ sehr kompliziert und unüberschaubar aber Konjugationsklassen einfacher zu verstehen.
+
+\begin{eg}
+	$\sym_{n} = S_{n}$ hat $n! \approx \left( \frac{n}{e} \right)^{n} \sqrt{2\pi n} $ Elemente (Sterling-Formel).
+	Die Anzahl der Konjugationsklassen ist hingegen ungefähr $\frac{1}{4 \sqrt{3} n} e^{2\pi \sqrt{\frac{n}{6}}}$ (Hardy-Ramanujan 1918).
+\end{eg}
+
+\begin{eg}
+	\begin{enumerate}[1)]
+		\item Das Zentrum von $S_{n}$ für $n \geq 3$ ist $\{1\}$. (Ü)
+		\item Das Zentrum von $\GL_{n}(K)$ ist $\{A \in \GL_{n}(K) \mid  A \text{ ist Diagonal mit Diagonaleintrag} t \in K^{\times}\}$ :
+			\begin{align*}
+			\begin{pmatrix} 
+				t &0\\ 0 &1
+			\end{pmatrix} = \begin{pmatrix} 
+				0 &1\\ 0&0
+			\end{pmatrix} = \begin{pmatrix} 
+				0 &t\\ 0 & 0
+			\end{pmatrix} \\
+			\begin{pmatrix} 
+				0 &0\\ 0 & 0
+			\end{pmatrix} = \begin{pmatrix} 
+				t &0\\ 0 &1
+			\end{pmatrix} = \begin{pmatrix} 
+				0 &1\\ 0 &0
+			\end{pmatrix} 
+			\end{align*}
+		\item Das Zentrum von $\SL_{n}(K)$ ist $\{A \in \GL_{n}(K) \mid  A \text{ ist Diagonal mit Diagonaleintrag} t \in K^{\times}, t^{n} = 1\}$
+	\end{enumerate}
+\end{eg}
+
+\section{Untergruppen und Erzeuger}
+\textbf{Wiederholung:}
+$H\subseteq G$ nichtleer ist eine \emph{Untergruppe} ($H<G$ ) falls für alle $a,b \in H$ gilt $ab^{-1} \in H$.
+
+\begin{eg}
+	Sei $G = \Z$. Dann ist jede Untergruppe $H < \Z$ ein Ideal und damit von der Form $H = (n_0)$ für ein $n_0 \in \N$.
+	Denn: Für $n \in H$ und $k \in \Z$ gilt 
+	\[
+		k \cdot n = \begin{cases}
+			\underbrace{n + \ldots + n}_{k-\text{mal}} \in H &\text{für } k > 0\\
+			0 \in H &\text{für } k = 0\\
+			\underbrace{-n - \ldots -n}_{\abs{k}-\text{mal}} \in H &\text{für } k <0
+		\end{cases}
+	\]
+\end{eg}
+
+\begin{eg}
+	Sei $n \geq 2$ eine natürliche Zahl.
+	Dann definieren wir die \emph{Diedergruppe} $D_{2n}$ mittels $\zeta = e^{\frac{2 \pi i}{n}}$ und $\R$-lineare Transformationen auf $\C$ :
+	\[
+		D_{2n} = \underbrace{\{z \mapsto \zeta^{k} z : k = 0,1,\ldots,n-1\}}_{C_{n} \cong \sfrac{\Z}{(n)}} \cup 
+		\{\underbrace{z \mapsto \zeta^{k} \overline{z}}_{\sigma_{k}} = k = 0,1,\ldots,n-1\} 
+	.\] 
+	und es gilt $\sigma_{k}(\sigma_{k}(z)) = \sigma_{k}(\zeta^{k} \overline{z}) = \zeta^{k} \overline{(\zeta^{k} \overline{z})} = z$, also definiert $\sigma_{k}$ eine Spiegelung 
+	des regelmäßigen $n$-Ecks. $C_{n}$ definiert die Drehungen.
+
+	\textbf{Untegruppen:} $\{\id\}, D_{2n}, C_{n}, \{\id, \sigma_{k}\}$ für $k = 0,\ldots,n-1$, für $k \mid n$ gibt es auch eine Untergruppe von $C_{n}$ isomorph zu $\frac{\Z}{(n)}$ 
+	und von $D_{2n}$ isomorph zu. %TODO missing
+\end{eg}
+
+\begin{lemma}
+	Eine Untergruppe von einer Untergruppe ist eine Untergruppe.
+\end{lemma}
+
+\begin{lemma}
+	Sei $G$ eine Gruppe und $I$ eine Menge und $H_{i} < G$ für jedes $i \in I$.
+	Dann ist $\bigcap_{i \in I} H_{i} < G$.
+\end{lemma}
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $X \subseteq G$ eine Teilmenge. Die Untergruppe, die von $X$ erzeugt wird ist definiert als
+	\[
+		\left< X \right> = \bigcap_{\substack{H < G\\ X \subseteq H}} H
+	.\] 
+	Wir nenne  $X$ die \emph{Erzeugendenmenge} von $\left< X \right>$. Falls $\left< X \right> = G$ sagen wir, dass $G$ \emph{durch $X$ erzeugt} wird.
+	Falls $X = \{g\}$ dann nennen wir $\left< X \right> = \left< g \right>$ die von $g$ erzeugte \emph{zyklische Untergruppe} von $G$. 
+\end{definition}
+
+\begin{lemma}
+	Sei $G$ eine Gruppe und $X \subseteq G$. Dann ist $\left< X \right> = 
+	\{x_{1}^{\epsilon_1}\ldots x_{n}^{\epsilon_{n}} \mid n \in \N, x_1,\ldots,x_{n} \in X, \epsilon_1,\ldots,\epsilon_{n} \in \{\pm 1\} \} $.
+\end{lemma}
+
+\begin{proof}
+	Sei $H_0$ die Menge rechts im Lemma. Dann gilt $X \subseteq H_0$ und $H_0 < G$.
+	Daher tritt $H_0$ als eine der Untergruppen in der Definition von $\left< X \right>$ auf und wir erhalten $\left< X \right> \subseteq H_0$.
+	Falls $H < G$ und $X \subseteq H$, dann enthält $H$ auch jeden Ausdruck der Form $x_1^{\epsilon_1} \ldots x_{n}^{\epsilon_{n}}$.
+	Daher gilt $H_0 \subseteq H$. Da dies für alle derartigen $H$'s gilt, folgt $H_0 \subseteq \left< X \right>$.
+\end{proof}
+
+\begin{lemma}
+	Sei $G$ eine Gruppe und $a \in G$. Dann gilt $\left< a \right> \approx \sfrac{\Z}{(n_0)}$ für ein $n_0 \in \N$.
+\end{lemma}
+
+\begin{proof}
+	Wir definieren $\varphi: n \in \Z \mapsto a^{n} \in G$. Dies ist ein Homomorphismus und $\ker(\varphi) = I = (n_0)$ für ein $n_0 \in \N$.
+	Nun definieren wir $\Phi: \sfrac{\Z}{(n_0)} \to  \left< a \right>, k+(n_0) \mapsto a^{k}$.
+	Dies ist wohldefiniert und injektiv wegen
+	\[
+		k+(n_0) = l+(n_0) \Leftrightarrow k-l \in (n_0) = \ker(\varphi) \Leftrightarrow a^{k-l} = e \Leftrightarrow a^{k} = a^{l}
+	.\] 
+\end{proof}
+
+\begin{eg}
+	$S_{n}$ (mit $n!$ Elementen verschiedenster Natur) ist durch zwei Elemente erzeugt:
+	\begin{align*}
+		\tau_{1,2} = \text{ Vertauschung von $1$ und $2$: } \begin{cases}
+			1 \mapsto 2\\ 2 \mapsto 1 \\ 3 \mapsto 3\\ \quad \vdots\\ n \mapsto n
+		\end{cases} (\text{Ordnung } 2)\\
+		\sigma = \text{zyklische Vertauschung aller Zahlen: } \begin{cases}
+			1 \mapsto 2\\ 2 \mapsto 3\\ 3 \mapsto 4 \\ \quad\vdots \\ n\mapsto 1
+		\end{cases} (\text{Ordnung } n)
+	\end{align*}
+	Zum Beispiel $\sigma \tau_{1,2} \sigma^{-1} = \begin{cases}
+		1 \mapsto n \mapsto  n \mapsto  1\\
+		2  \mapsto 1 \mapsto 2 \mapsto 3\\
+		2 \mapsto 2 \mapsto 1 \mapsto 2\\
+		\qquad\quad\vdots
+	\end{cases} = \tau_{2,3}$. Alle $\tau_{i,i+1} \in \left< \tau_{1,2}, \sigma \right>$.
+	Diese Vertauschungen erzeugen ganz $S_{n}$.
+	Sei $\rho \in S_{n}$ beliebig. Durch Linksmultiplikation von $\rho$ mit Vertauschungen $\tau_{i,i+1}$ können wir $\rho$ schrittweise vereinfachen
+	und erhalten nach endlich vielen Schritten die Identität $\tau_{i_{k},i_{k}+1} \ldots \tau_{i_{n}, i_{n} + 1} \rho = \id$.
+\end{eg}
+
+\begin{remark}
+	Es gibt keinen \enquote{Basis- oder Diemensionsbegriff}:
+	Denn is $S_{6}$ gibt es eine Untergruppe, die von $3$ oder mehr Elementen erzeugt wird, aber nicht von weniger:
+	\[
+	H = \left< \tau_{1,2}, \tau_{3,4}, \tau_{5,6} \right> \cong \F_{2}^{3}
+	.\] 
+\end{remark}
+
+\begin{definition}
+	Sei $G$ eine Gruppe. Der \emph{Kommutator} von $a,b \in G$ ist 
+	\[
+		[a,b] = ab a^{-1} b^{-1}
+	.\]
+	Die \emph{Kommutatorgruppe} ist
+	\[
+		[G,G] = \left< [a,b]: a,b \in G \right>
+	.\] 
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
