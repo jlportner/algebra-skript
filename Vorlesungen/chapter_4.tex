@@ -151,7 +151,7 @@ Falls $\abs{H} < \infty$, so ist auch folgende Aussage mit obigen Aussagen äqui
 					Affine reele Ebene 					& $\GL_2(\R) \ltimes \R^2$ \\
 					Euklidische reelle Ebene  			& $O_2(\R) \ltimes \R^2$\\
 					Sphärische Geometrie 				& $O_3(\R)$\\
-					Hyperbolische Geometrie 			& $\SO_{2,1}(\R), P \GL_{2}(\R)$\\ %TODO no idea if that is right
+					Hyperbolische Ebene		 			& $\SO_{2,1}(\R), P \GL_{2}(\R)$\\ %TODO no idea if that is right
 					\qquad \qquad\quad \vdots \\
 					Topologischer-Raum $X$ 				& $\text{Homöo}(X) = \{\varphi: X\to X \text{ bijektiv, stetig, } \varphi^{-1} \text{ stetig}\} $\\
 					Mannigfaltigkeit $M$				& $\operatorname{Diffeo}^{\infty}(M) = \{\varphi: M \to M$ bijektiv, stetig, glatt und ebenso  $\varphi^{-1}\} $\\
@@ -337,8 +337,8 @@ $H\subseteq G$ nichtleer ist eine \emph{Untergruppe} ($H<G$ ) falls für alle $a
 	und es gilt $\sigma_{k}(\sigma_{k}(z)) = \sigma_{k}(\zeta^{k} \overline{z}) = \zeta^{k} \overline{(\zeta^{k} \overline{z})} = z$, also definiert $\sigma_{k}$ eine Spiegelung 
 	des regelmäßigen $n$-Ecks. $C_{n}$ definiert die Drehungen.
 
-	\textbf{Untegruppen:} $\{\id\}, D_{2n}, C_{n}, \{\id, \sigma_{k}\}$ für $k = 0,\ldots,n-1$, für $k \mid n$ gibt es auch eine Untergruppe von $C_{n}$ isomorph zu $\frac{\Z}{(n)}$ 
-	und von $D_{2n}$ isomorph zu. %TODO missing
+	\textbf{Untergruppen:} $\{\id\}, D_{2n}, C_{n}, \{\id, \sigma_{k}\}$ für $k = 0,\ldots,n-1$, für $k \mid n$ gibt es auch eine Untergruppe von $C_{n}$ isomorph zu $\frac{\Z}{(n)}$ 
+	und von $D_{2n}$ isomorph zu $D_{2k}$. $D_{2\cdot 2}$ hat noch eine weitere Untergruppe.
 \end{eg}
 
 \begin{lemma}
@@ -424,8 +424,242 @@ $H\subseteq G$ nichtleer ist eine \emph{Untergruppe} ($H<G$ ) falls für alle $a
 	.\] 
 \end{definition}
 
+\section{Nebenklassen und Quotienten}
 
+\begin{definition}
+	Sei $G$ eine Gruppe und $H < G$.
+	Wir definieren zwei Relationen auf $G$ 
+	\[
+		a \sim_{H} b \Leftrightarrow b^{-1} a \in H \qquad a \prescript{}{H}{\sim} b \Leftrightarrow b a^{-1} \in H
+	.\] 
+	Wir nennen die Menge $a H = \{a h \mid h \in H\} $ die Linksnebenklasse mit Linksrepräsentanten $a$ und schreiben auch
+	\[
+	\sfrac{G}{H} = \{a H \mid a \in G\} 
+	.\] 
+	Außerdem nennen wir die Menge $H a = \{h a \mid h \in H\} $ die Rechtsnebenklasse mit Rechtsrepräsentanten $a$ und schreiben 
+	\[
+	\sfrac{H}{G} = \{H a \mid a \in G\} 
+	.\] 
+\end{definition}
 
+\begin{lemma}
+	Sei $G$ eine Gruppe und $H < G$. Dann ist $\sim_{H}$ eine Äquivalentrelation und $[ a ]_{\sim_{H}}$ und $G / H$ ist der Quotient von $G$ bzgl. $\sim_{H}$.
+	Dies gilt analog für $\prescript{}{H}{\sim}$
+\end{lemma}
+
+\begin{proof}
+	$a \sim_{H} a$ denn $a^{-1} a = e \in H$.\\
+	$a \sim_{H} b \implies b^{-1} a \in H \implies (b^{-1} a)^{-1} = a^{-1} b \in H \implies b \sim_{H} a$.
+	$a \sim_{H} b $ und $b \sim_{H} c \implies b^{-1} a, c^{-1} b \in H \implies> c^{-1} a = (c^{-1} b) (b^{-1} a) \in H \implies a \sim_{H} c$.\\
+	Also ist $\sim_{H}$ eine Äquivalenzrelation. Des Weiteren gilt:
+	\[
+		[ a ]_{\sim_{H}} = \{b \mid b \sim_{H} a \}  = \{b \mid b^{-1} a \in H\} = a H \quad (b^{-1} a = h \in H \implies a = b h \text{ für } h \in H)
+	.\] 
+\end{proof}
+
+\begin{eg}	
+	$S_{3} > H = \left< \tau_{12} \right> = \{e, \tau_{12}\} $. Sei $\sigma$ die zyklische Vertauschung von  $1,2,3$.
+	Dann ist  $\sigma H \neq H \sigma$, da $\{\sigma, \sigma \tau_{12}\} \neq \{\sigma, \tau_{12} \sigma\} $.
+	\[
+	\sigma \tau_{12}: 1 \to 2 \to 3 \qquad \tau_{12} \sigma : 1 \to 2 \to 1
+	.\] 
+\end{eg}
+
+\begin{theorem}
+	Sei $G$ eine Grupee und $H < G$.
+	\begin{enumerate}[(1)]
+		\item $\sfrac{G}{H}$ und $\sfrac{H}{G}$ sind (auf natürliche Weise) gleichmächtig.
+		\item {[Lagrange]} Falls $\abs{G} < \infty$, dann gilt $\abs{G} = \abs{\sfrac{g}{H}} \cdot \abs{H}$.
+			Insbesondere gilt $\abs{H}$ ist ein Teiler von $\abs{G}$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{definition}
+	Die Kardinalität von $G$ wird auch die \emph{Ordnung} von $G$ genannt.
+	Die Kardinalität von $\sfrac{G}{H}$ wird der \emph{Index $[G:H]$} von $H$ in $G$ genannt.
+\end{definition}
+
+\begin{proof}
+	Wir definieren $\varphi: \sfrac{G}{H} \to \sfrac{H}{G}$ und $\psi: \sfrac{H}{G} \to \sfrac{G}{H}$ durch
+	\[
+		a H \mapsto (a H)^{-1} = \{g^{-1}: g \in a H\} = H a^{-1} \qquad H a \mapsto (Ha)^{-1} = a^{-1} H
+	.\] 
+	Wir sehen auch $\psi(\varphi(aH)) = \psi(H a^{-1}) = a H $ und analog $\psi \circ \varphi = \id$.
+	Also folgt $\abs{\sfrac{H}{G}} = \abs{\sfrac{G}{H}}$ wie in $(1)$ behauptet.
+
+	Für $(2)$ wählen wir aus jeder Linksnebenklasse $a H$ für $a \in G$ genau einen Linksrepräsentanten
+	$x \in a H$ aus. Die Menge der ausgewählten Linksrepräsentanten bezeichnen wir mit $X$. Es gilt  $\abs{\sfrac{G}{H}} = \abs{X}$.
+	\begin{claim}
+		\[
+			\abs{G} \stackrel{!}{=} \abs{X \times  H} = \abs{X} \abs{H} = \abs{\sfrac{G}{H}} \cdot \abs{H}
+		\]
+		$\psi: X \times  H \to G$ mit $(x,h) \mapsto  x h $
+	\end{claim}
+	$\psi$ ist \emph{surjektiv}: Sei $g \in G$, dann ist $gH \in \sfrac{G}{H}$ und wir haben in der Konstruktion von $X$ aus $g H$ ein $x \in X \cap g H$ 
+	ausgewählt. Insebsondere gibt es ein $h \in H$ (weil $g \sim_{H} x$) mit $g = xh = \psi(x,h)$. Also ist $\psi$ surjektiv.
+
+	$\psi$ ist \emph{injektiv}: Angenommen $\psi(x_1,h_1) = \psi(x_2,h_2)$ also $x_1 h_1 = x_2 h_2$ für $(x_1,h_1),(x_2,h_2) \in X \times G$.
+	Insbesondere gilt $x_1 H = x_2 H$ in der Konstruktion von $X$ nur einen Linksrepräsentanten ausgewählt haben,
+	gilt also $x_1 = x_2$. Daher gilt $x_1 h_1 = x_1 h_2$ und auch $h_1 = h_2$. 
+	Wir haben also $(x_1,h_1) = (x_2,h_2)$ überprüft. Da dies für alle Paare $(x_1,h_1),(x_2,h_2)$ gilt, ist also $\psi$ injektiv.
+\end{proof}
+
+\begin{corollary}
+	Sei $G$ eine endliche Gruppe und $g \in G$. Dann teilt die Ordnung von $g$ die Ordnung von $G$.
+	Des Weiteren gilt $g^{\abs{G}} = e$.
+\end{corollary}
+
+\begin{proof}
+	Sei $m = \abs{G}$ und $n = \abs{\left< g \right>} =$ Ordnung von $g$.
+	Dann gilt $n \mid m$ wegen des Satzes von Lagrange.
+	Sei $k = \frac{m}{n}$. Dan gilt
+	\[
+		g^{\abs{G}} = g^{m} = g^{nk} = (g^{n})^{k} = e^{k} = e
+	.\] 
+\end{proof}
+
+\begin{corollary}
+	In $\F_{p} = \sfrac{\Z}{(p)}$ gilt $a^{p-1} = \begin{cases}
+		0 &a = 0\\
+		1 &\text{für alle } a \in \F_{p}^{\times}
+	\end{cases}$
+\end{corollary}
+
+\begin{proof}
+	$G = \F_{p}^{\times }$ hat Ordnung $p-1$.
+\end{proof}
+
+\begin{corollary}[Erste Klassifikation von Gruppen]
+	Sei $G$ eine endliche Gruppe und $\abs{G} = p \in \N$ prim. Dann ist $G$ isomorph zu $\sfrac{\Z}{(p)}$.
+\end{corollary}
+
+\begin{proof}
+	Sei $g \in G \setminus \{e\} $. Dann ist $n = \operatorname{Ord}(g) = \left< g \right> = 1$ und ein Teiler von $p$.
+	Also ist $n = p$ und $\left< g \right> = G$.
+\end{proof}
+
+$\implies$ Es gibt bis auf Isomorphie nur eine Gruppe der Ordnung $2,3,5,7,\ldots$.
+
+Im Allgemeinen haben $\sfrac{G}{H}$ uund $\sfrac{H}{G}$ keine natürliche Gruppenstruktur.
+
+\begin{theorem}
+	Sei $G$ eine Gruppe und $H < G$. Die folgenden Bedingungen sind äquivalent
+	\begin{enumerate}[(1)]
+		\item Für alle $x \in G$ ist $x H = H x$.
+		\item Für alle  $x \in G$ ist $x H x^{-1} = H$.
+		\item Es existiert eine gruppe $G_1$ und ein Gruppenhomomorphimus $\varphi: G \to G_1$ mit $H = \ker(\varphi)$.
+		\item Für alle $x,y \in G$ gilt $(xH)(yH) = (xy) H$.
+		\item $\sfrac{G}{H}$ ist (auf natürliche Weise) eine Gruppe so dass $\varphi: G \to \sfrac{G}{H}, g \mapsto g H$ ein Gruppenhomomorphismus ist.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	$(5) \implies (3)$ : $\ker(\varphi) = \{g \mid gH = e H\} = H$ \\
+	$(3) \implies (2)$ : Sei $x \in G, h \in H = \ker(\varphi)$.
+	Dann gilt $\varphi(x h x^{-1}) = \varphi(x) \underbrace{\varphi(h)}_{= e} \varphi(x)^{-1} = e$ also $x h x^{-1} \in H = \ker(\varphi)$.
+	$\implies x H x^{-1} \subseteq H, x^{-1} H x \subseteq H \implies H \subseteq x H x^{-1}$. Somit folgt $x H x^{-1} = H$\\
+	$(2) \Leftrightarrow (1)$ : Rechtsmultiplikation mit $x^{-1}$ oder $x$.\\
+	$(1) \implies (4)$ : Seien $x,y in G$. Dann gilt $(xH)(yH) = (Hx)(yH) = (Hxy)H = xy H H = xy H$.\\
+	$(4) \implies (5)$ : Nach Annahme in $4$ ist die Abbildung 
+	\[
+		\sfrac{G}{H} \times \sfrac{G}{H} \to \sfrac{G}{H} \qquad (xh) \times (yH) \mapsto (xH)(yH) = (xy) H
+	\]
+	wohldefiniert. Nun folgen die Gruppenaxiome in $\sfrac{G}{H}$ direkt aus den Gruppenaxiome in $G$.
+	\[
+		((xH)(yH)) (zH) = ((xy)H)(zH) = ((xy) z) H = (x(yz)H) = \ldots = (xH)((yH)(zH))
+	.\] 
+	also ist $a$ in $\sfrac{G}{H}$ assoziativ.
+	\begin{align*}
+		&(xH)(eH) = (eH)(xH) = xH\\
+		&(xH)(x^{-1} H) = (x^{-1} H)(xH) = e H
+	.\end{align*}
+\end{proof}
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $H < G$.
+	Wir sagen $H$ ist \emph{normal} in $G$ oder ein \emph{Normalteiler} von $G$ falls $H$ die Bedingungen in obigem Satz erfüllt.
+	Wir schreiben in diesem Fall auch $H \lTri G$.
+	Falls $H \lTri G$ so nennen wir $\sfrac{G}{H}$ die \emph{Faktorgruppe} von $G$ modulo $H$.
+\end{definition}
+
+\begin{definition}
+	Sei $G \neq \{e\} $ eine Gruppe. Wir sagen $ G$ ist \emph{einfach} falls $G$ nur $\{e\} $ und $G$ als Normalteiler besitzt.
+\end{definition}
+
+\begin{eg}
+	Eine abelsche Gruppe ist genau dann einfach wenn $G \simeq \frac{\Z}{(p)}$ für eine Primzahl $p \in \N$.
+\end{eg}
+
+\begin{eg}
+	Auf $S_{n}$ gibt es den Homomorphismus $\sgn: S_{n} \to \{\pm 1\} $. Der Kern $A_{n} = \ker(\sgn)$ wird die \emph{alternierende Gruppe} genannt.
+	Für $n \geq 5$ ist $A_{n}$ eine nicht abelsche einfache Gruppe.
+\end{eg}
+
+\begin{theorem}[Erster Isomorphiesatz]
+	Sei $\varphi: G \to H$ eine Homomorphismus zwischen zwei Gruppen $G$ und $H$.
+	Dann induziert $\varphi$ einen Isomorphismus $\abs{\varphi}: \sfrac{G}{\ker(\varphi)} \to  \Im(\varphi)$ so dass 
+	folgendes Diagram komutiert
+	\[
+	\begin{tikzcd}
+		G \arrow[d, "\pi"'] \arrow[r, "\varphi"]                 & H                                    \\
+	\sfrac{G}{\ker(\varphi)} \arrow[r, "\overline{\varphi}"] & \Im(\varphi) < H \arrow[u, "\iota"']
+		\end{tikzcd}
+	\] 
+	mit $\pi$ als der kanonischen Projektion und $\iota$ der Einbettung.
+	Also gilt $\varphi = \iota \circ \overline{\varphi} \circ \pi$.
+\end{theorem}
+
+\begin{proof}
+	Wir zeigen, dass $\overline{\varphi}(x \ker(\varphi)) = \varphi(x)$ auf $\sfrac{G}{\ker(\varphi)}$ wohldefiniert und injektiv ist:
+
+	Seien $x,y \in G$, dann gilt 
+	\[
+		\varphi(x) = \varphi(y) \Leftrightarrow \varphi(y)^{-1} \varphi(x) = e \Leftrightarrow \varphi(y^{-1} x) = \Leftrightarrow y^{-1} x \in \ker(\varphi) \Leftrightarrow
+		x \ker(\varphi) = y \ker(\varphi)
+	\]
+	$\implies$ wohldefiniert. $\impliedby$ injektiv.
+
+	Auch gilt $\Im(\overline{\varphi}) = \Im(\varphi)$ womit $\overline{\varphi}: \sfrac{G}{\ker(\varphi)} \to \Im(\varphi)$ ein Isomorphismus ist.
+	Für $g \in G$ gilt $\iota(\overline{\varphi}(\pi(g))) = \iota(\overline{\varphi}(g \ker(\varphi))) = \iota(\varphi(g)) = \varphi(g)$.
+\end{proof}
+
+\begin{eg}
+	Sei $p$ prim. $\abs{\GL_{2}(\F_{p})} = (p^2 -1)(p^2 - p)$
+	$\det: \GL_{2}(\F_{p}) \to \F_{p}^{\times}$ ist surjektiv z.B. wegen $\det\begin{pmatrix} 
+		t & 0\\ 0 & 1
+	\end{pmatrix} = t$ 
+
+	$\SL_2(\F_{2}) = \ker(\det)$. Es folgt aus dem Satz von Lagrange und dem ersten Isomorphiesatz 
+	\[
+		\abs{\SL_2(\F_{p})} \cdot (p-1) = \abs{\GL_2(\F_{p}}
+	\]
+	wobei Index $= \abs{\sfrac{G}{\ker(\det)}} = \abs{\Im(\det)} = p-1$.
+	\[
+		\implies \abs{\SL_2(\F_{p})} = \frac{(p^2-1)(p^2-p)}{p-1} = p (p^2-1)
+	.\] 
+\end{eg}
+
+\begin{corollary}[Zweiter Isomorphiesatz]
+	Sei $G$ eine Gruppe, $H \lTri G$. und $K < G$.
+	Dann gilt $K H = H K < G, H \lTri KH, H \cap K \lTri K $ und 
+	\[
+	\sfrac{K}{H \cap K} \simeq \sfrac{KH}{H}
+	.\] 
+	mit $x H \cap K \leftrightarrow x H$ für $x \in K$
+\end{corollary}
+
+\begin{proof}
+	Für $k \in K$ gilt $kH = Hk$. 
+	Für die Vereinigung über alle $k \in K$ gilt daher $KH = HK$.
+	Des Weiteren gilt für  $k_1, k_2 \in K, h_1,h_2 \in H$ dass
+	\begin{align*}
+		&(k_1 h_1) (k_2 h_2) \in \underbrace{KH}_{HK} KH = \underbrace{HK}_{KH} H = K\\
+		&(k_1 h_1)^{-1} = h_1^{-1} k_1^{-1} \in KH = HK
+	\end{align*}
+	Folht $KH < G$.
+
+	Des Weiteren ist $H \lTri KH$ weil $H < KH$ und für $x \in KH \subseteq G$ gilt $xH = Hx$
+\end{proof}
 
 
 
