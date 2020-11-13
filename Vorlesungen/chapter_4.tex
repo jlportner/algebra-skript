@@ -6,7 +6,7 @@
 
 \begin{definition}
 	Eine Menge $G$ gemeinsam mit einer Abbildung $\cdot : G \times G \to G$ heißt eine Gruppe falls folgende Axiome erfüllt sind:
-	\begin{enumerate}
+	\begin{enumerate}[1)]
 		\item Assoziativität: $\forall a,b \in G: (a \cdot  b) \cdot  c = a \cdot (b \cdot c)$
 		\item Einheit: $\exists e \in G \forall a \in G: e \cdot a = a \cdot e = a$
 		\item Inverse: $\forall a \in G \exists x \in G: a \cdot  x = x \cdot a = e$ (wobei $e$ wie in 2) ist)
@@ -73,7 +73,7 @@
 		\item IA: $a^{k} a^{0} = a^{k+0}$ \\
 			IS: $a^{k} a^{l+1} = a^{k} a^{l} a = a^{k+l} a = a^{k+l+1}$ per rekursiver Definition
 		\item IA: $(a^{k})^{0} = e = a^{k \cdot 0}$\\
-			IS: $(a^{k})^{l+1} = (a^{k})^{l} a^{k} = a^{kl} a^{k} \stackrel{a)}{=} = a^{k(l+1)}$ 
+			IS: $(a^{k})^{l+1} = (a^{k})^{l} a^{k} = a^{kl} a^{k} \stackrel{a)}{=} a^{k(l+1)}$ 
 		\item IA: $a b^{0} = b^{0} a$ \\
 			IS: $a b^{l+1} = a b^{l} b = b^{l} a b = b^{l} b a = b^{l+1} a$ also  $a$ kommutiert mit  $b^{l}$.\\
 		IA: $(ab)^{0} = e = a^{0} b^{0}$\\ 
@@ -132,9 +132,9 @@ Falls $\abs{H} < \infty$, so ist auch folgende Aussage mit obigen Aussagen äqui
 		\item Addition in Ringen (und Körper) und Vektorräume.
 		\item Die Gruppe $R^{\times}$ der Einheiten in einem Ring.
 			Insbesondere $K^{\times} = K \setminus \{0\}$ für einen Körper.
-			Also $\R^{x} = \R \setminus \{0\}$ bzw $\C^{\times} = \C \setminus \{0\}$.
+			Also $\R^{\times} = \R \setminus \{0\}$ bzw $\C^{\times} = \C \setminus \{0\}$.
 		\item Sei $M$ eine nichtleere Menge. Dann ist $\bij(M) = \{\varphi: M \to M \text{ bijektiv}\} $ eine Gruppe (bzgl. Verknüpfung der Abbildungen).
-			Falls $M = \{1,\ldots,n\}$ für ein $n \geq 1$, so nennen wir $\sym_{n} = S_{n} = \bij(\{1,\ldots,b\})$ auch die \emph{symmtrische Gruppe}.
+			Falls $M = \{1,\ldots,n\}$ für ein $n \geq 1$, so nennen wir $\sym_{n} = S_{n} = \bij(\{1,\ldots,b\})$ auch die \emph{symmetrische Gruppe}.
 		\item Sei $M$ eine nichtleere Menge mit \enquote{einer Struktur}. Dann ist 
 			\[
 				\operatorname{Aut}(M) = \{\varphi: M \to M \text{ bijektiv \& \enquote{strukturerhaltend} }\} 
@@ -170,7 +170,7 @@ Falls $\abs{H} < \infty$, so ist auch folgende Aussage mit obigen Aussagen äqui
 			\[
 				\det: \GL_{n}(K) \to K^{\times}
 			.\] 
-			ein Gruppenhomomorphismus und $\ker(\det) = \operatorname(SL)_{n}(K)$.
+			ein Gruppenhomomorphismus und $\ker(\det) = \SL_{n}(K)$.
 		\item .
 			\begin{center} 
 				\begin{tabu} to \linewidth {XX}
@@ -219,7 +219,7 @@ Falls $\abs{H} < \infty$, so ist auch folgende Aussage mit obigen Aussagen äqui
 	\begin{enumerate}[a)]
 		\item Für jedes $g \in G$ ist $\gamma_{g}: G \to G, x \mapsto g x g^{-1}$ ein Automorphismus von $G$, welche ein \emph{innerer Automorphismus} genannt wird.
 		\item Die Abbildung $g \in G \mapsto \gamma_{g} \in \aut(G)$ ist ein Homomorphismus.
-			Der Kern von $\Phi$ ist das Zentrum $Z_{G} = \{g \in G \mid \text{ für alle $x \in G$ gilt } gx = xg\} $.
+			Der Kern von $\Phi$ ist das Zentrum $Z_{G} = \{g \in G \mid gx = xg \forall x \in G\} $.
 	\end{enumerate}
 \end{lemma}
 
@@ -274,13 +274,13 @@ Falls $\abs{H} < \infty$, so ist auch folgende Aussage mit obigen Aussagen äqui
 	\begin{enumerate}[a)]
 		\item Sei $G = \GL_{n}(\C)$. Zwei Matrizen $A,B$ sind konjugiert falls es ein $g \in \GL_{n}(\C)$ gibt mit $g A g^{-1} = B$.
 			Dies gilt genau dann, wenn $A$ und $B$ dieselbe Jordan-Normalform hat.
-		\item Sei $G = U_{n}(\C) = \{A \in \GL_{n}(\C) \mid A^{*} A = A A^{*} = I\} $.
+		\item Sei $G = \on{U}_{n}(\C) = \{A \in \GL_{n}(\C) \mid A^{*} A = A A^{*} = I\} $.
 			Jedes $g \in G$ ist mittels einem Element von $G$ diagonalisierbar.
 			$\implies$ Konjugationsklassen für $G$ können wir durch Elemente von $(S^{1})^{n}$ modulo Vertauschung der Koordinaten beschreiben.
 	\end{enumerate}
 \end{eg}
 
-Manchmal ist $G$ sehr kompliziert und unüberschaubar aber Konjugationsklassen einfacher zu verstehen.
+Manchmal ist $G$ sehr kompliziert und unüberschaubar aber die Konjugationsklassen sind einfacher zu verstehen.
 
 \begin{eg}
 	$\sym_{n} = S_{n}$ hat $n! \approx \left( \frac{n}{e} \right)^{n} \sqrt{2\pi n} $ Elemente (Sterling-Formel).
@@ -290,7 +290,7 @@ Manchmal ist $G$ sehr kompliziert und unüberschaubar aber Konjugationsklassen e
 \begin{eg}
 	\begin{enumerate}[1)]
 		\item Das Zentrum von $S_{n}$ für $n \geq 3$ ist $\{1\}$. (Ü)
-		\item Das Zentrum von $\GL_{n}(K)$ ist $\{A \in \GL_{n}(K) \mid  A \text{ ist Diagonal mit Diagonaleintrag} t \in K^{\times}\}$ :
+		\item Das Zentrum von $\GL_{n}(K)$ ist $\{A \in \GL_{n}(K) \mid  A \text{ ist Diagonal mit Diagonaleintrag } t \in K^{\times}\}$ :
 			\begin{align*}
 			\begin{pmatrix} 
 				t &0\\ 0 &1
@@ -307,7 +307,7 @@ Manchmal ist $G$ sehr kompliziert und unüberschaubar aber Konjugationsklassen e
 				0 &1\\ 0 &0
 			\end{pmatrix} 
 			\end{align*}
-		\item Das Zentrum von $\SL_{n}(K)$ ist $\{A \in \GL_{n}(K) \mid  A \text{ ist Diagonal mit Diagonaleintrag} t \in K^{\times}, t^{n} = 1\}$
+		\item Das Zentrum von $\SL_{n}(K)$ ist $\{A \in \GL_{n}(K) \mid  A \text{ ist Diagonal mit Diagonaleintrag } t \in K^{\times}, t^{n} = 1\}$
 	\end{enumerate}
 \end{eg}
 
@@ -331,13 +331,13 @@ $H\subseteq G$ nichtleer ist eine \emph{Untergruppe} ($H<G$ ) falls für alle $a
 	Sei $n \geq 2$ eine natürliche Zahl.
 	Dann definieren wir die \emph{Diedergruppe} $D_{2n}$ mittels $\zeta = e^{\frac{2 \pi i}{n}}$ und $\R$-lineare Transformationen auf $\C$ :
 	\[
-		D_{2n} = \underbrace{\{z \mapsto \zeta^{k} z : k = 0,1,\ldots,n-1\}}_{C_{n} \cong \sfrac{\Z}{(n)}} \cup 
-		\{\underbrace{z \mapsto \zeta^{k} \overline{z}}_{\sigma_{k}} = k = 0,1,\ldots,n-1\} 
+		D_{2n} = \underbrace{\{z \mapsto \zeta^{k} z \mid k = 0,1,\ldots,n-1\}}_{C_{n} \cong \sfrac{\Z}{(n)}} \cup 
+		\{\underbrace{z \mapsto \zeta^{k} \overline{z}}_{\sigma_{k}} \mid k = 0,1,\ldots,n-1\} 
 	.\] 
 	und es gilt $\sigma_{k}(\sigma_{k}(z)) = \sigma_{k}(\zeta^{k} \overline{z}) = \zeta^{k} \overline{(\zeta^{k} \overline{z})} = z$, also definiert $\sigma_{k}$ eine Spiegelung 
 	des regelmäßigen $n$-Ecks. $C_{n}$ definiert die Drehungen.
 
-	\textbf{Untergruppen:} $\{\id\}, D_{2n}, C_{n}, \{\id, \sigma_{k}\}$ für $k = 0,\ldots,n-1$, für $k \mid n$ gibt es auch eine Untergruppe von $C_{n}$ isomorph zu $\frac{\Z}{(n)}$ 
+	\textbf{Untergruppen:} $\{\id\}, D_{2n}, C_{n}, \{\id, \sigma_{k}\}$ für $k = 0,\ldots,n-1$, für $k \mid n$ gibt es auch eine Untergruppe von $C_{n}$ isomorph zu $\sfrac{\Z}{(n)}$ 
 	und von $D_{2n}$ isomorph zu $D_{2k}$. $D_{2\cdot 2}$ hat noch eine weitere Untergruppe.
 \end{eg}
 
@@ -355,7 +355,7 @@ $H\subseteq G$ nichtleer ist eine \emph{Untergruppe} ($H<G$ ) falls für alle $a
 	\[
 		\left< X \right> = \bigcap_{\substack{H < G\\ X \subseteq H}} H
 	.\] 
-	Wir nenne  $X$ die \emph{Erzeugendenmenge} von $\left< X \right>$. Falls $\left< X \right> = G$ sagen wir, dass $G$ \emph{durch $X$ erzeugt} wird.
+	Wir nennen $X$ die \emph{Erzeugendenmenge} von $\left< X \right>$. Falls $\left< X \right> = G$ sagen wir, dass $G$ \emph{durch $X$ erzeugt} wird.
 	Falls $X = \{g\}$ dann nennen wir $\left< X \right> = \left< g \right>$ die von $g$ erzeugte \emph{zyklische Untergruppe} von $G$. 
 \end{definition}
 
@@ -372,7 +372,7 @@ $H\subseteq G$ nichtleer ist eine \emph{Untergruppe} ($H<G$ ) falls für alle $a
 \end{proof}
 
 \begin{lemma}
-	Sei $G$ eine Gruppe und $a \in G$. Dann gilt $\left< a \right> \approx \sfrac{\Z}{(n_0)}$ für ein $n_0 \in \N$.
+	Sei $G$ eine Gruppe und $a \in G$. Dann gilt $\left< a \right> \cong \sfrac{\Z}{(n_0)}$ für ein $n_0 \in \N$.
 \end{lemma}
 
 \begin{proof}
@@ -448,9 +448,11 @@ $H\subseteq G$ nichtleer ist eine \emph{Untergruppe} ($H<G$ ) falls für alle $a
 \end{lemma}
 
 \begin{proof}
-	$a \sim_{H} a$ denn $a^{-1} a = e \in H$.\\
-	$a \sim_{H} b \implies b^{-1} a \in H \implies (b^{-1} a)^{-1} = a^{-1} b \in H \implies b \sim_{H} a$.
-	$a \sim_{H} b $ und $b \sim_{H} c \implies b^{-1} a, c^{-1} b \in H \implies> c^{-1} a = (c^{-1} b) (b^{-1} a) \in H \implies a \sim_{H} c$.\\
+	\begin{itemize}
+		\item $a \sim_{H} a$ denn $a^{-1} a = e \in H$.
+		\item $a \sim_{H} b \implies b^{-1} a \in H \implies (b^{-1} a)^{-1} = a^{-1} b \in H \implies b \sim_{H} a$.
+		\item $a \sim_{H} b $ und $b \sim_{H} c \implies b^{-1} a, c^{-1} b \in H \implies c^{-1} a = (c^{-1} b) (b^{-1} a) \in H \implies a \sim_{H} c$.
+	\end{itemize}
 	Also ist $\sim_{H}$ eine Äquivalenzrelation. Des Weiteren gilt:
 	\[
 		[ a ]_{\sim_{H}} = \{b \mid b \sim_{H} a \}  = \{b \mid b^{-1} a \in H\} = a H \quad (b^{-1} a = h \in H \implies a = b h \text{ für } h \in H)
@@ -466,10 +468,10 @@ $H\subseteq G$ nichtleer ist eine \emph{Untergruppe} ($H<G$ ) falls für alle $a
 \end{eg}
 
 \begin{theorem}
-	Sei $G$ eine Grupee und $H < G$.
+	Sei $G$ eine Gruppe und $H < G$.
 	\begin{enumerate}[(1)]
 		\item $\sfrac{G}{H}$ und $\sfrac{H}{G}$ sind (auf natürliche Weise) gleichmächtig.
-		\item {[Lagrange]} Falls $\abs{G} < \infty$, dann gilt $\abs{G} = \abs{\sfrac{g}{H}} \cdot \abs{H}$.
+		\item {[Lagrange]} Falls $\abs{G} < \infty$, dann gilt $\abs{G} = \abs{\sfrac{G}{H}} \cdot \abs{H}$.
 			Insbesondere gilt $\abs{H}$ ist ein Teiler von $\abs{G}$.
 	\end{enumerate}
 \end{theorem}
@@ -540,7 +542,7 @@ $H\subseteq G$ nichtleer ist eine \emph{Untergruppe} ($H<G$ ) falls für alle $a
 
 $\implies$ Es gibt bis auf Isomorphie nur eine Gruppe der Ordnung $2,3,5,7,\ldots$.
 
-Im Allgemeinen haben $\sfrac{G}{H}$ uund $\sfrac{H}{G}$ keine natürliche Gruppenstruktur.
+Im Allgemeinen haben $\sfrac{G}{H}$ und $\sfrac{H}{G}$ keine natürliche Gruppenstruktur.
 
 \begin{theorem}
 	Sei $G$ eine Gruppe und $H < G$. Die folgenden Bedingungen sind äquivalent
@@ -559,7 +561,7 @@ Im Allgemeinen haben $\sfrac{G}{H}$ uund $\sfrac{H}{G}$ keine natürliche Gruppe
 	Dann gilt $\varphi(x h x^{-1}) = \varphi(x) \underbrace{\varphi(h)}_{= e} \varphi(x)^{-1} = e$ also $x h x^{-1} \in H = \ker(\varphi)$.
 	$\implies x H x^{-1} \subseteq H, x^{-1} H x \subseteq H \implies H \subseteq x H x^{-1}$. Somit folgt $x H x^{-1} = H$\\
 	$(2) \Leftrightarrow (1)$ : Rechtsmultiplikation mit $x^{-1}$ oder $x$.\\
-	$(1) \implies (4)$ : Seien $x,y in G$. Dann gilt $(xH)(yH) = (Hx)(yH) = (Hxy)H = xy H H = xy H$.\\
+	$(1) \implies (4)$ : Seien $x,y \in G$. Dann gilt $(xH)(yH) = (Hx)(yH) = (Hxy)H = xy H H = xy H$.\\
 	$(4) \implies (5)$ : Nach Annahme in $4$ ist die Abbildung 
 	\[
 		\sfrac{G}{H} \times \sfrac{G}{H} \to \sfrac{G}{H} \qquad (xh) \times (yH) \mapsto (xH)(yH) = (xy) H
@@ -587,7 +589,7 @@ Im Allgemeinen haben $\sfrac{G}{H}$ uund $\sfrac{H}{G}$ keine natürliche Gruppe
 \end{definition}
 
 \begin{eg}
-	Eine abelsche Gruppe ist genau dann einfach wenn $G \cong \frac{\Z}{(p)}$ für eine Primzahl $p \in \N$.
+	Eine abelsche Gruppe ist genau dann einfach wenn $G \cong \sfrac{\Z}{(p)}$ für eine Primzahl $p \in \N$.
 \end{eg}
 
 \begin{eg}
@@ -614,7 +616,7 @@ Im Allgemeinen haben $\sfrac{G}{H}$ uund $\sfrac{H}{G}$ keine natürliche Gruppe
 
 	Seien $x,y \in G$, dann gilt 
 	\[
-		\varphi(x) = \varphi(y) \Leftrightarrow \varphi(y)^{-1} \varphi(x) = e \Leftrightarrow \varphi(y^{-1} x) = \Leftrightarrow y^{-1} x \in \ker(\varphi) \Leftrightarrow
+		\varphi(x) = \varphi(y) \Leftrightarrow \varphi(y)^{-1} \varphi(x) = e \Leftrightarrow \varphi(y^{-1} x) = e \Leftrightarrow y^{-1} x \in \ker(\varphi) \Leftrightarrow
 		x \ker(\varphi) = y \ker(\varphi)
 	\]
 	$\implies$ wohldefiniert. $\impliedby$ injektiv.
@@ -624,14 +626,14 @@ Im Allgemeinen haben $\sfrac{G}{H}$ uund $\sfrac{H}{G}$ keine natürliche Gruppe
 \end{proof}
 
 \begin{eg}
-	Sei $p$ prim. $\abs{\GL_{2}(\F_{p})} = (p^2 -1)(p^2 - p)$
+	Sei $p$ prim. Dann ist $\abs{\GL_{2}(\F_{p})} = (p^2 -1)(p^2 - p)$ und 
 	$\det: \GL_{2}(\F_{p}) \to \F_{p}^{\times}$ ist surjektiv z.B. wegen $\det\begin{pmatrix} 
 		t & 0\\ 0 & 1
-	\end{pmatrix} = t$ 
+	\end{pmatrix} = t$. 
 
-	$\SL_2(\F_{2}) = \ker(\det)$. Es folgt aus dem Satz von Lagrange und dem ersten Isomorphiesatz 
+	Weiters gilt $\SL_2(\F_{p}) = \ker(\det)$. Aus dem Satz von Lagrange und dem ersten Isomorphiesatz folgt
 	\[
-		\abs{\SL_2(\F_{p})} \cdot (p-1) = \abs{\GL_2(\F_{p}}
+		\abs{\SL_2(\F_{p})} \cdot (p-1) = \abs{\GL_2(\F_{p})}
 	\]
 	wobei Index $= \abs{\sfrac{G}{\ker(\det)}} = \abs{\Im(\det)} = p-1$.
 	\[
@@ -680,7 +682,7 @@ Im Allgemeinen haben $\sfrac{G}{H}$ uund $\sfrac{H}{G}$ keine natürliche Gruppe
 	\[
 	\sfrac{\sfrac{G}{K}}{\sfrac{H}{K}} \cong \sfrac{G}{H}
 	\] 
-	wobei $(xK) \sfrac{H}{K} \, \widehat{=} \, x H$ eineander im Isomorphismus entsprechen.
+	wobei $(xK) \, \sfrac{H}{K} \; \widehat{=} \; x H$ einander im Isomorphismus entsprechen.
  \end{corollary}
 
 \begin{proof}
@@ -690,7 +692,7 @@ Im Allgemeinen haben $\sfrac{G}{H}$ uund $\sfrac{H}{G}$ keine natürliche Gruppe
 	Da die Gruppenstrukturen in $\sfrac{G}{K}$ und $\sfrac{G}{H}$ durch Multiplikation der Repräsentanten definiert ist,
 	ist $\varphi$ auch ein Gruppenhomomorphismus
 	\[
-		\varphi((g_1 K)(g_2 K)) = \varphi((g_1 g_2)K) = (g_1 g_2) H = (g_1 H) (g_2 H) = \varphi(g_1 K) \varphi(g_2 K).
+		\varphi((g_1 K)(g_2 K)) = \varphi((g_1 g_2)K) = (g_1 g_2) H = (g_1 H) (g_2 H) = \varphi(g_1 K) \varphi(g_2 K)
 	.\] 
 	$\varphi$ ist surjektiv. Daher gilt $\sfrac{\sfrac{G}{K}}{\ker(\varphi)} \cong \sfrac{G}{H}$ und $\ker(\varphi) = \{gK \mid gH = e H\} = \{hK \mid h \in H\} = \sfrac{H}{K}$
 \end{proof}
@@ -699,7 +701,7 @@ Im Allgemeinen haben $\sfrac{G}{H}$ uund $\sfrac{H}{G}$ keine natürliche Gruppe
 	Sei $G$ eine Gruppe und $H \lTri G$.
 	Für eine beliebige weitere Gruppe $K$ gibt es eine natürliche Bijektion zwischen 
 	\[
-		\hom(\frac{G}{H},K) = \{ \varphi: \sfrac{G}{H} \to K \text{ Homomorphismus}\} \qq{und} \{\varphi: \hom(G,K) \mid \varphi \vert_{H} \equiv e_{K}\} 
+		\hom(\sfrac{G}{H},K) = \{ \varphi: \sfrac{G}{H} \to K \text{ Homomorphismus}\} \qq{und} \{\varphi: \hom(G,K) \mid \varphi \vert_{H} \equiv e_{K}\} 
 	.\] 
 \end{corollary}
 
@@ -811,8 +813,8 @@ Dann gilt $H \lTri G$.
 	\begin{itemize}
 		\item Reflexivität: $t \sim t$ da $\underbrace{e}_{\in G} \cdot  t = t$.
 		\item Symmetrie: Angenommen $t_1 \sim t_2$, dann exisitert ein $g \in G$ mit $g \cdot t_1 = t_2$.
-			Wir wenden auf diesen Punkt $g^{-1}$ an und erhalten $g^{-1} \cdot (g \cdot t) = g^{-1} \cdot t_2$ und
-			$t_1 = t \cdot t_1 = g^{-1} t_2$ und damit $t_2 \sim t_1$.
+			Wir wenden auf diesen Punkt $g^{-1}$ an und erhalten $g^{-1} \cdot (g \cdot t_1) = g^{-1} \cdot t_2$ und
+			$t_1 = e \cdot t_1 = g^{-1} t_2$ und damit $t_2 \sim t_1$.
 		\item Transitivität: Angenommen $t_1 \sim t_2, t_2 \sim t_3$ : Dann existieren $g_1, g_2 \in G$ mit $g_1 \cdot t_1 = t_2$, $g_2 \cdot t_2 = t_3$.
 			$(\underbrace{g_2 g_1}_{\in G}) \cdot t_1 = g_2 \cdot (\underbrace{g_1 t_1}_{t_2}) = t_3 \implies t_1 \sim t_3$.
 	\end{itemize}
