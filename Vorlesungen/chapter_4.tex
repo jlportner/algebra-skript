@@ -587,7 +587,7 @@ Im Allgemeinen haben $\sfrac{G}{H}$ uund $\sfrac{H}{G}$ keine natürliche Gruppe
 \end{definition}
 
 \begin{eg}
-	Eine abelsche Gruppe ist genau dann einfach wenn $G \simeq \frac{\Z}{(p)}$ für eine Primzahl $p \in \N$.
+	Eine abelsche Gruppe ist genau dann einfach wenn $G \cong \frac{\Z}{(p)}$ für eine Primzahl $p \in \N$.
 \end{eg}
 
 \begin{eg}
@@ -643,7 +643,7 @@ Im Allgemeinen haben $\sfrac{G}{H}$ uund $\sfrac{H}{G}$ keine natürliche Gruppe
 	Sei $G$ eine Gruppe, $H \lTri G$. und $K < G$.
 	Dann gilt $K H = H K < G, H \lTri KH, H \cap K \lTri K $ und 
 	\[
-	\sfrac{K}{H \cap K} \simeq \sfrac{KH}{H}
+	\sfrac{K}{H \cap K} \cong \sfrac{KH}{H}
 	.\] 
 	mit $x H \cap K \leftrightarrow x H$ für $x \in K$
 \end{corollary}
@@ -656,10 +656,216 @@ Im Allgemeinen haben $\sfrac{G}{H}$ uund $\sfrac{H}{G}$ keine natürliche Gruppe
 		&(k_1 h_1) (k_2 h_2) \in \underbrace{KH}_{HK} KH = \underbrace{HK}_{KH} H = K\\
 		&(k_1 h_1)^{-1} = h_1^{-1} k_1^{-1} \in KH = HK
 	\end{align*}
-	Folht $KH < G$.
+	Folgt $KH < G$.
 
-	Des Weiteren ist $H \lTri KH$ weil $H < KH$ und für $x \in KH \subseteq G$ gilt $xH = Hx$
+	Des Weiteren ist $H \lTri KH$ weil $H < KH$ und für $x \in KH \subseteq G$ gilt $xH = Hx$.
+
+	Wir definieren den Gruppenhomomorphismus
+	\[
+		\begin{tikzcd}
+			K \arrow[r, hook] \arrow[rr, "\varphi"', bend right] & KH \arrow[r] & \sfrac{KH}{H}
+		\end{tikzcd}
+	.\] 
+	Es gilt $\ker(\varphi) = \{k \in K \mid \underbrace{k H = e H}_{k \in H}\} = K \cap H \lTri K$
+	und $\sfrac{K}{K \cap H} \cong \Im(\varphi) = \{k H \mid k \in K\}  = \sfrac{KH}{K}$
 \end{proof}
+
+\textbf{Übung:}
+ Das Produkt von zwei Untergruppen ist im Allgemeinen keine Untergruppen.
+ Das Produkt von zwei normalen Untergruppen ist eine normale Untergruppe.
+
+ \begin{corollary}[Dritter Isomorphiesatz]
+ 	Sei $G$ eine Gruppe, $H \lTri G$, $K \lTri G$ und $K < H$.
+	Dann ist $\sfrac{H}{K} \lTri \sfrac{G}{K}$ und es gilt
+	\[
+	\sfrac{\sfrac{G}{K}}{\sfrac{H}{K}} \cong \sfrac{G}{H}
+	\] 
+	wobei $(xK) \sfrac{H}{K} \, \widehat{=} \, x H$ eineander im Isomorphismus entsprechen.
+ \end{corollary}
+
+\begin{proof}
+	Wir definieren $ \varphi: \sfrac{G}{K} \to  \sfrac{G}{H}, gK \mapsto gH$.
+	Dies ist wohldefiniert, da $K \subseteq H$ und wir einfach $gK$ rechts mit $H$ multiplizieren:
+	$\varphi(gK) = (gK)H = gH$.
+	Da die Gruppenstrukturen in $\sfrac{G}{K}$ und $\sfrac{G}{H}$ durch Multiplikation der Repräsentanten definiert ist,
+	ist $\varphi$ auch ein Gruppenhomomorphismus
+	\[
+		\varphi((g_1 K)(g_2 K)) = \varphi((g_1 g_2)K) = (g_1 g_2) H = (g_1 H) (g_2 H) = \varphi(g_1 K) \varphi(g_2 K).
+	.\] 
+	$\varphi$ ist surjektiv. Daher gilt $\sfrac{\sfrac{G}{K}}{\ker(\varphi)} \cong \sfrac{G}{H}$ und $\ker(\varphi) = \{gK \mid gH = e H\} = \{hK \mid h \in H\} = \sfrac{H}{K}$
+\end{proof}
+
+\begin{corollary}
+	Sei $G$ eine Gruppe und $H \lTri G$.
+	Für eine beliebige weitere Gruppe $K$ gibt es eine natürliche Bijektion zwischen 
+	\[
+		\hom(\frac{G}{H},K) = \{ \varphi: \sfrac{G}{H} \to K \text{ Homomorphismus}\} \qq{und} \{\varphi: \hom(G,K) \mid \varphi \vert_{H} \equiv e_{K}\} 
+	.\] 
+\end{corollary}
+
+\begin{corollary}
+	Sei $G$ eine Gruppe und $H \lTri G$.
+	Dann sind die folgenden beiden Abbildungen invers zueinander:
+	\[
+		(K < G \text{ mit } H < K) \mapsto  \sfrac{K}{H} < \sfrac{G}{H} \qq{und}(\pi^{-1}(\overline{K}) < G \text{ mit } H < \pi^{-1}(\overline{K})) \mapsfrom \overline{K} < \sfrac{G}{H}
+	.\] 
+\end{corollary}
+
+\begin{eg}
+	\begin{itemize}
+		\item $C_{n} \lTri D_{2n}$ denn für eine Relation $R \in C_{n}$ und eine Reflexion $T \in D_{2n}$ gilt
+			\[
+			T R T^{-1} = R^{-1} \in C_{n}
+			.\]
+			(und jede Untergruppe $H < C_{n}$ ist auch ein Normalteiler von $D_{2n}$ )
+		\item Zentrum und Kommutatorgruppe sind immer normal.
+		\item Affine Gruppe $G = \{\begin{pmatrix} 
+					a &b \\ 0 & 1
+		\end{pmatrix} \mid a \in K^{\times}, b \in K\} $ für einen Körper $K$.
+		\[
+		H_1 = \{\begin{pmatrix} 
+				1 &b\\ 0 &1
+		\end{pmatrix} : b \in K\} \lTri G \qquad H_2 = \{ \begin{pmatrix} 
+				a &0\\ 0 &1
+		\end{pmatrix} : a \in K^{\times}\} < G
+		\]
+		aber nicht normal wenn $\abs{K^{\times}} > 1$.
+	\end{itemize}
+\end{eg}
+
+\textbf{Übung:}
+Sei $G$ eine Gruppe und $H < G$ mit Index $2$.
+Dann gilt $H \lTri G$.
+
+\textbf{Übung:} Klassifizieren/Beschreiben Sie alle Gruppen der Ordnung $\leq 7$ / $\leq 8$ / $\leq 10$.
+
+\section{Gruppenwirkungen}
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $T$ eine Menge.
+	Eine \emph{Gruppenwirkung} (Linkswirkung, Linksaktion) von $G$ auf $T$ ist eine Abbildung $\cdot: G \times T \to T, (g,t) \mapsto g \cdot t$, so dass
+	\begin{itemize}
+		\item $e\cdot t = t$ für $t \in T$ 
+		\item $g_1 \cdot (g_2 \cdot t) = (g_1 g_2) \cdot t$ für $g_1,g_2 \in G$ und $t \in T$.
+	\end{itemize}
+	Wir sagen in diesem Fall auch kurz, dass $T$ eine \emph{$G$-Menge} ist.
+\end{definition}
+
+\begin{remark}
+	Obige Definition können wir äquivalent auch in folgender Form formulieren:\\
+	Es gibt einen Gruppenhomomorphismus $\alpha: G \to \bij(T), g \in G \mapsto \alpha_{g}$.
+
+	Der Zusammenhang zur obigen Definition ergibt sich durch die Formel $\alpha_{g}(t) = g \cdot t$
+\end{remark}
+
+\begin{eg}
+	\begin{enumerate}[1)]
+		\setcounter{enumi}{-1}
+		\item Sei $T$ eine Menge und $G$ eine Gruppe. Dann ist die triviale Gruppenwirkung $g \cdot t = t$ für alle $g \in G, t \in T$ eine Gruppenwirkung.
+		\item $G = S_{n}$ wirkt auf $T = \{1,\ldots,n\} $ durch $\sigma \cdot t = \sigma(t)$ für $\sigma \in S_{n}, t \in \{1,\ldots,n\} $ 
+		\item $G = \GL(V)$ wirkt auf $V$, ein Vektorraum über  $K$ durch
+			$\varphi \cdot v = \varphi(v)$ für $\varphi \in \GL(V)$ und $v \in V$.
+		\item Sei $G$ eine Gruppe und $H < G$. Wir definieren $T =  \sfrac{G}{H}$ und $g \cdot (xH) = gxH$ für $g \in G$ und $xH \in \sfrac{G}{H}$.
+			Dies definiert eine Gruppenwirkung: 
+			 \begin{itemize}
+				 \item $e \cdot (xH) = e x H = x H$ für $x H \in \sfrac{G}{H}$ 
+				 \item $g_1 \cdot (g_2 \cdot (xH)) = g_1 \cdot (g_2 x H) = (g_1 g_2) x H = (g_1 g_2) \cdot (xH)$ für $g_1 g_2, x \in G$.
+			\end{itemize}
+			\begin{attention}
+				Wir können auch eine Gruppenwirkung auf $\sfrac{H}{G}$ definieren,
+				müssen dies aber mittels der Formel $g \cdot (Hx) = H x g^{-1}$ machen.
+			\end{attention}
+		\item Sei $G$ eine Gruppe und $T = G$. Dann können wir Konjugation als eine Gruppenwirkung betrachten:
+			$g \cdot x = g x g^{-1}$ für $g \in G$ und $x \in T = G$.
+		\item Sei $G$ eine Gruppe und $T = \mathcal{P}(G) = \{A \subseteq G\} $. Für $g \in G$ und $A \in T$ definieren wir
+			$g \cdot A = g A = \{g a | a \in A\} $.
+		\item Sei $G$ eine Gruppe und $T = \{H < G\} $. Für $g \in G$ und $H \in T$ definieren wir
+			$g \cdot H = g H g^{-1}$.
+	\end{enumerate}
+\end{eg}
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $T$ eine $G$-Menge.
+	\begin{itemize}
+		\item $S \subseteq T$ heißt \emph{invariant} falls $g \cdot S = S$ für alle $g \in G$.
+		\item $t_0 \in T$ heißt \emph{Fixpunkt} falls $g \cdot t_0 = t_0$ für alle $g \in G$.
+			Die Menge der Fixpunkte wird mit $\operatorname{Fix_{G}}(T) = \{t_0 \in T \mid t_0 \text{ ist ein Fixpunkt}\} $ bezeichnet.
+		\item Für $t_0 \in R$ wird $G \cdot t_0 = \{g \cdot t_0 : g \in G\}$ als die \emph{Bahn ($G$-Bahn)} bezeichnet.
+		\item Für $t_0 \in T$ heißt $\operatorname{Stab}_{G}(t_0) = \{g \in G \mid g \cdot t_0 = t_0\}$ der \emph{Stabilisator von $t_0$}.
+		\item Falls $g \in G \mapsto \alpha_{g} \in \bij(T)$ wie in obiger Bemerkung injektiv ist, so heißt die Gruppenwirkung \emph{treu}.
+		\item Die Gruppenwirkung heißt \emph{transitiv} falls es zu jedem Paar $t_1,t_2 \in T$ ein $g \in G$ mit $g \cdot  t_1 = t_2$ gibt.
+			Die Gruppenwirkung heißt \emph{scharf transitiv} falls es zu jedem Paar $t_1,t_2 \in T$ genau ein $g \in G$ mit $g \cdot t_1 = t_2$ gibt.
+		\item Die Menge der $G$-Bahnen wird mit $G \setminus T = \{G \cdot t_0 \mid t_0 \in T\} $ bezeichnet.
+	\end{itemize}
+\end{definition}
+
+%TODO check all sfracs before for right orientation and if that is even important
+
+\begin{lemma}
+	Sei $G$ eine Gruppe und $T$ eine $G$-Menge.
+	Dann definiert $t_1 \sim_{G} t_2 \Leftrightarrow \exists g \in G$ mit $g \cdot t_1 = t_2$ eine Äquivalenzrelation auf $T$. Die Bahnen sind genau die Äquivalenzklassen
+	und $\sfrac{G}{\sim_{G}} = G \setminus T$ ist der Quotientenraum.
+\end{lemma}
+
+\begin{proof}
+	\begin{itemize}
+		\item Reflexivität: $t \sim t$ da $\underbrace{e}_{\in G} \cdot  t = t$.
+		\item Symmetrie: Angenommen $t_1 \sim t_2$, dann exisitert ein $g \in G$ mit $g \cdot t_1 = t_2$.
+			Wir wenden auf diesen Punkt $g^{-1}$ an und erhalten $g^{-1} \cdot (g \cdot t) = g^{-1} \cdot t_2$ und
+			$t_1 = t \cdot t_1 = g^{-1} t_2$ und damit $t_2 \sim t_1$.
+		\item Transitivität: Angenommen $t_1 \sim t_2, t_2 \sim t_3$ : Dann existieren $g_1, g_2 \in G$ mit $g_1 \cdot t_1 = t_2$, $g_2 \cdot t_2 = t_3$.
+			$(\underbrace{g_2 g_1}_{\in G}) \cdot t_1 = g_2 \cdot (\underbrace{g_1 t_1}_{t_2}) = t_3 \implies t_1 \sim t_3$.
+	\end{itemize}
+	Des Weiteren $[ t ]_{\sim_{G}} = \{t_2 \sim t\} = \{g \cdot t : g \in G\} = G \cdot t$ und $\sfrac{T}{\sim} = \{[ t ]_{\sim} : t \in T\} = G \setminus T$.
+\end{proof}
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $T_1, T_2$ zwei $G$-Mengen.
+	Ein $G$-Morphismus von $T_1$ nach $T_2$ ist eine Abbildung $f: T_1 \to T_2$ mit
+	\[
+		f(g \underbrace{\cdot }_{\text{in } T_1} t) = g \underbrace{\cdot}_{\text{in } T_2} f(t)
+	\]
+	für alle $t \in T_1$ und $g \in G$.
+	$g$ ist ein \emph{$G$-Isomorphismus} falls $f$ zusätzlich bijektiv ist.
+\end{definition}
+
+\begin{theorem}[Satz (über Bahnen und Stabilisator)]
+	Sei $G$ eine Gruppe und $T$ eine $G$-Menge.
+	Sei $t_0 \in T$, $T_0 = G \cdot t_0$ und $H = \on{Stab}_{G}(t_0)$.
+	Dann ist $H < G$, $T_0$ ist invariant und 
+	\[
+		f: \sfrac{G}{H} \to T_0, gH \mapsto g\cdot t_0
+	\]
+	ist ein wohldefinierter $G$-Isomorphismus.
+	In diesem Satz ist also die Bahn isomorph zu $G$ modulo Stabilisator.
+\end{theorem}
+
+\begin{proof}
+	Seien $h_1,h_2 \in H = \on{Stab}_{G}(t_0)$. Dann gilt $(h_1 h_2) \cdot t_0 = h_1 \cdot (\underbrace{h_2 \cdot t_0}_{t_0}) = t_0$ und $h_1 h_2 \in H$.
+	Außerdem $h_1 \cdot t_0 = t_0 \implies t_0 = h_1^{-1} \cdot t_0$ und $h_1^{-1} \in H$. Folgt $H < G$ (da auch $e \in H$ ).
+	
+	Angenommen $g \in G$ und $g' \cdot t_0 \in T_0 = G \cdot t_0$.
+	Dann ist $g \cdot (g' \cdot t_0) = (g g') \cdot t_0 \in T_0 = G \cdot t_0$.
+
+	Angenommen $g_1, g_2 \in G$. Dann gilt $g_1 \cdot t_0 = g_2 \cdot t_0 \Leftrightarrow (g_2^{-1} g_1) \cdot t_0 = t_0 \Leftrightarrow g_2^{-1} g_1 \in H \Leftrightarrow g_1H = g_2 H$.
+	Dies zeigt ($\impliedby$), dass $f$ wohldefiniert ist und ($\implies$) injektiv ist.
+
+	$T_0 = G \cdot t_0 = \{g \cdot t_0\}  = f(G)$ und $f: \sfrac{G}{H} \to T_0$ ist surjektiv.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
