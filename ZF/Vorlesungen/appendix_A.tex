@@ -36,13 +36,6 @@ Häufig wird nicht das Auswahlaiom sondern ein dazu äquivalentes Lemma, das Zor
 	gilt. Ansonsten heißt sie \emph{partiell}.
 \end{definition}
 
-\begin{eg}
-	\begin{itemize}
-		\item $\leq$ in $\R$ ist total
-		\item $\mid$ in $\Z$ partiell, da $2 X 3$ und $3 X 2$.
-		\item $\subseteq$ auf $\mathcal{P}(A) = \{B \subseteq A\} $
-	\end{itemize}
-\end{eg}
 
 \begin{definition}
 	Sei $\leq$ eine Ordnung auf einer Menge $X$. Ein Element $x \in X$ heißt \emph{maximal} falls für alle $y \in X$ gilt $x \leq y \implies x = y$.
@@ -68,14 +61,6 @@ Häufig wird nicht das Auswahlaiom sondern ein dazu äquivalentes Lemma, das Zor
 \textbf{Typische Anwendung:}
 Jeder Vektorraum über $K$ hat eine Hamel-Basis.
 
-\begin{proof}[Beweisidee]
-	Ausgehend von der leeren Menge (die eine Kette darstellt) wollen wir
-	Elemente einer immer Länger werdenden Kette finden, wobei wir immer wieder eine obere Schranke hinzufügen wollen - sofern dies möglich ist.\\
-	\ldots\\
-	$\implies$ eine Art Induktion
-
-	\textbf{Problem:} Die Vereinigung von Ketten muss keine Kette sein.
-\end{proof}
 
 Vorerst einige Definitionen und Lemmata:
 \begin{definition}
@@ -92,33 +77,11 @@ Vorerst einige Definitionen und Lemmata:
 	Dies vermeidet \enquote{unnötige Zwischenschritte}, die zu Problemen bei einer Vereinigung von Ketten führen würde.
 \end{definition}
 
-\begin{eg}
-	$K_{min} = \emptyset, \widehat{K}_{min} = X$ ist eine $f$-Kette, die in jeder anderen $f$-Kette enthalten ist.\\
-	$K_1 = \{f(\widehat{K}_{min}\} = K_{min} \cup \{f(\widehat{K}_{min})\}$ ist eine weitere $f$-Kette, die in jeder anderen nichtleeren $f$-Kette enthalten ist.
-	\begin{itemize}
-		\item $\widehat{\emptyset} = X \implies f(x) \in X$ ist definiert
-		\item $K_{min}$ ist eine $f$-Kette: $C=\emptyset$ und $f(\widehat{\emptyset}) \in K_{min}$ ist minimal $C=K_{min}$ erfüllt $\widehat{C} \cap K_{min} = \emptyset$
-		\item Falls $K$ eine $f$-Kette ist, so können wir $C=\emptyset$ in der Definition verwenden und erhalten $f(\widehat{\emptyset}) \in K$, also $K_{min} \subseteq K_1 \subseteq K$.
-	\end{itemize}
-\end{eg}
 
 \begin{lemma}[Verlängerung]
 	Falls $K$ eine $f$-Kette ist und $\widehat{K} \neq \emptyset$ ist, so ist $K_{neu} = K \cup \{f(\widehat{K})\} $ wieder eine $f$-Kette.
 \end{lemma}
 
-\begin{proof}
-	Sei $C \subseteq K_{neu}$.
-	\begin{itemize}
-		\item Falls $\widehat{C} \cap K \neq \emptyset$ ist, so gilt $C \subseteq K$, $f(\widehat{C}) \in K$ und $f(\widehat{C})$ ist eine minimales Element von $\widehat{C} \cap K$ 
-			(da $K$ eine $f$-Kette ist). Damit ist aber auch $f(\widehat{C}) \in K_{neu}$ und $f(\widehat{C})$ ist ein minimales Element von $\widehat{C} \cap K_{neu}$ 
-			(da $f(\widehat{K})$ eine obere Schranke von $K$ ist).
-		\item Falls $C \subseteq K$ und $\widehat{C} \cap K = \emptyset$, dann ist $\widehat{C} = \widehat{K}$, da $K$ eine Kette ist gilt $\widehat{C} \supseteq \widehat{K}$.
-			Sei $x \in \widehat{C}, k \in K \implies k \neq \widehat{C}$, also existiert ein $c \in C$ mit $k \leq c \leq x \implies x$ ist eine obere Schranke
-			von $K$ und $x \not\in  K$ also $x \in \widehat{K}$ und somit $\widehat{C} \in \widehat{K}$.\\
-			Folglich isst $f(\widehat{C}) = f(\widehat{K}) \in K_{neu}$ eine minimale obere Schranke von $C$ in $K_{neu}$.
-		\item Falls $f(\widehat{K}) \in C$, so ist $\widehat{C} \cap K_{neu} = \emptyset$ und es gibt nichts zu beweisen.
-	\end{itemize}
-\end{proof}
 
 \begin{lemma}[Zwei $f$-Ketten]
 	Angenommen $K,K'$ sind zwei $f$-Ketten und $K' \setminus K \neq \emptyset$.
@@ -126,51 +89,13 @@ Vorerst einige Definitionen und Lemmata:
 	Informell: \enquote{$K$ ist eine Anfangsabschrift von $K'$}.
 \end{lemma}
 
-\begin{proof}
-	Sei $x' \in K' \setminus K$. Wir definieren 
-	\[
-	C = \{x \in K \cap K' : x \leq x'\} \subseteq K' \cap K
-	\] 
-	und verwenden, dass $K'$ eine $f$-Kette ist.
-	Da $x' \in \widehat{C} \cap K'$ ist, folgt $f(\widehat{C}) \in K'$ und $f(\widehat{C}) \leq x'$.\\
-	Falls $\widehat{C} \cap K \neq \emptyset$ wäre, so wäre $f(\widehat{C}) \in K$ (da $K$ eine $f$-Kette ist)
-	womit aber $f(\widehat{C}) \in C \cap \widehat{C}$ der Definition von $\widehat{C}$ widerspricht.\\
-	Also ist $\widehat{C} \cap K = \emptyset$. In anderen Worten bedeutet dies, dass es zu jedem $x \in K$ ein $c \in C$ mit $x \leq c$ geben muss.
-	Nach Definition von $C$ folgt daher $x \leq c \leq x'$. Also $x \leq x'$ für alle $x \in K$.\\
-	Unsere Annahmen an $K$ und $K'$ war bloss, dass es $x' \in K' \setminus K$ gibt.
-	Daraus folgt nun auch $K \subseteq K'$, denn ansonsten könnten wir die Rollen von $K$ und $K'$ vertauschen.
-\end{proof}
 
 \begin{lemma}[Vereinigung]
 Wir definieren $K_{max} = \bigcup_{\substack{K \text{ ist eine} \\f-\text{Kette}}} K$.
 	Dann ist $K_{max}$ eine $f$-Kette.
 \end{lemma}
 
-\begin{proof}
-	Da für je zwei Ketten $K,K'$ $K \subseteq K'$ oder $K' \subseteq K$ gilt, sehen wir, dass $K_{max}$ wieder eine Kette ist.
-	Wir müssen noch zeigen, dass $K_{max}$ eine $f$-Kette ist und nehmen hierzu eine Teilmenge $C \subseteq K_{max}$
-	mit  $\widehat{C} \cap K_{max} \neq \emptyset$.
-	Sei $x' \in \widehat{C} \cap K_{max}$ und sei $K'$ eine $f$-Kette mit $x' \in K'$.
 
-	\textbf{Behauptung:} $C \subseteq K'$.\\
-	Sei also $x \in C$, dann existiert eine $f$-Kette $K$ mit $x \in K$.
-	Nach obigem Lemma gilt $K \subseteq K'$ ($\implies x \in K' \checkmark$) oder $K' \subseteq K$. 
-	Woraus folgt $K'$ enthält wegen obigem Lemma alle Elemente von $K$ unterhalbt von $x'$.
-	Da $x' \in \widehat{C}$ und $x \in C$ folgt $x \leq x'$ und $x \in K'.$
-
-	Da $C \subseteq K', c \in \widehat{C} \cap K'$ und da $K'$ eine $f$-Kette ist, folgt nun $f(\widehat{C}) \in K' \subseteq K_{max}$ und $f(\widehat{C}) \leq x'$.
-	Da $x' \in \widehat{C} \cap K_{max}$ beliebig war, sehen wir, dass $f(\widehat{C}) \in K_{max}$ ein minimales Element von $\widehat{C} \cap K_{max}$ ist.
-	Dies zeigt aber, dass $K_{max}$ eine $f$-Kette ist.
-\end{proof}
-
-\begin{proof}[Beweis vom Zornschen Lemma]
-	$K_{max}$ ist nach Definition eine größte $f$-Kette in $X$.
-	Insbesondere ist also das erste Lemma nicht anwendbar, d.h. $\widehat{K}_{max} = \emptyset$.
-
-	Des Weiteren ist aber $K_{max}$ eine Teilkette, die nach Annahme an $\leq$ eine obere Schranke $x_{max}$ besitzen muss.
-	Es folgt also $x_{max} \in K_{max}$ ist ein Maximum von $K_{max}$ und auch, dass $x_{max}$ ein maximales Element von $X$ ist.
-	%TODO: a01.choice Image S12
-\end{proof}
 
 
 

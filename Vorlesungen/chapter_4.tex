@@ -792,7 +792,7 @@ Dann gilt $H \lTri G$.
 		\item $S \subseteq T$ heißt \emph{invariant} falls $g \cdot S = S$ für alle $g \in G$.
 		\item $t_0 \in T$ heißt \emph{Fixpunkt} falls $g \cdot t_0 = t_0$ für alle $g \in G$.
 			Die Menge der Fixpunkte wird mit $\operatorname{Fix_{G}}(T) = \{t_0 \in T \mid t_0 \text{ ist ein Fixpunkt}\} $ bezeichnet.
-		\item Für $t_0 \in R$ wird $G \cdot t_0 = \{g \cdot t_0 : g \in G\}$ als die \emph{Bahn ($G$-Bahn)} bezeichnet.
+		\item Für $t_0 \in T$ wird $G \cdot t_0 = \{g \cdot t_0 : g \in G\}$ als die \emph{Bahn ($G$-Bahn)} bezeichnet.
 		\item Für $t_0 \in T$ heißt $\operatorname{Stab}_{G}(t_0) = \{g \in G \mid g \cdot t_0 = t_0\}$ der \emph{Stabilisator von $t_0$}.
 		\item Falls $g \in G \mapsto \alpha_{g} \in \bij(T)$ wie in obiger Bemerkung injektiv ist, so heißt die Gruppenwirkung \emph{treu}.
 		\item Die Gruppenwirkung heißt \emph{transitiv} falls es zu jedem Paar $t_1,t_2 \in T$ ein $g \in G$ mit $g \cdot  t_1 = t_2$ gibt.
@@ -853,18 +853,224 @@ Dann gilt $H \lTri G$.
 	Dies zeigt ($\impliedby$), dass $f$ wohldefiniert ist und ($\implies$) injektiv ist.
 
 	$T_0 = G \cdot t_0 = \{g \cdot t_0\}  = f(G)$ und $f: \sfrac{G}{H} \to T_0$ ist surjektiv.
+
+	Sei nun $g_1,g_2 \in G$. Dann gilt
+	\[
+		f(g_1 \cdot (g_2 H)) = f((g_1 g_2) H) = (g_1 g_2) \cdot t_0 = g_1 \cdot (g_2 \cdot to) = g_1 \cdot f(g_2 H)
+	.\]
+	Also ist $f$ ein $G$-Isomorphismus.
 \end{proof}
 
+\begin{corollary}
+	Sei $G$ eine Gruppe und $T$ eine $G$-Menge. Falls $\abs{G} < \infty$, dann gilt 
+	\[
+		\abs{G} = \abs{G \cdot t_0} \cdot \abs{\on{Stab}_{G}(t_0)}
+	\]
+\end{corollary}
 
+\begin{proof}
+	Nach dem Satz gilt $G \cdot t_0 \cong \sfrac{G}{\on{Stab}_{G}(t_0)}$, d.h. $\abs{G \cdot t_0} = [G : \on{Stab}_{G}(t_0)]$
+	und das Korollar folgt aus dem Satz von Lagrange
+\end{proof}
 
+\begin{corollary}
+	Sei $G$ eine Gruppe und $T$ eine endliche $G$-Menge. Dann gilt
+	\[
+		\abs{T} = \abs{\on{Fix}_{G}(T)} + \sum_{\abs{G\cdot t} > 1} [G: \on{Stab}_{G}(t)]
+	,\] 
+	also die summe über die nicht trivialen Bahnen.
+\end{corollary}
 
+\begin{proof}
+	Nach einem Lemma vom letzten Mal ist die Menge der Bahnen eine Partition von $T$.
+	\[
+		T = \bigsqcup_{\text{alle Bahnen}} G \cdot t = \on{Fix}_{G}(T) \sqcup \bigsqcup_{\abs{G \cdot t} > 1} G \cdot t 
+	.\] 
+	Des Weiteren gilt für eine Bahn $\abs{G \cdot t} = [G : \on{Stab}_{G}(t)]$ womit das Korollar folgt.
+\end{proof}
 
+\begin{theorem}[Cayley]
+	Sei $G$ eine endliche Gruppe.
+	Dann ist $G$ isomorph zu einer Untergruppe einer symmetrischen Gruppe $S_{n}$ für $n \in \N$.
+\end{theorem}
 
+\begin{proof}
+	Sei $T = G$ und $g_1 \cdot g_2$ für $g_1 \in G$ und $g_2 \in T = G$ durch Gruppenmultiplikation definiert.
+	Äquivalent dazu definiert dies einen Homomorphismus $\alpha: G \to \bij(G), g \mapsto (\alpha_{g_{1}}: g_2 \mapsto  g_1g_2)$.
+	Es gilt
+	 \[
+		 \ker(\alpha) = \{g \in G \mid \alpha_{g} = \id \} \subseteq \{g \in G \mid \alpha_{g}(e) = e\} = \{g \in G \mid g e = e\} = \{e\} 
+	\] 
+	also ist $\alpha$ injektiv. Nach Annahme ist $\abs{G} = n \in \N$  und $\bij(G) \cong S_{n}$.
+\end{proof}
 
+\begin{remark}
+	Falls $H < G$ mit endlichem Index, so gibt es einen Homomorphismus $\alpha: G \to S_{n}$ mit $n = [G:H]$ und 
+	$\ker(\alpha) < H$.
+\end{remark}
 
+\section{Nilpotente und auflösbare Gruppen}
 
+\begin{definition}
+	Sei $G$ eine Gruppe. Wir sagen $G$ ist \emph{nilpotent mit Nilpotenzgrad $1$} falls $G$ abelsch ist.
+	Wir sagen $G$ ist nilpotent mit \emph{Nilpotenzgrad $n+1$} (für $n \in \N_{\geq 1}$) falls
+	$\sfrac{G}{Z_{G}}$ nilpotent mit Nilpotenzgrad $n$ ist.
 
+	Wir sagen $G$ ist \emph{nilpotent} falls es ein $n \in \N$ gibt so dass $G$ nilpotent mit Nilpotenzgrad $n$ ist.
+\end{definition}
 
+\begin{eg}
+	Sei $R$ ein Ring. dann ist die Heisenberggruppe
+	\[
+	H_{R} = \left\{ \begin{pmatrix} 
+			1 & a & b\\ 0 & 1 & c\\ 0 & 0 & 1
+	\end{pmatrix} \mid a,b,c \in R \right\} 
+	\] 
+	nilpotent mit Nilpotenzgrad $2$.
+	Hierfür muss man zeugen:
+	\[
+	Z_{H_{R}} = \left\{ \begin{pmatrix} 
+			1 & 0 & b\\ 0 & 1 & 0\\ 0 & 0 &1
+	\end{pmatrix} \mid b \in R \right\} 
+	\] 
+	und $\sfrac{H_{R}}{Z_{H_{R}}} \cong R^2$.
+\end{eg}
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $p \in \N$ eine Primzahl.
+	Wir sagen $G$ ist eine $p$-Gruppe falls $\abs{G} = p^{k}$ für ein $k \in \N$.
+\end{definition}
+
+\begin{lemma}[Fixpunkte von $p$-Gruppen]
+	Sei $p \in \N$ eine Primzahl und $G$ eine $p$-Gruppe.
+	Sei $T$ eine $G$-Menge. Dann gilt $\abs{\on{Fix}_{G}(T)} \equiv \abs{T} \mod p$.
+\end{lemma}
+
+\begin{proof}
+	Auf Grund des Korollars vom Anfang der Stunde wirssen wir
+	\[
+		\abs{T} = \abs{\on{Fix}_{G}(T)} + \sum_{\abs{G \cdot t} > 1} [G : \on{Stab}_{G}(t)]
+	.\] 
+	Da $\abs{G} = p^{k}$ ist, ist $[ G : \on{Stab}_{G}(t) ] = p^{l}$ für $l \geq 1$ wenn $t \not\in \on{Fix}_{G}(T)$.
+	Daher gilt $p \mid \sum_{\abs{G \cdot t} > 1} [G : \on{Stab}_{G}(t)]$.
+\end{proof}
+
+\begin{theorem}
+	Eine $p$-Gruppe ist nilpotent.
+\end{theorem}
+
+\begin{proof}
+	Angenommen $p$ ist eine Primzahl und $G$ ist eine $p$-Gruppe.
+	Wir definieren $T = G$ und machen $G$ zu einer $G$-Menge mittels Konjugation. Dann gilt
+	\[
+		\on{Fix}_{G}(T) = \{t \in G \mid g t g^{-1} = t \forall g \in G\} = Z_{G}
+	.\] 
+	Wegen obigem Lemma gilt also
+	\[
+		\abs{\on{Fix}_{G}(T)} = \abs{Z_{G}} = \equiv \abs{T} = \abs{G} = p^{k} = 0 \mod p
+	.\] 
+	Da $e \in Z_{G}$ gilt $\abs{T_{G}} \geq 1$, also $\abs{Za} \geq p$.
+	Insbesondere ist $Z_{G}$ eine nicht trivialte Untergruppe, und
+	$\sfrac{G}{Z_{G}}$ ist eine kleinere $p$-Gruppe.
+
+	Falls $\abs{G} = p$ ist, so ist $G = Z_{G}$ zyklisch, also abelsch, also nilpotent mit Nilpotenzgrad $1$.
+	
+	Ansonsten:
+	Mittels Induktion nach  $G$ dürfen wir bereits annehmen, dass $\sfrac{G}{Z_{G}}$ nilpotent mit Nilpotenzgrad $e$ ist.
+	Demnach ist also $G$ nilpotent mit Nilpotentgrad $l+1$.
+\end{proof}
+
+\begin{corollary}
+	Sei $p \in \N$ eine Primzahl und $G$ eine Gruppe mit $\abs{G} = p^2$.
+	Dann ist $G$ abelsch.
+\end{corollary}
+
+\begin{proof}
+	Aus dem Satz erhalten wir, dass $Z_{G}$ eine nichttriviale Untergruppe ($\abs{Z_{G}} > 1$) ist.
+	Falls $Z_{G} = G$ ist, so folgt das Korollar.
+	Angenommen dem ist nicht so, dann ist $\abs{Z_{G}} = p$.
+	Dann ist aber $\sfrac{G}{Z_{G}}$ eine Gruppe der Ordnung $p$ und damit zyklisch.
+	Also existiert ein $g \in G$ so dass $\sfrac{G}{Z_{G}} =  \left< g Z_{G} \right> = \{g^{k} Z_{p} \mid k = 0,\ldots,p-1\} $.
+	Insbesondere gilt also
+	\[
+	G = \{g^{k} z \mid k = 0,\ldots,p-1, z \in Z_{G}\} 
+	.\]
+	Damit gilt aber für $g^{k_1} z_1, g^{k_2} z_2 \in G$, dass $g^{k_1} z_1 g^{k_2}z_2 = g^{k_1 + k_2} \underbrace{z_1 z_1}_{= z_2 z_1} = g^{k_2} z_2 g^{k_1} z_1$.
+	Dies widerspricht der Annahme, dass $Z_{G} \subsetneq G$.
+\end{proof}
+
+\begin{definition}
+	Sei $G$ eine Gruppe. Eine \emph{Subnormalreihe in $G$} ist eine Folge von Untergruppen so dass
+	 \[
+		 \{e\} = G_0 \lTri G_1 \lTri G_2 \lTri \ldots \lTri G_{n} = G
+	\] 
+	jede Untergruppe in der nächsten normal ist.
+\end{definition}
+
+\begin{definition}
+	Sei $G$ eine Gruppe. Wir sagen $G$ ist \emph{auflösbar} falls es eine Subnormalreihe in $G$ (wie oben) gibt, so dass
+	$\sfrac{G_{k+1}}{G_{k}}$ eine abelsche Gruppe (für $k = 0, \ldots, n-1$) ist.
+\end{definition}
+
+\begin{eg}
+	\begin{enumerate}
+		\item Diedergruppe $D_{2\cdot n}$ ist auflösbar.
+		\item Affine Gruppe $A_{R} = \left\{\begin{pmatrix} 
+					a & b\\ 0 & 1
+		\end{pmatrix} \mid a \in R^{\times}, b \in R\right\} $ ist auflösbar und ist nicht nilpotent falls $\abs{R^{\times}} > 1$.
+	\end{enumerate}
+\end{eg}
+
+\begin{proposition}
+	Sei $G$ eine Gruppe. Dann ist $[G,G] = \left< \{ [a,b] \mid a,b \in G \} \right> \lTri G$, und $\sfrac{G}{[G,G]}$ ist abelsch.
+	Falls $H$ eine ablesche Gruppe ist und $\varphi: G \to H$ ein Homomorphismus ist, so ist $\varphi([G,G]) = \{e_{H}\}$
+	und $\varphi$ induziert einen Gruppenhomomorphismus $\overline{\varphi}: \sfrac{G}{[G,G]} \to H$.
+	In diesem Sinne ist $\sfrac{G}{[G,G]}$ die größte abelsche Faktorgruppe von $G$.
+\end{proposition}
+
+\begin{proof}
+	In der Tat ist $[G,G]$ eine charakteristische Untergruppe (siehe Übung) und damit auch normal.
+	Seien $a,b \in G$. Dann gilt $[a [G,G], b [G,G]] = [a,b][G,G] = [G,G]$, aber dies bedeutet genau,
+	dass die Elemente $a[G,G]$ und $b[G,G]$ in $\sfrac{G}{[G,G]}$ kommutieren.
+	Da $a,b \in G$ beliebig waren, ist also $\sfrac{G}{[G,G]}$ abelsch.
+
+	Sei nun $H$ abelsch und $\varphi: G \to H$ ein Homomorphismus. Für $a,b \in G$ gilt dann
+	\[
+		\varphi([a,b]) = [\varphi(a), \varphi(b)] = e_{H}
+	\]
+	Da dies für alle $a,b \in G$ gilt und $[G,G]$ von diesen Elementen erzeugt wird, erhalten wir daraus
+	$\varphi([G,G]) = \{e_{H}\}$. Auf Grund eines Korollars zum ersten Isomorphiesatz gibt es damit
+	einen Homomorphismus
+	%TODO Diagramm 18.11.2020 15:45
+	mit $\varphi = \overline{\varphi} \circ \pi$.
+\end{proof}
+
+\begin{proposition}
+	Sei $G$ eine Gruppe. Dann ist $G$ auflösbar genau dann wenn die folgende induktiv definierten
+	höheren Kommutatorgruppen nach endlich vielen Schritten die triviale Untergruppe $\{e\}$ erreicht:
+	\begin{align*}
+		&G^{(0)} = G \\
+		&G^{(1)} = [G^{(0)}, G^{(0)}] \;(\text{Kommutatorgruppe})\\
+		&G^{(2)} = [G^{(1)}, G^{(1)}] \;(\text{2. Kommutatorgruppe})\\
+		&\;\;\vdots \\
+		&G^{(n+1)} = [G^{(n)}, G^{(n)}]
+	\end{align*}
+\end{proposition}
+
+\begin{proof}
+	Angenommen $G^{(n+1)} = \{e\}$ für ein $n \in \N$. Dann ist
+	\[
+	\{e\} = G^{(n+1)} \lTri G^{(n)} \lTri G^{(n-1)} \lTri \ldots \lTri G^{(1)} \lTri G^{(0)}
+	\] 
+	eine Subnormalreihe für $G$ (mit umgekehrter Indesreihenfolge).
+	Des Weiteren sind die Quotienten $\sfrac{G^{(k)}}{G^{(k+1)}}$ auf Grund der letzten Proposition abelsch.
+	Also ist $G$ auflösbar.
+
+	Sei nun umgekehrt $G$ auflösbar und $\{e\} = G_0 \lTri G_1 \lTri \ldots \lTri G_{n} = G$ eine Subnormalreihe mit abelschen Faktorgruppen.
+	Da $\sfrac{G}{G_{n-1}} = \sfrac{G_{n}}{G_{n-1}}$ abelsch ist, gilt $[G,G] = G^{(1)} < G_{n-1}$.
+	Mittels Induktion können wir analog $G^{(k)} < G_{n-k}$.
+	Für $k = n$ erhalten wir also $G^{(n)} < G_0 = \{e\}$.
+\end{proof}
 
 
 

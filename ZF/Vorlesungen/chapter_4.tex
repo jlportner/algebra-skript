@@ -1,0 +1,445 @@
+%! TEX root=../algebra.tex
+\graphicspath{{Images/}}
+
+\chapter{Gruppentheorie}
+\section{Definition und Beispiele}
+
+\begin{definition}
+	Eine Menge $G$ gemeinsam mit einer Abbildung $\cdot : G \times G \to G$ heißt eine Gruppe falls folgende Axiome erfüllt sind:
+	\begin{enumerate}[1)]
+		\item Assoziativität: $\forall a,b \in G: (a \cdot  b) \cdot  c = a \cdot (b \cdot c)$
+		\item Einheit: $\exists e \in G \forall a \in G: e \cdot a = a \cdot e = a$
+		\item Inverse: $\forall a \in G \exists x \in G: a \cdot  x = x \cdot a = e$ (wobei $e$ wie in 2) ist)
+	\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+	Sei $G$ eine Gruppe.  Die Einheit $e$ wie in 2) ist eindeutig bestimmt durch $e \cdot  a = a$
+	für alle $a \in G$, oder  auch durch $e \cdot e = e$. Für jedes $a \in G$ ist die Inverse $x \in G$ durch
+	$a \cdot x = e$ eindeutig bestimmt, wie schreiben $a^{-1} = x$.
+	Insbesondere gilt $e^{-1} = e$, $(a^{-1})^{-1} = a$ und $(ab)^{-1} = b^{-1} a^{-1}$ für alle $a,b \in G$.
+\end{lemma}
+
+\begin{remark}
+	Wir bezeichnen die Einheit auch als das Einselement und schreiben $e = e_{G} = 1 = 1_{G}$.
+\end{remark}
+
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $a,b \in G$. Falls $ab = ba$ gilt, so sagen wir, dass $a$ und $b$ kommutieren.
+	Falls alle Paare in $G$ \emph{kommutieren}, so heißt $G$ \emph{kommutativ} oder auch \emph{abelsch}.
+\end{definition}
+
+\begin{remark}
+	Für abelsche Gruppen verwenden wir manchmal auch additive Notation $+ : G \times G \to G$.
+\end{remark}
+
+\begin{definition}
+	Für eine Gruppe $G$ und $a \in G$ definiere wir die Potenzen von $a$ durch
+	\[
+	a^{k} := \begin{cases}
+		\underbrace{a \cdot \ldots \cdot a}_{k-\text{fache}} &\text{für } k > 0\\
+		e &\text{für } k=0\\
+		\underbrace{a^{-1} \cdot \ldots \cdot ^{-1}}_{\abs{k}-\text{fache}} &\text{für } k < 0
+	\end{cases}
+	\qq{für alle} k \in Z
+	.\] 
+\end{definition}
+
+\begin{lemma}[Potenzregel]
+	\begin{enumerate}[a)]
+		\item $a^{k} a^{l} = a^{k+l}$ für $k \in \Z$.
+		\item $(a^{k})^{l} = a^{k l}$ für  $k \in \Z$.
+		\item Falls $a,b \in G$ kommutieren so kommutieren auch $a^{k}$ und $b^{l}$ und es gilt $(ab)^{k} = a^{k} b^{k}$.
+	\end{enumerate}
+\end{lemma}
+
+
+\begin{lemma}[Gleichungen und Kürzen]
+	Für alle $a,b \in G$ existiert ein eindeutig bestimmtes $x \in G$ mit $ax = b$, nämlich $x = a^{-1} b$.
+	Für alle $a,b,c \in G$ gilt $a=b \Leftrightarrow ac = bc \Leftrightarrow ca = cb$.
+\end{lemma}
+
+
+\begin{definition}
+	Angenommen $G_1, G_2$ sind Gruppen.
+	Ein \emph{Homomorphismus} von $G_1$ nach $G_2$ ist eine Abbildung $\varphi: G_1 \to G_2$ mit
+	$\varphi(ab) = \varphi(a) \varphi(b)$ für alle $a,b \in G$.
+	Wir definieren den \emph{Kern} $\ker(\varphi) = \varphi^{-1} \{e_{G_2}\} = \{a \in G \mid \varphi(a) = e_{G_2}\} $
+	und das \emph{Bild} $\Im(\varphi) = \varphi(G_1) = \{b \in G_2 \mid \exists a \in G \text{ mit } \varphi(a) = b\} $.
+	Falls $\varphi$ bijektiv ist, so sprechen wir auch von einem \emph{Isomorphismus} der Gruppen
+	und sagen $G_1$ und $G_2$ sind \emph{isomorph }.
+\end{definition}
+
+\begin{definition}
+	Sei $G$ eine Gruppe. Eine Untergruppe von $G$ ist eine nichtleere Teilmenge $H \subseteq G$ mit $a b^{-1} \in H$ für alle $a,b \in H$. Wir schreiben $H < G$.
+\end{definition}
+
+\textbf{Übung.} Sei $G$ eine Gruppe und $H \subseteq G$. Äquivalent sind:
+\begin{enumerate}[1)]
+	\item $H$ ist eine Untergruppe
+	\item $e \in H$, und $a,b \in H \implies ab \in H$ und $a^{-1} \in H$ 
+	\item $H$ ist eine Gruppe und $\iota: H \to G$ ist ein Homomorphismus.
+\end{enumerate}
+Falls $\abs{H} < \infty$, so ist auch folgende Aussage mit obigen Aussagen äquivalent:
+\begin{enumerate}[1)]
+	\setcounter{enumi}{3}
+	\item $H$ ist nichtleer, und $a,b \in H \implies ab \in H$.
+\end{enumerate}
+
+
+
+\begin{lemma}
+	Sei $G$ eine Gruppe und $a \in G$. Dann definiert $k \in \Z \mapsto a^{k} \in G$ einen Gruppenhomomorphismus.
+	Entweder ist $\varphi$ injektiv oder es gibt ein $n_0 > 0$ mit $\ker(\varphi) = (n_0) = \Z n_0$.
+\end{lemma}
+
+\begin{definition}
+	Falls $\varphi$ wie im Lemma injektiv ist, so sagen wird, dass $a$ \emph{unendliche Ordnung} hat.
+	Falls $\ker(\varphi) = (n_0)$ mit $n_0 > 0$ ist, so sagen wir, dass $a$ \emph{Ordnung $n_0$} hat.
+\end{definition}
+
+
+
+\section{Konjugation}
+
+\begin{lemma}
+	Sei $G$ eine Grupee.
+	\begin{enumerate}[a)]
+		\item Für jedes $g \in G$ ist $\gamma_{g}: G \to G, x \mapsto g x g^{-1}$ ein Automorphismus von $G$, welche ein \emph{innerer Automorphismus} genannt wird.
+		\item Die Abbildung $g \in G \mapsto \gamma_{g} \in \aut(G)$ ist ein Homomorphismus.
+			Der Kern von $\Phi$ ist das Zentrum $Z_{G} = \{g \in G \mid gx = xg \forall x \in G\} $.
+	\end{enumerate}
+\end{lemma}
+
+
+\begin{definition}
+	Sei $G$ ein Gruppe und $g \in G$. Dann ist die Menge der Fixpunkte $\gamma_{g}$ gleich dem Zentralisator von $g$ :
+	\[
+		\operatorname{Cent}_{g} = \{x \in G \mid gx = xg\} 
+	.\] 
+\end{definition}
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $x,y \in G$.
+	Wir sagen $x,y$ sind \emph{zueinander konjugiert}, falls es ein $g \in G$ mit $g x g^{-1} = y$.
+\end{definition}
+
+\begin{lemma}
+	\enquote{Konjugiert sein} definiert eine Äquivalenzrelation auf jeder Gruppe.
+\end{lemma}
+
+
+
+Manchmal ist $G$ sehr kompliziert und unüberschaubar aber die Konjugationsklassen sind einfacher zu verstehen.
+
+
+
+\section{Untergruppen und Erzeuger}
+\textbf{Wiederholung:}
+$H\subseteq G$ nichtleer ist eine \emph{Untergruppe} ($H<G$ ) falls für alle $a,b \in H$ gilt $ab^{-1} \in H$.
+
+
+
+\begin{lemma}
+	Eine Untergruppe von einer Untergruppe ist eine Untergruppe.
+\end{lemma}
+
+\begin{lemma}
+	Sei $G$ eine Gruppe und $I$ eine Menge und $H_{i} < G$ für jedes $i \in I$.
+	Dann ist $\bigcap_{i \in I} H_{i} < G$.
+\end{lemma}
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $X \subseteq G$ eine Teilmenge. Die Untergruppe, die von $X$ erzeugt wird ist definiert als
+	\[
+		\left< X \right> = \bigcap_{\substack{H < G\\ X \subseteq H}} H
+	.\] 
+	Wir nennen $X$ die \emph{Erzeugendenmenge} von $\left< X \right>$. Falls $\left< X \right> = G$ sagen wir, dass $G$ \emph{durch $X$ erzeugt} wird.
+	Falls $X = \{g\}$ dann nennen wir $\left< X \right> = \left< g \right>$ die von $g$ erzeugte \emph{zyklische Untergruppe} von $G$. 
+\end{definition}
+
+\begin{lemma}
+	Sei $G$ eine Gruppe und $X \subseteq G$. Dann ist $\left< X \right> = 
+	\{x_{1}^{\epsilon_1}\ldots x_{n}^{\epsilon_{n}} \mid n \in \N, x_1,\ldots,x_{n} \in X, \epsilon_1,\ldots,\epsilon_{n} \in \{\pm 1\} \} $.
+\end{lemma}
+
+
+\begin{lemma}
+	Sei $G$ eine Gruppe und $a \in G$. Dann gilt $\left< a \right> \cong \sfrac{\Z}{(n_0)}$ für ein $n_0 \in \N$.
+\end{lemma}
+
+
+
+\begin{remark}
+	Es gibt keinen \enquote{Basis- oder Diemensionsbegriff}:
+	Denn is $S_{6}$ gibt es eine Untergruppe, die von $3$ oder mehr Elementen erzeugt wird, aber nicht von weniger:
+	\[
+	H = \left< \tau_{1,2}, \tau_{3,4}, \tau_{5,6} \right> \cong \F_{2}^{3}
+	.\] 
+\end{remark}
+
+\begin{definition}
+	Sei $G$ eine Gruppe. Der \emph{Kommutator} von $a,b \in G$ ist 
+	\[
+		[a,b] = ab a^{-1} b^{-1}
+	.\]
+	Die \emph{Kommutatorgruppe} ist
+	\[
+		[G,G] = \left< [a,b]: a,b \in G \right>
+	.\] 
+\end{definition}
+
+\section{Nebenklassen und Quotienten}
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $H < G$.
+	Wir definieren zwei Relationen auf $G$ 
+	\[
+		a \sim_{H} b \Leftrightarrow b^{-1} a \in H \qquad a \prescript{}{H}{\sim} b \Leftrightarrow b a^{-1} \in H
+	.\] 
+	Wir nennen die Menge $a H = \{a h \mid h \in H\} $ die Linksnebenklasse mit Linksrepräsentanten $a$ und schreiben auch
+	\[
+	\sfrac{G}{H} = \{a H \mid a \in G\} 
+	.\] 
+	Außerdem nennen wir die Menge $H a = \{h a \mid h \in H\} $ die Rechtsnebenklasse mit Rechtsrepräsentanten $a$ und schreiben 
+	\[
+	\sfrac{H}{G} = \{H a \mid a \in G\} 
+	.\] 
+\end{definition}
+
+\begin{lemma}
+	Sei $G$ eine Gruppe und $H < G$. Dann ist $\sim_{H}$ eine Äquivalentrelation und $[ a ]_{\sim_{H}}$ und $G / H$ ist der Quotient von $G$ bzgl. $\sim_{H}$.
+	Dies gilt analog für $\prescript{}{H}{\sim}$
+\end{lemma}
+
+
+
+\begin{theorem}
+	Sei $G$ eine Gruppe und $H < G$.
+	\begin{enumerate}[(1)]
+		\item $\sfrac{G}{H}$ und $\sfrac{H}{G}$ sind (auf natürliche Weise) gleichmächtig.
+		\item {[Lagrange]} Falls $\abs{G} < \infty$, dann gilt $\abs{G} = \abs{\sfrac{G}{H}} \cdot \abs{H}$.
+			Insbesondere gilt $\abs{H}$ ist ein Teiler von $\abs{G}$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{definition}
+	Die Kardinalität von $G$ wird auch die \emph{Ordnung} von $G$ genannt.
+	Die Kardinalität von $\sfrac{G}{H}$ wird der \emph{Index $[G:H]$} von $H$ in $G$ genannt.
+\end{definition}
+
+
+\begin{corollary}
+	Sei $G$ eine endliche Gruppe und $g \in G$. Dann teilt die Ordnung von $g$ die Ordnung von $G$.
+	Des Weiteren gilt $g^{\abs{G}} = e$.
+\end{corollary}
+
+
+\begin{corollary}
+	In $\F_{p} = \sfrac{\Z}{(p)}$ gilt $a^{p-1} = \begin{cases}
+		0 &a = 0\\
+		1 &\text{für alle } a \in \F_{p}^{\times}
+	\end{cases}$
+\end{corollary}
+
+
+\begin{corollary}[Erste Klassifikation von Gruppen]
+	Sei $G$ eine endliche Gruppe und $\abs{G} = p \in \N$ prim. Dann ist $G$ isomorph zu $\sfrac{\Z}{(p)}$.
+\end{corollary}
+
+
+$\implies$ Es gibt bis auf Isomorphie nur eine Gruppe der Ordnung $2,3,5,7,\ldots$.
+
+Im Allgemeinen haben $\sfrac{G}{H}$ und $\sfrac{H}{G}$ keine natürliche Gruppenstruktur.
+
+\begin{theorem}
+	Sei $G$ eine Gruppe und $H < G$. Die folgenden Bedingungen sind äquivalent
+	\begin{enumerate}[(1)]
+		\item Für alle $x \in G$ ist $x H = H x$.
+		\item Für alle  $x \in G$ ist $x H x^{-1} = H$.
+		\item Es existiert eine gruppe $G_1$ und ein Gruppenhomomorphimus $\varphi: G \to G_1$ mit $H = \ker(\varphi)$.
+		\item Für alle $x,y \in G$ gilt $(xH)(yH) = (xy) H$.
+		\item $\sfrac{G}{H}$ ist (auf natürliche Weise) eine Gruppe so dass $\varphi: G \to \sfrac{G}{H}, g \mapsto g H$ ein Gruppenhomomorphismus ist.
+	\end{enumerate}
+\end{theorem}
+
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $H < G$.
+	Wir sagen $H$ ist \emph{normal} in $G$ oder ein \emph{Normalteiler} von $G$ falls $H$ die Bedingungen in obigem Satz erfüllt.
+	Wir schreiben in diesem Fall auch $H \lTri G$.
+	Falls $H \lTri G$ so nennen wir $\sfrac{G}{H}$ die \emph{Faktorgruppe} von $G$ modulo $H$.
+\end{definition}
+
+\begin{definition}
+	Sei $G \neq \{e\} $ eine Gruppe. Wir sagen $ G$ ist \emph{einfach} falls $G$ nur $\{e\} $ und $G$ als Normalteiler besitzt.
+\end{definition}
+
+
+
+\begin{theorem}[Erster Isomorphiesatz]
+	Sei $\varphi: G \to H$ eine Homomorphismus zwischen zwei Gruppen $G$ und $H$.
+	Dann induziert $\varphi$ einen Isomorphismus $\abs{\varphi}: \sfrac{G}{\ker(\varphi)} \to  \Im(\varphi)$ so dass 
+	folgendes Diagram komutiert
+	\[
+	\begin{tikzcd}
+		G \arrow[d, "\pi"'] \arrow[r, "\varphi"]                 & H                                    \\
+	\sfrac{G}{\ker(\varphi)} \arrow[r, "\overline{\varphi}"] & \Im(\varphi) < H \arrow[u, "\iota"']
+		\end{tikzcd}
+	\] 
+	mit $\pi$ als der kanonischen Projektion und $\iota$ der Einbettung.
+	Also gilt $\varphi = \iota \circ \overline{\varphi} \circ \pi$.
+\end{theorem}
+
+
+
+\begin{corollary}[Zweiter Isomorphiesatz]
+	Sei $G$ eine Gruppe, $H \lTri G$. und $K < G$.
+	Dann gilt $K H = H K < G, H \lTri KH, H \cap K \lTri K $ und 
+	\[
+	\sfrac{K}{H \cap K} \cong \sfrac{KH}{H}
+	.\] 
+	mit $x H \cap K \leftrightarrow x H$ für $x \in K$
+\end{corollary}
+
+
+\textbf{Übung:}
+ Das Produkt von zwei Untergruppen ist im Allgemeinen keine Untergruppen.
+ Das Produkt von zwei normalen Untergruppen ist eine normale Untergruppe.
+
+ \begin{corollary}[Dritter Isomorphiesatz]
+ 	Sei $G$ eine Gruppe, $H \lTri G$, $K \lTri G$ und $K < H$.
+	Dann ist $\sfrac{H}{K} \lTri \sfrac{G}{K}$ und es gilt
+	\[
+	\sfrac{\sfrac{G}{K}}{\sfrac{H}{K}} \cong \sfrac{G}{H}
+	\] 
+	wobei $(xK) \, \sfrac{H}{K} \; \widehat{=} \; x H$ einander im Isomorphismus entsprechen.
+ \end{corollary}
+
+
+\begin{corollary}
+	Sei $G$ eine Gruppe und $H \lTri G$.
+	Für eine beliebige weitere Gruppe $K$ gibt es eine natürliche Bijektion zwischen 
+	\[
+		\hom(\sfrac{G}{H},K) = \{ \varphi: \sfrac{G}{H} \to K \text{ Homomorphismus}\} \qq{und} \{\varphi: \hom(G,K) \mid \varphi \vert_{H} \equiv e_{K}\} 
+	.\] 
+\end{corollary}
+
+\begin{corollary}
+	Sei $G$ eine Gruppe und $H \lTri G$.
+	Dann sind die folgenden beiden Abbildungen invers zueinander:
+	\[
+		(K < G \text{ mit } H < K) \mapsto  \sfrac{K}{H} < \sfrac{G}{H} \qq{und}(\pi^{-1}(\overline{K}) < G \text{ mit } H < \pi^{-1}(\overline{K})) \mapsfrom \overline{K} < \sfrac{G}{H}
+	.\] 
+\end{corollary}
+
+
+\textbf{Übung:}
+Sei $G$ eine Gruppe und $H < G$ mit Index $2$.
+Dann gilt $H \lTri G$.
+
+\textbf{Übung:} Klassifizieren/Beschreiben Sie alle Gruppen der Ordnung $\leq 7$ / $\leq 8$ / $\leq 10$.
+
+\section{Gruppenwirkungen}
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $T$ eine Menge.
+	Eine \emph{Gruppenwirkung} (Linkswirkung, Linksaktion) von $G$ auf $T$ ist eine Abbildung $\cdot: G \times T \to T, (g,t) \mapsto g \cdot t$, so dass
+	\begin{itemize}
+		\item $e\cdot t = t$ für $t \in T$ 
+		\item $g_1 \cdot (g_2 \cdot t) = (g_1 g_2) \cdot t$ für $g_1,g_2 \in G$ und $t \in T$.
+	\end{itemize}
+	Wir sagen in diesem Fall auch kurz, dass $T$ eine \emph{$G$-Menge} ist.
+\end{definition}
+
+\begin{remark}
+	Obige Definition können wir äquivalent auch in folgender Form formulieren:\\
+	Es gibt einen Gruppenhomomorphismus $\alpha: G \to \bij(T), g \in G \mapsto \alpha_{g}$.
+
+	Der Zusammenhang zur obigen Definition ergibt sich durch die Formel $\alpha_{g}(t) = g \cdot t$
+\end{remark}
+
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $T$ eine $G$-Menge.
+	\begin{itemize}
+		\item $S \subseteq T$ heißt \emph{invariant} falls $g \cdot S = S$ für alle $g \in G$.
+		\item $t_0 \in T$ heißt \emph{Fixpunkt} falls $g \cdot t_0 = t_0$ für alle $g \in G$.
+			Die Menge der Fixpunkte wird mit $\operatorname{Fix_{G}}(T) = \{t_0 \in T \mid t_0 \text{ ist ein Fixpunkt}\} $ bezeichnet.
+		\item Für $t_0 \in T$ wird $G \cdot t_0 = \{g \cdot t_0 : g \in G\}$ als die \emph{Bahn ($G$-Bahn)} bezeichnet.
+		\item Für $t_0 \in T$ heißt $\operatorname{Stab}_{G}(t_0) = \{g \in G \mid g \cdot t_0 = t_0\}$ der \emph{Stabilisator von $t_0$}.
+		\item Falls $g \in G \mapsto \alpha_{g} \in \bij(T)$ wie in obiger Bemerkung injektiv ist, so heißt die Gruppenwirkung \emph{treu}.
+		\item Die Gruppenwirkung heißt \emph{transitiv} falls es zu jedem Paar $t_1,t_2 \in T$ ein $g \in G$ mit $g \cdot  t_1 = t_2$ gibt.
+			Die Gruppenwirkung heißt \emph{scharf transitiv} falls es zu jedem Paar $t_1,t_2 \in T$ genau ein $g \in G$ mit $g \cdot t_1 = t_2$ gibt.
+		\item Die Menge der $G$-Bahnen wird mit $G \setminus T = \{G \cdot t_0 \mid t_0 \in T\} $ bezeichnet.
+	\end{itemize}
+\end{definition}
+
+%TODO check all sfracs before for right orientation and if that is even important
+
+\begin{lemma}
+	Sei $G$ eine Gruppe und $T$ eine $G$-Menge.
+	Dann definiert $t_1 \sim_{G} t_2 \Leftrightarrow \exists g \in G$ mit $g \cdot t_1 = t_2$ eine Äquivalenzrelation auf $T$. Die Bahnen sind genau die Äquivalenzklassen
+	und $\sfrac{G}{\sim_{G}} = G \setminus T$ ist der Quotientenraum.
+\end{lemma}
+
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $T_1, T_2$ zwei $G$-Mengen.
+	Ein $G$-Morphismus von $T_1$ nach $T_2$ ist eine Abbildung $f: T_1 \to T_2$ mit
+	\[
+		f(g \underbrace{\cdot }_{\text{in } T_1} t) = g \underbrace{\cdot}_{\text{in } T_2} f(t)
+	\]
+	für alle $t \in T_1$ und $g \in G$.
+	$g$ ist ein \emph{$G$-Isomorphismus} falls $f$ zusätzlich bijektiv ist.
+\end{definition}
+
+\begin{theorem}[Satz (über Bahnen und Stabilisator)]
+	Sei $G$ eine Gruppe und $T$ eine $G$-Menge.
+	Sei $t_0 \in T$, $T_0 = G \cdot t_0$ und $H = \on{Stab}_{G}(t_0)$.
+	Dann ist $H < G$, $T_0$ ist invariant und 
+	\[
+		f: \sfrac{G}{H} \to T_0, gH \mapsto g\cdot t_0
+	\]
+	ist ein wohldefinierter $G$-Isomorphismus.
+	In diesem Satz ist also die Bahn isomorph zu $G$ modulo Stabilisator.
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

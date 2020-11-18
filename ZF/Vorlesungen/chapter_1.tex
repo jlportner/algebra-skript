@@ -107,35 +107,12 @@ bezeichnet.
 	D.h. für festes $m$ gilt: $a_1 \equiv a_2$ und $b_1 \equiv b_2 \mod m \implies a_1 + b_1 \equiv a_2 + b_2$ und $a_1 \cdot b_1 \equiv a_2 \cdot b_2$ modulo $m$.
 \end{lemma}
 
-\begin{proof}
-	Nach Annahme gilt
-	\begin{align*}
-		&a_2 - a_1 = km\\
-		&b_2 - b_1 = lm\\
-		\cline{1-2}
-		&(a_2+b_2) - (a_1+b_1) = (k+l)m
-	\end{align*}
-	was bedeutet $a_1 + b_1 \equiv a_2 + b_2 \mod m$.
-	Multiplikation analog.
-\end{proof}
 
 \begin{lemma}
 	Die einzigen Quadratzahlen in $\Z_4$ sin $0$ und $1$.
 	Daher sind die Zahlen $3,7,11,15,19,\ldots$ keine Summen von zwei Quadratzahlen in $\N$.
 \end{lemma}
 
-\begin{proof}
-	$0^2 \equiv 0, 1^2 \equiv 1, 2^2 \equiv 0, 3^2 \equiv 1$ modulo $4$.
-	Wenn $n = k^2 + l^2$ dann gilt modulo $4$, dass
-	\[
-	n \equiv k^2 + l^2 \equiv \begin{cases}
-		0\\ 1
-	\end{cases}+\begin{cases}
-		0\\ 1
-	\end{cases} \equiv 0,1,2 \mod 4
-	.\] 
-	Also können die Zahlen $3,7,11,\ldots \equiv 3 \mod 4$ keine Summen von zwei Quadratzahlen sein.
-\end{proof}
 
 \subsection{Kurze Diskussion zu ggT}
 \begin{proposition}
@@ -143,22 +120,6 @@ bezeichnet.
 	Dieser erfüllt $\Z a + \Z b = \Z d$.
 \end{proposition}
 
-\begin{proof}
-	Wir bemerken zuerst, dass $I = \Z a + \Z b = \{k a + l b: k,l \in \Z\} $ unter Addition und Multiplikation mit Elementen in $\Z$ abgeschlossen ist.
-	Da $\N$ wohlgeordnet ist gibt es in $I \cap \N_{> 0}$ ein kleinstes Element $d > 0$.
-	Sei nun $m \in I$. Dann können wir in $\Z$ Division mit Rest verwenden, d.h.
-	\[
-		\underbrace{m}_{\in I} = k\underbrace{d}_{\in I} + r \quad k \in \Z, r \in \{0,\ldots,d-1\} 
-	.\] 
-	Also ist auch $k \cdot d$ in $I$ und daher $r = m - kd \in I$, $r \geq 0$ und $r < d$. Folgt $r = 0$ wegen der Definition von $d \in I \cap \N_{>0}$ als das kleinste Element.
-	Somit ist $I \subseteq \Z d \subseteq I \implies I = \Z d$.
-	Wir überprüfen noch, dass $d$ der größte gemeinsame Teiler von $a$ und $b$ ist.\\
-	$a \in I = \Z d \implies a = k d$, also $d \vert a$. \\
-	$b \in I = \Z d \ldots$, also $d \vert b$.\\
-	Also ist $d$ gemeinsamer Teiler. Angenommen $f$ ist ein weiterer gemeinsamer Teiler von $a$ und $b$.
-	Da $d \in I$ gibt es $k,l \in \Z$ mit $d = k a + l b$. Folgt $f \vert a$ und $f \vert b$ und daher $f \vert d$, somit $f \leq d$.
-
-\end{proof}
 
 \section{Geometrie}
 Alte Griechen sahen Geometrie und Zahlentheorie getrennt.

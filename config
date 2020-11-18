@@ -1,0 +1,3 @@
+"\begin{proof}" "\end{proof}"
+"\begin{eg}" "\end{eg}"
+"%ZFE begin exclude" "%ZFE end exclude"

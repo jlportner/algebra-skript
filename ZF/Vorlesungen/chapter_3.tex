@@ -25,13 +25,6 @@ Im Folgenden ist $R$ immer ein Integritätsbereich.
 	Sei $R$ ein Integritätsbereich. Dann ist jedes prim $p \in R$ auch irreduzibel.
 \end{lemma}
 
-\begin{proof}
-	Angenommen $p \in R \setminus \{0\} $ ist prim und angenommen $p =ab$ (wie in der Definition von irreduzibel).
-	Daraus folgt $p \mid ab \implies p \mid a $ oder $p \mid b$.\\
-	Angenommen $p \mid a$, dann ist $a = p \cdot c$ für ein $c \in R$.
-	Folgt $p = p \cdot c \cdot b \implies 1 = c \cdot b$ weil $R$ ein Integritätsbereich ist, also $b,c \in R^{\times}$.
-	Des Weiteren ist auch $p \not\in  R^{\times}$. Also ist $p$ irreduzibel.
-\end{proof}
 
 \begin{remark}
 	Die Umkehrung des Lemmas stimmt im Allgemeinen nicht.
@@ -42,180 +35,29 @@ Im Folgenden ist $R$ immer ein Integritätsbereich.
 \section{Euklidische Ringe}
 \begin{definition}
 	Ein Integritätsbereich $R$ heißt ein \emph{Euklidischer Ring} falls es eine gradfunktion $N: R \setminus \{0\}  \to \N$ gibt,
-	so fass die beiden folgenden Eigenschaften gelten:
+	so dass die beiden folgenden Eigenschaften gelten:
 	\begin{itemize}
-		\item \emph{Gradungleichung}: $N(f) \leq N(fg)$ für alle $f,g \in \R \setminus \{0\} $.
+		\item \emph{Gradungleichung}: $N(f) \leq N(fg)$ für alle $f,g \in R \setminus \{0\} $.
 		\item \emph{Division mit Rest}: Für $f,g \in R$ mit $f \neq  0$ gibt es $q,r \in R$ mit $g = q\cdot f + r$ wobei $r = 0$ oder $N(r) < N(f)$ ist.
 			Wir nennen $r$ den \emph{Rest} (bei Division durch $f $).
 	\end{itemize}
 \end{definition}
 
-\begin{eg}
-	\begin{enumerate}[1)]
-		\setcounter{enumi}{-1}
-		\item z.B. erfüllt jeder Körper $K$ mit $N(f) = 0$ für alle $f \in K$ diese Axiome
-			(uninteressant, da es hier nur Einheiten und keine irreduziblen oder primen Elemente gibt).
-		\item Der $R = \Z$ und $N(n) = \abs{n}$ für $n \in \Z$ (erfüllt alle Eigenschaften auf Grund bekannter Eigenschaften von $\Z$ ).
-		\item Sei  $K$ ein Körper, $R=K[x]$ und $N(f) = \deg(f)$ für $f \in R \setminus \{0\} $.
-		\item Sei $R = \Z[i]$ der Ring der \emph{Gausschen ganzen Zahlen} und $N(a+ib) = \abs{a+ib}^2$
-		\item Sei $R = \Z[\sqrt{2}]$ und $N(a + \sqrt{2} b) = \abs{a^2 - 2 b^2}$ für $a + \sqrt{2} b \in R$ (algebraische Zahlentheorie betrachtet solche Beispiele).
-	\end{enumerate}
-\end{eg}
 
-\begin{proof}[Beweis von Beispiel $2$]\leavevmode
-	\begin{itemize}
-		\item Gradungleichung: Seien $f,g \in K[X] \setminus \{0\} $. Dann gilt
-			\[
-				N(fg) = \deg(fg) = \deg(f) + \underbrace{\deg(g)}_{\geq 0} \geq \deg(f) = N(f)
-			.\]
-		\item Division mit Rest:
-			Sei $f \neq 0, g \in R = K[X]$. Dann gibt es $q,r \in K[ X ] $ mit $g =fq + r$ und $\deg(r) < \deg(f)$.
-			\begin{proof}
-				Falls $\deg(g) < \deg(f)$, dann setzen wir $q=0$ $r=g$.
-				Wir verwenden Induktion nach $\deg(g)$. Obiger Fall ist unser Induktionsanfang.\\
-				Sei $m \in \N$ und angenommen wir haben Division mit Rest bereits für alle Polynome mit Grad  $< m$ bewiesen.
-				Sei $g \in K[X]$ mit Grad $\deg(g) = m$.
-				Aufgrund des Induktionsanfangs haben wir $m \geq \deg(f) =: n$.\\
-				Sei $g = g_{m} X^{m} + \ldots$, $f = f_{n} X^{n} + \ldots$. Wir definieren 
-				\[
-					\widetilde{g} = g - \underbrace{g_{m} f_{n}^{-1} X^{m-m} f}_{\substack{\text{hat führenden Koeffizient } g_{m}\\ \text{und auch Grad $m$ (wie g) }}}
-				.\] 
-				womit $\deg(\widetilde{g}) < \deg(g) = m$. Auf Grund der Induktionsvorraussetzung können wie $\widetilde{q}$ und $\widetilde{r}$ finden, so dass
-				\begin{align*}
-					&\widetilde{g} = f \widetilde{q} + \widetilde{r} \qquad \deg(\widetilde{r}) < \deg(f)\\
-					&g - g_{m} f_{n}^{^{-1}} X^{m-n} f = f \widetilde{g} + \widetilde{r}\\
-					&g = f (\underbrace{g_{m} f_{n}^{-1} X^{m-1} + \widetilde{q}}_{=q}) + \underbrace{\widetilde{r}}_{=r}
-				\end{align*}
-				Dies beendet den Induktionsschritt.
-			\end{proof}
-	\end{itemize}
-\end{proof}
 
-\begin{eg}[Bsp für Polynomdivision]
-	$g = x^{6} + x^{4} + 4x^3 + 2$, $f = x^2  + 5$ 
-	\[
-		\begin{array}{cccccccccc}
-			&x^{6} + &0 x^{5} + &x^{4} + &3 x^3 + &0 x^2+ &0 x + &2 &: &x^2 + 5 = x^{4} - 4 x^{2} + 3x\\
-			&-x^{6} & &- 5 x^{4} \\\cline{1-4}
-			& & &-4 x^{4} &+ 4x^3 &+ 0 x^2 & &+ 2\\
-			& & &-4 x^{4} & &+20x^2\\ \cline{4-8}
-			 & & & &4x^3 &+ 20x^2 &+ 0x &+ 2\\
-			 & & & &-3x^3 & &- 15x\\ \cline{5-8}
-			 & & & & &20x^2 &- 15x &+2\\
-			 & & & & &-20x^2 & &- 100\\ \cline{6-8}
-			 & & & & & &-15x &- 98 &= r
-		\end{array}
-	\]
-\end{eg}
 
-\begin{proof}[Beweis von Beispiel $3$ ]
-	$R = \Z[i]$ der Ring der Gausschen ganzen Zahlen
-	\begin{align*}
-		N(a+ib) = \abs{a+ib}^2 &\text{ für } a + ib \in \Q[i] \\
-		\in \N &\text{ für } a+ib \in \Z[i]\\
-		N(z\cdot w) = N(z) N(w) &\text{ für } z,w \in \Q[i]\\
-		N(z) = 0  \Leftrightarrow z = 0 &\text{ multiplikativ} 
-	\end{align*}
 
-	\textbf{Normungleichung:} Sei $z,w \in \Z[i] \setminus \{0\}$. Dann gilt
-	\[
-		N(zw) = N(z) \underbrace{N(w)}_{\geq 1} \geq N(z)
-	.\] 
-	\begin{lemma}
-		Die Division mit Rest gilt in $\Z[i]$.
-	\end{lemma}
-	\begin{proof}
-		Seien $f,g \in \Z[i], f \neq 0$. Wir definieren $z = \frac{g}{f} \in \Q[i], z = a+ib$ f+r $a,b \in \Q$.
-		Sei $[r] = $ die beste Näherung von $r \in \Q$ innerhalb von $\Z$.
-		Definiere $q = [a] + i[b] \in \Z[i]$. Dann gilt 
-		\begin{align*}
-			\abs{z-q} \leq \sqrt{\underbrace{(a- [a])}_{\leq \frac{1}{2}}^2 + \underbrace{(b+[b])}_{\leq \frac{1}{2}}^2} \leq \frac{1}{\sqrt{2}} \qq{ und }
-			N(z-q) < 1
-		\end{align*}
-		Definiere $t = g - f q \implies g = fq + r$. Dann gilt
-		\begin{align*}
-			N(r) = \abs{r}^2 = \abs{g-fq}^2 = \abs{f}^2 \underbrace{\abs{z-q}^2}_{< 1} < N(f)
-		.\end{align*}
-	\end{proof}
-\end{proof}
-
-\begin{proof}[Beweis von Beispiel $4$]
-	Der Ring $R = \Z [\sqrt{2}] = \{a + \sqrt{2} b: a,b \in \Z\}$ ist ein euklidischer Ring.
-	Wir definieren $\phi: a + \sqrt{2} b \in \Q[\sqrt{2}] \mapsto \begin{pmatrix} 
-		a & 2b\\ b & a
-	\end{pmatrix} \in \mat_{22}(\Q)$.
-	Dann ist $\phi$ ein Ringhomomorphismus.
-	In der Tat ist $\phi$ auch $\Q$-linear, 
-	\begin{align*}
-		&\phi(1) = \begin{pmatrix} 
-			1 &0\\ 0 &1
-		\end{pmatrix} = I_2\\
-		&\phi(\sqrt{2}) = \begin{pmatrix} 
-			0 &2\\ 1 &0
-		\end{pmatrix}, \phi(\sqrt{2})^2 = \begin{pmatrix} 
-			0 &2\\ 1 &0
-		\end{pmatrix}  = 2I_2 = \phi(\sqrt{2}^2)
-	\end{align*} 
-	daraus folgt $\phi(fg) = \phi(f) \phi(g)$ für $f,g \in \Q[\sqrt{2}]$.
-	Wir definieren die Normfunktion
-	\begin{align*}
-		N(f) = \abs{\det(\phi(f))} = \abs{\det(\begin{pmatrix} 
-				a & 2b\\ b &a
-		\end{pmatrix} )} = \abs{a^2 - 2b^2}
-	.\end{align*}
-	mit $f = a + \sqrt{2} b \in \Q[\sqrt{2}]$.
-	Daher gilt $N(fg) = N(f)N(g)$ für $f,g \in \Q[\sqrt{2}]$.
-	Des weiteren filt $N(f) \geq 1$ für $f \in \Z[\sqrt{2}]$ 
-	Folgt die Normungleichung 
-	\[
-		N(fg) = N(f) \underbrace{N(g)}_{\geq 1} \geq N(f)
-	\]
-	für $g \in \Z[\sqrt{2}] \setminus \{0\} $.
-	\begin{lemma}
-		In $\Z[\sqrt{2}]$ filr die Division mit Rest.
-	\end{lemma}
-	\begin{proof}
-		Seien $f,g \in \Z[\sqrt{2}], f \neq 0$ und $z= \frac{g}{f} = a + \sqrt{2} b \in \Q[\sqrt{2}]$ mit $a,b \in \Q$.
-		Wir definieren $q = [a] + \sqrt{2} [b] \in \Z[\sqrt{2}]$. Dann gilt
-		\begin{align*}
-			N(z-q) = \abs{(a-[a])^2 - 2 (b-[b])^2} \leq \frac{1}{4} + 2 \frac{1}{4} < 1
-		.\end{align*}
-		Der restliche Beweis läuft analog zu $\Z[i]$.
-	\end{proof}
-\end{proof}
 
 \begin{theorem}
 	In einem Euklidischen Ring ist jedes Ideal ein Hauptideal.
 \end{theorem}
 
-\begin{proof}
-	Sei $I \subseteq R$ ein Ideal in einem Euklidischen Ring $R$.
-	Falls $I = \{0\}$, so ist $I = (0)$ ein Hauptideal.
-	Wir nehmen nun an, dass $I \neq \{0\}$.
-	Wir definieren $f \in I$ als ein Element mit $N(f) = \min \{\underbrace{N(g) : g \in I \setminus \{0\}}_{\subseteq \N \text{ nichtleer}}\}$.
-
-	\textbf{Behauptung:} $I = (f)$. Da $f \in I$ ist, gilt auch $(f) \subseteq I$.
-	Für die Umkehrung nehmen wir an, dass $g \in I$. 
-	Nach Division mit Rest gibt es  $q,r \in R$ mit $g = q f + r$ und $r = 0$ oder $N(r) < N(f)$.
-
-	Falls $r = 0$ ist, so ergibt sich $g = qf \in (f)$.\\
-	Falls $r \neq 0$ ist, so ergibt sich 
-	\[
-		r = \underbrace{g}_{\in I} - q \underbrace{f}_{\in I} \in I
-	\]
-	mit $N(r) < N(f)$.
-	Aber dies widerspricht der Definition von $f$.
-	Folgt $I = (f)$ wie behauptet und dies ist der Satz.
-\end{proof}
 
 \section{Hauptidealring}
 \begin{definition}
 	Sei $R$ ein Integritätsbereich. Dann heißt $R$ ein \emph{Hauptidealring} falls jedes Ideal in $R$ ein Hauptideal ist.
 \end{definition}
 
-\begin{eg}
-	Jeder euklidische Ring ist ein Hauptidealring.
-\end{eg}
 
 \begin{remark}
 	Der Ring $\Z[\frac{1}{2}(1+i\cdot \sqrt{163})]$ ist ein Hauptidealring und kann nicht zu einem Euklidischen Ring gemacht werden.
@@ -234,14 +76,6 @@ Im Folgenden ist $R$ immer ein Integritätsbereich.
 	Zwei ggT's unterscheiden sich um eine Einheit (wenn $R$ ein Integritätsbereich ist).
 \end{remark}
 
-\begin{proof}
-	Da $I = (f) + (g)$ ein Ideal ist und $R$ ein Hauptidealring ist, gibt es ein $d \in R$ mit $I = (d) = (f) + (g)$.
-	Daraus folgt, $(f) \subseteq (d)$ und damit $d \mid f$. Genauso $(g) \subseteq (d)$ und damit $d \mid g$.
-	Also ist $d$ ein gemeinsamer Teiler.
-	Falls $t \in R$ ein weiterer gemeinsamer Teiler von $f$ und $g$ ist, so folgt $(f) \subseteq (t), (g) \subseteq (t)$ und somit
-	$(d) = (f) + (g) \subseteq (t)$ und damit $t \mid d$.
-	Also ist $d$ ein größter gemeinsamer Teiler.
-\end{proof}
 
 In einem Euklidischen Ring kann man einen ggT von $f,g \in R \setminus \{0\} $ durch den \emph{euklidischen Algorithmus} bestimmen.
 \begin{enumerate}[1)]
@@ -249,7 +83,7 @@ In einem Euklidischen Ring kann man einen ggT von $f,g \in R \setminus \{0\} $ d
 	\item Falls $N(f) > N(g)$, so vertauschen wir $f$ und $g$. 
 		Also dürfen wir annehmen, dass $N(f) \leq N(g)$.
 	\item Dividiere $g$ durch $f$ mit Rest: $g = q f + r$
-	\item Falls $r = $ ist, so ist $f$ ein ggT und der Algorithmus stoppt.
+	\item Falls $r = 0$ ist, so ist $f$ ein ggT und der Algorithmus stoppt.
 	\item Falls $r\neq 0$ ist, so ersetzen wir $(f,g)$ durch $(r,f)$ und springen nach $1)$.
 \end{enumerate}
 
@@ -257,24 +91,6 @@ In einem Euklidischen Ring kann man einen ggT von $f,g \in R \setminus \{0\} $ d
 	Der Euklidische Algorithmus (wie oben beschrieben) endet nach endlich vielen Schritten und berechnet einen ggT.
 \end{lemma}
 
-\begin{proof}
-	Nach Schritt $0)$ gilt $\min(N(f), N(g)) = N(f)$. 
-	Bei jedem Durchlauf von $1)-3)$ wird diese natürliche Zahl echt kleiner.
-	Nach endlich vielen Schritten müssen wir also im Fall $2)$ sein.
-
-	Im Schritt $0)$ ändern wir $I = (f) + (g)$ nicht.
-	In $1)$ erhalten wir $q,r \in R$ mit $r = g- qf \in I$, $f \in I$.
-	Außerdem ist $f \in I' = (r) + (f), g = qf + r \in I'$.
-	Dies impliziert $(f) + (g) = I = I' = (r)+(f)$.
-	Also ändert sich das Ideal $I$ nicht während des Algorithmus.
-	Nach endlich vielen Schritten erreichen wir Falls $2)$ im Algorithmus:
-	\[
-		I = (f) + (g) = (a) + (b)
-	.\] 
-	mit $f,g$ den ursprünglichen Elementen und $a,b$ denen nach endlich vielen Schritten.
-	Nun gilt $b = q \cdot a + \underbrace{0}_{r=0}$ und somit $I = (f) + (G) = (a)$.
-	Mit dem Beweis von der Proposition folgt $a$ ist ein ggt von $f$ und $g$ und $a$ ist dann auch der Output vom Algorithmus.
-\end{proof}
 
 \begin{theorem}[Prime Elemente]
 	Sei $R$ ein Hauptidealring.
@@ -284,24 +100,410 @@ In einem Euklidischen Ring kann man einen ggT von $f,g \in R \setminus \{0\} $ d
 	\end{enumerate}
 \end{theorem}
 
-\begin{proof}[Beweis von $1)$ ]
-	Wir wissen bereits, dass jedes prime Element irreduzibel ist (siehe Lemma in $3.0$).
-	Wir nehmen nun an, dass $p \in R \setminus \{0\} $ irreduzibel ist.
-	Wie nehmen weiters an, dass $p \mid ab$ für $a,b \in R$.
-	Falls $p \mid a$, so gibt es nichts zu beweisen.
-	Also nehmen wir an, dass $p \nmid a$.
 
-	Sei $d$ ein ggT von $p$ und $a$, also insbesondere ist $d \mid p = d \cdot e$.
-	Da $p$ irreduzibel ist gilt $d \in R^{\times}$ oder $e \in R^{\times}$.
-	Angenommen $e \in R^{\times}$ dann folgt $d = p e^{-1}$ also $p \mid d, d \mid a$ folgt $p \mid a$ was unserer Annahme widerspricht.
+\begin{theorem}
+	Sei $R$ ein Hauptidealring und $p \in R$ irreduzibel.
+	Dann ist $(p)$ ein Maximalideal. Insbesondere ist $p$ prim.
+\end{theorem}
 
-	Somit ist $d \in R^{\times}$. $d = x p + y a$ für $x,y \in R$ da dies nach der Proposition in einem Hauptidealring gilt.
-	Multipliziert man dies $b d^{-1}$ so erhält man
+
+Für den Beweis vom Satz über Prime Elemente Eigenschaft 2 verwenden wir:
+\begin{proposition}
+	Sei $R$ ein Hauptidealring und seien $J_0 \subseteq J_1 \subseteq J_2 \subseteq \ldots$ eine austeigende Kette von Idealen in $R$.
+	Dann gibt es ein $n \in \N$ mit $J_{m} = J_{n}$ für alle $m \geq n$.
+\end{proposition}
+
+
+
+%ZFE begin include
+\begin{eg}
+	Einige Primzahlen in $\Z[i]$, z.B. sind $1\pm i,3,2\pm i$ Primzahlen in $\Z[i]$.
+	%TODO maybe das über Z[i] 09.faktor S5
+
+	$2$ ist keine Primzahl in $\Z[i]$, da $2 = (1+i)(1-i)$.
+	$5$ ist auch keine Primzahl in $\Z[i]$, da $5 = (2+i)(2-i)$.
+
+	Nach dem ersten folgenden Lemma ergibt sich nun, dass $1 \pm i$, $2 \pm i$ Primzahlen in $\Z[i]$ sind.
+	Nach dem zweiten Lemma sind $3,7$ Primzahlen in $\Z[i]$.
+\end{eg}
+%ZFE end include
+
+\begin{lemma}
+	Sei $z \in \Z[i]$ so dass $N(z) = p \in \N$ eine Primzahl in $\N$ ist.
+	Dann ist $z$ irreduzibel (also prim) in $\Z[i]$.
+\end{lemma}
+
+
+\begin{lemma}
+	Angenommen $p \in \N$ ist eine Primzahl in $\N$, die sich \emph{nicht} als Summe zweier Quadratzahlen schreiben lässt.
+	Dann ist $p$ auch eine Primzahl in $\Z[i]$.
+\end{lemma}
+
+
+
+\section{Faktorielle Ringe}
+
+\begin{definition}
+	Ein Integritätsbereich $R$ heißt ein \emph{faktorieller Ring} falls jedes $a \in R \setminus \{0\}$ sich als ein Produkt von einer Einheit
+	und endlich vielen Primelemente von $R$ schreiben lässt: $a = u \cdot  p_1 \cdot \ldots \cdot p_{m}$ für $u \in R^{\times}, m \in \N, p_1,\ldots p_{m} \in R$ prim.
+\end{definition}
+
+
+\begin{proposition}
+	Sei $R$ ein faktorieller Ring.
+	Dann ist $p \in R \setminus \{0\} $ irreduzibel gdw. $p$ prim ist.
+\end{proposition}
+
+
+\begin{corollary}
+	Sei $R$ ein Integritätsbereich. Dann ist $R$ faktoriell gdw. jedes Element von $R \setminus \{0\} $ eine Zerlegung als ein Produkt
+	von einer Einheit und endlich vielen irreduziblen Elementen besitzt und jedes irreduzible Element auch ein Primelement ist.
+\end{corollary}
+
+\begin{definition}
+	Sei $R$ ein kommutativer Ring und $a,b \in R$.
+	Wir sagen $a,b$ sind \emph{assoziiert} und schreiben $a \sim b$ falls es eine Einheit
+	$u \in R^{\times}$ gibt mit $a = u b$.
+\end{definition}
+
+\begin{lemma}
+	Dies definiert eine Äquivalenzrelation auf $R$.
+\end{lemma}
+
+
+\begin{lemma}
+	Sei $R$ ein Integritätsbereich. Seien $p,q \in R \setminus \{0\} $ irreduzibel und $p \mid q$.
+	Dann gilt $p \sim q$.
+\end{lemma}
+
+
+\begin{definition}[Wh.]
+	Für $n \in \N_{> 0}$. sei $S_{n}$ die \emph{symmetrische Gruppe} auf der Menge $\{1,\ldots,n\}$, d.h.
 	\[
-		b = \underbrace{x b d ^{-1} p}_{p \mid -''-} + \underbrace{y d ^{-1} a b}_{p \mid ab}
+	S_{n} = \{ \sigma: \{1,\ldots, n\} \to \{1,\ldots,n\} \text{ bijektiv}\} 
 	.\] 
-	Somit folgt $p \mid b$.
-\end{proof}
+\end{definition}
+
+\begin{theorem}[Eindeutige Primfaktorzerlegung]
+	Sei $R$ ein faktorieller Ring, dann besitzt jedes nichttriviale Element von $R$ eine bist auf Permutation und Assoziierung 
+	eindeutige Primfaktorzerlegung.
+
+	Genauer gilt also für jedes $a \in R \setminus \{0\} $ gibt es eine Einheit $u \in R^{\times}$, $m \in \N$, und
+	Primelemente $p_1,\ldots,p_{m}$ mit $a = u p_1 \ldots p_{m}$.\\
+	Falls $a = v q_1 \ldots q_{n}$ eine weitere Zerlegung ist, wobei $v \in R^{\times}$, $n \in \N$ und $q_1,\ldots,q_{n}$ prim sind,
+	dann gibt es $\sigma \in S_{n}$ so dass $q_{j} \sim p_{\sigma(j)}$ für $j = 1,\ldots,n$ und $m = n$.
+\end{theorem}
+
+	Die Existenz der Zerlegung ist die Definition von \enquote{faktorieller Ring}.
+	Wir nennen $p_1,\ldots p_{m}$ die Primfaktorzerlegung von $a$.
+
+
+\begin{definition}
+	Sei $R$ ein faktorieller Ring.
+	Wir sagen $P \subseteq R$ ist eine \emph{Repräsentantenmenge} (der Primelemente) falls jedes $p \in P$ ein Primelement in $R$ ist
+	und es zu jedem Primelement $q \in R$ ein eindeutig bestimmtes $p \in P$ gibt mit $q \sim p$.
+\end{definition}
+
+
+\begin{lemma}
+	Sei $R$ ein faktorieller Ring.
+	Dann existiert eine Repräsentantenmenge.
+\end{lemma}
+
+
+\begin{theorem}[Eindeutige Primfaktorzerlegung]
+	Sei $R$ ein faktorieller Ring und $P \subseteq R$ eine Repräsentantenmenge.
+	Dann besitzt jedes $a \in R \setminus \{0\}$ eine eindeutige Primfaktorzerlegug
+	der Form 
+	\[
+		a = u \prod_{p \in P} p^{n_p} \left[ = u \prod_{\substack{p \in P\\ n_{p} > 0}} p^{n_{p}}  \right]
+	\] 
+	wobei $n_{p} = 0$ für alle bis auf endlich viele $p \in P$.
+\end{theorem}
+
+
+
+\begin{lemma}
+	Sei $R$ ein faktorieller Ring und $P \subseteq R$ eine Repräsentantenmenge.
+	Sei $a = u \prod_{p \in P} p^{m_{p}}$ und $b = v \prod_{p \in P} p^{n_{p}}$.
+	Dann gilt $a \mid b$ gdw. $m_{p} \leq n_{p}$ für alle $p \in P$.
+\end{lemma}
+
+
+\begin{proposition}[ggT]
+	Sei $R$ ein faktorieller Ring mit Repräsentantenmenge $P$.
+	Dann existiert für jedes Paar $a,b \in R$, nicht beide $0$,
+	ein ggT. Falls $a = u \prod_{p \in P} p^{m_{p}}, b = v \prod_{p \in P} p^{n_{p}}$ ist, so ist
+	$\prod_{p \in P} p^{\min(m_{p},n_{p})}$ ein ggT von $a$ und $b$.
+\end{proposition}
+
+
+Wir können analog den ggT von mehreren Elementen $a_1,\ldots, a_{l} \in R$ definneren und die obige Proposition gilt analog.
+
+\begin{definition}
+	Sei $R$ ein faktorieller Ring. Wir sagen $a_1,\ldots,a_{l} \in R$ sind \emph{coprim} falls $1$ ein ggT von
+	$a_1,\ldots,a_{l}$ ist, oder äquivalenterweise falls es zu jedem Primelement $p$ in $R$ 
+	ein $a_{j}$ gibt so dass $a_{j}$ nicht durch $p$ teilbar ist.
+\end{definition}
+
+\begin{corollary}
+	Sei $R$ ein faktorieller Ring mit Quotientenkörper $K$.
+	Dann hat jedes $x \in K$ eine Darstellung $x = \frac{a}{b}$ mit $a,b \in R$ coprim, $b \neq 0$.
+\end{corollary}
+
+
+\begin{corollary}
+	Sei $R$ faktoriell und $K = \operatorname{Quot}(R)$. Dann hat jedes $x \in K$ eine Darstellung der Form 
+	\[
+	x = u \prod_{p \in P} p^{n_{p}}
+	,\]
+	wobei $n_{p} \in \Z$ und gleich $0$ für alle bis auf endlich viele $p \in P$ ist.
+\end{corollary}
+
+
+\section{Einige algebraische Euklidische Ringe}
+Alle Beispiele, die wir hier betrachten wollen,leben in einem quadratischen Zahlenkörper:
+$ K = \Q[\sqrt{d}] = \{a + b\sqrt{d} :a,b \in \Q \} $ mit $d \in \Z$, das kein Quadrat ist.
+Isomorph dazu $\sfrac{\Q[x]}{(x^2-d)}$.
+
+Wir definieren auf $K$ die Konjugation $\tau: K \to K, a+ b\sqrt{d} \mapsto a- b \sqrt{d}$.
+Dies definiert einen Körperautomorphismus.
+
+
+%TODO maybe copy slide 1
+
+Auf $K$ definieren wir die Normfunktion
+\[
+	N(a+b \sqrt{d} ) = (a+b \sqrt{d} )(a-b \sqrt{d}) = a^2 - d b^2 
+\]
+so dasss $N : K \to \Q$ multiplikativ ist, daher 
+\[
+	N(zw) = (zw) \underbrace{\tau(zw)}_{\tau(z) \tau(w)} = N(z) N(w) \qq{ für } z,w \in K
+.\] 
+Weiters $N(z) = 0 \Leftrightarrow z = 0$ für alle $z = a + b + \sqrt{d} \in K $.
+
+Wir werden den Ring $R = \Z[\sqrt{d}]$ betrachten und wollen $\phi(z) = \abs{N(z)}$ als Gradfunktion verwenden.
+
+\begin{theorem}
+	Für $d = -1, -2, 2, 3$ ist  $R = \Z[\sqrt{d}]$ ein Euklidischer Ring, wobei wir $\phi(z) = \abs{N(z)}$ als Gradfunktion verwenden.
+\end{theorem}
+
+
+Sei $R = \Z[\sqrt{d}]$.
+\begin{lemma}
+	Es gilt $u \in R^{\times} \Leftrightarrow N(u) = \pm 1$.
+\end{lemma}
+
+\begin{lemma}
+	Falls $z \in R$ eine Primzahl in $\Z$ als Norm hat, so ist $z$ in $R$ irreduzibel.
+\end{lemma}
+
+\begin{lemma}
+	Falls $p \in \Z$ eine Primzahl in $\Z$ ist, so dass weder  $p$ noch $-p$ eine Norm von einem Element
+	iin $R$ ist, so ist $p$ ein irreduzibles Element in $R$.
+\end{lemma}
+
+
+
+
+\begin{theorem}[Gausssche ganze Zahlen]
+	Sei $R = \Z[i]$ der Ring der Gausschen ganzen Zahlen.
+	Dann ist $R$ ein Euklidischer Ring. Wir können in $R$ die Repräsentantenmenge
+	\[
+	p = \{z = a + ib \in R \mid z \text{ prim, } -a < b \leq a\} 
+	\] 
+	verwenden. Diese Menge $P$ enthält
+	\begin{itemize}
+		\item (Ramified): $z = 1+i$ mit $2 = -i (1+i)^2$
+		\item (Inert): $p \in \N$ prim mit $p \equiv 3 \mod 4$,
+			z.B. $3,7,11,\ldots$.
+		\item (Split): $z = a \pm b i$ prim in $R$, wobei $a,b \in \N, b < a$ und
+			$a^2 + b^2 = p = 1 \mod 4$ mit $p \in \N$ prim. $p = (a+ib)(a-ib)$ 
+			z.B. $5,13,\ldots$
+	\end{itemize}
+\end{theorem}
+
+\begin{lemma}
+	Sei $p \in \N$ prim. Dann ist $(p-1)! \equiv -1 \mod p$ .
+\end{lemma}
+
+
+\begin{proposition}
+	Sei $p \in \N$ kongruent $1 \mod 4$.
+	Dann gibt es in  $\F_{p}$ zwei Lösungen der quadratischen Gleichung $x^2 = -1$.
+\end{proposition}
+
+
+
+\begin{corollary}
+	Sei $p \in \N$ kongruent $1 \mod 4$. Dann ist $p$ keine Primzahl in $\Z[i]$.
+\end{corollary}
+
+
+
+
+\begin{theorem}
+	Im $R_{falsch} = \Z[\sqrt{3}i]$ funktioniert Division mit Rest nicht wie in den obigen Fällen.
+	Aber in $R_{richtig} = \Z[\zeta] = \{a+b \zeta : a,b \in \Z\} $ für $\zeta = \frac{1+\sqrt{3} i}{2}$ funktionert dies wieder.
+\end{theorem}
+
+
+%TODO maybe übersicht 12.faktor S1
+
+
+\section{Polynomringe}
+\emph{Seite 108}
+
+\begin{theorem}[Gauss]
+	Falls $R$ ein faktorieller Ring ist, so ist auch $R[x]$ ein faktorieller Ring.
+\end{theorem}
+
+\begin{corollary}
+	Der Ring $\Z[x_1,\ldots,x_{n}]$ und der Ring $K[x_1,\ldots,x_{n}]$ für einen Körper $K$ sind faktoriell,
+\end{corollary}
+
+\begin{definition}
+	Sei $R$ ein faktorieller Ring und $f \in \R[x] \setminus \{0\}$.
+	Dann nennen wir den ggT der Koeffizienten von $f$ den \emph{Inhalt $I(f)$ von $f$ }
+	(welcher bis auf Einheiten in $R$ eindeutig bestimmt ist).
+
+	Wir sagen $f$ ist \emph{primitv} falls $I(f) \sim 1$.
+\end{definition}
+
+
+\paragraph{Beobachtungen}
+\begin{itemize}
+	\item Jedes normierte Polynom is primitiv.
+	\item Für $a \in R \setminus \{0\}, f \in R[x] \setminus \{0\} $ gilt $I(af) \sim a I(f)$.
+	\item Falls  $f \in R[x]$ irreduzibel ist, so ist entweder
+		$f \in R$ oder $f$ ist primitiv.
+		(Grad $f = 0 \implies f \in R$, Grad $f > 0 \implies f = a f^{*}, a \in R, f^{*}$ primitv.
+		Folgt $a$ oder $f^{*}$ ist eine Einheit $\implies$ $\deg(f^{*}) = \deg(f) > 0$ also $f^{*}$ ist keine Einheit)
+\end{itemize}
+
+\begin{lemma}
+	Sei $R$ ein faktorieller Ring und $K = \operatorname{Quot}(R)$.
+	Dann hat jedes  $f \in K[x] \setminus \{0\} $ eine Darstellung $f = d f^{*}$ 
+	wobei $d \in K^{\times}$ und $f^{*} \in R[x]$ ist primitiv.
+	Diese Darstellung ist bis auf Assoziierung eindeutig:\\
+	Falls $f = d_1 f_1^{*} = d_2 f_2^{*}$, $d_1,d_2 \in K^{\times}$,
+	$f_1^{*},f_2^{*} \in R[x]$ primitv, dann ist $d_1 \sim_{R} d_2, f_1^{*} \sim_{R} f_2^{*}$.
+	
+	Wobei $\sim_{R}$  assoziiert über eine Einheit in $R$ bedeutet.
+\end{lemma}
+
+
+\begin{definition}
+	Für $f \in K[x] \setminus \{0\} $ nennen wir das $d \in K^{\times}$ mit $f = d f^{*}, f^{*} \in R[x]$ primitiv, wieder den \emph{Inhalt von $f$}.
+\end{definition}
+
+\begin{proposition}[Gauss]
+	Sei $R$ faktoriell. Für $f,g \in R[x]$ gilt $I(fg) \sim I(f) I(g)$.
+	Insbesondere ist das Produkt von primitiven Elementen von $R[x]$ wieder primitiv.
+\end{proposition}
+
+\b
+Im folgenden werden wir die \enquote{Reduktion der Koeffizienten} verwenden:
+Für ein $p \in R$ gibt es einen Ringhomomorphismus $f \in R[x] \mapsto f_{\mod p} \in \sfrac{R}{(p)}[x], \sum_{i=0}^{n} a_{i} X^{i} \mapsto \sum_{i=0}^{n} (a_{i} + (p)) X^{i}$.
+Dies folgt aus dem Satz von 4. VO %TODO proper reference,
+(wobei $\varphi(a) = a + (p)$ und $\Phi(X) = X$).
+
+
+\begin{theorem}[Gauss]
+	Sei $R$ ein faktorieller Ring. Dann ist auch $R[x]$ faktoriell.
+	Des Weiteren hat $R[x]$ genau die beiden Typen von Primelementen:
+	\begin{itemize}
+		\item $p \in R$ prim ist auch ein Primelement von $R[x]$.
+		\item $f \in R[x]$ primitiv so dass $f$ irreduzibel als Element von $K[x]$ ist,
+			ist ein Primelement von $R[x]$.
+	\end{itemize}
+\end{theorem}
+
+\begin{corollary}
+	Sei $f \in R[x]$ primitiv. Dann ist $f$ irreduzibel als Element von $R[x]$ gdw. $f$ ist irreduzibel als Element von $K[x]$.
+\end{corollary}
+
+
+\begin{lemma}
+	Sei $K$ ein Körper und $a \in K$. Dann gilt für jedes $f \in K[x]$ 
+	\[
+		f(x) = (x-a)g(x) + r \qq{ für } g(x) \in K[x], r \in K
+	.\]
+	Daher gilt $f(a) = 0 \Leftrightarrow (x-a) \mid f(x)$.
+\end{lemma}
+
+\begin{proposition}
+	Sei $K$ ein Körper. Dann sind lineare Polynome der Form $x-a$ für $a \in K$ irreduzibel als Elemente von $K[x]$.
+	Für quadratische ($\deg(f) = 2$ ) und kubische ($\deg(f) = 3$) Polynome  $f \in K[x]$ gilt
+	\begin{center}
+		$f$ ist irreduzibel $\Leftrightarrow$ $f$ hat keine Nullstelle ($\forall a \in K$ gilt $f(a) \neq 0$ )
+	\end{center}
+\end{proposition}
+
+
+\begin{theorem}[Fundamentalsatz der Algebra]
+	Jedes Polynom $f \in \C[x]$ mit $\deg(f) > 0$ hat eine Nullstelle in $\C$.
+
+	Die irreduziblen Elemente von $\C[x]$ sind genau die linearen Polynome.
+	Insbesondere hat jedes $f \in \C[x]$ eine Faktorisierung in Linearfaktoren
+	\[
+		f(x) = a \prod_{j=1}^{\deg(f)} (x-z_{j})
+	.\] 
+	für gewisse $a \in C \setminus \{0\}$ und $z_1,\ldots,z_{\deg(f)} \in \C$.
+\end{theorem}
+
+\begin{corollary}[Fundamentalsatz für $\R$ ]
+	Ein Polynom in $\R[x]$ ist irreduzibel gdw. entweder $\deg(f) = 1$ ist oder $\deg(f) = 2$ ist und $f$ keine Nullstellen in $\R$ besitzt.
+\end{corollary}
+
+
+\begin{proposition}
+	Sei $R$ ein faktorieller Ring. Sei $f \in R[x]$ und $\frac{a}{b} \in K$ mit $b \neq 0, (a,b)$ coprim.
+	Falls $f(\frac{a}{b}) = 0$ ist, so ist $b$ ein Teiler von führenden Koeffizienten von $f$ und $a$ ein Teiler vom konstanten Term von $f$.
+\end{proposition}
+
+
+
+
+\begin{proposition}
+	Sei $R$ ein faktorieller Ring und $p \in R$ ein Primelement.
+	Angenommen $f \in R[x]$ erfülle:
+	\begin{itemize}
+		\item $f$ primitiv
+		\item $\deg(f) = \deg(f_{\mod p})$ mit $f_{\mod p} \in \sfrac{R}{(p)}[x]$
+		\item $f_{\mod p} \in \frac{R}{(p)} [x]$ ist irreduzibel
+	\end{itemize}
+	Dann ist $f \in R[x]$ ein Primelement.
+\end{proposition}
+
+
+
+\begin{theorem}[Eisenstein-Kriterium]
+	Sei $R$ ein faktorieller Ring und $p \in R$ ein Primelement.
+	Sei $f(x) = \sum_{i=0}^{n} a_{i} x^{i}$  primitiv mit $n \geq 1, p \nmid a_{n}$, $p \mid a_{i}$ für $i = 0,\ldots,n-1$ und $p^2 \nmid a_0$.
+	Dann ist $f$ irreduzibel.
+\end{theorem}
+
+
+
+\begin{corollary}
+	Für jede Primzahl $p \in \N$ ist das $p$-te Kreisteilungspolynom
+	\[
+		\Phi_{p}(x) = 1 + x+ x^2 + \ldots + x^{p-1} = \frac{x^{p} -1}{x-1}
+	\] 
+	in $\Z[x]$ irreduzibel.
+\end{corollary}
+
+
+
+\begin{remark}
+	Für $p \in \N$ prim gilt allerdings
+	\[
+		(x+y-z)^{p} = x^{p} + y^{p} - z^{p} \in \F_{p}[x,y,z]
+	.\]
+	nicht irreduzibel.
+\end{remark}
+
 
 
 
