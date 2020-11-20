@@ -1041,7 +1041,12 @@ Dann gilt $H \lTri G$.
 	Da dies für alle $a,b \in G$ gilt und $[G,G]$ von diesen Elementen erzeugt wird, erhalten wir daraus
 	$\varphi([G,G]) = \{e_{H}\}$. Auf Grund eines Korollars zum ersten Isomorphiesatz gibt es damit
 	einen Homomorphismus
-	%TODO Diagramm 18.11.2020 15:45
+	\[
+		\begin{tikzcd}
+			{\sfrac{G}{[G,G]}} \arrow[r, "\overline{\varphi}"] & H \\
+			G \arrow[u, "\pi"] \arrow[ru, "\varphi"']          &  
+		\end{tikzcd}
+	\] 
 	mit $\varphi = \overline{\varphi} \circ \pi$.
 \end{proof}
 
@@ -1071,6 +1076,208 @@ Dann gilt $H \lTri G$.
 	Mittels Induktion können wir analog $G^{(k)} < G_{n-k}$.
 	Für $k = n$ erhalten wir also $G^{(n)} < G_0 = \{e\}$.
 \end{proof}
+
+\section{Satz von Sylow}
+Für eine endliche Gruppe $G$ besagt der Satz von Lagrange, dass für $H < G$ sowohl die Ordnung $\abs{H}$ als auch der Index $[G:H]$ Teiler von  $\abs{G}$ sind.
+
+\begin{theorem}[Sylow]
+	Sei $G$ eine endliche Gruppe, $p \in \N$ prim und $n = \abs{G} = p^{k} m$ für $k \geq 1$ und $m$ teilerfremd zu $p$.
+	\begin{enumerate}[1)]
+		\item Es existiert eine maximale $p$-Untergruppe $H_{p}$ mit $\abs{H_{p}} = p^{k}$, welche \emph{Sylow $p$-Untergruppen} genannt werden.
+		\item Falls $H < G$ eine $p$-Untergruppe ist, so existiert eine $p$-Sylow Untergruppe $H_{p}$ mit $H < H_{p}$.
+		\item Je zwei Sylow $p$-Untergruppen sind konjugiert.
+	\end{enumerate}
+\end{theorem}
+
+\begin{lemma}
+	Sei $p \in \N$ prim, $n = p^{k}m$ mit $m$ teilerfremd zu $p$.
+	Dann ist $\binom{n}{p^{k}}$ nicht durch $p$ teilbar.
+\end{lemma}
+
+\begin{proof}
+	Sei $S = \sfrac{\Z}{(p^{k})} \times \{1,\ldots,m\}, G =  \sfrac{\Z}{(p^{k})}$, und definiere eine Wirkung von $G$ auf $S$ durch Addition 
+	in der ersten Komponente: $g \cdot (a,j) = (a+g,j)$.
+	Wir bemerken dass die $G$-Bahnen in $S$ genau die Mengen der Form $G \times \{i\}$ für ein $j \in \{1,\ldots,m\} $ sind.
+
+	Wir definieren $T = \{A \subseteq S: \text{Teilmenge mit } \abs{A} = p^{k}\}$ und
+	lassen $G$ auf $A \in T$ mittels $g \cdot A = \{g \cdot (a,j) \mid (a,j) \in A\} $ wirken.
+	Damit ist $T $ eine $G$-Menge.
+
+	Da $G$ eine $p$-Gruppe ist, können wir das frühere Lemma über $p$-Gruppen und Fixpunkte verwenden:
+	\[
+		\binom{n}{p^{k}} = \abs{T} = \abs{\on{Fix}_{G}(T)} = m \not\equiv 0 \mod p
+	x.\] 
+	nach Annahme im Lemma.
+	\begin{align*}
+		A \in \on{Fix}_{G}(T) &\Leftrightarrow A \subseteq S, \abs{A} = p^{k} \text{ und } g \cdot A = A \text{ für alle } g \in G\\
+							  &\Leftrightarrow A \subseteq S, \abs{A} = p^{k} \text{ und } A \text{ ist eine Vereinigung von $G$-Bahnen} \\%TODO missing
+							  &\Leftrightarrow A \subseteq S \text{ ist eine $G$-Bahn}\\
+							  &\Leftrightarrow A = G \times \{j\} \text{ für ein } j \in \{1,\ldots,m\} 
+	.\end{align*}
+	\begin{eg}[Sylow-Untergruppe]
+		Sei $G = \SL_{2}(\F_{p})$ mit Ordnung $p(p^2-1)$. Dann ist $H_{p} = \{ \begin{pmatrix} 
+				1 & 0\\ 0 &1
+		\end{pmatrix} \mid a \in \F_{p} \} \cong \F_{p}$ eine Sylow $p$-Untergruppe.
+	\end{eg}
+\end{proof}
+
+\begin{proof}[Beweis von 1) Satz]
+	Sei $T = \{ A \subseteq G: \abs{A} = p^{k}\} $. Dann ist $T$ eine $G$-Menge mittels Linksmultiplikation ($A \in T, g \in G, g \cdot A = \{g \cdot a \mid a \in A\}$)
+	mit $\abs{T} = \binom{n}{p^{k}} \not\equiv 0 \mod p$.
+	Auf Grund eines Korollars zu dem Satz über Bahn und Stabilisator gilt
+	\[
+		\abs{T} = \abs{\on{Fix}_{G}(T)} + \sum_{\abs{G \cdot t} > 1} [G: \on{Stab}_{G}(A)] \tag{$*$}
+	.\] 
+	Falls $n = p^{k}$ ist, so ist $H_{p} = G$ selbst die gesuchte Sylow $p$-Untergruppe.
+	Ansonsten ist $p^{k} < n$ und es gibt keine $G$-invariante Teilmenge $A \subseteq G$ mit $\abs{A} = p^{k}$.
+	Also ist $\on{Fix}_{G}(T) = \{\} $. Da $\abs{T} \not\equiv 0 \mod p$, folgt aus $(*)$, dass es ein $A \in T$ gibt, so dass $[G: \on{Stab}(A)] \not\equiv 0 \mod p$ ist.
+
+	\begin{remark}
+		$H_{p} = \on{Stab}_{G}(A_0)$ ist eine Sylow $p$-Untergruppe mit $\abs{H_{p}} = p^{k}$.
+	\end{remark}
+		Da $\abs{G} = \abs{H_{p}} [G: H_{p}] = p^{k} m $ und $p \not\in [G: H_{p}]$, folgt $p^{k} \mid \abs{H_{p}}$.
+		Des Weiteren wissen wir $H_{p} \cdot A_0 = A_0$. Sei $a_0 \in A_0$ beliebig, dann gilt also
+		$h \cdot a_0 \in H_{p} \cdot A_0 = A_0$ für alle $h \in H_{p}$.
+		Also gilt $H_{p} = a_0 \subseteq A_0$ und $\abs{H_{p}} = \abs{H_{p} \cdot a_0} \leq \abs{A_0} = p^{k}$.
+		Dies beweist die Behauptung und damit $1)$ im Satz.
+\end{proof}
+
+\begin{proof}[Beweis von 2)]
+	Sei $H$ eine beliebige $p$-Untergruppe und $H_{p}$ eine beliebige Sylow $p$-Untergruppe.
+	Wir definieren $T = \sfrac{G}{H_{p}}$ und lassen $H$ mittels linksmultiplikation auf $T$ wirken.
+	Wegen dem Lemma über Fixpunkte von $p$-Gruppen gilt
+	\[
+		\abs{\on{Fix}_{H}(T)} \equiv \abs{T} = [G: H_{p}] = \frac{n}{p_{k}} = m \not\equiv 0 \mod p
+	.\] 
+	Insbesondere gibt es einen Fixpunkt $g H_{p} \in T$ (für die Wirkung von $H$ ).
+	D.h. 
+	\begin{align*}
+		&hg H_{p} = g H_{p} \text{ für alle } h \in H\\
+		&\implies hg \in g H_{p} \in \text{ für alle } h \in H\\
+		&\implies h \in g H_{p} g^{-1} \text{ für alle } h \in H\\
+		&\implies H < g H_{p} g^{-1} \text{ \& } g H_{p} g^{-1} \text{ ist eine Sylow $p$-Untergruppe}
+	\end{align*}
+\end{proof}
+
+\begin{proof}[Beweis von 3)]
+	Angenommen $H, H_{p}$ sind zwei Sylow $p$-Untergruppen. Dann ist $H$ eine $p$-Untergruppe und obiger Beweis von 2) zeigt, dass es ein $g \in G$ mit
+	$H < g H_{p} g^{-1}$ gibt. Da aber $\abs{H} = \abs{H_{p}} = p^{k}$ ist, gilt $H = g H_{p} g^{-1}$.
+\end{proof}
+
+\section{Symmetrische und Alternierende Gruppen}
+
+\begin{definition}
+	Sei $n \geq 1$ natürlich, dann ist $S_{n} = \bij(\{1,\ldots,n\})$.
+	Die Elemente von $S_{n}$ heißen \emph{Permutationen}.
+\end{definition}
+
+\begin{theorem}
+	Sei $n \geq 1$. Auf $S_{n}$ gibt es einen Homomorphismus $\sgn: S_{n} \to \{\pm 1\}$, der jeder Permutation ein \emph{Vorzeichen} zuordnet
+	und einer \emph{Vertauschung} $\tau_{ij}$ für $i \neq j$ das Vorzeichen $-1$ mit
+	\[
+		\tau_{ij}(k) = \begin{cases}
+			i &\text{ für } k = j\\
+			j &\text{ für } k = i\\
+			k &\text{ sonst}
+		\end{cases}
+	.\] 
+\end{theorem}
+
+\begin{definition}
+	$\sigma \in S_{n}$ heißt \emph{gerade} falls $\sgn(\sigma) = 1$, ungerade falls $\sgn(\sigma) = -1$.
+	Die \emph{alternierende Gruppe} $A_{n} = \ker(\sgn)$ ist die Gruppe aller geraden Permutationen.
+\end{definition}
+
+\begin{proof}
+	Siehe lineare Algebra. Alternative Beweis-Skizze:
+	Für $F \in \Z[X_1,\ldots,X_{n}]$ definieren wir $\prescript{\sigma}{}{F} = F(X_{\sigma(1)},\ldots, X_{\sigma(n)})$.
+	Dies definiert eine Gruppenwirkung von $S_{n}$ auf $\Z[X_1,\ldots,X_{n}]$ mittels Ringhomomorphismen.
+	Wir definieren $P = \prod_{1 \leq i < j \leq n} (X_{i} - X_{j})$ und erhalten
+	\[
+		\prescript{\sigma}{}{P} = \prod_{1 \leq i < j \leq n} (X_{\sigma(i)} - X_{\sigma(j)} = \sgn(\sigma) P
+	.\] 
+	kann als Definition von $\sgn(\sigma)$ verwendet werden.
+\end{proof}
+
+\begin{notation}[für $\sigma \in S_{n}$]
+	\[
+	\sigma = \begin{pmatrix} 
+		1 & 2 & \ldots & n\\
+		\sigma(1) & \sigma(2) & \ldots & \sigma(n)
+	\end{pmatrix} 
+	.\] 
+\end{notation}
+Besser:
+\begin{notation}[mittels Zyklen für $\sigma \in S_{n}$]
+	Falls $\sigma = \id$ schreiben wir einfach $\sigma = \id$.
+	Sei nun $\sigma \neq \id$ und $i_1 \in \{1,\ldots,n\} $ der erste Nichtfixpunkt (also $i_{1}$ minimal mit $\sigma(i_1) \neq i_1$ ).
+	Wir bestimmen
+	\[
+		\sigma(i_1) , \sigma^2(i_1),\ldots, \sigma^{k_1}(i_1) = i_1 \qq{für $k_1 > 1$ minimal}
+	.\] 
+	Falls dies alle Nichtfixpunkte von $\sigma$ sind, so nennen wir $\sigma$ einen \emph{($k$-)Zyklus} und schreiben
+	 \[
+		 \sigma = (i_1,\sigma(i_1),\sigma^2(i_1),\ldots,\sigma^{k-1}(i_1))
+	.\] 
+	Falls nicht, so sei $i_2 > i_1$ der nächste Nichtfixpunkt (der noch nicht gefunden wurde) und bestimme
+	\[
+		i_2, \sigma(i_2),\ldots, \sigma^{k_2}(i_2) = i_2 \qq{für $k_2 > 1$ minimal}
+	\]
+	etc. Nach endlich vielen Schritten haben wir alle Nichtfixpunkte gefunden  und schreiben 
+	 \[
+		 \sigma = (i_1,\sigma(i_1),\ldots,\sigma^{k_1-1}(i_1))(i_2,\sigma(i_2),\ldots,\sigma^{k_2-1}(i_2))\ldots(i_{r},\sigma(i_{r}),\ldots,\sigma^{k_{r}-1}(i_{r}))
+	.\] 
+	In diesem Fall sagen wir auch, dass $\sigma$ \emph{Zyklentyp}(Struktur) $k_1,k_2,\ldots,k_{r}$ hat (wobei
+	die Zahlen $k_1,\ldots,k_{r}$ auch in einer anderen Reihenfolge auftreten dürfen).
+\end{notation}
+
+\begin{eg}
+	$n = 5$
+	\[
+		(3,2,5) = (2,5,3) = \sigma : \begin{cases}
+			1 \mapsto  1\\ 2 \mapsto  5\\ 3 \mapsto  2\\ 4 \mapsto 4\\ 5 \mapsto 3
+		\end{cases} = \begin{pmatrix} 
+			1 & 2 & 3 & 4 & 5\\
+			1 & 5 & 2 & 4 & 3
+		\end{pmatrix} 
+	.\] 
+\end{eg}
+
+\begin{proposition}
+	Zwei Permutationen sind in $S_{n}$ genau dann konjugiert, falls sie dieselbe Zyklenstruktur haben.
+\end{proposition}
+
+\begin{eg}
+	$n=5$ : $(2,5,3)$ und $(1,2,3)$ sind konjugiert.
+	\begin{gather*}
+		\sigma = \begin{pmatrix} 
+			1 & 2 & 3 & 4 & 5\\
+			2 & 5 & 3 & 1 & 4
+		\end{pmatrix} \in S_{n}\\ 
+		\sigma (1,2,3) \sigma^{-1} = \begin{cases}
+			1 \mapsto  4 \mapsto 4 \mapsto 1\\
+			2 \mapsto 1 \mapsto 2 \mapsto 5\\
+			3 \mapsto 3 \mapsto 1 \mapsto 2\\
+			4 \mapsto 5 \mapsto 5 \mapsto 4\\
+			5 \mapsto 2 \mapsto 3 \mapsto 3
+		\end{cases} = (2,5,3)
+	\end{gather*}
+\end{eg}
+
+\begin{proof}[Beweis-Skizze (Seite 122)]
+	Sei $\sigma \in S_{n}$ beliebig und $(i_1,\ldots,i_{k})$ ein Zyklus.
+	Dann ist 
+	\[
+		\sigma(i_1,\ldots,i_{k}) \sigma^{-1} = (\sigma(i_1),\sigma(i_2),\ldots,\sigma(i_{k}))
+	\]
+	mit einer kleinen Rechnung wie im Beispiel.
+\end{proof}
+
+
+
+
+
+
 
 
 
