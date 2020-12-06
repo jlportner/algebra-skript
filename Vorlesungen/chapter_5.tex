@@ -1,0 +1,627 @@
+%! TEX root=../algebra.tex
+\graphicspath{{Images/}}
+
+\chapter{Modultheorie}
+(siehe Seite $288$, aber \enquote{kommutativ})
+
+\section{Definition \& Beispiel}
+\enquote{Modukb verhalten sich zu Ringen wie Vektorräume zu Körpern.}
+
+\begin{definition}
+	Sei $R$ ein Ring. Ein \emph{$R$-Modul $M$} ist eine abelsche gruppe gemeinsam mit einer Skalarmultiplikation $R \times M \to M, (a,m) \mapsto a \cdot m$
+	mit folgenden Eigenschaften:
+	\begin{itemize}
+		\item $a \cdot (m_1 + m_2) = a m_1 + a m_2$ für $a \in R, m_1,m_2 \in M$.
+		\item $(a+b) \cdot m = a m + b m$ für $a,b \in R, m \in M$.
+		\item $a \cdot (b \cdot m) = (a b ) \cdot m$ für $a,b \in R, m \in M$.
+		\item $1 \cdot m = m$ für $m \in M$.
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	Seien $R$ ein Ring und $M,N$ $R$-Moduln. Wir sagen $\phi: M \to N$ ist \emph{$R$-linear} (ein \emph{Modulmorphismus über $R$})
+	falls $\phi$ ein Gruppenmorphismus ist und $\phi(a m) = a \phi(m)$ für alle $a \in R$ und $m \in M$.
+\end{definition}
+
+\begin{definition}
+	Sei $R$ ein Ring und $M$ ein $R$-Modul. Ein \emph{Untermodul} ist eine Untergruppe $N < M$ mit $a \cdot n \in N$ für alle $a \in R$ und $n \in N$.
+\end{definition}
+
+\begin{lemma}
+	Sei $R$ ein Ring, $M$ ein $R$-Modul und $N < M$ ein Untermodul. Dann induziert die $R$-Modulstruktur auf $M$ eine $R$-Modulstruktur auf $\sfrac{M}{N}$ so dass
+	die kanonische Projektion $\begin{cases}
+		\pi: M \to \sfrac{M}{N}\\ m \mapsto m+N
+	\end{cases}$ $R$-linear ist.
+\end{lemma}
+
+\begin{proof}
+	Übung
+\end{proof}
+
+\begin{eg}
+	\begin{enumerate}
+		\setcounter{enumi}{-1}
+		\item Falls $R = K$ ein Körper ist, so reden wir genau über \emph{Vektorräume über $K$}.
+		\item $M = R$ ist ein $R$-Modul und Ideale $I < R$ sind genau die Untermodulnvon $R$.
+		\item Angenommen $M,N$ sind $R$-Moduln. Dann ist auch
+			\[
+				\hom_{R}(M,N) = \{f: M \to N \mid f \text{ ist $R$-linear}\} 
+			\]
+			ein $R$-Modul: $(f_1+f_2)(m) = f_1(m) + f_2(m)$ und $(a\cdot f)(m) = a \cdot f(m)$.
+		\item Sei $R = \Z$. Dann ist jede abelsche Gruppe $M$ auch ein $\Z$-Modul.
+			Falls wir $\Z$-Modul klassifizieren können, so erhalten wir eine Klassifikation von abelschen Gruppen.
+			Dies ist eines der \emph{Hauptziele des Kapitels}.
+	\end{enumerate}
+\end{eg}
+
+\begin{proposition}[Erster Isomorphiesatz]
+	Seien $R$ ein Ring, $M,N$ $R$-Moduln, $\phi: M \to N$ $R$-linear.
+	Dann sind $\ker(\phi) < M, \Im(\phi) < N$ Untermoduln und $\phi$ induziert einen $R$-linearen Isomorphismus
+	\[
+		\overline{\phi}: \sfrac{M}{\ker(f)} \to \Im(f)
+	.\] 
+\end{proposition}
+
+\begin{lemma}
+	Seien $R$ ein Ring und $M_1,\ldots,M_{n}$ $R$-Moduln.
+	Dann ist auch $M_1 \times \ldots \times M_{n}$ ein $R$-Modul mit koordinatenweiser Skalarmultiplikation
+	\[
+		a \cdot (m_1,\ldots,m_{n}) = (a m_1,\ldots,a m_{n}) \qq{für} a \in R, (m_1,\ldots,m_{n}) \in M_1 \times \ldots \times M_{n}
+	.\] 
+\end{lemma}
+
+\begin{proof}
+	Übung
+\end{proof}
+
+\begin{lemma}
+	Seien $R,S$ zwei Ringe, $M$ ein $R$-Modul und $N$ ein $S$-Modul.
+	Dann ist $M \times N$ ein $R \times S$-Modul mit koordinatenweiser Skalarmultiplikation
+	\[
+		(a,b) \cdot (m,n) = (a m, b n) \qq{für} (a,b) \in R \times S, (m,n) \in M \times N
+	.\] 
+\end{lemma}
+
+\begin{proof}
+	Übung
+\end{proof}
+
+\textbf{Übung:}
+Charakterisiere die Untermoduln von $M \times N$ (über $R \times S$ ).
+
+Welche Ringe könnten interessant sein?
+\[
+	\text{Körper} \to \text{Vektorräume} \qquad \Z \to \text{Abelsche Gruppen} \qquad K[X] \to ?
+\] 
+\begin{theorem}
+	Sei $K$ ein Körper und $M$ ein Vektorraum über $K$.
+	Die Definition einer Modulstruktur auf $M$ über $K[X]$ (die mit der Vektorraumstruktur von $M$ über $K$ kompatibel ist)
+	ist gleichzusetzen mit der Auswahl einer $K$-linearen Abbildung $\varphi: M \to M$.
+	Formaler formuliert sind die folgenden beiden Abbildungen invers zueinander:
+	\begin{center}
+		\begin{tabu} to \linewidth {X[2] X[0.2] X[2]}
+			Eine Skalarmultiplikation auf $M$ über $K[X]$ dessen Einschränkung auf $K \times M$ die Skalarmultiplikation von $M$ über $K$ ist. & & 
+			Eine $K$-lineare Abbildung $ \varphi: M \to M$ \\
+			\qquad \qquad \qquad \qquad \qquad  $\cdot $ & $\longmapsto $ & $\varphi(m) = X \cdot m$ für $m \in M$ \\
+			$f \cdot m = (f(\varphi))(m) = (\sum_{k} a_{k} \varphi^{k}) (m)$ für $f = \sum_{k} a_{k} X^{k} \in K[X]$ & $\longmapsfrom$ & $\varphi$
+		\end{tabu}
+	\end{center}
+\end{theorem}
+
+\begin{proof}
+	Angenommen $\cdot : K[X] \times M \to M$ definiert eine Modulstruktur auf $M$ über $K[X]$. Dann ist $\varphi(m) = X \cdot m$ für $m \in M$ eine 
+	$K$-lineare Abbildung auf $M$.
+	\[
+	\begin{cases}
+		\varphi(m_1 + m_2) = X \cdot (m_1 + m_2) = X m\cdot _1 + X \cdot m_2 = \varphi(m_1) + \varphi(m_2)\\
+		\varphi(a \cdot m) = X \cdot ( a \cdot m) = (a X) \cdot m = a \cdot \varphi(m)
+	\end{cases}
+	.\] 
+	Angenommen $\varphi: M \to M$ ist $K$-linear. Dann definiert $f = \sum_{k} a_{k} X^{k} \in K[X] \mapsto f(\varphi) = \sum_{k} a_{k} \varphi^{k} \in \hom_{K}(M,M)$
+	einen Ringhomomorphismus. Wir verwenden dies um $f \cdot m = (f(\varphi))(m)$ für $f \in K[X]$ und $m \in M$ zu definieren.
+	Dies erfüllt die Axiome eines $K[X]$-Moduls:\\
+	Z.B. gilt für $f_1,f_2 \in K[X], m \in M$
+	\[
+		f_1 \cdot (f_2 \cdot m) = f_1(\varphi) (f_2(\varphi) m) = \underbrace{(f_1(\varphi) \cdot f_2(\varphi))}_{= (f_1 \cdot f_2)(\varphi)} = (f_1 \cdot f_2) \cdot m
+	.\] 
+	wobei $(f_1 \cdot f_2)(\varphi)$ die Auswertung ein Ringhomomorphismus ist.
+	Diese beiden Abbildungen sind invers zueinander.
+	\begin{align*}
+		&\cdot \mapsto  \begin{cases}
+			\varphi(m) = X \cdot m\\
+			\varphi^2(m) = X^2 \cdot m\\
+			\qquad \vdots
+		\end{cases} \mapsto f(X) \cdot m = \sum_{k} a_{k} ( \underbrace{X^{k} \cdot m}_{= \varphi^{k}(m)}) = f \cdot m\\
+		&\varphi \mapsto \begin{cases}
+			\cdot \text{ definiert durch}\\
+			f \cdot m = f(\varphi) m
+		\end{cases} \mapsto X \cdot m = \varphi(m)
+	.\end{align*}
+	Wobei $*$ die neue Skalarmultiplikation und $\cdot $ die alte Skalarmultiplikation ist.
+	Und außderdem $X\cdot m$ die neue lineare Abbildung und $\varphi(m)$ die alte lineare Abbildung ist.
+\end{proof}
+
+Wir wollen endlich erzeugte Moduln über Hauptidealringen klassifizieren!\\
+$\overset{\Z}{\longrightarrow}$ Klassifikation von endlich erzeugten abelschen Grupppen.\\
+$\overset{K[X]}{\longrightarrow}$ Satz über Jordan Normalform.
+
+\section{Freie Moduln}
+
+\begin{definition}
+	Sei $I$ eine Menge und $R$ ein Rnig. Wir bezeichnen
+	\[
+		R^{(I)} = \{x : I \to R \mid x_{i} = 0 \text{ für alle bis auf endlich viele } i \in I\} 
+	\] 
+	als den \emph{freien $R$-Modul} (über der Indexmenge $I$ ). Wir nennen
+	\[
+		e_{i} = \mathbbm{1}_{\{i\}} \qq{für} i \in I
+	\]
+	die \emph{Standardbasis} von $R^{(I)}$.
+	Ein \emph{freier Modul} $M$ ist ein Modul isomorph zu $R^{(I)}$ für eine Menge $I$.
+	Die Kardinalität von $I$ wird als der \emph{Rang} von $M \cong R^{(I)}$ bezeichnet.
+\end{definition}
+
+\begin{lemma}
+	Sei $R \neq \{0\} $ ein Ring. Dann ist der Rang eines Moduls wohldefiniert.
+\end{lemma}
+
+\begin{proof}
+	Sei $J_{\max} \subseteq R$ ein Maximalideal (welches auf grund eines Satzes aus dem Kapitel über Ringe existiert).
+	Sei $M$ ein freier $R$-Modul. Dann ist
+	\[
+	J_{\max} \cdot M = \{\sum_{k} a_{k} m_{k} \mid a_{k} \in J_{\max}, m_{k} \in M\} 
+	\] 
+	ist ein Untermodul. Sei $I$ eine Menge mit  $M \cong R^{(I)}$. Dann gilt  
+	\[
+		J_{\max} \cdot M \qq{wird auf} \{\sum_{i \in I} a_{i} e_{i} \mid a_{i} \in J_{\max}, a_{i} = 0 \text{ für alle bis auf endlich viele } i \in I\}
+	\]
+	abgebildet. Daraus folgt, dass
+	\[
+		\sfrac{M}{J_{\max} \cdot M} \cong \left( \sfrac{R}{J_{\max}} \right)^{(I)}
+	\] 
+	ein Vektorraum über $\sfrac{R}{J_{\max}}$ der Dimension $\abs{I}$ ist. 
+	Das Lemma folgt nun aus der Linearen Algebra.
+\end{proof}
+
+\begin{claim}
+	Freie Moduln verhalten sich am ehesten wie Vektorräume \ldots
+\end{claim}
+
+\begin{proposition}
+	Seien $m,n \geq 1$ natürliche Zahlen und $R$ ein Ring. Dann gilt
+	\[
+		\hom(R^{n},R^{m}) \cong \mat_{mn}(R)
+	\] 
+	wie in der Linearen Algebra.
+\end{proposition}
+
+\begin{proof}
+	wie in der Linearen Algebra.
+\end{proof}
+
+\begin{definition}
+	Sei $M$ ein $ R$-Modul über einem Ring $R$. Wir sagen $x_1,\ldots,x_{n} \in M$ sind \emph{frei} oder \emph{linear unabhängig} (l.u.) falls die Abbildung
+	$a \in R^{n} \mapsto \sum_{i = 1}^{n} a_{i} x_{i}$ injektiv ist.
+
+	Falls $x_1,\ldots,x_{n} \in M$ l.u. sind, so ist das Bild der Abbildung ein freier Untermodul von $M$.
+\end{definition}
+
+\section{Torsionsmoduln}
+\begin{definition}
+	Sei $R$ ein Ring und $M$ ein $R$-Modul. Wir sagen $m \in M$ ist ein \emph{Torsionselement}, falls es ein $a \in R \setminus \{0\} $ gibt
+	mit $a \cdot m = 0$. Wir sagen $M$ ist ein \emph{Torsionsmodul} falls jedes $m \in M$ ein Torsionselement ist.
+	Wir sagen $M$ ist \emph{torsionsfrei} falls $m = 0$ das einzige Torsionselement von $M$ ist.
+\end{definition}
+
+\begin{eg}
+	\begin{itemize}
+		\item Sei $R = \Z$ und $M = G$ eine additiv geschriebene endliche abelsche Gruppe. Dann ist $M$ ein Torsionsmodul.
+			Jedes $g \in M$ hat endliche Ordnung $n < \infty$ womit $n \cdot g = 0$ ist.
+		\item Sei $R = \Z$. Dann ist $M = \sfrac{\Q}{\Z}$ ein Torsionsmodul.
+		\item Sei $V$ ein endlich-dimensionaler Vektorraum über einem Körper $K$, und $A : V \to V$ $K$-linear.
+			Wir verwenden $A$ um $V$ zu einem $K[X]$-Modul zu machen. Dann ist $V$ ein Torsionsmodul über $K[X]$.
+			Sei $v \in V \setminus \{0\} $. Dann ist die Abbildung $f \in K[X] \mapsto f \cdot v \in V$
+			nicht injektiv (wegen $\dim(V) < \infty = \dim(K[X])$ ).
+			Also gibt es ein $f \in K[X] \setminus \{0\} $ mit $f \cdot v = 0$.
+		\item Falls $R$ ein Intergritätsbereich ist in $M$ ein freier $R$-Modul ist, so ist $M$ torsionsfrei.
+	\end{itemize}
+\end{eg}
+
+\section{Struktur von endlich erzeugten Moduln über Hauptidealringe}
+
+\begin{definition}
+	Sei $R$ ein Ring und $M $ ein $R$-Modul.
+	Für eine Teilmenge $X \subseteq M$ wird
+	\[
+	\left< X \right>_{R} = \{\sum_{x \in E} a_{x} x \mid a_{x} \in R \text{ für $x \in E$ und $E \subseteq X$ endlich}\} 
+	\]
+	als die \emph{$R$-lineare Hülle von $X$} oder als der \emph{von $X$ erzeugte Untermodul} bezeichnet.
+	Falls es eine Teilmenge $X \subseteq M$ mit $\abs{X} < \infty$ und $\left< X \right>_{R} = M$ gibt, so heißt $M$ \emph{endlich erzeugt}.
+\end{definition}
+
+\begin{eg}
+	Für $R = K[X_1,X_2,\ldots]$ ist der Untermodul $I = \left< X_1,X_2,\ldots \right>$ nicht endlich erzeugt.
+\end{eg}
+
+Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul von $R$ wieder frei mit Rang $0$ oder $1$.
+
+\begin{theorem}[Klassifikationssatz (1. Teil)]
+	Sei $R$ ein Hauptidealring und $M$ ein endlich erzeugter Modul über $R$.
+	Dann ist $M$ isomorph zu einem direkten Produkt $R^{n} \times T$ wobei
+	\[
+		T = M_{\on{tors}} = \{m \in M \mid m \text{ ist ein Torsionselement von } M\}
+	\]
+	und $n$ ist der Rang von $\sfrac{M}{M_{\on{tors}}}$.
+	Insbesondere ist $M$ ein freier Modul genau dann wenn $M_{\on{tors}} = \{0\}$.
+\end{theorem}
+
+\begin{proposition}
+	Sei $R$ ein Hauptidealring und $n \geq 1$. Dann ist jeder Untermodul $M \subseteq R^{n}$ ein freier $R$-Modul mit Rang $\leq n$.
+\end{proposition}
+
+\begin{proof}
+	Sei $e_{i}$ für $i = 1,\ldots,n$ die Standardbasis von $R^{n}$.
+	Wir definieren die Untermoduln
+	\[
+		M_{i} = M \cap \left< e_1,e_2,\ldots,e_{i} \right> \qq{für} i = 1,\ldots,n
+	.\] 
+	Dann gilt $M_{n} = M$.
+	\begin{claim}
+		$M_{i}$ ist ein freier Modul mit Rang $\leq i$.
+		Wir beweisen die Behauptung mittels Induktion nach $i$.
+		
+		\textbf{Induktionsanfang:} Für $i = 1$ ist $M_1 = M \cap \left< e_1 \right> \cong J \subseteq R$.
+		Dies zeigt, dass $M_1$ isomorph zu einem Ideal $J$ in $R$.
+		Da $R$ ein Hauptidealring ist, folgt entweder $J = (0)$ und $M_{i} = \{0\} $ hat Rang $0$ oder
+		$J = (d_1)$ für $d_1 \in R\setminus \{0\}$ und $M_1 \cong (d_1) \cong \underbrace{R}_{\in a \mapsto a d_1}$ hat Rang $1$.
+
+		\textbf{Induktionsschritt:} Angenommen $M_{i-1}$ ist frei mit Rang $\leq i -1$.
+		Wir betrachten die Abbildung $\phi: M_{i} \to R, (x_1,\ldots,x_{i},0,\ldots,0) \mapsto x_{i}$.
+		Das Bild $\Im(\phi)$ ist ein Untermodul von $R$ also entweder $\Im(\phi) = \{0\}$, und $M_{i} = M_{i-1}$ ist frei mit Rang $\leq i-1 < i$.
+		Oder $\Im(\phi) = (d_{i})$ und es gibt ein $m_{i} \in M_{i}$ mit $\phi(m_{i}) = d_{i}$.
+		In diesem Fall definieren wir
+		\[
+			\psi: M_{i-1} \times R \to M_{i} \qquad (m',a) \mapsto m' + a m_{i} \in M_{i}
+		.\] 
+		Wir zeigen, dass $\psi$ ein Isomorphismus ist.
+		Dies impliziert dann, dass $M_{i}$ frei ist und der Rang von $M_{i}$ eins höher ist als der Rang von $M_{i-1}$.
+
+		\textbf{Injektivität von $\psi$:} $\psi(m',a) = 0 = m' + a m \overset{\phi}{\underset{\phi(m') = 0}{\mapsto }} a d_{i}$ und $m' = 0$.
+
+		\textbf{Surjektivität von $\psi$:} Sei $m \in M_{i}$ beliebig, dann ist $\phi(m) \in \Im(\phi) = (d_{i})$ und es existiert
+		ein $a \in R$ mit $\phi(m) = a d_{i}$. Damit ist aber $m' = m - a m_{i} \in M_{i-1}$
+		und $m = m' + a m_{i} \in \Im(\phi)$.
+	\end{claim}
+	Dies schließt den Induktionsschritt und damit den Beweis.
+\end{proof}
+
+\begin{proof}[Beweis des ersten Teils vom Klassifikationssatz] \leavevmode
+	\begin{itemize}
+		\item  $M_{\on{tors}}$ ist ein Untermodul, z.B. $a_1 m_1  = 0 = a_2 m_2$, $m_1, m_2 \in M_{\on{tors}}$ für $a_1,a_2 \in R \setminus \{0\} $ 
+			Impliziert $a_1 a_2 (m_1 + m_2) = a_2 \underbrace{a_1 m_1}_{= 0} + a_1 \underbrace{a_2 m_2}_{= 0} = 0$.
+		\item Da $R$ ein Integritätsbereich ist, hat ein freier Modul ($\cong R^{l}$ )  keine nichttrivialen Torsionselemente.
+			Also gilt $M$ frei $\implies M_{\on{tors}} = \{0\}$.
+		\item Wir zeigen nun die Umkehrung dieser Aussage, also $M_{\on{tors}} = \{0\} \implies M$ ist frei.\\
+			Seien $x_1,\ldots,x_{n} \in M$ eine Erzeugendenmenge von $M$.
+			Wir wählen aus dieser Liste eine maximale l.u. Teilmenge $y_1\ldots,y_{k}$ aus.
+			Dies impliziert $N = \left< y_1,\ldots,y_{k} \right> \cong R^{k}$.
+			\begin{claim}
+				Für alle $x_{i}$ in der Erzeugendenmenge gibt es ein $a_{i} \in R \setminus \{0\} $ mit $a_{i} x_{i} \in N$.
+				Falls $x_{i} = y_{i}$ ein Erzeuer von $N$ ist, so setzen wir $a_{i} = 1$. 
+			\end{claim}
+			\begin{proof}[Beweis von $M$ ist frei mittels der Behauptung]
+				Für $a  = a_1 \cdot a_2 \cdot \ldots \cdot a_{n}$ gilt auf Grund der Behauptung $a M \subseteq N \cong R^{k}$.
+				Also ist $a M$ isomorph zu einem Untermodul von $R^{k}$ und wegen der Proposition selbst frei.
+				Des Weiteren ist $a \cdot : M \to aM$ ein Isomorphismus und daher ist auch $M$ frei,
+				weil $\ker(a\cdot ) = \{ m \in M \mid am = 0\} \subseteq M_{\on{tors}} = \{0\} $
+			\end{proof}
+
+			\begin{proof}[Beweis der Behauptung]
+				Sei $x_{i}$ ein Erzeuger von $M$ ungleich $y_1,\ldots,y_{k}$.
+				Wir definieren $\varphi: R \times N \to M, (a,m) \mapsto a x_{i} + m$.
+				Dann kann $\varphi$ nicht injektiv sein. Denn wenn $\varphi$ injektiv wäre, so wäre $\Im(\varphi)$ frei mit Rang $k+1$ 
+				und $y_1,\ldots,y_{k}$ wäre nicht maximal gewesen. Es gibt also $(a,m) \neq 0$ mit $a x_{i} + m = 0$.
+				Falls $a = 0$, so wäre auch $m = 0$.
+				Also gilt $a+0$ und $a x_{i} \in N$ und die Behauptung gilt.
+			\end{proof}
+			Dies beweist die Äquivalenz: $M$ ist frei $\Leftrightarrow M_{\on{tors}} = \{0\} $.
+	\end{itemize}
+	Sei nun $M$ ein beliebiger endlich erzeugter $R$-Modul. Dann ist  $M' = \sfrac{M}{M_{\on{tors}}}$ ebenso endlich erzeugt.
+	Des Weiteren ist $M'$ torsionsfrei (also frei wegen obiger Aussage).
+	Sei $m + M_{\on{tors}} \in M'$ ein Torsionselement und $a \in R \setminus \{0\} $ mit $a (m + M_{\on{tors}}) = 0 + M_{\on{tors}}$.
+	Dies impliziert also $a m \in M_{\on{tors}}$. Also existiert ein $b \in R \setminus \{0\} $ mit $b a m = 0$.
+	Folgt $\underbrace{(ab)}_{\in R \setminus \{0\}} \cdot m = 0 \implies m \in M_{\on{tors}}$ und $m + M_{\on{tors}} = 0 + M_{\on{tors}}$.
+
+	Wir erhalten also für einen beliebigen endlich erzeugten Modul $M$, dass $\sfrac{M}{M_{\on{tors}}} \cong R^{n}$ ein freier Modul ist.
+
+	Angenommen $x_1 + M_{\on{tors}}, \ldots, x_{n} + M_{\on{tors}} \in \sfrac{m}{M_{\on{tors}}}$ sind freie Erzeuger von $\sfrac{M}{M_{\on{tors}}}$.
+	Dann sind auch $x_1,\ldots,x_{n}$ in $M$ frei (%TODO missing)
+	): Falls $\sum_{i=1}^{n} a_{i} x_{i} = 0$ in $M$ ist, so ist
+	\[
+		\sum_{i=1}^{n} a_{i} (x_{i} + M_{\on{tors}}) = 0 \implies a_1 = a_2 = \ldots = 0
+	.\] 
+	Wir definieren $\psi: (a,m') \in R^{n} x M_{\on{tors}} \mapsto  \sum_{i=1}^{n} a_{i} x_{i} + m' \in M$ und behaupten,
+	dass $\psi$ ein Isomorphismus zwischen $R^{n} \times M_{\on{tors}}$ und $M$ darstellt.
+
+	\textbf{Injektiv:} Angenommen $\psi(a,m') = \sum_{i=1}^{n} a_{i} x_{i} + m' = 0 \implies \sum_{i=1}^{n} a_{i} (x_{i} + M_{\on{tors}}) = 0 \implies a = 0$ \& $m' = 0$ 
+	Also ist $\psi$ injektiv.
+
+	\textbf{Surjektiv:} Sei $m \in M$ beliebig. Dann gibt es ein $a \in R^{n}$ mit $m + M_{\on{tors}} = \sum_{i=1}^{n} a_{i} (x_{i} + M_{\on{tors}})$.
+	Also ist $m - \sum_{i = 1}^{n} a_{i} x_{i} = m' \in M_{\on{tors}}$ und $\psi(a,m') = m$.
+	Damit ist $\psi$ auch surjektiv.
+\end{proof}
+
+\begin{theorem}[Klassifikationssatz (2. Teil)]
+	Sei $R$ ein Hauptidealring und $M_{\on{tors}}$ ein endlich erzeigter Torsionsmodul. 
+	Dann existieren $d_1 \mid d_2 \mid \ldots \mid d_{n}$ in $R \setminus \{0\} $ so dass
+	\[
+		M_{\on{tors}} = \sfrac{R}{(d_1)} \times \ldots \times \sfrac{R}{(d_{n})}
+	.\] 
+	Alternativ gilt
+	\[
+		M_{\on{tors}} \cong \prod_{j=1}^{k} M_{\on{tors}}^{(p_{j})}
+	\]
+	wobei $p_1,\ldots,p_{k} \in R$ inäquivalente Primzahlen in $R$ sind und %TODO was ist inäquivalent ist das richtig
+	\[
+		M_{\on{tors}}^{(p_{j})} = \{m \in M_{\on{tors}} \mid \text{ es existiert ein $l \in \N$ mit } p_{j}^{l} m = 0\} \cong 
+		\sfrac{R}{(p_{j}^{n_{j,1}})} \times \ldots \times \sfrac{R}{(p_{j}^{n_{j,n}})}
+	.\] 
+\end{theorem}
+
+\begin{theorem}[Smith Normalform]
+	Sei $R$ ein Hauptideal ring, $k,l \geq 1$ natürliche Zahlen und $A \in \mat_{kl}(R)$.
+	Dann existieren $g \in \GL_{k}(R)$ und $h \in \GL_{l}(R)$ so dass
+	\[
+	g A h^{-1} = \begin{pmatrix} 
+		d_1 \\
+		& \ddots \\
+		& & d_{n} \\
+		& & & 0 \\
+		& & & & \ddots
+	\end{pmatrix} 
+	\]
+	für $d_1 \mid d_2 \mid \ldots \mid d_{n}$ in $R \setminus \{0\} $.
+\end{theorem}
+
+\begin{itemize}
+	\item Wir beweisen diesen Satz nur für Euklidische Ringe.
+	\item Im Gauss'schen Eliminationsalgo entsprechen Zeilenoperationen einer Linksmultiplikation und Spaltenoperationen einer Rechtsmulitplikation.
+	\item Wir kombinieren Gauss mit Division mit Rest.
+	\item Falls $R = K$ ein Körper ist, so können wir $d_1 = d_2 = \ldots = d_{n} = 1$ annehmen und $n = $ Rang von  $A$.
+\end{itemize}
+
+\begin{proof}[Beweis für Euklidische Ringe]
+	Wir beweisen den Satz mittels doppelter Induktion und zuerst nach $\max(k,l)$.
+	\begin{itemize}
+		\item Falls $\max(k,l) = 1$ ist, so ist $k=l=1$ und $A = (0)$ oder $A = (d_1)$ für $d_1 \in R \setminus \{0\} $.
+		\item Wir können annehmen, dass $\max(k,l) > 1$ ist und der Satz für \enquote{kleinere} Matrizen bereits gilt.
+
+			Falls $A = 0$ ist, so gibt es nichts zu beweisen.
+
+			Also können wir annehmen, dass $A \neq 0$. Wir definieren die \enquote{Norm von $A$} durch 
+			\[
+				N = \min_{A_{ii} \neq 0} \phi(A_{ii}) \in \N,
+			\] 
+			wobei $\phi: R \setminus \{0\} $ die Euklidische Normfunktion von $R$ bezeichnet.
+
+			Durch Vertauschung von Zeilen und Spalten können wir annehmen, dass 
+			\[
+				d_1 = A_{11} \neq 0 \qq{und} \phi(d_1) = N
+			.\] 
+			Wir verwenden Division durch $d_1$ mit Rest und erhalten
+			\[
+				A_{1 j} = a_{j} d_1 + r_{j} \qq{für} i = 2,\ldots,l \qq{mit} r_1 = 0 \qq{oder} \phi(r_{j}) < \phi(d_1)
+			.\] 
+			Wir ziehen das $a_{j}$-fache der 1. Spalte von der $j$-ten Spalte für $j=2,\ldots,l$ ab und erhalten die Matrix
+			\[
+			A' = \begin{pmatrix} 
+				d_1 &r_2 &r_3 &\ldots &r_{l}\\
+				A_{21}\\
+				\vdots & &*\\
+				A_{k_1}
+			\end{pmatrix} 
+			.\]
+			Falls $r_{j} \neq 0$ für ein $j \in \{2, \ldots, l\} $, so ist $N' = \min_{A'_{ij}\neq 0} \phi(A'_{ij} < N$ und wir
+			können per Induktion annehmen, dass $A'$ (und damit auch $A$ ) eine Smith Normalform hat.
+			Also können wir annehmen, dass $r_2 = r_3 = \ldots = r_{l} = 0$ ist.
+			
+			Ananlog können wir dieses Argument nun auch für die erste Spalte wiederholen.
+			Damit erhalten wir den verbleibenden Fall
+			\[
+			A'' = \begin{pmatrix} 
+				d_1 &0 &\ldots &0\\
+				0\\
+				\vdots & &B\\
+				0
+			\end{pmatrix} 
+			.\]
+			Falls $\min(k,l) = 1$, dann ist $A''$ bereits die Smith Normalform von $A$.
+			Falls $B = 0$, dann ist $A''$ bereits die Smith Normalform von  $A$.
+
+			Ansonsten hat $B$ Dimension $k-1$ \& $l-1$. Also hat nach Induktionsannahme $B$
+			eine Smith Normalform. Also können wir nach weiteren Zeilen- und Spaltenoperationen eine Matrix der Form
+			\[
+			A''' = \begin{pmatrix} 
+				d_1 \\
+				& \ddots \\
+				& & d_{n} \\
+				& & & 0 \\
+				& & & & \ddots
+			\end{pmatrix} 
+			\] 
+			erreichen.
+
+			Falls $d_1 \mid d_2$ (und ebenso $d_2 \mid d_3 \mid \ldots \mid d_{n}$ nach Induktionsannahme), dann ist $A'''$ die Smith Normalform von $A$.
+
+			Falls $d_1 \nmid d_2$, so addieren wir die zweite Zeile zur ersten, verwenden Divisioon mit Rest und derhalten eine Matrix mit kleinerem Minimum.
+			\[
+			A''' \longmapsto \begin{pmatrix} 
+				d_1 &d_2\\
+				& \ddots \\
+				& & d_{n} \\
+				& & & 0 \\
+				& & & & \ddots
+			\end{pmatrix} \mapsto \underbrace{\begin{pmatrix} 
+				d_1 &r \\
+				& \ddots \\
+				& & d_{n} \\
+				& & & 0 \\
+				& & & & \ddots
+		\end{pmatrix}}_{\text{Matrix mit kleinerer Norm}} \underset{i.A.}{\longmapsto} A''''
+			\] 
+			wobei $A''''$ in Smith Normalform und $r$ der Rest bei Division durch $d_1$ ist.
+	\end{itemize}
+	Dies schließt die Induktion(en) und den Beweis.
+\end{proof}
+
+\begin{proof}[Beweis beider Teile des Klassifikationssatzes]
+	Sei $M$ ein endlich erzeugter $R$-Modul und $R$ ein Euklidischer Ring.
+	Angenommen $x_1,\ldots,x_{k} \in M$ erzeugen $M$. Dann ist
+	\[
+	\phi: a \in R^{k} \mapsto \sum_{i=1}^{k} a_{i} x_{i} \in M
+	\] 
+	surjektiv. Sei $N = \ker(\phi) \subseteq R^{k}$- ein Untermodul. Nach einer früheren Proposition wissen wir, dass $N$ selbst
+	auch ein freier Modul ist -  sei $N = \left< r_1,\ldots,r_{l} \right>$. Damit ist $M \cong \sfrac{R^{k}}{N}$ (induziert von $\phi$ ).
+
+	Wir definieren die Matrix
+	\[
+		A = (r_1,\ldots,r_{l}) \in \mat_{kl}(R)
+	\] 
+	und wenden den Satz über die Smith Normalform an: Es existieren Matrizen $g \in \Gl_{k}(R)$ und $h \in \Gl_{l}(R)$ so dass
+	\[
+	B = g A h^{-1} = \begin{pmatrix} 
+		d_1 \\
+		& \ddots \\
+		& & d_{n} \\
+		& & & 0 \\
+		& & & & \ddots
+	\end{pmatrix} \qquad \qquad d_1 \mid d_2 \mid \ldots \mid d_{n} \qq{in} R \setminus \{0\}  
+	.\] 
+	Da wir $A$ mit einer $R$-linearen Abbildungen $R^{l} \to R^{k}$ identifizieren können erhalten wir
+	\begin{align*}
+		&N = \Im(A) = A(R^{l})\\
+		&\Im(B) = B(R^{l}) = g a \underbrace{h ^{-1}(R^{l})}_{R^{l}} = g \Im(A) = g N
+	.\end{align*}
+	Des Weiteren erhalten wir
+	\begin{align*}
+		R^{k} &\overset{\sim^{g}}{\longrightarrow} R^{k}\\
+		N = \Im(A) &\overset{\sim^{g}}{\longrightarrow} g N = \Im(B)
+	.\end{align*}
+	Verwende man den Isomorphiesatz indem man die Abbildung
+	\[
+		\begin{tikzcd}
+			R^k \arrow[r, "g"'] \arrow[rr, "\psi", bend left] & R^k \arrow[r] & \sfrac{R^k}{gN}
+		\end{tikzcd}
+	.\] 
+	betrachtet folgt $\sfrac{R^{k}}{\ker(\psi)} \cong \sfrac{R^{k}}{gN}$ und $\ker(\psi) = N$ da $g$ bijektiv ist.
+	\[
+		M \cong \sfrac{R^{k}}{N} \overset{\sim}{\longrightarrow} \sfrac{R^{k}}{gN} = \sfrac{R^{k}}{\Im(B)} \cong \sfrac{R}{(d_1)} \times  \ldots \times \sfrac{R}{(d_{n})} \times  R^{k-n}
+	\] 
+	und
+	\[
+		\Im(B) = (d_1) \times (d_2) \times \ldots \times (d_{n}) \times  \{0\}^{k-n}
+	.\]
+	wobei die erste Kongruenz von $\phi$ und die derste Abbildung von  $g$ induziert ist.
+	Außerdem gilt wegen dem Isomorphismus
+	\begin{align*}
+		&\sfrac{R \times R}{(d_1) \times (d_2)} \cong \sfrac{R}{(d_1)} \times \sfrac{R}{(d_2)}\\
+		&R \times R \overset{\psi}{\longrightarrow} \sfrac{R}{(d_1)} \times \sfrac{R}{(d_2)}\\
+		&\ker(\psi) = \{(a_1,a_2) \mid a_1 \in (d_1), a_2 \in (d_2)\} = (d_1) \times (d_2)
+	.\end{align*} 
+\end{proof}
+
+\section{Endlich erzeugte abelsche Gruppen}
+\begin{theorem}
+	Sei $G$ eine endlich erzeugte (additiv geschriebene) abelsche Gruppe.
+	Dann gilt
+	\[
+		G \cong \sfrac{\Z}{(d_1)} \times \ldots \times \sfrac{\Z}{(d_{n})} \times \Z^{k}
+	\] 
+	wobei $1 \leq s_1 \mid d_2 \mid \ldots \mid d_{n} \neq 0$ und $k \geq 0$.
+	
+	Alternativ gilt
+	\[
+		G \cong \prod_{p > 0 \text{ prim}} G_{p} \times \Z^{k} \qq{und} G_{p} \cong \sfrac{\Z}{(p^{k_{p,1}})} \times \ldots \times \sfrac{\Z}{(p^{k_{p,n}})}
+	.\] 
+	wobei $G_{p}$ die Sylow $p$-Untergruppe ist.
+\end{theorem}
+
+\begin{proof}
+	Folgt aus dem Klassifikationssatz
+\end{proof}
+
+\section{Jordan-Normalform}
+\begin{theorem}
+	Sei $V$ ein endlich dimensionaler Vektorraum über $\C$ und $\varphi: V \to  V$ linear.
+	Dann existiert eine Basis von $V$, so dass $\varphi$ eine Matrixdarstellung der folgenden Form besitzt:
+	\[
+	\begin{pmatrix} 
+		J_1\\
+		&J_2\\
+		& & \ddots
+	\end{pmatrix} \qq{und jeder Block $J_{k}$ hat die Form} \begin{pmatrix} 
+		\lambda &1\\
+		&\lambda &1\\
+		& & \ddots &\ddots\\
+		& & & \ddots &1\\
+		& & & &\lambda
+	\end{pmatrix} 
+	.\]
+	Dies ist die Jordan-Normalform von $\varphi$.
+\end{theorem}
+
+\begin{proof}
+	Da $V$ ein endlich-dimensional ist und $\C[X]$ unendlich-dimensional ist, muss $V$ ein Torsionsmodul über $\C[X]$ sein 
+	(wobei wir $\varphi$ verwenden um die Modulstruktur zu definieren).
+	Ebenso ist $V$ als $\C[X]$-Modul endlich erzeugt weil $V$ endlich-dimensional ist.
+
+	Also können wir den Klassifikationssatz für Module anwenden und erhalten
+	\[
+		V \cong \prod_{\substack{\text{endlich}\\\text{viele } (\lambda,k)}} \sfrac{\C[X]}{((X-\lambda)^{k})} 
+	\] 
+	mit $V$ aufgefasst als $\C[X]$-Modul.
+
+	Wir beschreiben nun Multiplikation mit $X$ ($\cong$ Anwendung von $\varphi$ auf Teilräumen von $V$ ) auf
+	$\frac{\C[X]}{((X-\lambda)^{k})} = M$. $M$ hat über $\C$ die Basis
+	\[
+		1, (X-\lambda), (X-\lambda)^2,\ldots, (X-\lambda)^{k-1}
+	.\] 
+	und $X \cdot $ hat die folgende Matrixdarstellung bzgl. dieser (geordneten) Basis
+	\[
+		\begin{pmatrix} 
+			\lambda\\
+			1 & \lambda\\
+			  & 1 &\ddots\\
+			  & &\ddots &\ddots\\
+			  & & & 1 &\lambda
+		\end{pmatrix} 
+	\]
+	denn
+	\begin{align*}
+		&X \cdot 1 = X = (X - \lambda) + \lambda \cdot 1 \implies \text{ bestimmt die 1. Spalte}\\
+		&X \cdot (X - \lambda)^{j} = (X-\lambda)^{j+1} + \lambda (X - \lambda)^{j} \implies \text{ bestimmt die $(j+1)$. Spalte}\\
+		&\vdots\\
+		&X \cdot (X-\lambda)^{k-1} = (X - \lambda + \lambda) (X-\lambda)^{k-1} = \cancel{(X-\lambda)^{k}} + \lambda (X-\lambda)^{k-1} = 0 \text{ in } M
+	.\end{align*}
+	Nach Umordnung der Basisvektoren ($(X-\lambda)^{k-1}$ zuerst, $1$ zuletzt) ergibt sich ein Jordanblock wie im Satz.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

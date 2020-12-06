@@ -1,0 +1,269 @@
+%! TEX root=../algebra.tex
+\graphicspath{{Images/}}
+
+\chapter{Modultheorie}
+(siehe Seite $288$, aber \enquote{kommutativ})
+
+\section{Definition \& Beispiel}
+\enquote{Modukb verhalten sich zu Ringen wie Vektorräume zu Körpern.}
+
+\begin{definition}
+	Sei $R$ ein Ring. Ein \emph{$R$-Modul $M$} ist eine abelsche gruppe gemeinsam mit einer Skalarmultiplikation $R \times M \to M, (a,m) \mapsto a \cdot m$
+	mit folgenden Eigenschaften:
+	\begin{itemize}
+		\item $a \cdot (m_1 + m_2) = a m_1 + a m_2$ für $a \in R, m_1,m_2 \in M$.
+		\item $(a+b) \cdot m = a m + b m$ für $a,b \in R, m \in M$.
+		\item $a \cdot (b \cdot m) = (a b ) \cdot m$ für $a,b \in R, m \in M$.
+		\item $1 \cdot m = m$ für $m \in M$.
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	Seien $R$ ein Ring und $M,N$ $R$-Moduln. Wir sagen $\phi: M \to N$ ist \emph{$R$-linear} (ein \emph{Modulmorphismus über $R$})
+	falls $\phi$ ein Gruppenmorphismus ist und $\phi(a m) = a \phi(m)$ für alle $a \in R$ und $m \in M$.
+\end{definition}
+
+\begin{definition}
+	Sei $R$ ein Ring und $M$ ein $R$-Modul. Ein \emph{Untermodul} ist eine Untergruppe $N < M$ mit $a \cdot n \in N$ für alle $a \in R$ und $n \in N$.
+\end{definition}
+
+\begin{lemma}
+	Sei $R$ ein Ring, $M$ ein $R$-Modul und $N < M$ ein Untermodul. Dann induziert die $R$-Modulstruktur auf $M$ eine $R$-Modulstruktur auf $\sfrac{M}{N}$ so dass
+	die kanonische Projektion $\begin{cases}
+		\pi: M \to \sfrac{M}{N}\\ m \mapsto m+N
+	\end{cases}$ $R$-linear ist.
+\end{lemma}
+
+
+
+\begin{proposition}[Erster Isomorphiesatz]
+	Seien $R$ ein Ring, $M,N$ $R$-Moduln, $\phi: M \to N$ $R$-linear.
+	Dann sind $\ker(\phi) < M, \Im(\phi) < N$ Untermoduln und $\phi$ induziert einen $R$-linearen Isomorphismus
+	\[
+		\overline{\phi}: \sfrac{M}{\ker(f)} \to \Im(f)
+	.\] 
+\end{proposition}
+
+\begin{lemma}
+	Seien $R$ ein Ring und $M_1,\ldots,M_{n}$ $R$-Moduln.
+	Dann ist auch $M_1 \times \ldots \times M_{n}$ ein $R$-Modul mit koordinatenweiser Skalarmultiplikation
+	\[
+		a \cdot (m_1,\ldots,m_{n}) = (a m_1,\ldots,a m_{n}) \qq{für} a \in R, (m_1,\ldots,m_{n}) \in M_1 \times \ldots \times M_{n}
+	.\] 
+\end{lemma}
+
+
+\begin{lemma}
+	Seien $R,S$ zwei Ringe, $M$ ein $R$-Modul und $N$ ein $S$-Modul.
+	Dann ist $M \times N$ ein $R \times S$-Modul mit koordinatenweiser Skalarmultiplikation
+	\[
+		(a,b) \cdot (m,n) = (a m, b n) \qq{für} (a,b) \in R \times S, (m,n) \in M \times N
+	.\] 
+\end{lemma}
+
+
+\textbf{Übung:}
+Charakterisiere die Untermoduln von $M \times N$ (über $R \times S$ ).
+
+Welche Ringe könnten interessant sein?
+\[
+	\text{Körper} \to \text{Vektorräume} \qquad \Z \to \text{Abelsche Gruppen} \qquad K[X] \to ?
+\] 
+\begin{theorem}
+	Sei $K$ ein Körper und $M$ ein Vektorraum über $K$.
+	Die Definition einer Modulstruktur auf $M$ über $K[X]$ (die mit der Vektorraumstruktur von $M$ über $K$ kompatibel ist)
+	ist gleichzusetzen mit der Auswahl einer $K$-linearen Abbildung $\varphi: M \to M$.
+	Formaler formuliert sind die folgenden beiden Abbildungen invers zueinander:
+	\begin{center}
+		\begin{tabu} to \linewidth {X[2] X[0.2] X[2]}
+			Eine Skalarmultiplikation auf $M$ über $K[X]$ dessen Einschränkung auf $K \times M$ die Skalarmultiplikation von $M$ über $K$ ist. & & 
+			Eine $K$-lineare Abbildung $ \varphi: M \to M$ \\
+			\qquad \qquad \qquad \qquad \qquad  $\cdot $ & $\longmapsto $ & $\varphi(m) = X \cdot m$ für $m \in M$ \\
+			$f \cdot m = (f(\varphi))(m) = (\sum_{k} a_{k} \varphi^{k}) (m)$ für $f = \sum_{k} a_{k} X^{k} \in K[X]$ & $\longmapsfrom$ & $\varphi$
+		\end{tabu}
+	\end{center}
+\end{theorem}
+
+
+Wir wollen endlich erzeugte Moduln über Hauptidealringen klassifizieren!\\
+$\overset{\Z}{\longrightarrow}$ Klassifikation von endlich erzeugten abelschen Grupppen.\\
+$\overset{K[X]}{\longrightarrow}$ Satz über Jordan Normalform.
+
+\section{Freie Moduln}
+
+\begin{definition}
+	Sei $I$ eine Menge und $R$ ein Rnig. Wir bezeichnen
+	\[
+		R^{(I)} = \{x : I \to R \mid x_{i} = 0 \text{ für alle bis auf endlich viele } i \in I\} 
+	\] 
+	als den \emph{freien $R$-Modul} (über der Indexmenge $I$ ). Wir nennen
+	\[
+		e_{i} = \mathbbm{1}_{\{i\}} \qq{für} i \in I
+	\]
+	die \emph{Standardbasis} von $R^{(I)}$.
+	Ein \emph{freier Modul} $M$ ist ein Modul isomorph zu $R^{(I)}$ für eine Menge $I$.
+	Die Kardinalität von $I$ wird als der \emph{Rang} von $M \cong R^{(I)}$ bezeichnet.
+\end{definition}
+
+\begin{lemma}
+	Sei $R \neq \{0\} $ ein Ring. Dann ist der Rang eines Moduls wohldefiniert.
+\end{lemma}
+
+
+\begin{claim}
+	Freie Moduln verhalten sich am ehesten wie Vektorräume \ldots
+\end{claim}
+
+\begin{proposition}
+	Seien $m,n \geq 1$ natürliche Zahlen und $R$ ein Ring. Dann gilt
+	\[
+		\hom(R^{n},R^{m}) \cong \mat_{mn}(R)
+	\] 
+	wie in der Linearen Algebra.
+\end{proposition}
+
+
+\begin{definition}
+	Sei $M$ ein $ R$-Modul über einem Ring $R$. Wir sagen $x_1,\ldots,x_{n} \in M$ sind \emph{frei} oder \emph{linear unabhängig} (l.u.) falls die Abbildung
+	$a \in R^{n} \mapsto \sum_{i = 1}^{n} a_{i} x_{i}$ injektiv ist.
+
+	Falls $x_1,\ldots,x_{n} \in M$ l.u. sind, so ist das Bild der Abbildung ein freier Untermodul von $M$.
+\end{definition}
+
+\section{Torsionsmoduln}
+\begin{definition}
+	Sei $R$ ein Ring und $M$ ein $R$-Modul. Wir sagen $m \in M$ ist ein \emph{Torsionselement}, falls es ein $a \in R \setminus \{0\} $ gibt
+	mit $a \cdot m = 0$. Wir sagen $M$ ist ein \emph{Torsionsmodul} falls jedes $m \in M$ ein Torsionselement ist.
+	Wir sagen $M$ ist \emph{torsionsfrei} falls $m = 0$ das einzige Torsionselement von $M$ ist.
+\end{definition}
+
+
+\section{Struktur von endlich erzeugten Moduln über Hauptidealringe}
+
+\begin{definition}
+	Sei $R$ ein Ring und $M $ ein $R$-Modul.
+	Für eine Teilmenge $X \subseteq M$ wird
+	\[
+	\left< X \right>_{R} = \{\sum_{x \in E} a_{x} x \mid a_{x} \in R \text{ für $x \in E$ und $E \subseteq X$ endlich}\} 
+	\]
+	als die \emph{$R$-lineare Hülle von $X$} oder als der \emph{von $X$ erzeugte Untermodul} bezeichnet.
+	Falls es eine Teilmenge $X \subseteq M$ mit $\abs{X} < \infty$ und $\left< X \right>_{R} = M$ gibt, so heißt $M$ \emph{endlich erzeugt}.
+\end{definition}
+
+
+Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul von $R$ wieder frei mit Rang $0$ oder $1$.
+
+\begin{theorem}[Klassifikationssatz (1. Teil)]
+	Sei $R$ ein Hauptidealring und $M$ ein endlich erzeugter Modul über $R$.
+	Dann ist $M$ isomorph zu einem direkten Produkt $R^{n} \times T$ wobei
+	\[
+		T = M_{\on{tors}} = \{m \in M \mid m \text{ ist ein Torsionselement von } M\}
+	\]
+	und $n$ ist der Rang von $\sfrac{M}{M_{\on{tors}}}$.
+	Insbesondere ist $M$ ein freier Modul genau dann wenn $M_{\on{tors}} = \{0\}$.
+\end{theorem}
+
+\begin{proposition}
+	Sei $R$ ein Hauptidealring und $n \geq 1$. Dann ist jeder Untermodul $M \subseteq R^{n}$ ein freier $R$-Modul mit Rang $\leq n$.
+\end{proposition}
+
+
+
+\begin{theorem}[Klassifikationssatz (2. Teil)]
+	Sei $R$ ein Hauptidealring und $M_{\on{tors}}$ ein endlich erzeigter Torsionsmodul. 
+	Dann existieren $d_1 \mid d_2 \mid \ldots \mid d_{n}$ in $R \setminus \{0\} $ so dass
+	\[
+		M_{\on{tors}} = \sfrac{R}{(d_1)} \times \ldots \times \sfrac{R}{(d_{n})}
+	.\] 
+	Alternativ gilt
+	\[
+		M_{\on{tors}} \cong \prod_{j=1}^{k} M_{\on{tors}}^{(p_{j})}
+	\]
+	wobei $p_1,\ldots,p_{k} \in R$ inäquivalente Primzahlen in $R$ sind und %TODO was ist inäquivalent ist das richtig
+	\[
+		M_{\on{tors}}^{(p_{j})} = \{m \in M_{\on{tors}} \mid \text{ es existiert ein $l \in \N$ mit } p_{j}^{l} m = 0\} \cong 
+		\sfrac{R}{(p_{j}^{n_{j,1}})} \times \ldots \times \sfrac{R}{(p_{j}^{n_{j,n}})}
+	.\] 
+\end{theorem}
+
+\begin{theorem}[Smith Normalform]
+	Sei $R$ ein Hauptideal ring, $k,l \geq 1$ natürliche Zahlen und $A \in \mat_{kl}(R)$.
+	Dann existieren $g \in \GL_{k}(R)$ und $h \in \GL_{l}(R)$ so dass
+	\[
+	g A h^{-1} = \begin{pmatrix} 
+		d_1 \\
+		& \ddots \\
+		& & d_{n} \\
+		& & & 0 \\
+		& & & & \ddots
+	\end{pmatrix} 
+	\]
+	für $d_1 \mid d_2 \mid \ldots \mid d_{n}$ in $R \setminus \{0\} $.
+\end{theorem}
+
+\begin{itemize}
+	\item Wir beweisen diesen Satz nur für Euklidische Ringe.
+	\item Im Gauss'schen Eliminationsalgo entsprechen Zeilenoperationen einer Linksmultiplikation und Spaltenoperationen einer Rechtsmulitplikation.
+	\item Wir kombinieren Gauss mit Division mit Rest.
+	\item Falls $R = K$ ein Körper ist, so können wir $d_1 = d_2 = \ldots = d_{n} = 1$ annehmen und $n = $ Rang von  $A$.
+\end{itemize}
+
+
+
+\section{Endlich erzeugte abelsche Gruppen}
+\begin{theorem}
+	Sei $G$ eine endlich erzeugte (additiv geschriebene) abelsche Gruppe.
+	Dann gilt
+	\[
+		G \cong \sfrac{\Z}{(d_1)} \times \ldots \times \sfrac{\Z}{(d_{n})} \times \Z^{k}
+	\] 
+	wobei $1 \leq s_1 \mid d_2 \mid \ldots \mid d_{n} \neq 0$ und $k \geq 0$.
+	
+	Alternativ gilt
+	\[
+		G \cong \prod_{p > 0 \text{ prim}} G_{p} \times \Z^{k} \qq{und} G_{p} \cong \sfrac{\Z}{(p^{k_{p,1}})} \times \ldots \times \sfrac{\Z}{(p^{k_{p,n}})}
+	.\] 
+	wobei $G_{p}$ die Sylow $p$-Untergruppe ist.
+\end{theorem}
+
+
+\section{Jordan-Normalform}
+\begin{theorem}
+	Sei $V$ ein endlich dimensionaler Vektorraum über $\C$ und $\varphi: V \to  V$ linear.
+	Dann existiert eine Basis von $V$, so dass $\varphi$ eine Matrixdarstellung der folgenden Form besitzt:
+	\[
+	\begin{pmatrix} 
+		J_1\\
+		&J_2\\
+		& & \ddots
+	\end{pmatrix} \qq{und jeder Block $J_{k}$ hat die Form} \begin{pmatrix} 
+		\lambda &1\\
+		&\lambda &1\\
+		& & \ddots &\ddots\\
+		& & & \ddots &1\\
+		& & & &\lambda
+	\end{pmatrix} 
+	.\]
+	Dies ist die Jordan-Normalform von $\varphi$.
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

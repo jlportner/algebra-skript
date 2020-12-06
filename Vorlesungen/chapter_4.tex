@@ -151,7 +151,7 @@ Falls $\abs{H} < \infty$, so ist auch folgende Aussage mit obigen Aussagen äqui
 					Affine reele Ebene 					& $\GL_2(\R) \ltimes \R^2$ \\
 					Euklidische reelle Ebene  			& $O_2(\R) \ltimes \R^2$\\
 					Sphärische Geometrie 				& $O_3(\R)$\\
-					Hyperbolische Ebene		 			& $\SO_{2,1}(\R), P \GL_{2}(\R)$\\ %TODO no idea if that is right
+					Hyperbolische Ebene		 			& $\SO_{2,1}(\R), P \GL_{2}(\R)$ ($P$ für Projektiv, also, dass man das Zentrum rausfaktorisiert)\\
 					\qquad \qquad\quad \vdots \\
 					Topologischer-Raum $X$ 				& $\text{Homöo}(X) = \{\varphi: X\to X \text{ bijektiv, stetig, } \varphi^{-1} \text{ stetig}\} $\\
 					Mannigfaltigkeit $M$				& $\operatorname{Diffeo}^{\infty}(M) = \{\varphi: M \to M$ bijektiv, stetig, glatt und ebenso  $\varphi^{-1}\} $\\
@@ -1271,7 +1271,233 @@ Besser:
 		\sigma(i_1,\ldots,i_{k}) \sigma^{-1} = (\sigma(i_1),\sigma(i_2),\ldots,\sigma(i_{k}))
 	\]
 	mit einer kleinen Rechnung wie im Beispiel.
+	
+	Dies gilt analog auch für Produkte von Zyklen für zwei Permutationen mit demselben Zyklentyp kann man $\sigma$ finden:
+	\begin{align*}
+		&\tau_{1} = (i_{1,1},\ldots,i_{1,k_1})(i_{2,1},\ldots,i_{2,k_2})\ldots (i_{r,1},\ldots,i_{r,k_{r}}) \overbrace{(i_{r+1}) \ldots (i_{s})}^{\text{Fixpunkte von } \tau_1}\\
+		&\tau_{2} = (j_{1,1},\ldots,j_{1,k_1})(j_{2,1},\ldots,j_{2,k_2})\ldots (j_{r,1},\ldots,j_{r,k_{r}}) \underbrace{(j_{r+1}) \ldots (j_{s})}_{\text{Fixpunkte von } \tau_2}
+	.\end{align*}
+	wobei in beiden Zeilen jede Zahl von $1,\ldots,n$ einmal auftritt.
+	Definiere man nun $\sigma$ mittels $\sigma(i_{*}) = j_{*}$.
 \end{proof}
+
+\begin{theorem}
+	$A_{n}$ und $S_{n}$ sind auflösbar für $n \leq 4$.
+	$A_{n}$ ist einfach für $n \geq 5$.
+\end{theorem}
+
+\begin{proof}[Beweis für $n \leq 4$ ]
+	$A_1 \cong A_2 \cong \{e\}$\\
+	$A_3 \cong \sfrac{\Z}{(3)}$ ist abelsch.\\
+	$A_{4}: V_4 = \left< (1,2) (3,4), (1,3)(2,4) \right> = \{e, (1,2)(3,4), (1,3)(2,4), (1,4)(2,3)\} $ (Kleinsche Vierergruppe) 
+	ist eine Untergruppe (wo jedes nichttriviale Element Ordnung $2$ hat).
+	Dies bedarf einer kleinen Nebenrechnung,  z.B.
+	\[
+		(1,2)(3,4) \cdot (1,3)(2,4) = \begin{cases}
+			1  \mapsto 3 \mapsto 4\\
+			4 \mapsto 2 \mapsto 1\\
+			2 \mapsto 4 \mapsto 3\\
+			\quad\;\;\,\ldots
+		\end{cases} = (1,4) (2,3)
+	\] 
+	insbesondere ist $V_4 \cong \sfrac{\Z}{(2)} \times \sfrac{\Z}{(2)}$.
+
+	$V_4$ enthält neben $e$ genau die Elemente vom Zyklentyp $2,2$. $\implies V_4 \lTri A_4$.
+	\[
+		\abs{A_4} = \frac{4!}{2} = 4 \cdot 3 = 12, \abs{V_4} = 4 \implies \abs{\sfrac{A_4}{V_4}} = 3 \quad \& \quad \sfrac{A_4}{V_4} \cong \sfrac{\Z}{(3)}
+	.\]
+	Folgt $A_4$ ist auflösbar. Weiters ist $\sfrac{S_4}{A_4} \cong \sfrac{\Z}{(2)}$ also auch $S_4$ auflösbar.
+\end{proof}
+
+Für $n \geq 5$ wollen wir die Gruppenwirkung von $A_{n}$ auf $\{1,\ldots,n\}$ und folgende Lemmas verwenden.
+
+\begin{lemma}
+	Sei $n \geq 3$. Dann ist die Wirkung von $A_{n}$ auf $\{1,\ldots,n\} $ transitiv.
+\end{lemma}
+
+\begin{proof}
+	$(1,2,3) \in A_{n}$ bildet $1$ auf $2$ ab. Für $i \geq 3$ bildet $(1,i,2) \in A_{n}$ die $1$ auf $i$ ab.
+	Also ist in beiden Fällen die Bahn von $1$ ganz $\{1,\ldots,n\}$.
+\end{proof}
+
+\begin{lemma}
+	Sei $n \geq 5$ und $H \lTri A_{n}$ nicht die triviale Gruppe. Dann enthält $H$ eine Permutation $\sigma \neq e$ mit mindestens einem Fixpunkt.
+\end{lemma}
+
+\begin{proof}
+	Sei $\sigma \in H$ und $\tau \in A_{n}$. Dann gilt $[\tau, \sigma] = \tau \sigma \tau^{-1} \sigma^{-1} \in H$, da $\tau \sigma \tau^{-1} \sigma^{-1} \in H$.
+	Angenommen $\sigma \in H \setminus \{ e\} $. Falls $\sigma$ einen Fixpunkt hat, so gilt das Lemma in diesem Fall.
+	Wir nehmen also an, dass $\sigma$ keinen Fixpunkt hat und werden je nach Zyklentyp von $\sigma$ immer ein $\sigma' \in H \setminus \{e\}$ finden,
+	dass ein Fixpunkt besitzt (Meist $\sigma' = [\tau, \sigma]$ für ein geeignetes $\tau \in A_{n}$).
+	\begin{itemize}
+		\item $\sigma$ enthält ein Zyklus der Länge $k \geq 4$.
+			Sei $\sigma = (i_1,i_2,i_3,\ldots,i_{k}) \ldots$ und $\tau = (i_1,i_2,i_3) \in A_{n}$. Folgt 
+			\[
+				\sigma' = [\tau,\sigma] = (i_1,i_2,i_3) \sigma (i_1,i_2,i_3)^{-1} \sigma^{-1}: \begin{cases}
+					i_1 \stackrel{\sigma^{-1}}{\mapsto} i_{k} \mapsto \stackrel{\tau^{-1}}{\mapsto} i_{k} \stackrel{\sigma}{\mapsto} i_1 \stackrel{\tau}{\mapsto} i_2\\
+					i_3 \stackrel{\sigma^{-1}}{\mapsto} i_{2} \mapsto \stackrel{\tau^{-1}}{\mapsto} i_{1} \stackrel{\sigma}{\mapsto} i_2 \stackrel{\tau}{\mapsto} i_3
+				\end{cases}
+			\]
+			Nichttrivial (wegen $k\geq 4$), ein Fixpunkt.
+		\item $\sigma$ enthält sowohl Zyklen der Länge $2$ als auch Zyklen der Länge $3$.
+			$\sigma' = \sigma^2 \in H$ hat Zyklen der Länge $3$ und Fixpunkte.
+		\item $\sigma$ enthält nur Zyklen der Länge $3$ (mind. $2$ wegen $n\geq 5$ )
+			Sei $\sigma = (i_1,i_2,i_3)(i_4,i_5,i_6) \ldots$ und $\tau = (i_1,i_2,i_4)$. Folgt 
+			\[
+				\sigma' = [\tau,\sigma] = (i_1,i_2,i_4) \sigma (i_1,i_2,i_4)^{-1} \sigma^{-1}: \begin{cases}
+					i_1 \stackrel{\sigma^{-1}}{\mapsto} i_{3} \mapsto \stackrel{\tau^{-1}}{\mapsto} i_{3} \stackrel{\sigma}{\mapsto} i_1 \stackrel{\tau}{\mapsto} i_2\\
+					i_6 \stackrel{\sigma^{-1}}{\mapsto} i_{5} \mapsto \stackrel{\tau^{-1}}{\mapsto} i_{5} \stackrel{\sigma}{\mapsto} i_6 \stackrel{\tau}{\mapsto} i_6
+				\end{cases}
+			\]
+			Nichttrivial, ein Fixpunkt.
+		\item $\sigma$ enthält nur Zyklen der Länge $2$ (mind. wegen $N \geq 5$ )
+			Sei $\sigma = (i_1,i_2)(i_3,i_4)(i_5,i_6) \ldots$ und $\tau = (i_1,i_2,i_3)$. Folgt 
+			\[
+				\sigma' = [\tau,\sigma] = (i_1,i_2,i_3) \sigma (i_1,i_2,i_3)^{-1} \sigma^{-1}: \begin{cases}
+					i_1 \stackrel{\sigma^{-1}}{\mapsto} i_{2} \mapsto \stackrel{\tau^{-1}}{\mapsto} i_{1} \stackrel{\sigma}{\mapsto} i_2 \stackrel{\tau}{\mapsto} i_3\\
+					i_5 \stackrel{\sigma^{-1}}{\mapsto} i_{6} \mapsto \stackrel{\tau^{-1}}{\mapsto} i_{6} \stackrel{\sigma}{\mapsto} i_5 \stackrel{\tau}{\mapsto} i_5
+				\end{cases}
+			\]
+			Nichttrivial (wegen $k\geq 4$). Es existiert Fixpunkt.
+	\end{itemize}
+	Dies deckt alle Fälle ab.
+\end{proof}
+
+\begin{proof}[Beweis, dass $A_5$ einfach ist]
+	Sei $\{e\} \neq H \lTri A_5$ und $\sigma \in H \setminus \{e\} $ eine Permutation mit einem Fixpunkt wie im Lemma.
+	Insbesondere ist $\sigma$ kein $5$-Zyklus und wegen $\sigma \in H$ auch kein $4$-Zyklus.
+	Also ist $\sigma$ entweder ein $3$-Zyklus oder mit Zyklentyp $2,2$.
+	Angenommen $\sigma = (i_1, i_2) (i_3,i_4)$ und $\tau = (i_1,i_2,i_3)$ für $i_5 \neq i_1,i_2,i_3,i_4$.
+	Dann ist $\tau \sigma \tau^{-1} = (i_2,i_5)(i_3,i_4)$ und 
+	\[
+		\underbrace{\sigma}_{\in H} \underbrace{\tau \sigma \tau^{-1}}_{\in H} = (i_1,i_2)(i_3,i_4)(i_2,i_5)(i_3,i_4) = \begin{cases}
+			i_1 \mapsto i_1 \mapsto i_1 \mapsto i_1 \mapsto i_2\\
+			i_2 \mapsto i_2 \mapsto i_5 \mapsto i_5 \mapsto  i_5\\
+			i_5 \mapsto i_5 \mapsto  i_2 \mapsto i_2\mapsto i_1\\
+			i_3 \mapsto i_4 \mapsto i_4 \mapsto i_3 \mapsto i_3\\
+			\qquad \qquad\;\,\ldots
+		\end{cases} = (i_1,i_2,i_5) \in H
+	.\]
+	Also enthält $H$ auch einen $3$-Zyklus.
+
+	\begin{claim}
+		Alle $3$-Zyklen sind in $A_5$ konjugiert. Also enthält die normale Untergruppe $H$ alle $3$-Zyklen.
+		Sei $\sigma = (i_1,i_2,i_3)$ für beliebige verschiedene $i_1,i_2,i_3 \in \{1,\ldots,5\}$.
+		Wir definieren $\tau = \begin{pmatrix} 
+			1 &2 &3 &4 &5\\
+			i_2 &i_2 &i_3 &* &\diamond 
+		\end{pmatrix} $,
+		wobei wir die verbleibenden Eintragungen $* \neq \diamond $ in $\{1,\ldots,5\} \setminus \{i_1,i_2,i_3\} $ wählen.
+		Falls $\sgn(\tau) = -1$ vertauschen wir $*$ und $\diamond $ und erhalten $\tau \in A_{n}$.
+		Damit gilt dann $\tau (1,2,3) \tau^{-1} = (i_1,i_2,i_3)$, was die Behauptung beweist.
+		Wir berechnen
+		 \[
+			 (i_1,i_2,i_3)(i_2,i_3,i_4) = (i_1,i_2)(i_3,i_4) \qq{und} \underbrace{(i_1,i_2,i_3)(i_3,i_4,i_5)}_{\in H} = (i_1,i_2,i_3,i_4,i_5)
+		\] 
+		für eine beliebige Aufzählung $i_1,\ldots,i_5$ von $1,\ldots,5$.
+		Folgt $H = A_5$ enthält alle $5$-Zyklen und alle Elemente vom Zyklentyp $2,2$.
+	\end{claim}
+\end{proof}
+
+\begin{proof}[Beweis für $n > 5$ mittels Induktion]
+	Angenommen $\{e\} \neq H \lTri A_{n}$ und $\sigma \in H \setminus \{e\}$ hat einen Fixpunkt.
+	Wegen dem ersten Lemma dürfen wir auch ohne Beschränkung annehmen, dass $\sigma(n) = n$.
+	\[
+	\implies \{e\}  \neq H \cap A_{n-1} \lTri A_{n-1}
+	.\] 
+	Nach Induktionsannahme gilt also $H \cap A_{n-1} = A_{n-1}$.
+	Wegen dem ersten Lemma folgt, dasss jedes Element von $A_{n}$ mit einem Fixpunkt zu einem Element von $A_{n-1}$ konjugiert ist.
+	Zusammengenommen erhalten wir, dass $H$ jedes Element mit einem Fixpunkt enthält.
+	
+	Sei $\sigma \in A_{n}$ beliebig.
+	\begin{itemize}
+		\item Falls $\sigma$ einen Fixpunkt hat so ist $\sigma \in H$.
+		\item Ansonsten schreiben wir $\sigma = (1,\sigma(1),i)((1,\sigma(1),i)^{-1} \sigma)$
+			wobei $i \in \{1,\ldots,n\} \setminus \{1,\sigma(1)\} $ und der erste Zyklus $n-3$ Punkte fixiert und der zweite einen fixiiert
+			und daher beide in $H$ sind.
+	\end{itemize}
+	Es folgt also $\sigma \in H$.
+
+	Da $\sigma \in A_{n} $ beliebig war, gilt $H = A_{n}$.
+\end{proof}
+
+\section{Gruppen kleiner Ordnung \& Klassifikation}
+
+\begin{theorem}
+	Sei $G$ eine Gruppe der Ordnung $n = \abs{G} < 100$. 
+	Dann ist entweder $G$ auflösbar der $n = 60$ und $G \simeq A_5$.
+\end{theorem}
+
+Für den Beweis des Satzes bedienen wir uns vieler bereits bewiesenen kleinen Lemmas,
+dem Sylowsatz und weiteren Leamms mit zunehmender Komplexität.
+Des Weiteren verwenden wir Induktion nach $n$ und einen grundlegene Eigenschaft von Auflösbarkeit.
+
+\begin{definition}[Wiederholung]
+	Sei $G$ eine Gruppe. Wir sagen $G$ ist \emph{auflösbar} falls es einen Subnormalreihe
+	\[
+	\{e\} = G_0 \lTri G_1 \lTri \ldots \lTri G_{k} = G
+	\]
+	gibt für die die Faktorgruppen $\frac{G_{j}}{G_{j-1}}$ für $j = 1,\ldots,k$ alle abelsch sind.
+\end{definition}
+
+\begin{proposition}[Legoeigenschaft und Auflösbarkeit]
+	Sei $G$ eine Gruppe und $N \lTri G$. Falls $N$ und $\sfrac{G}{N}$ auflösbar sind, so gilt dasselbe für $G$.
+\end{proposition}
+
+\begin{proof}
+	Seien $N \lTri G$ und $\sfrac{G}{N}$ auflösbar. Dann existieren Subnormalreihen
+	\begin{align*}
+		\{e\} = G_0 \lTri G_1 \lTri \ldots \lTri G_{l} = N \tag{$*_{1}$}\\
+		\{eN\} = H_0 \lTri H_1 \lTri \ldots \lTri H_{m} = \sfrac{G}{N} \tag{$*_{2}$}
+	\end{align*}
+	mit abelschen Faktorgruppen. Sei $\pi: G \to \sfrac{G}{N}$ die kanonische Projektion.
+	Wir definieren
+	\[
+		G'_{j} = \pi^{-1}(H_{i}) < G
+	\] 
+	und erhalten
+	\[
+		G_{l} = N = \pi^{-1}(e N) = G'_{0} < G'_{1} < \ldots < G'_{m} = G
+	.\] 
+	\begin{claim}
+		$G'_{j-1} \lTri G'_{j}$ und $\sfrac{G'_{j}}{G'_{j-1}} \cong \sfrac{H_j}{H_{j-1}}$ für $j = 1,\ldots,m$.
+	\end{claim}
+	Gemeinsam mit $(*_{1})$ beweist die Behauptung die Proposition, da damit die Subnormalreihe
+	\[
+		\{e\}  = G_{0} \lTri G_1 \lTri \ldots \lTri G_{l} = N = G'_{0} \lTri \ldots \lTri G'_{m} = G
+	\] 
+	alle Eigenschaften wie in der Definition erfüllt.
+
+	Seien $h \in G_{}$
+\end{proof}
+
+%TODO missing rest of section see gruppen 21 and gruppenmoduln 22
+
+\section{Freie Gruppen und Relationen}
+\begin{definition}
+	Sei $n \geq 1$ eine natürliche Zahl. Dann wird $\Z^{n}$ als die \emph{freie abelsche Gruppe} mit $n$ Erzeugenden  
+	$b_1 = (1,0,\ldots,0)^{T}, \ldots , b_{n} = (0,\ldots,0,1)^{T}$ bezeichnet.
+\end{definition}
+
+\begin{lemma}
+	Sei $G$ eine abelsche Gruppe und $a_1,\ldots,a_{n} \in G$. Dann gibt es einen eindeutig bestimmten 
+	Gruppenhomomorphismus $\phi: \Z^{n} \to G$ mit $\phi(b_{j}) = a_{j}$ für $j = 1,\ldots,n$.
+\end{lemma}
+
+\begin{proof}[Beweis Idee]
+	Verwende $\phi(m) = \phi(\sum_{j=1}^{n} m_{j} b_{j}) = \sum_{j=1}^{n} m_{j} \phi(b_{j}) =\sum_{j=1}^{n} m_{j} a_{j}$
+\end{proof}
+
+\begin{theorem}
+	Sei $n \geq 1$ und $b_1,\ldots,b_{n}$ paarweise verschieden. Dann existiert eine \emph{\enquote{freie Gruppe} $F_{n}$},
+	welche von $b_1,\ldots,b_{n}$ erzeugt wird, mit folgender \enquote{universeller} Eigenschaft:
+	Für jede Gruppe $G$ und Elemente $a_1,\ldots,a_{n} \in G$ gibt es einen eindeutig bestimmten Homomorphismus 
+	$\phi: F_{n} \to G$ mit $\phi(b_{j}) = a_{j}$ für $j=1,\ldots,n$.
+\end{theorem}
+
+
+
+
 
 
 

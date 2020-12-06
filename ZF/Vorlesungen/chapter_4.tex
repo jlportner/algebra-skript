@@ -407,6 +407,251 @@ Dann gilt $H \lTri G$.
 \end{theorem}
 
 
+\begin{corollary}
+	Sei $G$ eine Gruppe und $T$ eine $G$-Menge. Falls $\abs{G} < \infty$, dann gilt 
+	\[
+		\abs{G} = \abs{G \cdot t_0} \cdot \abs{\on{Stab}_{G}(t_0)}
+	\]
+\end{corollary}
+
+
+\begin{corollary}
+	Sei $G$ eine Gruppe und $T$ eine endliche $G$-Menge. Dann gilt
+	\[
+		\abs{T} = \abs{\on{Fix}_{G}(T)} + \sum_{\abs{G\cdot t} > 1} [G: \on{Stab}_{G}(t)]
+	,\] 
+	also die summe über die nicht trivialen Bahnen.
+\end{corollary}
+
+
+\begin{theorem}[Cayley]
+	Sei $G$ eine endliche Gruppe.
+	Dann ist $G$ isomorph zu einer Untergruppe einer symmetrischen Gruppe $S_{n}$ für $n \in \N$.
+\end{theorem}
+
+
+\begin{remark}
+	Falls $H < G$ mit endlichem Index, so gibt es einen Homomorphismus $\alpha: G \to S_{n}$ mit $n = [G:H]$ und 
+	$\ker(\alpha) < H$.
+\end{remark}
+
+\section{Nilpotente und auflösbare Gruppen}
+
+\begin{definition}
+	Sei $G$ eine Gruppe. Wir sagen $G$ ist \emph{nilpotent mit Nilpotenzgrad $1$} falls $G$ abelsch ist.
+	Wir sagen $G$ ist nilpotent mit \emph{Nilpotenzgrad $n+1$} (für $n \in \N_{\geq 1}$) falls
+	$\sfrac{G}{Z_{G}}$ nilpotent mit Nilpotenzgrad $n$ ist.
+
+	Wir sagen $G$ ist \emph{nilpotent} falls es ein $n \in \N$ gibt so dass $G$ nilpotent mit Nilpotenzgrad $n$ ist.
+\end{definition}
+
+
+\begin{definition}
+	Sei $G$ eine Gruppe und $p \in \N$ eine Primzahl.
+	Wir sagen $G$ ist eine $p$-Gruppe falls $\abs{G} = p^{k}$ für ein $k \in \N$.
+\end{definition}
+
+\begin{lemma}[Fixpunkte von $p$-Gruppen]
+	Sei $p \in \N$ eine Primzahl und $G$ eine $p$-Gruppe.
+	Sei $T$ eine $G$-Menge. Dann gilt $\abs{\on{Fix}_{G}(T)} \equiv \abs{T} \mod p$.
+\end{lemma}
+
+
+\begin{theorem}
+	Eine $p$-Gruppe ist nilpotent.
+\end{theorem}
+
+
+\begin{corollary}
+	Sei $p \in \N$ eine Primzahl und $G$ eine Gruppe mit $\abs{G} = p^2$.
+	Dann ist $G$ abelsch.
+\end{corollary}
+
+
+\begin{definition}
+	Sei $G$ eine Gruppe. Eine \emph{Subnormalreihe in $G$} ist eine Folge von Untergruppen so dass
+	 \[
+		 \{e\} = G_0 \lTri G_1 \lTri G_2 \lTri \ldots \lTri G_{n} = G
+	\] 
+	jede Untergruppe in der nächsten normal ist.
+\end{definition}
+
+\begin{definition}
+	Sei $G$ eine Gruppe. Wir sagen $G$ ist \emph{auflösbar} falls es eine Subnormalreihe in $G$ (wie oben) gibt, so dass
+	$\sfrac{G_{k+1}}{G_{k}}$ eine abelsche Gruppe (für $k = 0, \ldots, n-1$) ist.
+\end{definition}
+
+
+\begin{proposition}
+	Sei $G$ eine Gruppe. Dann ist $[G,G] = \left< \{ [a,b] \mid a,b \in G \} \right> \lTri G$, und $\sfrac{G}{[G,G]}$ ist abelsch.
+	Falls $H$ eine ablesche Gruppe ist und $\varphi: G \to H$ ein Homomorphismus ist, so ist $\varphi([G,G]) = \{e_{H}\}$
+	und $\varphi$ induziert einen Gruppenhomomorphismus $\overline{\varphi}: \sfrac{G}{[G,G]} \to H$.
+	In diesem Sinne ist $\sfrac{G}{[G,G]}$ die größte abelsche Faktorgruppe von $G$.
+\end{proposition}
+
+
+\begin{proposition}
+	Sei $G$ eine Gruppe. Dann ist $G$ auflösbar genau dann wenn die folgende induktiv definierten
+	höheren Kommutatorgruppen nach endlich vielen Schritten die triviale Untergruppe $\{e\}$ erreicht:
+	\begin{align*}
+		&G^{(0)} = G \\
+		&G^{(1)} = [G^{(0)}, G^{(0)}] \;(\text{Kommutatorgruppe})\\
+		&G^{(2)} = [G^{(1)}, G^{(1)}] \;(\text{2. Kommutatorgruppe})\\
+		&\;\;\vdots \\
+		&G^{(n+1)} = [G^{(n)}, G^{(n)}]
+	\end{align*}
+\end{proposition}
+
+
+\section{Satz von Sylow}
+Für eine endliche Gruppe $G$ besagt der Satz von Lagrange, dass für $H < G$ sowohl die Ordnung $\abs{H}$ als auch der Index $[G:H]$ Teiler von  $\abs{G}$ sind.
+
+\begin{theorem}[Sylow]
+	Sei $G$ eine endliche Gruppe, $p \in \N$ prim und $n = \abs{G} = p^{k} m$ für $k \geq 1$ und $m$ teilerfremd zu $p$.
+	\begin{enumerate}[1)]
+		\item Es existiert eine maximale $p$-Untergruppe $H_{p}$ mit $\abs{H_{p}} = p^{k}$, welche \emph{Sylow $p$-Untergruppen} genannt werden.
+		\item Falls $H < G$ eine $p$-Untergruppe ist, so existiert eine $p$-Sylow Untergruppe $H_{p}$ mit $H < H_{p}$.
+		\item Je zwei Sylow $p$-Untergruppen sind konjugiert.
+	\end{enumerate}
+\end{theorem}
+
+\begin{lemma}
+	Sei $p \in \N$ prim, $n = p^{k}m$ mit $m$ teilerfremd zu $p$.
+	Dann ist $\binom{n}{p^{k}}$ nicht durch $p$ teilbar.
+\end{lemma}
+
+
+
+
+
+\section{Symmetrische und Alternierende Gruppen}
+
+\begin{definition}
+	Sei $n \geq 1$ natürlich, dann ist $S_{n} = \bij(\{1,\ldots,n\})$.
+	Die Elemente von $S_{n}$ heißen \emph{Permutationen}.
+\end{definition}
+
+\begin{theorem}
+	Sei $n \geq 1$. Auf $S_{n}$ gibt es einen Homomorphismus $\sgn: S_{n} \to \{\pm 1\}$, der jeder Permutation ein \emph{Vorzeichen} zuordnet
+	und einer \emph{Vertauschung} $\tau_{ij}$ für $i \neq j$ das Vorzeichen $-1$ mit
+	\[
+		\tau_{ij}(k) = \begin{cases}
+			i &\text{ für } k = j\\
+			j &\text{ für } k = i\\
+			k &\text{ sonst}
+		\end{cases}
+	.\] 
+\end{theorem}
+
+\begin{definition}
+	$\sigma \in S_{n}$ heißt \emph{gerade} falls $\sgn(\sigma) = 1$, ungerade falls $\sgn(\sigma) = -1$.
+	Die \emph{alternierende Gruppe} $A_{n} = \ker(\sgn)$ ist die Gruppe aller geraden Permutationen.
+\end{definition}
+
+
+\begin{notation}[für $\sigma \in S_{n}$]
+	\[
+	\sigma = \begin{pmatrix} 
+		1 & 2 & \ldots & n\\
+		\sigma(1) & \sigma(2) & \ldots & \sigma(n)
+	\end{pmatrix} 
+	.\] 
+\end{notation}
+Besser:
+\begin{notation}[mittels Zyklen für $\sigma \in S_{n}$]
+	Falls $\sigma = \id$ schreiben wir einfach $\sigma = \id$.
+	Sei nun $\sigma \neq \id$ und $i_1 \in \{1,\ldots,n\} $ der erste Nichtfixpunkt (also $i_{1}$ minimal mit $\sigma(i_1) \neq i_1$ ).
+	Wir bestimmen
+	\[
+		\sigma(i_1) , \sigma^2(i_1),\ldots, \sigma^{k_1}(i_1) = i_1 \qq{für $k_1 > 1$ minimal}
+	.\] 
+	Falls dies alle Nichtfixpunkte von $\sigma$ sind, so nennen wir $\sigma$ einen \emph{($k$-)Zyklus} und schreiben
+	 \[
+		 \sigma = (i_1,\sigma(i_1),\sigma^2(i_1),\ldots,\sigma^{k-1}(i_1))
+	.\] 
+	Falls nicht, so sei $i_2 > i_1$ der nächste Nichtfixpunkt (der noch nicht gefunden wurde) und bestimme
+	\[
+		i_2, \sigma(i_2),\ldots, \sigma^{k_2}(i_2) = i_2 \qq{für $k_2 > 1$ minimal}
+	\]
+	etc. Nach endlich vielen Schritten haben wir alle Nichtfixpunkte gefunden  und schreiben 
+	 \[
+		 \sigma = (i_1,\sigma(i_1),\ldots,\sigma^{k_1-1}(i_1))(i_2,\sigma(i_2),\ldots,\sigma^{k_2-1}(i_2))\ldots(i_{r},\sigma(i_{r}),\ldots,\sigma^{k_{r}-1}(i_{r}))
+	.\] 
+	In diesem Fall sagen wir auch, dass $\sigma$ \emph{Zyklentyp}(Struktur) $k_1,k_2,\ldots,k_{r}$ hat (wobei
+	die Zahlen $k_1,\ldots,k_{r}$ auch in einer anderen Reihenfolge auftreten dürfen).
+\end{notation}
+
+
+\begin{proposition}
+	Zwei Permutationen sind in $S_{n}$ genau dann konjugiert, falls sie dieselbe Zyklenstruktur haben.
+\end{proposition}
+
+
+
+\begin{theorem}
+	$A_{n}$ und $S_{n}$ sind auflösbar für $n \leq 4$.
+	$A_{n}$ ist einfach für $n \geq 5$.
+\end{theorem}
+
+
+Für $n \geq 5$ wollen wir die Gruppenwirkung von $A_{n}$ auf $\{1,\ldots,n\}$ und folgende Lemmas verwenden.
+
+\begin{lemma}
+	Sei $n \geq 3$. Dann ist die Wirkung von $A_{n}$ auf $\{1,\ldots,n\} $ transitiv.
+\end{lemma}
+
+
+\begin{lemma}
+	Sei $n \geq 5$ und $H \lTri A_{n}$ nicht die triviale Gruppe. Dann enthält $H$ eine Permutation $\sigma \neq e$ mit mindestens einem Fixpunkt.
+\end{lemma}
+
+
+
+
+\section{Gruppen kleiner Ordnung \& Klassifikation}
+
+\begin{theorem}
+	Sei $G$ eine Gruppe der Ordnung $n = \abs{G} < 100$. 
+	Dann ist entweder $G$ auflösbar der $n = 60$ und $G \simeq A_5$.
+\end{theorem}
+
+Für den Beweis des Satzes bedienen wir uns vieler bereits bewiesenen kleinen Lemmas,
+dem Sylowsatz und weiteren Leamms mit zunehmender Komplexität.
+Des Weiteren verwenden wir Induktion nach $n$ und einen grundlegene Eigenschaft von Auflösbarkeit.
+
+\begin{definition}[Wiederholung]
+	Sei $G$ eine Gruppe. Wir sagen $G$ ist \emph{auflösbar} falls es einen Subnormalreihe
+	\[
+	\{e\} = G_0 \lTri G_1 \lTri \ldots \lTri G_{k} = G
+	\]
+	gibt für die die Faktorgruppen $\frac{G_{j}}{G_{j-1}}$ für $j = 1,\ldots,k$ alle abelsch sind.
+\end{definition}
+
+\begin{proposition}[Legoeigenschaft und Auflösbarkeit]
+	Sei $G$ eine Gruppe und $N \lTri G$. Falls $N$ und $\sfrac{G}{N}$ auflösbar sind, so gilt dasselbe für $G$.
+\end{proposition}
+
+
+%TODO missing rest of section see gruppen 21 and gruppenmoduln 22
+
+\section{Freie Gruppen und Relationen}
+\begin{definition}
+	Sei $n \geq 1$ eine natürliche Zahl. Dann wird $\Z^{n}$ als die \emph{freie abelsche Gruppe} mit $n$ Erzeugenden  
+	$b_1 = (1,0,\ldots,0)^{T}, \ldots , b_{n} = (0,\ldots,0,1)^{T}$ bezeichnet.
+\end{definition}
+
+\begin{lemma}
+	Sei $G$ eine abelsche Gruppe und $a_1,\ldots,a_{n} \in G$. Dann gibt es einen eindeutig bestimmten 
+	Gruppenhomomorphismus $\phi: \Z^{n} \to G$ mit $\phi(b_{j}) = a_{j}$ für $j = 1,\ldots,n$.
+\end{lemma}
+
+
+\begin{theorem}
+	Sei $n \geq 1$ und $b_1,\ldots,b_{n}$ paarweise verschieden. Dann existiert eine \emph{\enquote{freie Gruppe} $F_{n}$},
+	welche von $b_1,\ldots,b_{n}$ erzeugt wird, mit folgender \enquote{universeller} Eigenschaft:
+	Für jede Gruppe $G$ und Elemente $a_1,\ldots,a_{n} \in G$ gibt es einen eindeutig bestimmten Homomorphismus 
+	$\phi: F_{n} \to G$ mit $\phi(b_{j}) = a_{j}$ für $j=1,\ldots,n$.
+\end{theorem}
 
 
 
