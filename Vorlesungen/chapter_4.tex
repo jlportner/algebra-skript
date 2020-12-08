@@ -1471,6 +1471,7 @@ Des Weiteren verwenden wir Induktion nach $n$ und einen grundlegene Eigenschaft 
 	Seien $h \in G_{}$
 \end{proof}
 
+Für den Rest dieses Beweises siehe Algebra 21 und 22
 %TODO missing rest of section see gruppen 21 and gruppenmoduln 22
 
 \section{Freie Gruppen und Relationen}
@@ -1495,12 +1496,40 @@ Des Weiteren verwenden wir Induktion nach $n$ und einen grundlegene Eigenschaft 
 	$\phi: F_{n} \to G$ mit $\phi(b_{j}) = a_{j}$ für $j=1,\ldots,n$.
 \end{theorem}
 
+\textbf{Konstruktion von $F_{n}$ }:
+$F_{n} = \{\text{reduzierte Wörter in } b_1, b_1^{-1},\ldots,b_{n},b_{n}^{-1}\}$.
+Eine endliche Liste mit Eintragungen $b_1^{\pm 1},\ldots,b_{n}^{\pm 1}$ wird \emph{Wort} genannt.
+Die leere Liste bezeichnen wir mit $e$ und gilt als reduziert.
 
+Ein Wort $w$ wird \emph{reduziert} genannt falls in $w$ nie direkt ein $b_{j}$ auf $b_{j}^{-1}$ oder ein $b_{j}^{-1}$ auf ein $b_{j}$ folgt 
+($b_1 \underbrace{b_2 b_2^{-1}} b_3$ ist nicht reduziert, $b_1 b_2 b_3 b_2^{-1} b_3^{-1}$ ist reduziert).
 
+Durch Löschen von aufeinanderfolgenden $b_{j}$ \& $b_{j}^{-1}$ oder $b_{j}^{-1}$ \& $b_{j}$ kann ein Word reduziert werden.
 
+Dadurch kann $F_{n}$ zu einer Gruppe gemacht werden:
+Für $w_1, w_2 \in F_{n}$ hängen wir an $w_1$ das Wort $w_2$ an und wenn nötig reduzieren wir $w_1 w_2$ zu einem Element von $F_{n}$.
+- Dies definiert $w_1 \cdot w_2 \in F_{n}$.
 
+\emph{Universelle Eigenschaft} beruht auf der Definition
+\[
+	\phi(\underbrace{b_{j_1}^{\epsilon_1} b_{j_2}^{\epsilon_2} \ldots b_{j_{k}}^{\epsilon_{k}}}_{\in F_{n}}) = a_{j_1}^{\epsilon_1} \ldots a_{j_{k}}^{\epsilon_{k}}
+.\]
 
+Wir überspringen den formalen Beweis des Satzes.
 
+\begin{definition}[Relation]
+	Sei $F_{n}$ die freie Gruppe mit $n$ Erzeugenden, $W \subseteq F_{n}$ eine Teilmenge.
+	Sei $N = \left< g w g^{-1} \mid g \in F_{n}, w \in W \right>$ der von $W$ erzeugte Normalteiler von $F_{n}$.
+	Dann heißt $\sfrac{F_{n}}{N}$ die \emph{Gruppe mit Erzeugenden $b_1,\ldots,b_{n}$} und Relationen $w \in W$ 
+	und wird mit $\left< b_1,\ldots,b_{n} \mid w = e \text{ für } w \in W \right>$ bezeichnet.
+\end{definition}
+
+\begin{eg}
+	 \begin{itemize}
+		\item $\Z^2 \cong \left< a,b \mid a b = b a \right> = \left< a,b \mid a b a^{-1} b^{-1} = c \right>$
+		\item $D_{6} \cong \left< D,R \mid D^3 = R^3 = e, R D R = D^{-1} \right>$
+	\end{itemize}
+\end{eg}
 
 
 
