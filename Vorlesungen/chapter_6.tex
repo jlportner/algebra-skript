@@ -1,0 +1,630 @@
+%! TEX root=../algebra.tex
+\graphicspath{{Images/}}
+
+\chapter{Körpertheorie}
+
+\section{Körpererweiterungen}
+\begin{remark}
+	Ein Ringhomomorphismus von einem Körper zu einem anderen Körper ist immer injektiv 
+	%TODO missing
+\end{remark}
+
+\begin{definition}
+	Sei $L$ ein Körper und $K \subseteq L$ ein Unterring und auch ein Körper.
+	Dann heißt $K \subseteq L$ auch ein \emph{Unterkörper} und $L$ wird eine \emph{Körpererweiterung} von  $K$ genannt.
+	Wir schreiben auch $L \mid K$ (\enquote{$L$ über $K$}) falls $L$ eine Körpererweiterung von $K$ ist.
+	Da $L$ in diesem Fall ein Vektorraum über $K$ ist, können wir die Dimension von $L$ über $K$ betrachten -
+	diese wir als der \emph{Grad $[L:K]$ der Körpererweiterung  $L \mid K$} bezeichnet.
+	Falls $[L:K] < \infty$, so heißt $L$ eine \emph{endliche Körpererweiterung von $K$}.
+\end{definition}
+
+\begin{eg}
+	\begin{itemize}
+		\item $\Q(\sqrt{2}) \mid Q$
+		\item $\C \mid \R$ 
+		\item $\Q() \cong \sfrac[3]{\Q[T]}{(T^3-2)} \mid \Q $
+	\end{itemize}
+\end{eg}
+
+\begin{theorem}[Multiplikativität dere Grade]
+	Angenommen $F \mid L $ und $L \mid K$ sind (endliche) Körpererweiterungen.
+	Dann gilt $[F:K] = [F:L] [L:K]$.
+\end{theorem}
+
+\begin{proof}
+	Angenommen $[F:L] = m$ und $x_1,\ldots, x_{m} \in F$ bilden  eine Basis von $F$ über dem Körper $L$.
+	Angenommen $[L:K] = n$ und $y_1,\ldots,y_{n} \in L$ bilden eine Basis von $L$ über dem Körper $K$.
+	\begin{claim}
+		Die Produkte $x_i x_{j}$ für $\begin{cases}
+			i = 1,\ldots,m\\
+			j = 1,\ldots,n
+		\end{cases}$
+		bilden eine Basis von $F$ über dem Körper $K$.
+	\end{claim}
+	Wir zeigen zuerst, dass diese Produkte l.u. sind. Angenommen $\alpha_{ij} \in K$ und $\sum_{i,j} \alpha_{ij} x_{i} x_{j} = 0$.
+	$\implies \sum_{i=1}^{m} \left( \underbrace{\sum_{j=1}^{n} \alpha_{ij} y_{j}}_{\in L} \right) x_{i} = 0$ \& auf Grund der ersten Annahme erhalten wir
+	$\sum_{j=1}^{n} \alpha_{ij} y_{j} = 0$ (für jedes).
+	Folgt $\alpha_{ij} = 0$ auf Grund der zweiten Annahme für $\begin{cases}
+		i=1,\ldots,m\\
+		j=1,\ldots,n
+	\end{cases}$, d.h. $x_{i} y_{j}$ für diese $i,j$ sind l.u. über $K$.
+
+	Angenommen $z \in F$. Aufgrund der ersten Annahme existieren dann Elemente $\beta_1,\ldots,\beta_{m} \in L$ s.d.
+	$z = \sum_{i=1}^{m} \beta_{i} x_{i}$, $\beta_{i} = \sum_{j=1}^{n} \alpha_{i j} y_{j}$. Auf Grund der zweiten Annahme für $\beta_{i}$ existieren auch Elemente $\alpha_{i 1},\ldots, \alpha_{i n} \in K$ s.d.
+	\[
+	\implies z = \sum_{i,j} \underbrace{\alpha_{i j}}_{\in K} x_{i} y_{j}
+	.\]
+	Daher gilt die Behauptung und auch der Satz.
+\end{proof}
+
+\begin{definition}
+	Sei $L \mid K$ eine Körpererweiterung, $x \in L$, und $\varphi_{x}: K[T] \to L, f \mapsto f(x)$ der Auswertungshomomorphismus.
+
+	Falls $\varphi_{x}$ injektiv ist, so heißt $x$ \emph{transzendent} über $K$ 
+
+	Falls $\varphi_{x}$ nicht injektiv ist, so heißt $x$ \emph{algebraisch} über $K$.
+	In diesem Fall ist $\ker(\varphi_{x}) = (m_{x}(T))$ \& $m_{x}(T)$ heißt das
+	\emph{Minimalpolynom von $X$}, der Grad von $m_{x}(T)$ ist auch der \emph{Grad von $X$}.
+\end{definition}
+
+\begin{eg}
+	\begin{itemize}
+		\item $e,\pi$ sind transzendent über $\Q$ 
+		\item $\sqrt[3]{2}$ ist algebraisch über $\Q$, $\cos(20^{\circ})$ ist algebraisch 
+			%TODO missing
+	\end{itemize}
+\end{eg}
+
+\begin{proposition}
+	Sei $L \mid K$ und $x \in L$. Falls $x$ transzendent ist, so ist 
+	\[
+		K[X] = \Im(\varphi_{x}) \cong K[T]
+	.\] 
+	und der kleinste Unterkörper $K(X)$ von $L$, der sowohl $K$ als auch $x$ enthält ist, erfüllt
+	\[
+		K(X) \cong K(T)
+	\] 
+	mit  $K(T)$ der Körper der rationalen Funktionen.
+
+	Falls $x$ algebraisch ist, so ist
+	\[
+		K[X] = \Im(\varphi_{x}) \cong \sfrac{K[T]}{(m_{x}(T))}
+	\] 
+	bereits der kleinste Unterkörper $K(X)$, der sowohl $K$ als auch $e$ enthält.
+	Es gilt
+	\[
+		[K(x):K] = \deg(m_x(T))
+	.\] 
+\end{proposition}
+
+\begin{proof}
+	Die Isomorphie ergibt sich aus dem ersten Isomorphiesatz.
+	Angenommen $x$ ist transzendent. Dann ist 
+	\[
+		K(X) = \{\frac{f(x)}{g(x)} \mid f(T), g(T) \in K[T], g \neq 0\} \cong \{\frac{f(T)}{g(T)} \mid f,g \in K[T], g \neq 0\} 
+	.\]
+	Angenommen $x$ ist algebraisch. Dann ist $(m_{x}(T)) = \ker(\varphi_{x})$ ein Primideal.
+	In einem Hauptidealring ist ein von $(0)$ verschiedenes Primideal ein Maximalideal $\implies \sfrac{K[T]}{(m_{x}(T))}$ ist ein
+	Körper und damit ist $K[X]$ ein Unterkörper von $L$. In $\sfrac{K[T]}{(m_{x}(T)}$ ist
+	\[
+		1 + (m_{x}(T)), T + (m_{x}(T)),\ldots, T^{\deg(m_{x})-1} + (m_{x}(T))
+	\] 
+	eine Basis.
+\end{proof}
+
+\begin{definition}
+	Sei $L \mid K$ und $x_1,\ldots,x_{n} \in L$. Dann bezeichnen wir den kleinsten Unterkörper der sowohl $K$ als auch $x_1,\ldots,x_{n}$ enthalt mit
+	\[
+		K(x_1,\ldots,x_{n}) = \{\frac{f(x_1,\ldots,x_{n})}{g(x_1,\ldots,x_{n})} \mid f,g \in K[T_1,\ldots,T_{n}], g(x_1,\ldots,x_{n}) \neq 0\} 
+	.\] 
+\end{definition}
+
+\begin{corollary}[Wantzel, 1837]
+	Mit Zirkel und Linear lassen sich weder $\sqrt[3]{2}$ noch ein Winkel von $29^{\circ}$ konstruieren.
+	Des Weiteren gilt: Falls $p > 2$ eine Primzahl ist und das regelmäßige $p$-Ecke mit
+	Zirkel und Lineal konstruierbar ist, so ist $p$ eine Fermat-Primzahl ($p-1 = 2^{2^{n}}$ ).
+\end{corollary}
+
+\begin{proof}[Beweis-Skizze]
+	Angenommen nach endlich vielen Konstruktionsschritten ausgehend von einer Einheitslänge und Anwendung von
+	Gerade $\cap$ Gerade, Gerade $\cap $ Kreis, Kreis $\cap $ Kreis, erhalten wir die Länge auf der ersten Geraden, wobei $x = \sqrt[3]{2}$ oder $x = \cos(20^{\circ})$.
+	%TODO Bilder
+
+	Wir definieren $L_0 = \Q$, $L_{n+1} = L_{n}$ falls im nächsten Kostruktionsschnitt zwei Geraden geschnitten werden.
+	$L_{n+1} = L_{n}$ oder eine quadratische Körpererweiterung von $L_{n}$, die die Koordinaten der Schnittpunkte Geraden $\cap$ Kreis enthält Kreis $\cap$ Kreis
+	\begin{align*}
+		\begin{cases}
+			(x-x_0)st + (y-y_0)^2 = r^2\\
+			a x + b y = c
+		\end{cases}
+	.\end{align*}
+	$\implies$ quadratische Gleichung in $x$. Gleichung hat Nullstellen in $L_{n}$ 
+	Dann setze $L_{n+1} = L_{n}$ \& Schnittpunkte haben Koordinaten in $L_{n}$.
+
+	Hat sie keine Nullstellen, dann setze $L_{n+1} = L_{n}$ ($x$-Koordinate eines Schnittpunkts).
+
+	$x \in L_{n} \mid Q$. Dann ist, da nur quadratische Körpererweiterungen aufterten $[L_{n} : \Q] = 2^{k}$.
+	Aber $\Q[X] \mid \Q$ hat Grad $3$. $\underbrace{L_{N} \mid \underbrace{K \mid \Q}_{3}}_{2^{l}}$
+
+	Da $[L_{N} : Q] = [L_{N} : K] [K : \Q] = 2^{l}$ und $[K:\Q] = 3$, erhalten wir einen Widerspruch.
+\end{proof}
+
+\begin{definition}
+	Eine Körpererweiterung $L \mid K$ heißt \emph{algebraisch} falls jedes $x \in L$ algebraisch über $K$ ist.
+\end{definition}
+
+\begin{lemma}
+	Eine endliche Körpererweiterung ist algebraisch.
+\end{lemma}
+
+\begin{proof}
+	Für $[L:K] < \infty$ und $x \in L$ gilt $\varphi_{x}: K[T] \to L$ ( $K[T]$ unendlich-dim. über $K$, $L$ endlich-dim.) ist nicht injektiv.
+\end{proof}
+
+\begin{corollary}
+	Sei $L \mid K$ und $x,y \in L$ algebraisch über $K$. Dann sind auch $x+y, x\cdot y, x-y, \frac{1}{x}$ für $x\neq 0$ algebraisch über $K$.
+\end{corollary}
+
+\begin{proof}
+	Nach Annahme gilt $[K(X) : K] < \infty$ und das Minimalpolynom $m_{y}(T) \in K[T]$ kann auch als
+	Polynom in $K(X)[T]$ angesehen werden. Dies impliziert, dass $y$ auch algebraisch über $K(X)$ ist
+	und daher gilt $[K(X)(Y) : K(X)] < \infty$. Aus dem Satz folgt also für $K(X,Y) = K(X)(Y)$, dass
+	\[
+		[K(X,Y):K] = [K(X,Y) : K(X)] [K(X) : K] < \infty
+	.\] 
+	Also ist $K(X,Y)$ eine endliche Körpererweiterung und alle seine ELemente
+	$x+y, x\cdot y, x^{17} y^2, \ldots. \in K(x,y)$ sind algebraisch über $K$.
+\end{proof}
+
+\begin{corollary}
+	Angenommen $F \mid L$ und $L \mid K$. Dann ist \emph{$F \mid K $ ist algebraisch} genau dann wenn  \emph{$F \mid L$ algebraish ist und $L \mid K$ algebraisch ist}.
+\end{corollary}
+
+\begin{proof}
+	$\implies$: überlassen wir als Übung
+
+	$\impliedby$: Angenommen $F \mid L$ und $L \mid K$ sind algebraische Körpererweiterungen. 
+	Sei $x \in L$. Dann existiert ein Minimalpolynom $m_{x}^{L}(T) \in L[T]$ von $x$ über $L$.
+	Angenommen $y_1,\ldots,y_{n} \in L$ sind die Koeffizienten von $m_{x}^{L}(T)$. Wie im Beweis vom letzten Korollar können wir zeigen, dass 
+	\[
+		[K(y_1,\ldots,y_{n}) : K] < \infty
+	.\] 
+	Da $m_{x}^{L}(T)$ Koeffizienten in $K(y_1,\ldots,y_{n})$ hat, ist $[K(y_1,\ldots,y_{n},x) : K(y_1,\ldots,y_{n})] < \deg(m_{x}^{L}) < \infty$.
+	Daraus ergibt sich
+	\[
+		[K(y_1,\ldots,y_{n},x)] : K < \infty
+	.\] 
+	Da $x \in K(y_1,\ldots,y_{n},x)$ und $K(y_1,\ldots,y_{n},x) \mid K$ endlich ist, ist $x$ algebraisch auf Grund des Lemmas.
+\end{proof}
+
+\begin{eg}
+	$\sqrt{2}, \sqrt{3}$ sind algebraisch über $\Q \implies \sqrt{2} + \sqrt{3}$ ist algebraisch über $\Q$..
+	%TODO missing
+\end{eg}
+
+\section{Zerfällungskörper}
+
+\begin{theorem}[Kronecker]
+	Sei $K$ ein Körper, $f \in K[T]$ mit $n = \deg(f) > 0$. Dann existiert eine Körpererweiterung $L$ von $K$, so dass
+	\[
+		f(T) = a \prod_{i=1}^{n} (T-\alpha_{i}),
+	\] 
+	$a \in k$, $\alpha_1,\ldots,\alpha_{n} \in L$.
+\end{theorem}
+
+\begin{proof}
+	Wir können o.B.d.A. annehmen, dass $f$ %TODO missing
+	einen Faktor $p(T)$. Wir definieren
+	\[
+		K_1 := \sfrac{K[T_1]}{(p(T_1))}
+	\]
+	und wir betrachten $K_1$ als Körpererweiterung von $K$. In $K_1$ gilt
+	\[
+		p(T_1 + (p(T_1))) = p(t_1) + (p(T_1)) = 0 + (p(T_1))
+	\] 
+	also hat $f(T)$ eine Nullstelle in $K_1$, nämlich $T_1 + (p(T_1)) =: \alpha_1$.
+	Wir schreiben $f(T) = (T-\alpha_1) f_1(T)$ für ein $f_1(T) \in K_1[T]$.
+	Falls $f_1 = 1$, setzen wir $L = K_1$. Da $\deg(d_1) < \deg(f)$ fibt es aufgrund der Induktionsannahme eine Körpererweiterung $L | K_1$ mit
+	$f_1(T) = \prod_{j=2}^{n} (T-\alpha_{j}), \alpha_{j} \in L$.
+\end{proof}
+
+\begin{eg}
+	\begin{itemize}
+		\item $\R, f(T) = T^2+1$, $\C = \R[i]$
+		\item $K = \Q, f(T) = T^3 -2$, $L = \Q(\sqrt[3]{2}, \xi \sqrt[3]{2}, \xi^2 \sqrt[3]{2})$, wobei $\xi = $ dritte Einheitswurzel  $= \frac{-1+\sqrt{3} i}{2}$
+			%TODO diagramm
+			Minimalpolynom ist $T^2 + T + 1$ und nicht $T^3 -1$ (nicht irreduzibel).
+			Hat Grad $6$ nach Multiplizitivität.
+	\end{itemize}
+\end{eg}
+
+\begin{definition}
+	Sei $K$ ein Körper, $f \in K[T]$ mit $\deg(f) > 0$.
+	Ein \emph{Zerfällungskörper von $f$ über $K$ } ist eine Körpererweiterung $L \mid K$ so dass
+	\begin{enumerate}[1)]
+		\item $f$ zerfällt (in Linearfaktoren) in $L[i]$.
+		\item Falls $K \subseteq E \subsetneq L$, dann zerfällt $f$ über $E$ nicht.
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	\begin{itemize}
+		\item Ein Zerfällungskörper existiert immer (und ist bis auf Isomorphie eindeutig).
+			Falls $f \in K[T]$ und $F \mid K$ eine Körpererweiterung, so dass $f$ in $F[T]$ zerfällt (Kronecker)
+			mit Nullstellen $\alpha_1,\ldots,\alpha_{n} \in F$ so ist $L := K(\alpha_1,\ldots,\alpha_{n})$ ein Zerfällungskörper.
+		\item Ein Zerfällungskörper ist eine algebraische Körpererweiterung von $K$.
+	\end{itemize}
+\end{remark}
+
+\begin{eg}
+	\begin{itemize}
+		\item $K = \Q, f(T) = T^2 +1 \in \Q[T]$; die Nullstellen von $f$ sind $\pm i \implies f$
+			zerfällt über $\C$ aber $\C$ ist kein Zerfällungskörper von $f$ über $\Q$
+			%TODO missing
+	\end{itemize}
+\end{eg}
+
+\begin{remark}
+	Sei $K$ ein Körper, $f \in K[T]$ und $L$ ein Zerfällungskörper von $f$ über $K$, dann gilt
+	\[
+		[L:K] \leq (\deg(f))!
+	.\]
+	Ist $f$ über $K$ irreduzibel, so gilt $[L:K] \geq \deg(f)$.
+	\begin{itemize}
+		\item $T^3-2$ irreduzibel über $\Q$ mit Grad $6$.
+		\item $T^2+1$ irreduzibel über $\Q$ mit Grad $2$.
+		\item $T^3-2$ nicht irreduzibel über $\R$ und hat Zerfällungskörper mit Grad $2$.
+	\end{itemize}
+\end{remark}
+
+\section{Algebraischer Abschluss}
+\begin{definition}
+	Sei $K$ ein Körper. $K$ ist \emph{algebraisch abgeschlossen}, falls jedes Polynom $f \in K[T]$ 
+	mindestens eine Nullstelle in $K$ hat.
+\end{definition}
+
+Es folgt (Induktion), dass $f$ über $K$ zerfällt.
+\begin{eg}
+	$\C$ ist algebraisch abgeschlossen
+\end{eg}
+
+\begin{remark}
+	Ein algebraisch abgeschlossener Körper hat unendlich viele Elemente.
+	\begin{proof}[Beweis Idee]
+		Angenommen $K = \{k_1,\ldots,k_{n}\}$ ist algebraisch abgeschlossen. Betrachte das Polynom
+		\[
+			f(T) = (T-k_1) \cdot \ldots \cdot (T-k_{m}) + 1 \contra
+		.\] 
+	\end{proof}
+\end{remark}
+
+\begin{proposition}
+	Sei $L \mid K$ eine Körpererweiterung und $L$ algebraisch abgeschlossen.
+	Dann ist 
+	\[
+		E = \{x \in L \mid x \text{ ist algebraisch über } K\}
+	\]
+	eine algebraisch abgeschlossene algebraische Körpererweiterung von $K$.
+\end{proposition}
+
+\begin{definition}
+	Wir nennen $E$ wie in der Proposition den \emph{algebraischen Abgschluss $\overline{K}$ } von $K$
+\end{definition}
+
+\begin{proof}
+	\begin{enumerate}[(1)]
+		\item $E$ ist ein Körper: Folgt aus einem Korollar vom letzten Mal [$x,y \in L$ algebraisch $\implies x+y,x\cdot y,\frac{1}{x}$ für $x \neq 0$ algebraisch].
+		\item   $E \mid K$ ist algebraisch per Definition
+		\item $E$ ist allgebraisch abgeschlossen: Sei $f \in E[T]$ mit $\deg(f) > 0$. Sei $E_1$ eine algebraische Erweiterung von $E$ so dass
+			$f$ eine Nullstelle $\alpha$ in $E_1$ hat (Kronecker). Dann ist $E_1 \mid E$ algebraisch und $E \mid K$ algebraiscch $\implies$ $E_1 \mid K$ algebraisch.
+			Nun ist $\alpha \in L$ ($L$ algebraisch abgeschlossen) und $\alpha$ ist algebraisch über $K \implies \alpha \in E$.
+	\end{enumerate}
+\end{proof}
+
+\begin{remark}
+	\begin{itemize}
+		\item $K$ endlich $\implies \overline{K}$ ist abzählbar
+		\item $K$ abzählbar $\implies \overline{K}$ ist abzählbar [Bsp: $\Q, \overline{\Q} = \Q_{\on{alg}} = \{z \in \C \mid z \text{ alg. über } \Q\}$ genannt algebraische Zahlen]
+	\end{itemize}
+\end{remark}
+
+\begin{theorem}
+	Sei $K$ ein Körper, dann existiert eine Körpererweiterung $L \mid K$ mit $L$ algebraisch abgeschlossen ($L$ ist bis auf Isomorphie eindeutig).
+\end{theorem}
+
+\begin{proof}
+		Für jedes $f \in K[T]$, $\deg(f) > 0$, sei $T_{g}$ eine Unbestimmte. 
+		Wir betrachten den Polynomring (in $\infty$-vielen Unbestimmten)
+		\[
+			R := K[(T_{f})_{f}]
+		.\] 
+		Sei $I \lTri R$ das Ideal, das von den Elementen $f(T_{f})$ erzeugt wird.
+		[$f(T) = T^{n} + a_{n-1} T^{n-1} + \ldots + a_0 \rightsquigarrow f(T_{f}) = (T_{f})^{n} + a_{n-1} + (T_{f})^{n-1} + \ldots + a_0$ ]
+
+		\begin{claim}
+			$I \neq R$
+		\end{claim}
+		
+		\begin{proof}
+			Angenommen $1 \in I, 1 = \sum_{i \in X} g_{i} f_{i}(T_{f_{i}}) \in I$, $g_{i} \in K[(T_{f})_{f}]$, $X$ endlich.
+			%TODO missing
+			jedes $f_{i}$ eine Nullstelle in $\alpha_{i}$ in $E$ hat. Nun werten wir $f_{i}$ an $T_{f_{i}} = \alpha_{i}$ aus
+			und erhalten 
+			\[
+				1 = \sum_{i \in X} \underbrace{g_{i}(\ldots)}_{\in E} \underbrace{f_{i}(\alpha_{i})}_{=0} = 0 \contra
+			.\] 
+		\end{proof}
+		Da $R \neq \{0\} $ existiert ein maximales Ideal $M$ in $R$, das $I$ enthält. Sei
+		\[
+		L_1 := \frac{R}{M}
+		,\] 
+		dann ist $L_1$ ein Körper und $K \to L_1$ ist ein injektiver Körperhomomorphismus.
+		Wir identifizieren $K$ mit seinem Bild in $L_1$. ($K \hookrightarrow \underbrace{K[(T_{f})_{f}]}_{=R} \to \sfrac{K[(T_{f})_{f}]}{M} = L_1$)
+
+		\begin{claim}
+			Jedes $f \in K[T]$, $\deg(f) > 0$, hat eine Nullstelle in $L_1$ und $L_1 \mid K$ ist eine algebraische Körpererweiterung.
+		\end{claim}
+
+		\begin{proof}
+			Das Bild von $T_{f}$ in $L_1$ ist eine Nullstelle von $f \in L_1[T]$ 
+			\[
+				f(T_{f} + M) = \underbrace{f(T_{f})}_{\in I \subseteq M} + M = 0 + M \implies 1. \text{ Teil}
+			.\] 
+			Jedes $x \in L_1$ ist im Bild von $K[T_{f_1},\ldots,T_{f_{m}}]$ für eine endliche Menge von Unbestimmten.
+			Jedes $T_{f_i} \in L_1$ ist algebraisch über $K$, also auch $x \implies 2.$  Teil
+		\end{proof}
+
+		Nun wiederholen wir die Konstruktion $L_0 = k \subseteq L_1 \subseteq L_2 \subseteq \ldots$, wobei jedes Polynom $f \in L_{i}[T]$,
+		$\deg(f) > 0$, eine Nullstelle in $L_{i+1}$ hat und $L_{i+1} \mid L$ ist eine algebraische Körpererweiterung.
+		Definiere
+		\[
+		L := \bigcup_{n \geq 0}  L_{n}
+		.\] 
+		Man rechnet nach, dass $L$ ein Körper ist und $K$ enthält (Übung).
+		Außerdem ist $L$ algebraisch über $K$ (Übung).
+
+		Wir behaupten, dass $L$ algebraisch abgeschlossen ist: Sei $f \in L[T]$, $\deg(f) > 0$.
+		\begin{align*}
+			&\implies \exists i : f \in L_{i}[T] \qquad (f \text{ hat nur endlich viele Koeffizienten})\\
+			&\implies \exists \alpha_1 \in L_{i+1} \mid f = (T-\alpha_1) f_1, \quad f_1 \in L_{i+1}[T],\\
+			&\implies \exists \alpha_2 \in L_{i+2} \mid f = (T-\alpha_2) f_2, \quad f_2 \in L_{i+2}[T],\\
+			&\implies \text{ usw. } \implies f \text{ zerfällt in Linearfaktoren über } L.
+		\end{align*}
+\end{proof}
+
+\section{Eindeutigkeit}
+(Seite $343$, Teile auch S. $88$ )
+
+Wir haben gesehen: 
+\begin{itemize}
+	\item Für jedes $f \in K[T]$ gibt es einen Zerfällungskörper.
+	\item Es gibt einen algebraischen Abschluss.
+\end{itemize}
+Sind diese (bis auf Isomorphie) eindeutig?
+
+\begin{theorem}
+	Sei $K$ ein Körper, $L \mid K$ eine Körpererweiterung und $L$ algebraisch abgeschlossen.
+	\begin{enumerate}
+		\item Falls $E = K[\alpha]$ eine endliche Körpererweiterung von $K$ ist, so gibt es mindestens eine
+			und höchstens $[E:K]$ Körpereinbettungen $\sigma: E \to L$ mit $\underbrace{\sigma \mid_{K} = \id_{K}}_{\sigma \; K\text{-linear}}$.
+			Falls $\charak(K)=0$, so gibt es genau $[E:K]$ derartige Einbettungen.
+		\item Falls $E \mid K$ eine algebraische Körpererweiterung ist, so gibt es eine $K$-lineare Körpereinbettung
+			$\sigma: E \to L$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{lemma}
+	Sei $K$ eine Körper, $m(T) \in K[T]$ coprim zu $m'(T)$. Dann hat $m$ in einer algebraisch abgeschlossenen Körpererweiterung
+	genau $\deg(m(T))$ viele einfache Nullstellen.
+
+	Dies gilt z.B. wenn $\charak(K) = 0$ und $m(T)$ irreduzibel in $K[T]$ ist.
+\end{lemma}
+
+\begin{proof}
+	Die Ableitung definieren wir mitteld
+	\[
+	D: f = \sum_{n=0}^{\infty} a_{n} T^{n} \mapsto f' = \sum_{n=1}^{\infty} n a_{n} T^{n-1}
+	.\] 
+	Dann ist $D$ $K$-linear und erfüllt die Produktregel
+	\[
+		(f g)' = f' g + f g' \tag{$*$}
+	.\] 
+	Denn dies stimmt für $K = \C$ und $(*)$ ist eine polynomielle Gleichung über $\Z$ in den Koeffizienten von $f$ und von $g$.
+	Insbesondere gilt also
+	\[
+		((T-\alpha)^2 g(T))' = 2 (T-\alpha) g(T) + (T-\alpha)^2 g'(T) = (T-\alpha) (2 g(T) + (T-\alpha) g'(T))
+	.\] 
+	D.h. falls $f$ eine mehrfrache Nullstelle hat, so ist diese auch eine Nullstelle von $f$.
+	Dies gilt für $\alpha \in K$ aber auch für $\alpha \in L$ wenn $L \mid K$.
+
+	Angenommen $m(T) \& m'(T)$ sind in $K[T]$ coprim. Dann existieren $h_1,h_2 \in K[T]$ mit
+	\[
+		1 = h_1(T) m(T) + h_2(T) m'(T)
+	.\] 
+	Falls nun $L \mid K$ eine Körpererweiterung ist und $\alpha \in L$ eine Nullstelle von $m(T)$ ist,
+	so ist $m'(T) \neq 0$. Auf grund des oben gesagten ist also $\alpha$ eine einfache Nullstelle von $m(T)$.
+	Falls $L$ algebraisch abgeschlossen ist, so gilt
+	\[
+		m(T) = a \prod_{i=1}^{n} (T-\alpha_{i})
+	\] 
+	und $\alpha_{1},\ldots, \alpha_{n} \in L$ sind paarweise verschieden.
+
+	Für $\charak(K) = 0$ gilt $\deg(m'(T)) = \deg(m(T)) - 1$ falls nun $m(T) \in K[T]$ irreduzibel ist, so ist $m'(T)$ coprim zu $m(T)$ und obiges gilt.
+\end{proof}
+
+\begin{remark}
+	 Für $K = \F_{p}$ und $m(T) = T^{p}$ gilt $m'(T) = 0$ und daher nicht $\deg(m'(T)) = \deg(m(T)) -1$.
+\end{remark}
+
+\begin{proof}[Beweis von $1)$ im Satz]
+	Sei $m(T)$ das Minimalpolynom von $\alpha$ über $K$. Sei $\beta = \varphi(\alpha)$ für $K$-lineare Köerpereinbettung
+	$\sigma: E \to L$ so gilt $m(\beta) = m(\sigma(\alpha)) = 0$, da $m(T) = \sum_{n=0}^{\infty} a_{n} T^{n}$ mit Koeffizienten $a_{n} \in K$, $\sigma$ ist ein Ringhomomorphismus
+	und $\sigma(a_{n}) = a_{n}$.
+
+	Des Weiteren gilt für ein $f(\alpha) \in K[\alpha]$ dass $\sigma(f(\alpha)) = f(\sigma(\alpha)) = f(\beta)$.
+	Also ist $\beta = \sigma(\alpha)$ eine Nullstelle und $\sigma$ ist durch diese Nullstelle bereits eindeutig festgelegt.
+	Folgt da $m(T)$ in $L$ höchstens $\deg(m(T)) = [E:K]$ viele verschiedene Nullstellen hat,
+	gibt es höchstens so viele $K$-lineare Körpererweiterungen.
+
+	Sei nun umgekehrt $\beta \in L$ eine beliebige Nullstelle von $m(T)$ - Es gibt mindestens eine Nullstelle in $L$ und falls
+	$\charak(K)=0$ so gibt es genau $\deg(m(T))$ viele verschiedene Nullstellen.
+	Wir verwenden $\beta$ um eine $K$-lineare Körpererweiterung
+	\[
+		\sigma = \sigma_{\beta}: E = K[\alpha] \to L
+	\] 
+	zu definieren. Wir betrachten das linke Diagramm
+	Dann gilt $\ker(\ev_{\alpha}) = (m(T))$. Und wegen $m(\beta) = 0$ folgt $(m(T)) \subseteq \ker(\ev_{\alpha})$ 
+	(Gleichheit, da $(m(T))$ ein Maximalideal ist).
+	Daraus ergibt sich das rechte Diagramm
+	und $\sigma = \overline{\ev_{\beta}} \circ (\overline{\ev_{\alpha}}^{-1}) : E \to L$ ist eine $K$-lineare Körpereinbettung.
+	
+	\[
+		\begin{tikzcd}
+			& f(\alpha) \in K[\alpha] = E & & f(\alpha) \in K[\alpha] = E \\
+			{f(T) \in K[T]} \arrow[ru, "\ev_\alpha"] \arrow[rd, "\ev_\beta"'] & & {f(T) + (m(T)) \in \sfrac{K[T]}{(m(T))}} \arrow[ru, "\ev_\alpha"] \arrow[rd, "\ev_\beta"', maps to] & \\
+			 & f(\beta) \in K[\beta] \subseteq L & & f(\beta) \in K[\beta] \subseteq L
+		\end{tikzcd}
+	.\]
+	
+	Für zwei verschiedene Nullstellen $\beta_{1} \neq \beta_{2} \in L$ gilt
+	\[
+		\sigma_{\beta_1}(\alpha) = \beta_1 \neq  \beta_2 = \sigma_{\beta_2}(\alpha) \qq{also} \sigma_{\beta_1} \neq  \sigma_{\beta_2}
+	.\] 
+	Wir sehen also, dass es genauso viele Körpererweiterungen von $E = K[\alpha]$ nach $L$ gibt, wie es Nullstellen von $m(T)$ in $L$ gibt.
+\end{proof}
+
+\begin{eg}
+	Sei $K = \F_{p}((X))$ und $m(T) = T^{p} - X$ (dies ist irreduzibel).
+	Für $E = \sfrac{K[T]}{(m(T))}$ gibt es eine Nullstelle $T + (m(T)) = \alpha$ von $m(T)$.
+	Hier gilt $m(T) = (T - \alpha)^{p} = T^{p} - \alpha^{p} = T^{p} - X$ und $m$ hat $\alpha$ als eine $p$-fache Nullstelle.
+\end{eg}
+
+\begin{proof}[Beweis von $2)$ im Satz (mittels dem Zorn'schen Lemma)]
+	Wir definieren
+	\[
+		\mathcal{O} = \{(F,\sigma) \mid F \text{ ein Körper mit } K \subseteq F \subseteq E, \sigma: F \to  L \text{ $K$-lineare Körpereinbettung}\} 
+	.\] 
+	und die partielle Ordnung
+	\[
+		(F_1,\sigma_1) \leq (F_2,\sigma_2) \Leftrightarrow \begin{cases}
+			F_1 \subseteq F_2\\
+			\sigma_{2} \mid_{F_1} = \sigma_1
+		\end{cases}
+	.\]
+	Dann gilt:
+	\begin{itemize}
+		\item $\mathcal{O} \neq \emptyset$ da $(K,\id) \in \mathcal{O}$.
+		\item Angenommen $T \leq \mathcal{O}$ ist eine totalgeordnete Kette in $\mathcal{O}$. Wir definieren
+			\[
+				F_{T} = \bigcup_{(F,\sigma) \in T} F \subseteq E
+			.\] 
+			Dies ist ein Unterkörper von $E$. (kleine Übung)
+	\end{itemize}
+	Wir definieren
+	\begin{align*}
+		\sigma_{T}: F_{T} &\to L\\
+		\nstack{x \in F}{\text{ mit } (F,\sigma) \in T} &\mapsto \sigma(x)
+	.\end{align*}
+	Dies sit wohldefiniert: Falls $\nstack{x \in F_1}{(F_1,\sigma_1) \in T}$ und $\nstack{x \in F_2}{(F_2,\sigma_2) \in T}$ ist, so können wir o.B.d.A. annehmen,
+	dass $(F_1,\sigma_1) \leq (F_2,\sigma_2) \implies \sigma_2(x) = \sigma_2 \mid_{F_1} (x) = \sigma_1(x)$.
+	Dies zeigt, dass $\sigma_{T}$ wohldefiniert ist.
+	$\sigma_{T}$ ist auch eine Körpereinbettung:
+	Für $x_1,x_2 \in F_{T}$ gibt es $\nstack{(F_1,\sigma_1) \in T}{(F_2,\sigma_2) \in T}$ mit $\nstack{x_1 \in F_1}{x_2 \in F_2}$.
+	O.B.d.A. sei $(F_1,\sigma_1) \leq (F_2,\sigma_2)$. Dann gilt
+	\[
+		\sigma_{T}(x_1+x_2) = \sigma_2(x_1+x_2) = \sigma_2(x_1) + \sigma_2(x_2) = \sigma_{T}(x_1) + \sigma_{T}(x_1)
+	.\] 
+	und analog für $x_1 \cdot x_2$ und $\frac{1}{x_1}$ falls $x_1 \neq 0$.
+
+	Folgt $(F_{T},\sigma_{T}) \in \mathcal{O}$ ist eine obere Schranke con der total geordneten Kette $T$.
+	Auf Grund des Zorn'schen Lemmas existiert also ein maximales Element
+	\[
+		(F,\sigma) \in \mathcal{O}
+	.\] 
+	\begin{claim}
+		$F = E$ und $\sigma : F  \to L$ ist die gesuchte $K$-lineare Körpereinbettung.
+	\end{claim}
+	Falls $F \neq E$ ist, dann gibt es ein $\alpha \in E \setminus F$. In diesem Fall verwenden wir $\sigma: F \to L$ und die Elemente von
+	$F$ mit den Elementen in $\sigma(F)$ zu identifizieren:
+	\[
+		\begin{tikzcd}[column sep=tiny]
+			L \underset{\sigma}{\supseteq} & F \subseteq F[\alpha] \subseteq E \arrow[l, "\varphi"', bend right] %TODO maybe fix this 27 körper
+\end{tikzcd}
+	.\] 
+
+	Nach Teil $1$ vom Satz gibt es eine $F$-lineare Körpereinbettung $\varphi: F[\alpha] \to L$.
+	Da wir $\sigma$ verwendet haben um Elemente von  $F$ mit Elementen von $\sigma(F)$ zu identifizieren,
+	bedeutet dies gerade, dass $\varphi: F[\alpha] \to L$ die Abbildung $\sigma: F \to L$ erweitert.
+
+	Also gilt $(F,\sigma) \lneq (F[\alpha],\varphi)$ und dies widerspricht der Maximalität von $(F,\sigma)$.
+\end{proof}
+
+\begin{corollary}
+	Sei $K$ ein Körper
+	\begin{enumerate}[1)]
+		\item Für edes $f \in K[T]$ ist die Zerfällungskörper bis auf einen $K$-linearen Körperisomorphismus eindeutig bestimmt.
+		\item Je zwei algebraische Abschlüsse von $K$ sind isomorph.
+	\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+	Angenommen $f(T) \in K[T]$ und $E_1,E_2$ sind zwei Zerfällungskörper von $f(T)$.
+	Sei $L_2$ ein algebraischer Abschluss von $E_2$. Wir verwenden den $2.$ Teil vom Satz:
+	\[
+		\begin{tikzcd}
+			K \arrow[r] \arrow[rd] & E_1 \arrow[d, "\sigma"] \\
+                       & E_2 \subseteq L_2      
+		\end{tikzcd}
+	.\] 
+	Es folgt $f(T) = a \prod_{i=1}^{n} (T-\alpha_{i}) \sigma(f(T)) = a \prod_{i=1}^{n} (T - \sigma(\alpha_{i} -1))$ für $\alpha_1,\ldots,\alpha_{n} \in E_1$.
+	Da $E_1 = K[\alpha_1,\ldots,\alpha_{n}]$ und $E_2 = K[\sigma(\alpha_1),\ldots, \sigma(\alpha_{n})]$, folgt, dass $\sigma: E_1 \to E_2$ ein
+	Isomorphismus ist.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
