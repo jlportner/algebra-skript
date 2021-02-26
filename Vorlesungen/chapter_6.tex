@@ -562,8 +562,8 @@ Sind diese (bis auf Isomorphie) eindeutig?
 \begin{corollary}
 	Sei $K$ ein Körper
 	\begin{enumerate}[1)]
-		\item Für edes $f \in K[T]$ ist die Zerfällungskörper bis auf einen $K$-linearen Körperisomorphismus eindeutig bestimmt.
-		\item Je zwei algebraische Abschlüsse von $K$ sind isomorph.
+		\item Für jedes $f \in K[T]$ ist die Zerfällungskörper bis auf einen $K$-linearen Körperisomorphismus eindeutig bestimmt.
+		\item Je zwei algebraische Abschlüsse von $K$ sind $K$-linear isomorph.
 	\end{enumerate}
 \end{corollary}
 
@@ -577,8 +577,130 @@ Sind diese (bis auf Isomorphie) eindeutig?
 		\end{tikzcd}
 	.\] 
 	Es folgt $f(T) = a \prod_{i=1}^{n} (T-\alpha_{i}) \sigma(f(T)) = a \prod_{i=1}^{n} (T - \sigma(\alpha_{i} -1))$ für $\alpha_1,\ldots,\alpha_{n} \in E_1$.
-	Da $E_1 = K[\alpha_1,\ldots,\alpha_{n}]$ und $E_2 = K[\sigma(\alpha_1),\ldots, \sigma(\alpha_{n})]$, folgt, dass $\sigma: E_1 \to E_2$ ein
+	Da $E_1 = K(\alpha_1,\ldots,\alpha_{n})$ und $E_2 = K[\sigma(\alpha_1),\ldots, \sigma(\alpha_{n})]$, folgt, dass $\sigma: E_1 \to E_2$ ein
 	Isomorphismus ist.
+
+	Angeonmmen $L_1$ \& $L_2$ sind algebraische Abschlüsse von $K$.
+	%TODO Diagramm
+
+	Auf Grund vom $2.$ Teil vom Satz gibt es eine $K$-lineare Körpereinbettung $\sigma: L_1 \to L_2$.
+	Damit ist $K \subseteq \sigma(L_1) \subseteq L_2$. Des Weiteren ist $L_2 \mid K$ algebraich und $\sigma(L_1)$ ist
+	algebraisch abgeschlossen. Daraus folgt
+	\[
+		L_2 = \{\alpha \in L_2 \mid \exists f \in K[T] \setminus \{0\} \text{ mit } f(\alpha) = 0\} \subseteq \sigma(L_1) \subseteq L_2 
+	.\] 
+\end{proof}
+
+\section{Endliche Körper}
+$\F_{p} = \sfrac{\Z}{(p)}$ für $p \in \N$ prim ist ein endlicher Körper.\\
+Gibt es weitere? Können wir diese klassifizieren?
+
+\begin{theorem}[Gauss, Galois]
+	\begin{enumerate}
+		\item Falls $K$ ein endlicher Körper ist, so ist $\abs{K} = p^{n}$ für eine Primzahl $p \in \N$ und ein $n \geq 1$.
+		\item Für jede Primzahlpotenz $p^{n}$ gibt es einen bis auf Isomorphie eindeutig bestimmten Körper mit $p^{n}$ Elementen.
+		\item Sei $p \in \N$ prim und $K$ ein algebraischer Abschluss von $\F_{p}$. Dann enthält $K$ einen eindeutig bestimmten
+			Unterkörper $\F_{p^{n}}$ mit $p^{n}$ Elementen.
+			\[
+				\F_{p^{n}} = \{x \in K \mid x^{\left( p^{n} \right) = x}\} 
+			.\] 
+		\item Für $m,n \geq 1$ und die Körper wie in $3)$ gilt
+			\[
+			F^{p^{m}} \subseteq F^{p^{n}} \Leftrightarrow m \mid n
+			.\] 
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}[1)]
+		\item Angenommen $\abs{K} < \infty$. Dann ist $\Z \cdot 1_{K} \cong \F_{p} = \sfrac{\Z}{(p)}$ für eine Primzahl $p \in \N$.
+			Damit ist $K$ ein endlich-dimensionaler Vektorraum über $\F_{p}$ und $K \cong  \F_{p}^{[K : \F_{p}]} \implies  \abs{K} = p^{[K : \F_{p}]}$.
+		\item Sei $q = p^{n}$ wie in 2. Seien weiters
+			\begin{align*}
+				&f(T) = T^{q}- T \in \F_{p}[T]\\
+				&L =  \text{ Zerfällungskörper von $f$ (über $\F_p$)}\\
+				&E = \{x \in L \mid x_{q} = x\} = \{x \in L \mid f(x) = 0\} \\
+				&\phi: \nstack{L \to L}{x \mapsto x^{p}} \text{ Frobenius-Homomorphismus }\\
+				&\phi^{n} \nstack{L \to L}{x \mapsto x^{p^{n}}} = x^{q}
+			\end{align*}
+			wobei $L$ eine endliche Körpererweiterung von $\F_{p}$ und damit ein endlicher Körper und $\phi$ ist ein Automorphismus, da $\phi$ injektiv und $\abs{L} < \infty$ ist.
+
+			Es folgt
+			\[
+				E = \{x \in L \mid \underbrace{\phi^{n}(x) = x}_{\text{Körperautomorphismus}}\} = \{ x \in L \mid f(x) = 0\} 
+			\] 
+			ist ein Unterkörper von $L$, der alle Nullstelleb von $f$ enthält. Also ist $E = L$.
+			Daraus ergibt sich auch, dass $E = L$ als Zerfällungskörper bis auf Isomorphie eindeutig bestimmt ist.
+
+			Da $f'(T) = q T^{q-1} -1 = -1$ ist, sind $f$ und $f'$ coprim.
+			Daher hat $f$ keine mehrfachen Nullstellen in $L$ (wegen dem Lemma von früher).
+			Es gibt also genau $q$ Nullstellen in $L$, also gilt 
+			\[
+			\abs{L} = \abs{E}= q = p^{n}
+			.\] 
+			Dies beweist die Existenz  in  2.
+
+			Sei $F$ ein beliebiger Körper mit $p^{n}$ Elementenn. Wie im Beweis von 1. wissen wir, dass $F \mid F_{p}$.
+			Des Weiteren gilt $x \in F^{\times}$ dass $x^{p^{n}-1} = 1$ (weil $\abs{\F^{\times }} = p^{n}-1$ und $F^{\times}$ eine Gruppe ist).
+			Also gilt $x^{p^{n}} = x$ für alle $x \in F$.
+			D.h. $F$ enthält (besteht aus) den Nullstellen von $f(T) = T^{q} - T$,
+			ist also der Zerfällungskörper von $f$. - Auf Grund des Korollars im letzten Abschnitt ist also $F$ isomorph 
+			zu $L$ von oben.
+		\item Sei $K$ ein algebraischer Abschluss von $\F_{p}$. Dan ist
+			\[
+			\F_{p} = \{ x \in K \mid x^{p^{n}} = x\} \subseteq K
+			\] 
+			ein Unterkörper. Wie in 2, sehen wir, dass $F_{p^{n}}$ der Zerfällungskörper von $T^{p^{n}} - T$ ist und
+			auf Grund von dem oben bewiesenen, gilt $\abs{\F_{p^{n}}} = p^{n}$.
+		\item Angenommen $m \mid n$ also $n  = m k$ 
+			\[
+				\phi^{n} = \left( \phi^{n} \right)^{k}
+			.\] 
+			Daraus folgt $\F_{p^{n}} \{x \mid \phi^{n}(x) = x\} \supseteq \{x \mid q^{m}(x) = x\} = \F_{p^{m}}$.
+
+			Angenommen $\F_{p^{m}} \subseteq \F_{p^{n}}$. Dann ist $\F_{p^{n}} \mid \F_{p^{m}}$ und $\F_{p^{n}}$ ist ein Vektorraum über $\F_{p^{m}}$.
+			Folgt $p^{n} = \abs{\F_{p^{n}}} = \abs{\F_{p^{m}}}^{k} = (p^{m})^{k} = p^{ m k}$ mit $k = [\F_{p^{n}} : \F_{p^{m}}]$.
+
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+	Sei $K$ ein Körper und $G \subseteq K^{\times}$ eine endliche Untergruppe.
+	Dann ist $G$ zyklisch. Insbesondere ist $\F_{p^{n}}^{\times}$ zyklisch für jede Primzahlpotenz $p^{n}$.
+\end{theorem}
+
+\begin{proof}
+	Auf Grund der Klassifikation von endlich erzeugen abelschen Gruppen gilt
+	\[
+		(G,\cdot) \cong \left(\sfrac{\Z}{(d_1)} \times  \ldots \times  \sfrac{\Z}{(d_{n})}, + \right)
+	.\] 
+	für gewisse natürliche $1 < d_1 \mid d_2 \mid \ldots \mid d_{n}$.
+	\begin{claim}
+		In $G$ gilt damit $x^{d_{n}} = 1$ für alle $x \in G$.
+	\end{claim}
+	\begin{proof}
+		Denn $d_{n} \cdot (a_1 + (d_1), \ldots, a_{n} + (d_{n})) = (0 + (d_1),\ldots, 0 + (d_{n}))$ da $d_1 \mid d_{n}, d_2 \mid d_{n}, \ldots$.
+		Dies zeigt die Behauptung wenn wir obigen Isomorphismus verwenden.
+	\end{proof}
+	Die Behauptung zeigt: jedes $x \in G$ ist eine Nullstelle von $T^{d_{n}} - 1$.
+	Des Weiteren gilt $\abs{G} = d_1 d_2 \cdot \ldots \cdot d_{n}$.
+	Falls $n > 1$ wäre, so hätten wir $d_1 d_2 \cdots d_{n} > d_{n} = \deg(T^{d_{n}} - 1)$ viele Nullstellen von $f$ in $K$.
+	Das ist unmöglich, also ist $n = 1$ und $G$ ist zyklisch.
+\end{proof}
+
+\begin{corollary}
+	Sei $p > 2$ eine Primzahl. Für $a \in \F_{p}$ gilt 
+	\[
+		a^{\frac{p-1}{2}} = \begin{cases}
+			0 &\text{ falls } a = 0\\
+			1 &\text{ falls } a = b^{2} \text{ für ein } b \in \F_{p}^{\times}\\
+			-1 &\text{ sonst }
+		\end{cases}
+	\]
+\end{corollary}
+
+\begin{proof}[Beweis-Idee]
+	$\F_{p}^{\times} \cong \sfrac{\Z}{(p-1)}$ und in $\frac{\Z}{(p-1)}$ lässt sich die Aussage leichter bestätigen.
 \end{proof}
 
 
@@ -614,17 +736,4 @@ Sind diese (bis auf Isomorphie) eindeutig?
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 

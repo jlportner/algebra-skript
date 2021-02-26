@@ -1,0 +1,155 @@
+%! TEX root=../algebra.tex
+\graphicspath{{Images/}}
+
+\chapter{Galois Theorie}
+
+\section{Einleitung}
+Das motivierende Problem der Galois Theorie ist folgendes:
+Finde eine \enquote{Formel} für die Lösungen der Gleichung
+$x^{n} + a_{n-1} x^{n-1} + \ldots + a_0 = 0$ in Funktion von den Koeffizienten $a_0,\ldots.,a_{n-1}$.
+
+Methoden für den linearen und quadratischen Fall waren schon babylonischen Mathematikern bekannt.  $\sim 1700$ B.C.\\
+Euklid ($\sim 300$ B.C.) hat die Lösung von Quadratischen Gleichungen auf geometrische Probleme zurückgeführt.\\
+al-Khwarizmi ($780 - 850$): Systematische Behandlung von linearen und quadratischen Gleichungen.\\
+16. Jh: Gleichung 3. Grades: Seipione del Ferro 1515. 4.Grades: Ludovico Ferrarr.
+
+Cardano \enquote{Ars Magna} 1545: Cardano's Formeln für  3. Grad.
+Sei $x^{3} + a x^{2} + bx + c = 0$. Durch die Substitution $z = x - \frac{a}{3}$ erhält man eine Gleichung der Form:
+$z^3 + p z + q = 0$.
+
+Idee: $z = y + u$ woebi man später  $u$ geeignet wählen kann. Durch Substitution in $z^3 + pz + q = 0$ erhalten wir:
+\[
+	y^3 + \underbrace{2y^2 u + 3yu^2}_{3yu (y+u)} + u^3 + p(y+u) + q = 0
+\] 
+und erhalten $y^3 + (y+u)(3yu + p) + u^3 + q = 0$.
+Setze $3yu +p = 0$ also $u = -\frac{p}{3y}$.
+\[
+	y^{4} - \frac{p^3}{27 y^3} + q = 0 \implies y^{6} + p y^3 - (\frac{p}{3})^3 = 0 \quad (\text{Resolvante})
+.\] 
+Diese Gleichung ist quadtratisch in $y^3$:
+\[
+	y^3 = \frac{-q \pm \sqrt{q^2 + 4 (\frac{p}{3})^3} }{2}
+.\] 
+und bekommt für $z$ die Formel:
+\[
+	z = \sqrt[3]{-\frac{p}{2} + \sqrt{\left(\frac{q}{2}\right)^2 + \left(\frac{p}{3}\right)^3}} + \sqrt[3]{-\frac{p}{2} - \sqrt{\left(\frac{q}{2}\right)^2 + \left(\frac{p}{3}\right)^3}} 
+.\] 
+
+Wesentlicher Schritt: Lagrange (1736-1813): Falls $z_1, z_2, z_3$ Lösungen von $z^3 + pz + q = 0$ sind.
+Sind $w = e^{\frac{2}{3}\pi i }$ primitive 3. Wurzeln von $1$. Dann sind die $6$ Lösungen der Resolvente
+$y^6 + q y^3 - \left( \frac{p}{3} \right)^3 = 0$ sind gegeben durch
+\[
+	y_{\sigma} := \frac{1}{3}\left( z_{\sigma(1)} + w z_{\sigma(2)} + w^2 z_{\sigma(3)} \right) 
+\] 
+wobei $\sigma$ die Menge der Permutationen über $3$ Elemente durch läuft.
+
+Fundamentale Einsicht: $\left( z_{\sigma(1)} + w z_{\sigma(2)} + w^2 z_{\sigma(3)} \right)^3$ nimmt nur $2$ Werte an.
+
+Paolo Raffini: Zeige dass die allgemeine Gleichung 5. Grades keine \enquote{Lösung} besitzt.
+Rationale Funktionen $f(z_1,\ldots,z_{5})$ wobei $z_1,\ldots, z_5$ Wurzeln der Gleichung $z_5 + \ldots + a_0 = 0$ sind.
+Hat realisiert, dass die Menge der $\sigma \in S_{5}$ für welche $f(z_1,\ldots,z_5) = f(z_{\sigma(1)},\ldots,z_{\sigma(5)})$ 
+ist eine \emph{Untergruppe} von $S_{5}$.
+
+Untergruppen von $S_{5}$ klassifiziert. Niels Abels (1812-1829)
+
+\begin{theorem}[Abels-Raffini]
+	Die allgemeine Gleichung $5.$ Grades $x^{5} + a x^{4}  + b x^3 + c x^2 + d x + e = 0$ ist mittels Radikalen nicht auflösbar.
+\end{theorem}
+Eine Lösung mittels Radikalen ist eine \emph{Formel} die endlich viele arithmetische Operationen und Wurzelziehen der Koeffizienten zulässt.
+
+Galois Theorie und Thm. Die alternierende Gruppe $A_{5}$ ist nicht abelsch und einfach.
+
+Wir werden jedem Polynom $f(x) = x^{n} + a_{n-1} x^{n-1} + \ldots + a_0 \in K[x]$, $K$ Körper
+ordnen wir eine Gruppe $\gal(f) < S_{n}$.
+
+\begin{theorem}
+	Falls $K$ gute Eigenschafte besitzt (z.B. $\charak = 0$)
+	$f(x) = 0$ ist genau dann Mittels Radikalen Lösbar falls $\gal(f)$ \emph{auflösbar}.
+\end{theorem}
+
+\section{Galois Gruppe einer Körpererweiterung: grundlegende Eigenschaften und Beispiele}
+Sei $E$ ein Körper. Die Menge $\aut(E) = \{\sigma: E \to E \mid \sigma \text{ ist eine Körperisomorphismus}\} $ 
+ist für die Operation der Verkettung von Abbildungen eine Gruppe.
+
+Sei $K \subseteq E$ eine Unterkörper; $E$ ist eine Körpererweiterung von $K$.
+\[
+	\gal(E / K) = \{\sigma \in \aut(E) \mid \sigma(x) = x \forall x \in K\} 
+\]
+ist eine Untergruppe von $\aut(E)$.
+\begin{definition}
+	$\gal(E / K)$ ist eine Galoisgruppe der Erweiterung $E / K$.
+\end{definition}
+Aus der Algebra I wissen wir, dass $E$ ein $K$-Vektorraum ist.
+
+\textbf{Übung:} Jedes $\sigma \in \gal(E / K)$ ist ein Isomorphismus des $K$-Vektorraums $E$.
+
+\textbf{Übung:} Sei $K = \R$ und $E = \C$ dann ist $\gal(\C / \R) = \{\id_{\C}, \sigma\} $ wobei $\sigma(x+iy) = x-iy, x,y \in \R$.
+Wie \emph{groß} ist $\aut(\C)$.
+
+Sei $f \in K[x]$ ein Polynom und $E / K $ eine Körpererweiterung so dass in $E[x] f$ Produkt von linearen Faktoren ist.
+Sei $R(f) \subseteq E$ die Menge der Nullstellen von $f$.
+
+\begin{lemma}
+	Jedes $\sigma \in \gal(E / K)$ induziert eine Permutation der Menge $R(f)$ der Nullstellen von $f$.
+\end{lemma}
+
+\begin{proof}
+	Sei $\alpha \in R(f)$ d.h. $f(\alpha) = 0$ und $\sigma \in \gal(E / K)$.
+	Sei $f(X) = a_{n} X^{n} + a_{n-1} X^{n-1} + \ldots + a_0$ wobei $a_{n},\ldots,a_0 \in K$.
+	\begin{align*}
+		0 = f(x) = \sigma(f(x)) = \sigma(a_{n} \alpha^{n} + \ldots + a_0) = \sigma(a_{n}) \sigma(\alpha)^{n} + \ldots + \sigma(a_0) 
+		= a_{n} \sigma(\alpha)^{n} + \ldots + a_0 = f(\sigma(\alpha))
+	\end{align*}
+	Also folgt $\sigma(\alpha) \in R(f)$.
+	$\sigma(R(f)) \subseteq R(f)$. Da $\sigma: E \to E$ injektiv und $\abs{R(f)} < \deg(f) = n$ folgt $\sigma(R(f)) = R(f)$.
+\end{proof}
+
+Sei $f \in K[X]$.
+\begin{definition}
+	Die Galois Gruppe $\gal(f)$ von $f$ ist die Galois Grppe $\gal(E / K)$ wobei $E / K$ ein Zerfällungskörper
+	von $f$ bezeichnet.
+\end{definition}
+Existenz: Kronecker + Eindeutigkeit bis auf Isomorphismus siehe Algebra I
+
+\textbf{Übung:} Zeige dass falls $E / K$ und $E' / K$ Zerfällungskörper von $f$ bezeichnen, die Gruppen
+$\gal(E / K)$ und $\gal(E'/K)$ isomorph sind.
+
+\begin{notation}
+	Sei $X$ eine Menge. Wir bezeichnen mit $S_{X}$ die Gruppe aller Bijektionen (Permutationen) von $X \to X$.
+	Falls $X = \{1,2,\ldots,n\}$ dann setzen wir $S_{X} = S_{n}$.
+\end{notation}
+
+\begin{lemma}
+	Sei $E / K$ Zerfällungskörper eines Polynoms $f \in K[X]$ und $R(f) \subseteq E$ die Menge der Nullstellen.
+	Dann ist die Restriktionsabbildung 
+	\[
+		\nstack{\gal(E / K) \to S_{R(f)}}{\sigma \mapsto  \sigma \mid_{R(f)}}
+	\] 
+	ist eine \emph{injektiver} Gruppenhomomorphismus.
+\end{lemma}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
