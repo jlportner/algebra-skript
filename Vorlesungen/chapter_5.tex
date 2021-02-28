@@ -42,7 +42,7 @@
 	\begin{enumerate}
 		\setcounter{enumi}{-1}
 		\item Falls $R = K$ ein Körper ist, so reden wir genau über \emph{Vektorräume über $K$}.
-		\item $M = R$ ist ein $R$-Modul und Ideale $I < R$ sind genau die Untermodulnvon $R$.
+		\item $M = R$ ist ein $R$-Modul und Ideale $I < R$ sind genau die Untermoduln von $R$.
 		\item Angenommen $M,N$ sind $R$-Moduln. Dann ist auch
 			\[
 				\hom_{R}(M,N) = \{f: M \to N \mid f \text{ ist $R$-linear}\} 
@@ -138,11 +138,11 @@ Welche Ringe könnten interessant sein?
 		\end{cases} \mapsto X \cdot m = \varphi(m)
 	.\end{align*}
 	Wobei $*$ die neue Skalarmultiplikation und $\cdot $ die alte Skalarmultiplikation ist.
-	Und außderdem $X\cdot m$ die neue lineare Abbildung und $\varphi(m)$ die alte lineare Abbildung ist.
+	Und außerdem $X\cdot m$ die neue lineare Abbildung und $\varphi(m)$ die alte lineare Abbildung ist.
 \end{proof}
 
 Wir wollen endlich erzeugte Moduln über Hauptidealringen klassifizieren!\\
-$\overset{\Z}{\longrightarrow}$ Klassifikation von endlich erzeugten abelschen Grupppen.\\
+$\overset{\Z}{\longrightarrow}$ Klassifikation von endlich erzeugten abelschen Gruppen.\\
 $\overset{K[X]}{\longrightarrow}$ Satz über Jordan Normalform.
 
 \section{Freie Moduln}
@@ -166,7 +166,7 @@ $\overset{K[X]}{\longrightarrow}$ Satz über Jordan Normalform.
 \end{lemma}
 
 \begin{proof}
-	Sei $J_{\max} \subseteq R$ ein Maximalideal (welches auf grund eines Satzes aus dem Kapitel über Ringe existiert).
+	Sei $J_{\max} \subseteq R$ ein Maximalideal (welches auf Grund eines Satzes aus dem Kapitel über Ringe existiert).
 	Sei $M$ ein freier $R$-Modul. Dann ist
 	\[
 	J_{\max} \cdot M = \{\sum_{k} a_{k} m_{k} \mid a_{k} \in J_{\max}, m_{k} \in M\} 
@@ -223,11 +223,11 @@ $\overset{K[X]}{\longrightarrow}$ Satz über Jordan Normalform.
 			Sei $v \in V \setminus \{0\} $. Dann ist die Abbildung $f \in K[X] \mapsto f \cdot v \in V$
 			nicht injektiv (wegen $\dim(V) < \infty = \dim(K[X])$ ).
 			Also gibt es ein $f \in K[X] \setminus \{0\} $ mit $f \cdot v = 0$.
-		\item Falls $R$ ein Intergritätsbereich ist in $M$ ein freier $R$-Modul ist, so ist $M$ torsionsfrei.
+		\item Falls $R$ ein Integritätsbereich ist in $M$ ein freier $R$-Modul ist, so ist $M$ torsionsfrei.
 	\end{itemize}
 \end{eg}
 
-\section{Struktur von endlich erzeugten Moduln über Hauptidealringe}
+\section{Struktur von endlich erzeugten Moduln über Hauptidealringen}
 
 \begin{definition}
 	Sei $R$ ein Ring und $M $ ein $R$-Modul.
@@ -243,7 +243,7 @@ $\overset{K[X]}{\longrightarrow}$ Satz über Jordan Normalform.
 	Für $R = K[X_1,X_2,\ldots]$ ist der Untermodul $I = \left< X_1,X_2,\ldots \right>$ nicht endlich erzeugt.
 \end{eg}
 
-Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul von $R$ wieder frei mit Rang $0$ oder $1$.
+Wir wollen ab nun nur Hauptidealringe betrachten - dort wäre jeder Untermodul von $R$ wieder frei mit Rang $0$ oder $1$.
 
 \begin{theorem}[Klassifikationssatz (1. Teil)]
 	Sei $R$ ein Hauptidealring und $M$ ein endlich erzeugter Modul über $R$.
@@ -307,7 +307,7 @@ Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul 
 			Dies impliziert $N = \left< y_1,\ldots,y_{k} \right> \cong R^{k}$.
 			\begin{claim}
 				Für alle $x_{i}$ in der Erzeugendenmenge gibt es ein $a_{i} \in R \setminus \{0\} $ mit $a_{i} x_{i} \in N$.
-				Falls $x_{i} = y_{i}$ ein Erzeuer von $N$ ist, so setzen wir $a_{i} = 1$. 
+				Falls $x_{i} = y_{i}$ ein Erzeuger von $N$ ist, so setzen wir $a_{i} = 1$. 
 			\end{claim}
 			\begin{proof}[Beweis von $M$ ist frei mittels der Behauptung]
 				Für $a  = a_1 \cdot a_2 \cdot \ldots \cdot a_{n}$ gilt auf Grund der Behauptung $a M \subseteq N \cong R^{k}$.
@@ -352,7 +352,7 @@ Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul 
 \end{proof}
 
 \begin{theorem}[Klassifikationssatz (2. Teil)]
-	Sei $R$ ein Hauptidealring und $M_{\on{tors}}$ ein endlich erzeigter Torsionsmodul. 
+	Sei $R$ ein Hauptidealring und $M_{\on{tors}}$ ein endlich erzeugter Torsionsmodul. 
 	Dann existieren $d_1 \mid d_2 \mid \ldots \mid d_{n}$ in $R \setminus \{0\} $ so dass
 	\[
 		M_{\on{tors}} = \sfrac{R}{(d_1)} \times \ldots \times \sfrac{R}{(d_{n})}
@@ -361,7 +361,7 @@ Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul 
 	\[
 		M_{\on{tors}} \cong \prod_{j=1}^{k} M_{\on{tors}}^{(p_{j})}
 	\]
-	wobei $p_1,\ldots,p_{k} \in R$ inäquivalente Primzahlen in $R$ sind und %TODO was ist inäquivalent ist das richtig
+	wobei $p_1,\ldots,p_{k} \in R$ inäquivalente Primzahlen in $R$ sind und
 	\[
 		M_{\on{tors}}^{(p_{j})} = \{m \in M_{\on{tors}} \mid \text{ es existiert ein $l \in \N$ mit } p_{j}^{l} m = 0\} \cong 
 		\sfrac{R}{(p_{j}^{n_{j,1}})} \times \ldots \times \sfrac{R}{(p_{j}^{n_{j,n}})}
@@ -385,7 +385,7 @@ Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul 
 
 \begin{itemize}
 	\item Wir beweisen diesen Satz nur für Euklidische Ringe.
-	\item Im Gauss'schen Eliminationsalgo entsprechen Zeilenoperationen einer Linksmultiplikation und Spaltenoperationen einer Rechtsmulitplikation.
+	\item Im Gauss'schen Eliminationsalgorithmus entsprechen Zeilenoperationen einer Linksmultiplikation und Spaltenoperationen einer Rechtsmultiplikation.
 	\item Wir kombinieren Gauss mit Division mit Rest.
 	\item Falls $R = K$ ein Körper ist, so können wir $d_1 = d_2 = \ldots = d_{n} = 1$ annehmen und $n = $ Rang von  $A$.
 \end{itemize}
@@ -425,7 +425,7 @@ Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul 
 			können per Induktion annehmen, dass $A'$ (und damit auch $A$ ) eine Smith Normalform hat.
 			Also können wir annehmen, dass $r_2 = r_3 = \ldots = r_{l} = 0$ ist.
 			
-			Ananlog können wir dieses Argument nun auch für die erste Spalte wiederholen.
+			Analog können wir dieses Argument nun auch für die erste Spalte wiederholen.
 			Damit erhalten wir den verbleibenden Fall
 			\[
 			A'' = \begin{pmatrix} 
@@ -453,7 +453,7 @@ Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul 
 
 			Falls $d_1 \mid d_2$ (und ebenso $d_2 \mid d_3 \mid \ldots \mid d_{n}$ nach Induktionsannahme), dann ist $A'''$ die Smith Normalform von $A$.
 
-			Falls $d_1 \nmid d_2$, so addieren wir die zweite Zeile zur ersten, verwenden Divisioon mit Rest und derhalten eine Matrix mit kleinerem Minimum.
+			Falls $d_1 \nmid d_2$, so addieren wir die zweite Zeile zur ersten, verwenden Division mit Rest und erhalten eine Matrix mit kleinerem Minimum.
 			\[
 			A''' \longmapsto \begin{pmatrix} 
 				d_1 &d_2\\
@@ -521,7 +521,7 @@ Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul 
 	\[
 		\Im(B) = (d_1) \times (d_2) \times \ldots \times (d_{n}) \times  \{0\}^{k-n}
 	.\]
-	wobei die erste Kongruenz von $\phi$ und die derste Abbildung von  $g$ induziert ist.
+	wobei die erste Kongruenz von $\phi$ und die erste Abbildung von  $g$ induziert ist.
 	Außerdem gilt wegen dem Isomorphismus
 	\begin{align*}
 		&\sfrac{R \times R}{(d_1) \times (d_2)} \cong \sfrac{R}{(d_1)} \times \sfrac{R}{(d_2)}\\
@@ -581,7 +581,7 @@ Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul 
 	\] 
 	mit $V$ aufgefasst als $\C[X]$-Modul.
 
-	Wir beschreiben nun Multiplikation mit $X$ ($\cong$ Anwendung von $\varphi$ auf Teilräumen von $V$ ) auf
+	Wir beschreiben nun Multiplikation mit $X$ ($\cong$ Anwendung von $\varphi$ auf Teilräume von $V$ ) auf
 	$\frac{\C[X]}{((X-\lambda)^{k})} = M$. $M$ hat über $\C$ die Basis
 	\[
 		1, (X-\lambda), (X-\lambda)^2,\ldots, (X-\lambda)^{k-1}
@@ -606,7 +606,7 @@ Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul 
 	Nach Umordnung der Basisvektoren ($(X-\lambda)^{k-1}$ zuerst, $1$ zuletzt) ergibt sich ein Jordanblock wie im Satz.
 \end{proof}
 
-
+%TODO vl die Wiederholung zur Klassifikation endlich erzeugter abelscher Gruppen am ende von 28.Körper
 
 
 

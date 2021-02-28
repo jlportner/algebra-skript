@@ -41,7 +41,7 @@ Im Folgenden ist $R$ immer ein Integritätsbereich.
 
 \section{Euklidische Ringe}
 \begin{definition}
-	Ein Integritätsbereich $R$ heißt ein \emph{Euklidischer Ring} falls es eine gradfunktion $N: R \setminus \{0\}  \to \N$ gibt,
+	Ein Integritätsbereich $R$ heißt ein \emph{Euklidischer Ring} falls es eine Gradfunktion $N: R \setminus \{0\}  \to \N$ gibt,
 	so dass die beiden folgenden Eigenschaften gelten:
 	\begin{itemize}
 		\item \emph{Gradungleichung}: $N(f) \leq N(fg)$ für alle $f,g \in R \setminus \{0\} $.
@@ -165,7 +165,7 @@ Im Folgenden ist $R$ immer ein Integritätsbereich.
 	.\end{align*}
 	mit $f = a + \sqrt{2} b \in \Q[\sqrt{2}]$.
 	Daher gilt $N(fg) = N(f)N(g)$ für $f,g \in \Q[\sqrt{2}]$.
-	Des weiteren filt $N(f) \geq 1$ für $f \in \Z[\sqrt{2}]$ 
+	Des weiteren gilt $N(f) \geq 1$ für $f \in \Z[\sqrt{2}]$ 
 	Folgt die Normungleichung 
 	\[
 		N(fg) = N(f) \underbrace{N(g)}_{\geq 1} \geq N(f)
@@ -273,7 +273,7 @@ In einem Euklidischen Ring kann man einen ggT von $f,g \in R \setminus \{0\} $ d
 	.\] 
 	mit $f,g$ den ursprünglichen Elementen und $a,b$ denen nach endlich vielen Schritten.
 	Nun gilt $b = q \cdot a + \underbrace{0}_{r=0}$ und somit $I = (f) + (G) = (a)$.
-	Mit dem Beweis von der Proposition folgt $a$ ist ein ggt von $f$ und $g$ und $a$ ist dann auch der Output vom Algorithmus.
+	Mit dem Beweis von der Proposition folgt $a$ ist ein ggT von $f$ und $g$ und $a$ ist dann auch der Output vom Algorithmus.
 \end{proof}
 
 \begin{theorem}[Prime Elemente]
@@ -323,7 +323,7 @@ In einem Euklidischen Ring kann man einen ggT von $f,g \in R \setminus \{0\} $ d
 
 Für den Beweis vom Satz über Prime Elemente Eigenschaft 2 verwenden wir:
 \begin{proposition}
-	Sei $R$ ein Hauptidealring und seien $J_0 \subseteq J_1 \subseteq J_2 \subseteq \ldots$ eine austeigende Kette von Idealen in $R$.
+	Sei $R$ ein Hauptidealring und seien $J_0 \subseteq J_1 \subseteq J_2 \subseteq \ldots$ eine aufsteigende Kette von Idealen in $R$.
 	Dann gibt es ein $n \in \N$ mit $J_{m} = J_{n}$ für alle $m \geq n$.
 \end{proposition}
 
@@ -403,7 +403,7 @@ Für den Beweis vom Satz über Prime Elemente Eigenschaft 2 verwenden wir:
 \end{proof}
 
 \begin{eg}
-	Im Ring der Poynome $K[x]$ mit einer Variable über einem Körper $K$ gibt es irreduzible Elemente:
+	Im Ring der Polynome $K[x]$ mit einer Variable über einem Körper $K$ gibt es irreduzible Elemente:
 	\begin{enumerate}[{Grad} 1:]
 		\item jedes Polynom vom Grad $1$ ist irreduzibel.
 		\item ein Polynom vom Grad $2$ ist irreduzibel genau dann wenn es keine Nullstellen im Körper $K$ hat.
@@ -417,7 +417,7 @@ Für den Beweis vom Satz über Prime Elemente Eigenschaft 2 verwenden wir:
 
 \begin{definition}
 	Ein Integritätsbereich $R$ heißt ein \emph{faktorieller Ring} falls jedes $a \in R \setminus \{0\}$ sich als ein Produkt von einer Einheit
-	und endlich vielen Primelemente von $R$ schreiben lässt: $a = u \cdot  p_1 \cdot \ldots \cdot p_{m}$ für $u \in R^{\times}, m \in \N, p_1,\ldots p_{m} \in R$ prim.
+	und endlich vielen Primelementen von $R$ schreiben lässt: $a = u \cdot  p_1 \cdot \ldots \cdot p_{m}$ für $u \in R^{\times}, m \in \N, p_1,\ldots p_{m} \in R$ prim.
 \end{definition}
 
 \begin{eg}
@@ -547,7 +547,7 @@ Für den Beweis vom Satz über Prime Elemente Eigenschaft 2 verwenden wir:
 
 \begin{theorem}[Eindeutige Primfaktorzerlegung]
 	Sei $R$ ein faktorieller Ring und $P \subseteq R$ eine Repräsentantenmenge.
-	Dann besitzt jedes $a \in R \setminus \{0\}$ eine eindeutige Primfaktorzerlegug
+	Dann besitzt jedes $a \in R \setminus \{0\}$ eine eindeutige Primfaktorzerlegung
 	der Form 
 	\[
 		a = u \prod_{p \in P} p^{n_p} \left[ = u \prod_{\substack{p \in P\\ n_{p} > 0}} p^{n_{p}}  \right]
@@ -557,7 +557,7 @@ Für den Beweis vom Satz über Prime Elemente Eigenschaft 2 verwenden wir:
 
 \begin{proof}[Beweis der Existenz]
 	Falls $a \in R^{\times}$ so setzen wir $u = a$ und $n_{p} = 0$ für alle $p \in P$.
-	Ansonsten ist $a = u p_1 \ldots p_{n}$, wie in der Definitin von faktoriellen Ringen.
+	Ansonsten ist $a = u p_1 \ldots p_{n}$, wie in der Definition von faktoriellen Ringen.
 	Zu jedem $p_{j}$ gibt es ein eindeutig bestimmtes $p \in P$ mit $p_{j} \sim p$.
 	Damit erhalten wird
 	\[
@@ -610,7 +610,7 @@ Für den Beweis vom Satz über Prime Elemente Eigenschaft 2 verwenden wir:
 	Daraus folgt $t \mid d$.
 \end{proof}
 
-Wir können analog den ggT von mehreren Elementen $a_1,\ldots, a_{l} \in R$ definneren und die obige Proposition gilt analog.
+Wir können analog den ggT von mehreren Elementen $a_1,\ldots, a_{l} \in R$ definieren und die obige Proposition gilt analog.
 
 \begin{definition}
 	Sei $R$ ein faktorieller Ring. Wir sagen $a_1,\ldots,a_{l} \in R$ sind \emph{coprim} falls $1$ ein ggT von
@@ -717,7 +717,7 @@ Auf $K$ definieren wir die Normfunktion
 \[
 	N(a+b \sqrt{d} ) = (a+b \sqrt{d} )(a-b \sqrt{d}) = a^2 - d b^2 
 \]
-so dasss $N : K \to \Q$ multiplikativ ist, daher 
+so dass $N : K \to \Q$ multiplikativ ist, daher 
 \[
 	N(zw) = (zw) \underbrace{\tau(zw)}_{\tau(z) \tau(w)} = N(z) N(w) \qq{ für } z,w \in K
 .\] 
@@ -757,7 +757,7 @@ Sei $R = \Z[\sqrt{d}]$.
 
 \begin{lemma}
 	Falls $p \in \Z$ eine Primzahl in $\Z$ ist, so dass weder  $p$ noch $-p$ eine Norm von einem Element
-	iin $R$ ist, so ist $p$ ein irreduzibles Element in $R$.
+	in $R$ ist, so ist $p$ ein irreduzibles Element in $R$.
 \end{lemma}
 
 \begin{proof}[Beweis von Lemma 1]
@@ -889,7 +889,7 @@ Sei $R = \Z[\sqrt{d}]$.
 
 \begin{theorem}
 	Im $R_{falsch} = \Z[\sqrt{3}i]$ funktioniert Division mit Rest nicht wie in den obigen Fällen.
-	Aber in $R_{richtig} = \Z[\zeta] = \{a+b \zeta : a,b \in \Z\} $ für $\zeta = \frac{1+\sqrt{3} i}{2}$ funktionert dies wieder.
+	Aber in $R_{richtig} = \Z[\zeta] = \{a+b \zeta : a,b \in \Z\} $ für $\zeta = \frac{1+\sqrt{3} i}{2}$ funktioniert dies wieder.
 \end{theorem}
 
 \begin{proof}[Beweis Skizze]
@@ -925,16 +925,16 @@ Aber in diesem Fall ist $z \in R_{richtig}$ und deswegen hat es Abstand $0$ zu s
 \end{definition}
 
 \begin{eg}
-	Sei $R = \Z$. Dann ist $I(2x+2) \sim 2$ und  $3x+2$ ist primitv.
+	Sei $R = \Z$. Dann ist $I(2x+2) \sim 2$ und  $3x+2$ ist primitiv.
 \end{eg}
 
 \paragraph{Beobachtungen}
 \begin{itemize}
-	\item Jedes normierte Polynom is primitiv.
+	\item Jedes normierte Polynom ist primitiv.
 	\item Für $a \in R \setminus \{0\}, f \in R[x] \setminus \{0\} $ gilt $I(af) \sim a I(f)$.
 	\item Falls  $f \in R[x]$ irreduzibel ist, so ist entweder
 		$f \in R$ oder $f$ ist primitiv.
-		(Grad $f = 0 \implies f \in R$, Grad $f > 0 \implies f = a f^{*}, a \in R, f^{*}$ primitv.
+		(Grad $f = 0 \implies f \in R$, Grad $f > 0 \implies f = a f^{*}, a \in R, f^{*}$ primitiv.
 		Folgt $a$ oder $f^{*}$ ist eine Einheit $\implies$ $\deg(f^{*}) = \deg(f) > 0$ also $f^{*}$ ist keine Einheit)
 \end{itemize}
 
@@ -944,7 +944,7 @@ Aber in diesem Fall ist $z \in R_{richtig}$ und deswegen hat es Abstand $0$ zu s
 	wobei $d \in K^{\times}$ und $f^{*} \in R[x]$ ist primitiv.
 	Diese Darstellung ist bis auf Assoziierung eindeutig:\\
 	Falls $f = d_1 f_1^{*} = d_2 f_2^{*}$, $d_1,d_2 \in K^{\times}$,
-	$f_1^{*},f_2^{*} \in R[x]$ primitv, dann ist $d_1 \sim_{R} d_2, f_1^{*} \sim_{R} f_2^{*}$.
+	$f_1^{*},f_2^{*} \in R[x]$ primitiv, dann ist $d_1 \sim_{R} d_2, f_1^{*} \sim_{R} f_2^{*}$.
 	
 	Wobei $\sim_{R}$  assoziiert über eine Einheit in $R$ bedeutet.
 \end{lemma}
@@ -958,7 +958,7 @@ Aber in diesem Fall ist $z \in R_{richtig}$ und deswegen hat es Abstand $0$ zu s
 	Sei $\underbrace{d}_{\in R} \sim I(g)$ ein ggT der Koeffizienten von $g$.
 	Dann ist $g = d' g^{*}$ für ein primitives $g^{*} \in R[x]$.
 	\[
-		\implies f = \underbrace{\frac{d'}{\prod_{i=0}^{n} c_{i}}}_{d} \underbrace{g^{*}}_{f^{*}} \qq{mit} d \in K^{\times }, f^{*} \in R[x] \text{ primitv}
+		\implies f = \underbrace{\frac{d'}{\prod_{i=0}^{n} c_{i}}}_{d} \underbrace{g^{*}}_{f^{*}} \qq{mit} d \in K^{\times }, f^{*} \in R[x] \text{ primitiv}
 	.\] 
 	Wir erhalten die Existenzaussage im Lemma.
 
@@ -1198,7 +1198,7 @@ Dies folgt aus dem Satz von 4. VO %TODO proper reference,
 \end{proposition}
 
 \begin{proof}
-	Angeonmmen $f = gh$ für $g,h \in R[x]$.
+	Angenommen $f = gh$ für $g,h \in R[x]$.
 	Dann ist auch $f_{\mod p} = g_{\mod p} h_{\mod p}$ in $\sfrac{R}{(p)}[x]$.
 	Da $f_{\mod p}$ irreduzibel ist, folgt nun, dass $g_{\mod p}$ oder $h_{\mod p}$ eine Einheit in $\sfrac{R}{(p)}[x]$ sein muss.
 	Also insbesondere gilt $\deg(g_{\mod p}) = 0$ oder $\deg(h_{\mod p}) = 0$.
@@ -1210,7 +1210,7 @@ Dies folgt aus dem Satz von 4. VO %TODO proper reference,
 
 	\begin{proof}[Beweis der Behauptung]
 		Zu zeigen $g \equiv a \mod p \implies \deg(g) = 0$ mit $a \in R$ \\
-		Angenommen dies stimmt nicht. Dann ist der führende Koeffizient von $g$ durch $p$ telbar.
+		Angenommen dies stimmt nicht. Dann ist der führende Koeffizient von $g$ durch $p$ teilbar.
 		Aber dann ist auch der führende Koeffizient von $f$ (gleich dem Produkt der führenden Koeffizienten von $g$ und $h$ )
 		durch $p$ teilbar. Dies widerspricht der Annahme, dass $\deg(f) = \deg(f_{\mod p})$ ist.
 	\end{proof}
@@ -1218,7 +1218,7 @@ Dies folgt aus dem Satz von 4. VO %TODO proper reference,
 
 \begin{eg}
 	Sei $f(x) = x^{4} + 3x^3 - x^2 +1 \in \Z[x]$.
-	Wir wählen $p = 5$ und wollen zeigen, dass $f$ alle Vorraussetzungen der Proposition erfüllt $\implies f$ ist irreduzibel in $\Z[x]$.
+	Wir wählen $p = 5$ und wollen zeigen, dass $f$ alle Voraussetzungen der Proposition erfüllt $\implies f$ ist irreduzibel in $\Z[x]$.
 	\begin{itemize}
 		\item primitiv \checkmark
 		\item $\deg(f_{\mod 5}) = 4 = \deg(f)$ \checkmark
@@ -1240,7 +1240,7 @@ Dies folgt aus dem Satz von 4. VO %TODO proper reference,
 		\item $p=3$: $x^{4} + 3x^3 - x^2 + 1 = x^{4} + 2x^2 + 1 \mod 3 = (x^2 +1)^2$ ist irreduzibel.
 	\end{itemize}
 	\begin{claim}
-		Aud der Rechnung oben für $p=2$ und $p=3$ folgt, dass $f(x) \in \Z[x]$ irreduzibel ist.
+		Aus der Rechnung oben für $p=2$ und $p=3$ folgt, dass $f(x) \in \Z[x]$ irreduzibel ist.
 	\end{claim}
 	Falls $f = gh$, $g,h \in \Z[x]$, keine Einheit, führende Koeffizienten $\pm 1$, wäre, so wäre 
 	$f_{\mod 2} = g_{\mod 2} h_{\mod 2} \implies g_{\mod 2} = \begin{cases}
@@ -1255,7 +1255,7 @@ Dies folgt aus dem Satz von 4. VO %TODO proper reference,
 \end{theorem}
 
 \begin{proof}
-	Angenomenn $f = gh$ für $g,h \in R[x]$ beide keine Einheiten.
+	Angenommen $f = gh$ für $g,h \in R[x]$ beide keine Einheiten.
 	Da $f$ primitiv ist, gilt dies auch für $g$ und $h$, womit $k := \deg(g) > 0$ und $l := \deg(h) > 0$ ist und $k+l = n$
 	Modulo $p$ folgt
 	\[
@@ -1264,8 +1264,8 @@ Dies folgt aus dem Satz von 4. VO %TODO proper reference,
 	Wir betrachten diese Gleichung als Faktorisierung in $\quot(\sfrac{R}{(p)})[x]$, wo $a_{n} \neq 0$ eine Einheit und $x$ ein Primfaktor ist.
 	Es folgt, dass $g_{\mod p} = b x^{k'}, k' < k, b \neq 0$ und $h_{\mod p} = c x^{l'}, l' < l, c \neq 0$.
 	Des Weiteren gilt $k' + l' = n$, also $k' = k > 0$ und $l' = l > 0$.
-	Daraus folgt nun, dass $p$ den konstanten Term von $g$ und dauch den konstanten Ter von $h$ teilt.
-	Für $f = g h$ folgt daraus, dass der konstante term 
+	Daraus folgt nun, dass $p$ den konstanten Term von $g$ und auch den konstanten Term von $h$ teilt.
+	Für $f = g h$ folgt daraus, dass der konstante Term 
 	\[
 		a_0 = (\text{konstanter Term von } g)(\text{konstanter Term von } h)
 	\]
@@ -1312,7 +1312,7 @@ Dies folgt aus dem Satz von 4. VO %TODO proper reference,
 	\] 
 	irreduzibel.
 	Wir setzen $R = \C[y,z]$ und $p = y-z \in R$.
-	Als Element von $R[x]$ ist $f$ normiert und daher primitv.
+	Als Element von $R[x]$ ist $f$ normiert und daher primitiv.
 	Da es abgesehen vom führenden Koeffizienten von $f$ nur noch den konstanten Term gibt müssen wir $p \mid y^{n} - z^{n}$ und $p^2 \nmid y^{n} - z^{n}$ zeigen:
 	\[
 		y^{n} - z^{n} = (y-z)(y^{n-1} + y^{n-2} z + \ldots + y z ^{n-2} + z^{n-1})

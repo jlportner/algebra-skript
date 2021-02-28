@@ -113,7 +113,7 @@
 \end{proof}
 
 \begin{definition}
-	Sei $L \mid K$ und $x_1,\ldots,x_{n} \in L$. Dann bezeichnen wir den kleinsten Unterkörper der sowohl $K$ als auch $x_1,\ldots,x_{n}$ enthalt mit
+	Sei $L \mid K$ und $x_1,\ldots,x_{n} \in L$. Dann bezeichnen wir den kleinsten Unterkörper der sowohl $K$ als auch $x_1,\ldots,x_{n}$ enthält mit
 	\[
 		K(x_1,\ldots,x_{n}) = \{\frac{f(x_1,\ldots,x_{n})}{g(x_1,\ldots,x_{n})} \mid f,g \in K[T_1,\ldots,T_{n}], g(x_1,\ldots,x_{n}) \neq 0\} 
 	.\] 
@@ -130,7 +130,7 @@
 	Gerade $\cap$ Gerade, Gerade $\cap $ Kreis, Kreis $\cap $ Kreis, erhalten wir die Länge auf der ersten Geraden, wobei $x = \sqrt[3]{2}$ oder $x = \cos(20^{\circ})$.
 	%TODO Bilder
 
-	Wir definieren $L_0 = \Q$, $L_{n+1} = L_{n}$ falls im nächsten Kostruktionsschnitt zwei Geraden geschnitten werden.
+	Wir definieren $L_0 = \Q$, $L_{n+1} = L_{n}$ falls im nächsten Konstruktionsschritt zwei Geraden geschnitten werden.
 	$L_{n+1} = L_{n}$ oder eine quadratische Körpererweiterung von $L_{n}$, die die Koordinaten der Schnittpunkte Geraden $\cap$ Kreis enthält Kreis $\cap$ Kreis
 	\begin{align*}
 		\begin{cases}
@@ -143,7 +143,7 @@
 
 	Hat sie keine Nullstellen, dann setze $L_{n+1} = L_{n}$ ($x$-Koordinate eines Schnittpunkts).
 
-	$x \in L_{n} \mid Q$. Dann ist, da nur quadratische Körpererweiterungen aufterten $[L_{n} : \Q] = 2^{k}$.
+	$x \in L_{n} \mid Q$. Dann ist, da nur quadratische Körpererweiterungen auftreten $[L_{n} : \Q] = 2^{k}$.
 	Aber $\Q[X] \mid \Q$ hat Grad $3$. $\underbrace{L_{N} \mid \underbrace{K \mid \Q}_{3}}_{2^{l}}$
 
 	Da $[L_{N} : Q] = [L_{N} : K] [K : \Q] = 2^{l}$ und $[K:\Q] = 3$, erhalten wir einen Widerspruch.
@@ -172,7 +172,7 @@
 	\[
 		[K(X,Y):K] = [K(X,Y) : K(X)] [K(X) : K] < \infty
 	.\] 
-	Also ist $K(X,Y)$ eine endliche Körpererweiterung und alle seine ELemente
+	Also ist $K(X,Y)$ eine endliche Körpererweiterung und alle seine Elemente
 	$x+y, x\cdot y, x^{17} y^2, \ldots. \in K(x,y)$ sind algebraisch über $K$.
 \end{proof}
 
@@ -224,7 +224,7 @@
 	\] 
 	also hat $f(T)$ eine Nullstelle in $K_1$, nämlich $T_1 + (p(T_1)) =: \alpha_1$.
 	Wir schreiben $f(T) = (T-\alpha_1) f_1(T)$ für ein $f_1(T) \in K_1[T]$.
-	Falls $f_1 = 1$, setzen wir $L = K_1$. Da $\deg(d_1) < \deg(f)$ fibt es aufgrund der Induktionsannahme eine Körpererweiterung $L | K_1$ mit
+	Falls $f_1 = 1$, setzen wir $L = K_1$. Da $\deg(d_1) < \deg(f)$ gibt es aufgrund der Induktionsannahme eine Körpererweiterung $L | K_1$ mit
 	$f_1(T) = \prod_{j=2}^{n} (T-\alpha_{j}), \alpha_{j} \in L$.
 \end{proof}
 
@@ -234,7 +234,7 @@
 		\item $K = \Q, f(T) = T^3 -2$, $L = \Q(\sqrt[3]{2}, \xi \sqrt[3]{2}, \xi^2 \sqrt[3]{2})$, wobei $\xi = $ dritte Einheitswurzel  $= \frac{-1+\sqrt{3} i}{2}$
 			%TODO diagramm
 			Minimalpolynom ist $T^2 + T + 1$ und nicht $T^3 -1$ (nicht irreduzibel).
-			Hat Grad $6$ nach Multiplizitivität.
+			Hat Grad $6$ nach Multiplikativität.
 	\end{itemize}
 \end{eg}
 
@@ -315,8 +315,8 @@ Es folgt (Induktion), dass $f$ über $K$ zerfällt.
 	\begin{enumerate}[(1)]
 		\item $E$ ist ein Körper: Folgt aus einem Korollar vom letzten Mal [$x,y \in L$ algebraisch $\implies x+y,x\cdot y,\frac{1}{x}$ für $x \neq 0$ algebraisch].
 		\item   $E \mid K$ ist algebraisch per Definition
-		\item $E$ ist allgebraisch abgeschlossen: Sei $f \in E[T]$ mit $\deg(f) > 0$. Sei $E_1$ eine algebraische Erweiterung von $E$ so dass
-			$f$ eine Nullstelle $\alpha$ in $E_1$ hat (Kronecker). Dann ist $E_1 \mid E$ algebraisch und $E \mid K$ algebraiscch $\implies$ $E_1 \mid K$ algebraisch.
+		\item $E$ ist algebraisch abgeschlossen: Sei $f \in E[T]$ mit $\deg(f) > 0$. Sei $E_1$ eine algebraische Erweiterung von $E$ so dass
+			$f$ eine Nullstelle $\alpha$ in $E_1$ hat (Kronecker). Dann ist $E_1 \mid E$ algebraisch und $E \mid K$ algebraisch $\implies$ $E_1 \mid K$ algebraisch.
 			Nun ist $\alpha \in L$ ($L$ algebraisch abgeschlossen) und $\alpha$ ist algebraisch über $K \implies \alpha \in E$.
 	\end{enumerate}
 \end{proof}
@@ -393,7 +393,7 @@ Es folgt (Induktion), dass $f$ über $K$ zerfällt.
 \end{proof}
 
 \section{Eindeutigkeit}
-(Seite $343$, Teile auch S. $88$ )
+(Seite $343$, Teile auch Seite $88$ )
 
 Wir haben gesehen: 
 \begin{itemize}
@@ -421,7 +421,7 @@ Sind diese (bis auf Isomorphie) eindeutig?
 \end{lemma}
 
 \begin{proof}
-	Die Ableitung definieren wir mitteld
+	Die Ableitung definieren wir mittels
 	\[
 	D: f = \sum_{n=0}^{\infty} a_{n} T^{n} \mapsto f' = \sum_{n=1}^{\infty} n a_{n} T^{n-1}
 	.\] 
@@ -434,7 +434,7 @@ Sind diese (bis auf Isomorphie) eindeutig?
 	\[
 		((T-\alpha)^2 g(T))' = 2 (T-\alpha) g(T) + (T-\alpha)^2 g'(T) = (T-\alpha) (2 g(T) + (T-\alpha) g'(T))
 	.\] 
-	D.h. falls $f$ eine mehrfrache Nullstelle hat, so ist diese auch eine Nullstelle von $f$.
+	D.h. falls $f$ eine mehrfache Nullstelle hat, so ist diese auch eine Nullstelle von $f$.
 	Dies gilt für $\alpha \in K$ aber auch für $\alpha \in L$ wenn $L \mid K$.
 
 	Angenommen $m(T) \& m'(T)$ sind in $K[T]$ coprim. Dann existieren $h_1,h_2 \in K[T]$ mit
@@ -442,7 +442,7 @@ Sind diese (bis auf Isomorphie) eindeutig?
 		1 = h_1(T) m(T) + h_2(T) m'(T)
 	.\] 
 	Falls nun $L \mid K$ eine Körpererweiterung ist und $\alpha \in L$ eine Nullstelle von $m(T)$ ist,
-	so ist $m'(T) \neq 0$. Auf grund des oben gesagten ist also $\alpha$ eine einfache Nullstelle von $m(T)$.
+	so ist $m'(T) \neq 0$. Auf Grund des oben gesagten ist also $\alpha$ eine einfache Nullstelle von $m(T)$.
 	Falls $L$ algebraisch abgeschlossen ist, so gilt
 	\[
 		m(T) = a \prod_{i=1}^{n} (T-\alpha_{i})
@@ -457,7 +457,7 @@ Sind diese (bis auf Isomorphie) eindeutig?
 \end{remark}
 
 \begin{proof}[Beweis von $1)$ im Satz]
-	Sei $m(T)$ das Minimalpolynom von $\alpha$ über $K$. Sei $\beta = \varphi(\alpha)$ für $K$-lineare Köerpereinbettung
+	Sei $m(T)$ das Minimalpolynom von $\alpha$ über $K$. Sei $\beta = \varphi(\alpha)$ für $K$-lineare Körpereinbettung
 	$\sigma: E \to L$ so gilt $m(\beta) = m(\sigma(\alpha)) = 0$, da $m(T) = \sum_{n=0}^{\infty} a_{n} T^{n}$ mit Koeffizienten $a_{n} \in K$, $\sigma$ ist ein Ringhomomorphismus
 	und $\sigma(a_{n}) = a_{n}$.
 
@@ -525,7 +525,7 @@ Sind diese (bis auf Isomorphie) eindeutig?
 		\sigma_{T}: F_{T} &\to L\\
 		\nstack{x \in F}{\text{ mit } (F,\sigma) \in T} &\mapsto \sigma(x)
 	.\end{align*}
-	Dies sit wohldefiniert: Falls $\nstack{x \in F_1}{(F_1,\sigma_1) \in T}$ und $\nstack{x \in F_2}{(F_2,\sigma_2) \in T}$ ist, so können wir o.B.d.A. annehmen,
+	Dies ist wohldefiniert: Falls $\nstack{x \in F_1}{(F_1,\sigma_1) \in T}$ und $\nstack{x \in F_2}{(F_2,\sigma_2) \in T}$ ist, so können wir o.B.d.A. annehmen,
 	dass $(F_1,\sigma_1) \leq (F_2,\sigma_2) \implies \sigma_2(x) = \sigma_2 \mid_{F_1} (x) = \sigma_1(x)$.
 	Dies zeigt, dass $\sigma_{T}$ wohldefiniert ist.
 	$\sigma_{T}$ ist auch eine Körpereinbettung:
@@ -580,11 +580,11 @@ Sind diese (bis auf Isomorphie) eindeutig?
 	Da $E_1 = K(\alpha_1,\ldots,\alpha_{n})$ und $E_2 = K[\sigma(\alpha_1),\ldots, \sigma(\alpha_{n})]$, folgt, dass $\sigma: E_1 \to E_2$ ein
 	Isomorphismus ist.
 
-	Angeonmmen $L_1$ \& $L_2$ sind algebraische Abschlüsse von $K$.
+	Angenommen $L_1$ \& $L_2$ sind algebraische Abschlüsse von $K$.
 	%TODO Diagramm
 
 	Auf Grund vom $2.$ Teil vom Satz gibt es eine $K$-lineare Körpereinbettung $\sigma: L_1 \to L_2$.
-	Damit ist $K \subseteq \sigma(L_1) \subseteq L_2$. Des Weiteren ist $L_2 \mid K$ algebraich und $\sigma(L_1)$ ist
+	Damit ist $K \subseteq \sigma(L_1) \subseteq L_2$. Des Weiteren ist $L_2 \mid K$ algebraisch und $\sigma(L_1)$ ist
 	algebraisch abgeschlossen. Daraus folgt
 	\[
 		L_2 = \{\alpha \in L_2 \mid \exists f \in K[T] \setminus \{0\} \text{ mit } f(\alpha) = 0\} \subseteq \sigma(L_1) \subseteq L_2 
@@ -629,7 +629,7 @@ Gibt es weitere? Können wir diese klassifizieren?
 			\[
 				E = \{x \in L \mid \underbrace{\phi^{n}(x) = x}_{\text{Körperautomorphismus}}\} = \{ x \in L \mid f(x) = 0\} 
 			\] 
-			ist ein Unterkörper von $L$, der alle Nullstelleb von $f$ enthält. Also ist $E = L$.
+			ist ein Unterkörper von $L$, der alle Nullstellen von $f$ enthält. Also ist $E = L$.
 			Daraus ergibt sich auch, dass $E = L$ als Zerfällungskörper bis auf Isomorphie eindeutig bestimmt ist.
 
 			Da $f'(T) = q T^{q-1} -1 = -1$ ist, sind $f$ und $f'$ coprim.
@@ -640,7 +640,7 @@ Gibt es weitere? Können wir diese klassifizieren?
 			.\] 
 			Dies beweist die Existenz  in  2.
 
-			Sei $F$ ein beliebiger Körper mit $p^{n}$ Elementenn. Wie im Beweis von 1. wissen wir, dass $F \mid F_{p}$.
+			Sei $F$ ein beliebiger Körper mit $p^{n}$ Elementen. Wie im Beweis von 1. wissen wir, dass $F \mid F_{p}$.
 			Des Weiteren gilt $x \in F^{\times}$ dass $x^{p^{n}-1} = 1$ (weil $\abs{\F^{\times }} = p^{n}-1$ und $F^{\times}$ eine Gruppe ist).
 			Also gilt $x^{p^{n}} = x$ für alle $x \in F$.
 			D.h. $F$ enthält (besteht aus) den Nullstellen von $f(T) = T^{q} - T$,

@@ -99,7 +99,7 @@
 			\[
 				\End(V) = \{f: V \to V \text{ linear}\} 
 			\] 
-			ein Ring, wobei $+$ punkteweise definiert wird und $\cdot$ die Verknüpfung ist.
+			ein Ring, wobei $+$ punktweise definiert wird und $\cdot$ die Verknüpfung ist.
 		\item $\mat_{n,n}(\Q)$ bzw. $\R,\C,\Z$.
 		\item Sei $m \geq 1$. Dann ist $Z_{m} = \Z / Z_{m}$ ein Ring.
 			Wenn dies die Übersicht erhöht können wir die Restklasse $[a]_{\equiv \mod m}$ einer Zahl $a$ einfach mit $\overline{a}$. In dieser Notation haben wir
@@ -128,7 +128,7 @@
 		\item $\R \to \mat_{n,n}(\R), t \mapsto t I_{n}$. Umgekehrt geht nicht.
 		\item $C([0,1] \to \C, f \mapsto f(x_0)$ für ein festes $x_0 \in [0,1]$ 
 		\item $\Z \to \Z_{m}, a \mapsto \overline{a}$
-		\item $\mat_{n,n}(\C) \to \End(\C^{n}), A \mapsto (x \in \C^{n} \mapsto A x)$ ist ein RIngisomorphismus.
+		\item $\mat_{n,n}(\C) \to \End(\C^{n}), A \mapsto (x \in \C^{n} \mapsto A x)$ ist ein Ringisomorphismus.
 	\end{enumerate}
 \end{eg}
 
@@ -173,7 +173,7 @@ Ab nun werden wir nur kommutative Ringe betrachten.
 \end{lemma}
 
 \begin{proof}
-	Angenommen R ist ein Integritätsbereich und $a \in R \setminus \{0\}, b \in R$ erfüllt $a\cdot b = 0 \implies a\cdot b = a\cdot 0 \implies b = 0$.
+	Angenommen $R$ ist ein Integritätsbereich und $a \in R \setminus \{0\}, b \in R$ erfüllt $a\cdot b = 0 \implies a\cdot b = a\cdot 0 \implies b = 0$.
 	Also kann es keine Nullteiler geben.
 
 	Angenommen $R$ hat keine Nullteiler und $a,b,c \in R, a \neq 0$ erfüllen $ab = ac \implies ab - ac = 0, a(b-c) = 0 \implies b = c$.
@@ -183,7 +183,7 @@ Ab nun werden wir nur kommutative Ringe betrachten.
 	\begin{enumerate}
 		\item $\Z \subseteq \Q \subseteq \R \subseteq \C$ 
 		\item Antibeispiel: $C([0,1])$ ist kein Integritätsbereich.
-		\item Wann ist $\Z_{m}$ ein Integritätbereich?
+		\item Wann ist $\Z_{m}$ ein Integritätsbereich?
 	\end{enumerate}
 \end{eg}
 
@@ -236,7 +236,7 @@ Ab nun werden wir nur kommutative Ringe betrachten.
 	Also hat $\Z_{m}$ Nullteiler, ist kein Integritätsbereich und kein Körper.
 
 	Sei nun $m$ eine Primzahl und $\overline{a} \neq 0$. Sei $d = \gcd(m,a)$.
-	Nahc Definition ist $d \geq 1$ ein Teiler von $m$.
+	Nach Definition ist $d \geq 1$ ein Teiler von $m$.
 	Falls $d = m$ wäre, dann folgt $m \vert a \implies \overline{a} = \overline{0}$ \contra.
 	Also ist $d = 1$. Nach dem Lemma vom letzten Mal folgt daraus, 
 	dass es $k,l \in \Z$ mit $1 = k \cdot m + l \cdot a$. Modulo $m$ ist die $\overline{1} = \overline{l} \cdot \overline{a}$.
@@ -345,7 +345,7 @@ in der Variablen $X$ und Koeffizienten in $R$ definieren.
 \end{definition}
 
 \begin{proof}
-	Wir überprüfen die Axiome welche die Multiplikation betreffen und überlsassen die anderen dem Leser.
+	Wir überprüfen die Axiome welche die Multiplikation betreffen und überlassen die anderen dem Leser.
 	\begin{enumerate}
 		\item $a\cdot b = b\cdot a$ gilt, denn $\sum_{i+j=n} a_{i} b_{j} = \sum_{i+j=n} b_{i} a_{j}$.
 		\item $(1\cdot a)_{n} = \sum_{i+j=n} 1_{i} a_{j} = a_{n}$, da $1_{i} = 0$ außer wenn  $i=0$.
@@ -363,11 +363,11 @@ in der Variablen $X$ und Koeffizienten in $R$ definieren.
 		(a+b)_{n} = 0 \text{ für } n > \max(I,J) \qquad (a\cdot b)_{n} = 0 \text{ für } n > I+J
 	\]
 	denn $(a\cdot b)_{n} = \sum_{i+j=n} \underbrace{a_{i} b_{j}}_{=0}$. Falls $a_{i} b_{j} \neq  0$ wäre, dann würde $a_{i}\neq 0$ und $b_{j} \neq 0$ folgen,
-	was widerum $i \leq I, j \leq J$ und damit $n=i+j \leq I+J$ impliziert.
+	was wiederum $i \leq I, j \leq J$ und damit $n=i+j \leq I+J$ impliziert.
 \end{proof}
 
 \begin{notation}
-	Wir ühren ein neues Symbol, eine Variable, z.B. $X$ ein und identifizieren $X$ mit
+	Wir führen ein neues Symbol, eine Variable, z.B. $X$ ein und identifizieren $X$ mit
 	\begin{align*}
 		X^{0} = 1 = (1,0,0,\ldots) \quad X^{1} = (0,1,0,0,\ldots) \quad X^2 = (0,0,1,0,\ldots) \quad \ldots
 	.\end{align*}
@@ -413,7 +413,7 @@ in der Variablen $X$ und Koeffizienten in $R$ definieren.
 	\end{itemize}
 	Diese beiden Punkte beweisen $\deg(f) = \deg(p\cdot q) = \deg(p) + \deg(q)$ also die erste Behauptung in der Proposition.
 
-	Angenommmen $p \mid q$, dann gibt es ein Polynom $g$ so dass $q = p \cdot g$ ist $\deg(q) = \deg(p) + \underbrace{\deg(g)}_{\geq 0} \geq \deg(p)$.
+	Angenommen $p \mid q$, dann gibt es ein Polynom $g$ so dass $q = p \cdot g$ ist $\deg(q) = \deg(p) + \underbrace{\deg(g)}_{\geq 0} \geq \deg(p)$.
 	Beweise die dritte Aussage in der Proposition.
 
 	Angenommen $p = \sum_{n=0}^{\deg(p)} p_{n} X^{n}, q = \sum_{n=0}^{\deg(q)} q_{n} X^{n}$, dann ist
@@ -505,7 +505,7 @@ Falls $R = K$ ein Körper ist, definieren wir auch
 \begin{eg}
 	Falls wir $R = S$ und $\varphi = \id$ setzen, so erhalten wir für jedes $a \in R$ die entsprechende Auswertungsabbildung
 	\[
-		\text{ev}_{a} : f \mapsto f(a) = \sum_{n=0}^{\infty} f_{n} a^{n}
+		\ev_{a} : f \mapsto f(a) = \sum_{n=0}^{\infty} f_{n} a^{n}
 	.\] 
 	Wenn wir $a \in R$ variieren, ergibt sich auch eine Abbildung
 	\[
@@ -567,7 +567,7 @@ Sei $R$ ein kommutativer Ring un $I \subseteq R$ ein Ideal.
 		\[
 			\sfrac{R}{I} \times \sfrac{R}{I} \to \sfrac{R}{I} \qq{bzw.} \sfrac{R}{I} \to \sfrac{R}{I}
 		.\] 
-	\item Mit diesen Abbildungen, $0_{\sfrac{R}{I}} = [0]_{\sim}, 1_{\sfrac{R}{I}} = [1]_{\sim}$ ist $\sfrac{R}{I}$ ein Ring und die kanoische Projektion
+	\item Mit diesen Abbildungen, $0_{\sfrac{R}{I}} = [0]_{\sim}, 1_{\sfrac{R}{I}} = [1]_{\sim}$ ist $\sfrac{R}{I}$ ein Ring und die kanonische Projektion
 		$p: R \to \sfrac{R}{I}$ mit $a \in R \mapsto [a]_{\sim} = a + I$ ist ein surjektiver Ringhomomorphismus.
 \end{enumerate}
 \end{theorem}
@@ -594,7 +594,7 @@ Sei $R$ ein kommutativer Ring un $I \subseteq R$ ein Ideal.
 	\begin{align*}
 		ab - a'b' = ab - a'b + a'b - a'b' = b \underbrace{(a-a')}_{\in I} + a'\underbrace{(b-b')}_{\in I} \in I
 	.\end{align*}
-	wegen (iii) in der Def von Idealen
+	wegen (iii) in der Definition von Idealen
 	Dies zeigt, dass die Multiplikation von Restklassen
 	\[
 		[a]_{\sim} \cdot [b]_{\sim} = [a\cdot b]_{\sim}
@@ -672,7 +672,7 @@ Sei $R$ ein kommutativer Ring un $I \subseteq R$ ein Ideal.
 	Falls umgekehrt $b \mid a$, dann ist $a \in (b) \implies (a) = R a \subseteq (b)$.
 
 	Die Implikation $\impliedby$ in $2)$ folgt aus $1)$.
-	Also nehmen wir nun and, dass $(a) = (b)$.
+	Also nehmen wir nun an, dass $(a) = (b)$.
 	Dies impliziert $a = xb$ und  $b = ya$ für $x,y \in R$.
 	Daraus folgt $a = x b = xy a$.\\
 	Falls  $a = 0$ ist, so ist auch $b = 0$ und wir setzen $u = 1$.\\
@@ -705,7 +705,7 @@ Sei $R$ ein kommutativer Ring un $I \subseteq R$ ein Ideal.
 	$b \not\in R^{X} a$ folgt aus dem Zwischenwertsatz.
 \end{eg}
 
-Falls $I \subseteq R$ ein Ideal ist und $a \in R$, dann ist die Restklasse für Äuivalent modulo $I$ gleich
+Falls $I \subseteq R$ ein Ideal ist und $a \in R$, dann ist die Restklasse für Äquivalent modulo $I$ gleich
 \[
 	[a]_{N} = \{x \in R: x \sim a\} = a + I
 .\] 
@@ -719,7 +719,7 @@ Falls $I \subseteq R$ ein Ideal ist und $a \in R$, dann ist die Restklasse für 
 			\] 
 			so dass $\varphi = \overline{\varphi} \circ p$ wobei $p : R \to \sfrac{R}{\ker(\varphi)}$ die kanonische Projektion ist (Diagramm links).
 		\item Sei $I \subseteq \ker(\varphi)$ ein Ideal in $R$.
-			Dann induziert $\varphi$ einen Ringhomomorpismus $\overline{\varphi}: \sfrac{R}{I} \to S$ mit $\varphi = \overline{\varphi} \circ p_{I}$ (Diagramm rechts).
+			Dann induziert $\varphi$ einen Ringhomomorphismus $\overline{\varphi}: \sfrac{R}{I} \to S$ mit $\varphi = \overline{\varphi} \circ p_{I}$ (Diagramm rechts).
 			Des weiteren gilt $\ker(\overline{\varphi}) = \sfrac{\ker(\varphi)}{I}$ und $\Im(\overline{\varphi}) = \Im(\varphi)$
 	\end{enumerate}
 	\[
@@ -806,7 +806,7 @@ Falls $I \subseteq R$ ein Ideal ist und $a \in R$, dann ist die Restklasse für 
 	\[
 		\varphi(x_1) = (b + I_1, b+I_2,\ldots,b+I_{n}) = (1+ I_1, 0 + I_2, \ldots, 0+I_{n})
 	\] 
-	wegen der Definiton von $b$ und $a + b = 1$.
+	wegen der Definition von $b$ und $a + b = 1$.
 
 	Wir zeigen die Behauptung mittels Induktion nach $n$ :\\
 	$n=2$ : $I_1$ und $I_2$ sind coprim. Dies gilt nach Annahme in der Proposition.\\
@@ -840,7 +840,7 @@ Da $K$ ein Körper ist, ist $\Im(\varphi)$ ein Integritätsbereich.
 
 \begin{lemma}
 	Sei $I \subseteq \Z$ ein Ideal. Dann gilt $I = (m)$ für ein $m \in \N$. 
-	Der Quotient ist ein Integritätsbreich genau dann wenn $m = 0$ oder $m$ eine Primzahl ist.
+	Der Quotient ist ein Integritätsbereich genau dann wenn $m = 0$ oder $m$ eine Primzahl ist.
 \end{lemma}
 
 \begin{proof}
@@ -894,7 +894,7 @@ Da $K$ ein Körper ist, ist $\Im(\varphi)$ ein Integritätsbereich.
 \section{Primideale und Maximalideale}
 \begin{definition}
 	Sei $R$ ein kommutativer Ring, und sei $I \subseteq R$ ein Ideal.
-	Wir sagen $I$ ist ein \emph{Primideal}, falls $\sfrac{R}{I}$ ein Integritätsbreich ist.
+	Wir sagen $I$ ist ein \emph{Primideal}, falls $\sfrac{R}{I}$ ein Integritätsbereich ist.
 	Wir sagen $I$ ist ein \emph{Maximalideal}, falls $\sfrac{R}{I}$ ein Körper ist.
 \end{definition}
 
@@ -972,7 +972,7 @@ Da $K$ ein Körper ist, ist $\Im(\varphi)$ ein Integritätsbereich.
 	X = \{J \subsetneq R \mid J \text{ ist ein Ideal und } I \subseteq J\} 
 	\]
 	und betrachten die Inklusion von Teilmengen als unsere Relation auf $X$.
-	Wir müssen zeugen, dass jede Kette $K$ in $X$ eine obere schranke besitzt.
+	Wir müssen zeugen, dass jede Kette $K$ in $X$ eine obere Schranke besitzt.
 	Falls $K = \emptyset$, dann ist $I \in X$ eine obere Schranke.
 	Sei nun $K$ eine nichtleere Kette in $X$.
 	
@@ -1026,7 +1026,7 @@ Da $K$ ein Körper ist, ist $\Im(\varphi)$ ein Integritätsbereich.
 
 \begin{proof}[Beweis von $\subseteq$]
 	Wir wissen aus der Serie, dass $S[a_1,\ldots,a_{n}]$ ein Unterring ist, der nach Definition $S$ und $a_1,\ldots,a_{n}$ enthält.
-	Auch wissen wir, dass $\ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}])$ ein Unterring ist (da $S[x_1,\ldots,x_{n}]$ ein Ring ist und $\ev_{a_1,\ldots,a_{n}}$ ein Ringhomomorphimus ist).
+	Auch wissen wir, dass $\ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}])$ ein Unterring ist (da $S[x_1,\ldots,x_{n}]$ ein Ring ist und $\ev_{a_1,\ldots,a_{n}}$ ein Ringhomomorphismus ist).
 	Also tritt $T = \ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}])$ als eine der Mengen im Durchschnitt auf und wir erhalten
 	\[
 		S[a_1,\ldots,a_{n}] \subseteq \ev_{a_1,\ldots,a_{n}}(S[x_1,\ldots,x_{n}])
@@ -1068,9 +1068,9 @@ a_{m_1} &\ldots &a_{mn}
 \end{pmatrix} 
 .\] 
 mit Koeffizienten oder Eintragungen $a_{11},\ldots,a_{mn} \in R$.
-Für $m=n$ i definieren wir auch auf $\mat_{mm}(R)$ auf übliche Weise die Addition und Multipliaktion.
+Für $m=n$ definieren wir auch auf $\mat_{mm}(R)$ auf übliche Weise die Addition und Multiplikation.
 Dies definiert auf $\mat_{mm}(R)$ gemeinsam mit dem Einselement $I_{m} = (\delta_{ij})_{i,j}$ eine Ringstruktur.
-Sobald $m > 1$ sit, ist dieser Ring nichtkommutativ.
+Sobald $m > 1$ ist, ist dieser Ring nicht kommutativ.
 
 Die Einheiten in $\mat_{mm}(R)$ werden auch als invertierbare Matrizen bezeichnet.
 Die Menge wird auch die allgemeine lineare Gruppe vom Grad $m$ über $R$ genannt:

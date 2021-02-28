@@ -148,7 +148,7 @@ Falls $\abs{H} < \infty$, so ist auch folgende Aussage mit obigen Aussagen äqui
 				$K \supseteq \Q$ ein Körper 			& $\gal(K:\Q) = \{\varphi: K \to K : \Q\text{-linear, bijektiv und }\varphi(ab) = \varphi(a) \varphi(b)\} $ 
 														(Galois-Gruppe von $K$)\\
 					$G$ eine Gruppe 					& $\aut(G) = \{\varphi: G \to G \underbrace{\text{ Isomorphismus von $G$ nach $G$}}_{\text{Automorphismus von } G}\} $\\
-					Affine reele Ebene 					& $\GL_2(\R) \ltimes \R^2$ \\
+					Affine reelle Ebene 					& $\GL_2(\R) \ltimes \R^2$ \\
 					Euklidische reelle Ebene  			& $O_2(\R) \ltimes \R^2$\\
 					Sphärische Geometrie 				& $O_3(\R)$\\
 					Hyperbolische Ebene		 			& $\SO_{2,1}(\R), P \GL_{2}(\R)$ ($P$ für Projektiv, also, dass man das Zentrum rausfaktorisiert)\\
@@ -178,7 +178,7 @@ Falls $\abs{H} < \infty$, so ist auch folgende Aussage mit obigen Aussagen äqui
 					$\exp: \R \to \R^{\times }$ ist ein Homomorphismus. &$\exp: \C  \to \C^{\times}$ ist ein Homomorphismus. $\ker(\exp) = 2\pi i \Z$ 
 				\end{tabu} 
 			\end{center}
-		\item $G_1 \times G_2$ ist eine Gruppe (komponenetenweisen Operationen) falls $G_1,G_2$ Gruppen sind.
+		\item $G_1 \times G_2$ ist eine Gruppe (komponentenweisen Operationen) falls $G_1,G_2$ Gruppen sind.
 	\end{enumerate}
 \end{eg}
 
@@ -215,7 +215,7 @@ Falls $\abs{H} < \infty$, so ist auch folgende Aussage mit obigen Aussagen äqui
 \section{Konjugation}
 
 \begin{lemma}
-	Sei $G$ eine Grupee.
+	Sei $G$ eine Gruppe.
 	\begin{enumerate}[a)]
 		\item Für jedes $g \in G$ ist $\gamma_{g}: G \to G, x \mapsto g x g^{-1}$ ein Automorphismus von $G$, welche ein \emph{innerer Automorphismus} genannt wird.
 		\item Die Abbildung $g \in G \mapsto \gamma_{g} \in \aut(G)$ ist ein Homomorphismus.
@@ -289,7 +289,7 @@ Manchmal ist $G$ sehr kompliziert und unüberschaubar aber die Konjugationsklass
 
 \begin{eg}
 	\begin{enumerate}[1)]
-		\item Das Zentrum von $S_{n}$ für $n \geq 3$ ist $\{1\}$. (Ü)
+		\item Das Zentrum von $S_{n}$ für $n \geq 3$ ist $\{1\}$. (Übung)
 		\item Das Zentrum von $\GL_{n}(K)$ ist $\{A \in \GL_{n}(K) \mid  A \text{ ist Diagonal mit Diagonaleintrag } t \in K^{\times}\}$ :
 			\begin{align*}
 			\begin{pmatrix} 
@@ -406,8 +406,8 @@ $H\subseteq G$ nichtleer ist eine \emph{Untergruppe} ($H<G$ ) falls für alle $a
 \end{eg}
 
 \begin{remark}
-	Es gibt keinen \enquote{Basis- oder Diemensionsbegriff}:
-	Denn is $S_{6}$ gibt es eine Untergruppe, die von $3$ oder mehr Elementen erzeugt wird, aber nicht von weniger:
+	Es gibt keinen \enquote{Basis- oder Dimensionsbegriff}:
+	Denn ist $S_{6}$ gibt es eine Untergruppe, die von $3$ oder mehr Elementen erzeugt wird, aber nicht von weniger:
 	\[
 	H = \left< \tau_{1,2}, \tau_{3,4}, \tau_{5,6} \right> \cong \F_{2}^{3}
 	.\] 
@@ -443,7 +443,7 @@ $H\subseteq G$ nichtleer ist eine \emph{Untergruppe} ($H<G$ ) falls für alle $a
 \end{definition}
 
 \begin{lemma}
-	Sei $G$ eine Gruppe und $H < G$. Dann ist $\sim_{H}$ eine Äquivalentrelation und $[ a ]_{\sim_{H}}$ und $G / H$ ist der Quotient von $G$ bzgl. $\sim_{H}$.
+	Sei $G$ eine Gruppe und $H < G$. Dann ist $\sim_{H}$ eine Äquivalenzrelation und $[ a ]_{\sim_{H}}$ und $G / H$ ist der Quotient von $G$ bzgl. $\sim_{H}$.
 	Dies gilt analog für $\prescript{}{H}{\sim}$
 \end{lemma}
 
@@ -498,7 +498,7 @@ $H\subseteq G$ nichtleer ist eine \emph{Untergruppe} ($H<G$ ) falls für alle $a
 		$\psi: X \times  H \to G$ mit $(x,h) \mapsto  x h $
 	\end{claim}
 	$\psi$ ist \emph{surjektiv}: Sei $g \in G$, dann ist $gH \in \sfrac{G}{H}$ und wir haben in der Konstruktion von $X$ aus $g H$ ein $x \in X \cap g H$ 
-	ausgewählt. Insebsondere gibt es ein $h \in H$ (weil $g \sim_{H} x$) mit $g = xh = \psi(x,h)$. Also ist $\psi$ surjektiv.
+	ausgewählt. Insbesondere gibt es ein $h \in H$ (weil $g \sim_{H} x$) mit $g = xh = \psi(x,h)$. Also ist $\psi$ surjektiv.
 
 	$\psi$ ist \emph{injektiv}: Angenommen $\psi(x_1,h_1) = \psi(x_2,h_2)$ also $x_1 h_1 = x_2 h_2$ für $(x_1,h_1),(x_2,h_2) \in X \times G$.
 	Insbesondere gilt $x_1 H = x_2 H$ in der Konstruktion von $X$ nur einen Linksrepräsentanten ausgewählt haben,
@@ -549,7 +549,7 @@ Im Allgemeinen haben $\sfrac{G}{H}$ und $\sfrac{H}{G}$ keine natürliche Gruppen
 	\begin{enumerate}[(1)]
 		\item Für alle $x \in G$ ist $x H = H x$.
 		\item Für alle  $x \in G$ ist $x H x^{-1} = H$.
-		\item Es existiert eine gruppe $G_1$ und ein Gruppenhomomorphimus $\varphi: G \to G_1$ mit $H = \ker(\varphi)$.
+		\item Es existiert eine Gruppe $G_1$ und ein Gruppenhomomorphismus $\varphi: G \to G_1$ mit $H = \ker(\varphi)$.
 		\item Für alle $x,y \in G$ gilt $(xH)(yH) = (xy) H$.
 		\item $\sfrac{G}{H}$ ist (auf natürliche Weise) eine Gruppe so dass $\varphi: G \to \sfrac{G}{H}, g \mapsto g H$ ein Gruppenhomomorphismus ist.
 	\end{enumerate}
@@ -600,7 +600,7 @@ Im Allgemeinen haben $\sfrac{G}{H}$ und $\sfrac{H}{G}$ keine natürliche Gruppen
 \begin{theorem}[Erster Isomorphiesatz]
 	Sei $\varphi: G \to H$ eine Homomorphismus zwischen zwei Gruppen $G$ und $H$.
 	Dann induziert $\varphi$ einen Isomorphismus $\abs{\varphi}: \sfrac{G}{\ker(\varphi)} \to  \Im(\varphi)$ so dass 
-	folgendes Diagram komutiert
+	folgendes Diagramm kommutiert
 	\[
 	\begin{tikzcd}
 		G \arrow[d, "\pi"'] \arrow[r, "\varphi"]                 & H                                    \\
@@ -812,7 +812,7 @@ Dann gilt $H \lTri G$.
 \begin{proof}
 	\begin{itemize}
 		\item Reflexivität: $t \sim t$ da $\underbrace{e}_{\in G} \cdot  t = t$.
-		\item Symmetrie: Angenommen $t_1 \sim t_2$, dann exisitert ein $g \in G$ mit $g \cdot t_1 = t_2$.
+		\item Symmetrie: Angenommen $t_1 \sim t_2$, dann existiert ein $g \in G$ mit $g \cdot t_1 = t_2$.
 			Wir wenden auf diesen Punkt $g^{-1}$ an und erhalten $g^{-1} \cdot (g \cdot t_1) = g^{-1} \cdot t_2$ und
 			$t_1 = e \cdot t_1 = g^{-1} t_2$ und damit $t_2 \sim t_1$.
 		\item Transitivität: Angenommen $t_1 \sim t_2, t_2 \sim t_3$ : Dann existieren $g_1, g_2 \in G$ mit $g_1 \cdot t_1 = t_2$, $g_2 \cdot t_2 = t_3$.
@@ -947,7 +947,7 @@ Dann gilt $H \lTri G$.
 \end{lemma}
 
 \begin{proof}
-	Auf Grund des Korollars vom Anfang der Stunde wirssen wir
+	Auf Grund des Korollars vom Anfang der Stunde wissen wir
 	\[
 		\abs{T} = \abs{\on{Fix}_{G}(T)} + \sum_{\abs{G \cdot t} > 1} [G : \on{Stab}_{G}(t)]
 	.\] 
@@ -970,14 +970,14 @@ Dann gilt $H \lTri G$.
 		\abs{\on{Fix}_{G}(T)} = \abs{Z_{G}} = \equiv \abs{T} = \abs{G} = p^{k} = 0 \mod p
 	.\] 
 	Da $e \in Z_{G}$ gilt $\abs{T_{G}} \geq 1$, also $\abs{Za} \geq p$.
-	Insbesondere ist $Z_{G}$ eine nicht trivialte Untergruppe, und
+	Insbesondere ist $Z_{G}$ eine nichttriviale Untergruppe, und
 	$\sfrac{G}{Z_{G}}$ ist eine kleinere $p$-Gruppe.
 
 	Falls $\abs{G} = p$ ist, so ist $G = Z_{G}$ zyklisch, also abelsch, also nilpotent mit Nilpotenzgrad $1$.
 	
 	Ansonsten:
 	Mittels Induktion nach  $G$ dürfen wir bereits annehmen, dass $\sfrac{G}{Z_{G}}$ nilpotent mit Nilpotenzgrad $e$ ist.
-	Demnach ist also $G$ nilpotent mit Nilpotentgrad $l+1$.
+	Demnach ist also $G$ nilpotent mit Nilpotenzgrad $l+1$.
 \end{proof}
 
 \begin{corollary}
@@ -1023,7 +1023,7 @@ Dann gilt $H \lTri G$.
 
 \begin{proposition}
 	Sei $G$ eine Gruppe. Dann ist $[G,G] = \left< \{ [a,b] \mid a,b \in G \} \right> \lTri G$, und $\sfrac{G}{[G,G]}$ ist abelsch.
-	Falls $H$ eine ablesche Gruppe ist und $\varphi: G \to H$ ein Homomorphismus ist, so ist $\varphi([G,G]) = \{e_{H}\}$
+	Falls $H$ eine abelsche Gruppe ist und $\varphi: G \to H$ ein Homomorphismus ist, so ist $\varphi([G,G]) = \{e_{H}\}$
 	und $\varphi$ induziert einen Gruppenhomomorphismus $\overline{\varphi}: \sfrac{G}{[G,G]} \to H$.
 	In diesem Sinne ist $\sfrac{G}{[G,G]}$ die größte abelsche Faktorgruppe von $G$.
 \end{proposition}
@@ -1067,7 +1067,7 @@ Dann gilt $H \lTri G$.
 	\[
 	\{e\} = G^{(n+1)} \lTri G^{(n)} \lTri G^{(n-1)} \lTri \ldots \lTri G^{(1)} \lTri G^{(0)}
 	\] 
-	eine Subnormalreihe für $G$ (mit umgekehrter Indesreihenfolge).
+	eine Subnormalreihe für $G$ (mit umgekehrter Index-Reihenfolge).
 	Des Weiteren sind die Quotienten $\sfrac{G^{(k)}}{G^{(k+1)}}$ auf Grund der letzten Proposition abelsch.
 	Also ist $G$ auflösbar.
 
@@ -1144,7 +1144,7 @@ Für eine endliche Gruppe $G$ besagt der Satz von Lagrange, dass für $H < G$ so
 
 \begin{proof}[Beweis von 2)]
 	Sei $H$ eine beliebige $p$-Untergruppe und $H_{p}$ eine beliebige Sylow $p$-Untergruppe.
-	Wir definieren $T = \sfrac{G}{H_{p}}$ und lassen $H$ mittels linksmultiplikation auf $T$ wirken.
+	Wir definieren $T = \sfrac{G}{H_{p}}$ und lassen $H$ mittels Linksmultiplikation auf $T$ wirken.
 	Wegen dem Lemma über Fixpunkte von $p$-Gruppen gilt
 	\[
 		\abs{\on{Fix}_{H}(T)} \equiv \abs{T} = [G: H_{p}] = \frac{n}{p_{k}} = m \not\equiv 0 \mod p
@@ -1406,14 +1406,14 @@ Für $n \geq 5$ wollen wir die Gruppenwirkung von $A_{n}$ auf $\{1,\ldots,n\}$ u
 	\implies \{e\}  \neq H \cap A_{n-1} \lTri A_{n-1}
 	.\] 
 	Nach Induktionsannahme gilt also $H \cap A_{n-1} = A_{n-1}$.
-	Wegen dem ersten Lemma folgt, dasss jedes Element von $A_{n}$ mit einem Fixpunkt zu einem Element von $A_{n-1}$ konjugiert ist.
+	Wegen dem ersten Lemma folgt, dass jedes Element von $A_{n}$ mit einem Fixpunkt zu einem Element von $A_{n-1}$ konjugiert ist.
 	Zusammengenommen erhalten wir, dass $H$ jedes Element mit einem Fixpunkt enthält.
 	
 	Sei $\sigma \in A_{n}$ beliebig.
 	\begin{itemize}
 		\item Falls $\sigma$ einen Fixpunkt hat so ist $\sigma \in H$.
 		\item Ansonsten schreiben wir $\sigma = (1,\sigma(1),i)((1,\sigma(1),i)^{-1} \sigma)$
-			wobei $i \in \{1,\ldots,n\} \setminus \{1,\sigma(1)\} $ und der erste Zyklus $n-3$ Punkte fixiert und der zweite einen fixiiert
+			wobei $i \in \{1,\ldots,n\} \setminus \{1,\sigma(1)\} $ und der erste Zyklus $n-3$ Punkte fixiert und der zweite einen fixiert
 			und daher beide in $H$ sind.
 	\end{itemize}
 	Es folgt also $\sigma \in H$.
@@ -1429,8 +1429,8 @@ Für $n \geq 5$ wollen wir die Gruppenwirkung von $A_{n}$ auf $\{1,\ldots,n\}$ u
 \end{theorem}
 
 Für den Beweis des Satzes bedienen wir uns vieler bereits bewiesenen kleinen Lemmas,
-dem Sylowsatz und weiteren Leamms mit zunehmender Komplexität.
-Des Weiteren verwenden wir Induktion nach $n$ und einen grundlegene Eigenschaft von Auflösbarkeit.
+dem Sylowsatz und weiteren Lemmas mit zunehmender Komplexität.
+Des Weiteren verwenden wir Induktion nach $n$ und einen grundlegende Eigenschaft von Auflösbarkeit.
 
 \begin{definition}[Wiederholung]
 	Sei $G$ eine Gruppe. Wir sagen $G$ ist \emph{auflösbar} falls es einen Subnormalreihe
