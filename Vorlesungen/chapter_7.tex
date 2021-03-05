@@ -128,7 +128,173 @@ $\gal(E / K)$ und $\gal(E'/K)$ isomorph sind.
 	ist eine \emph{injektiver} Gruppenhomomorphismus.
 \end{lemma}
 
+\begin{proof}
+	Aus Lemma II.4 folgt $\sigma(R(f)) = R(f) \forall \sigma \in \gal(E / K)$.
+	Homomorphismus: $(\sigma \circ \eta) \mid_{R(f)} = \sigma \mid_{R(f)} \circ \eta \mid_{R(f)}$\\
+	Injektivität: Sei $R(f) = \{\alpha_1,\ldots,\alpha_{n}\} $ dann folgt aus Algebra I, dass $E = k[\alpha_1,\ldots,\alpha_{n}$.
+	Wobei $K[\alpha_1,\ldots,\alpha_{n}]$ das Bild der Evaluationsabbildung $\nstack{K[X_1,\ldots,X_{n}] \to E}{P \mapsto P(\alpha_1,\ldots,\alpha_{n})}$.
+	Sei $\sigma \in \gal(E / K)$ mit $\sigma \mid_{R(f)} = \id_{R(f)}$. Das heißt $\sigma(\alpha_i) = \alpha_{i} \forall 1 \leq i \leq n$.
+	Sei $\xi \in E$ und $P \in K[X_1,\ldots,X_{n}]$ so dass $P(\alpha_1,\ldots,\alpha_{n}] = \xi$.
+	Also folgt: da $\sigma(x) = x \forall x \in K$ folgt 
+	\[
+		\sigma(P) = \sigma(P(\alpha_1,\ldots,\alpha_{n}) = P(\sigma(\alpha),\ldots,\sigma(\alpha_{n})) = P(\alpha_1,\ldots,\alpha_{n}) = P
+	\]
+	folgt $\sigma = \id_{E}$.
+\end{proof}
 
+\begin{proof}[Alternativer Beweis]
+	\begin{align*}
+		E = K(\alpha_1,\ldots,\alpha_{n}) = \left\{ \frac{P(\alpha_1,\ldots,\alpha_{n})}{Q(\alpha_1,\ldots,\alpha_{n}} \mid P,Q \in K[X_1,\ldots,X_{n} \text{ und } Q(\alpha_1,\ldots,\alpha_{n} \neq 0 \right\} 
+	.\end{align*}
+	Dann analoger Beweis zu oben.
+\end{proof}
+
+Sei $E / K$ eine Körpererweiterung, $\alpha \in E$. Dann ist $K[\alpha] := $ Bild des Evaluationshomomorphismus $\nstack{K[X] \to E]}{P \mapsto P(\alpha)}$ 
+Da $E$ Körper ist $K[X]$ ein Integritätsbereich und $K(X)$ der Quotientenkörper von $K[\alpha]$.
+
+Im allgemeinen ist $\abs{R(f)} \leq \deg(f)$. 
+\begin{eg}
+	$K = \F_{p}(t), f \in K[X], f = X^{p}-t$.
+	Dann ist $f$ irreduzibel (Übung) und $\abs{R(f)} = 1$.
+	Sei $K \subseteq E$ ein Zerfällungskörper von $f$ und $\alpha \in R(f): \alpha^{p} = t$.
+	Da $E$ Charakteristik $p$ ist folgt $(X-\alpha)^{p} = X^{p} - \alpha^{p} = X^{p} - t^{p} = f$.
+	Also $R(f) = \{\alpha\}$ und $\abs{\gal(E / K)} = 1$.
+\end{eg}
+
+\textbf{Ziel:} $f \in K[X]$ irreduzibles Polynom mit $\abs{R(f)} = \deg(f)$ dann ist  $\abs{\gal(E / K)} = [E:K]$.
+
+\begin{definition}
+	Ein Polynom $f \in K[X]$ hat keine mehrfachen Nullstellen falls in einem Zerfällungskörper $\abs{R(f)} = \deg(f)$.
+\end{definition}
+
+\begin{lemma}[Übung]
+	Sei $f \in K[X]$ und $f' \in K[X]$ die (formelle) Ableitung von $f$.
+	$f$ hat keine mehrfachen Nullstellen genau dann wenn $\gcd(f,f') = 1$.
+\end{lemma}
+
+\begin{remark}
+	Gegeben $f,g \in K[X]$, der euklidische Algorithmus berechnet $\gcd(f,g)$.
+\end{remark}
+
+\begin{corollary}
+	Sei $f \in K[X]$ irreduzibel und sei eine der folgenden Voraussetzungen erfüllt:
+	\begin{enumerate}[(1)]
+		\item $\charak(K) = 0$
+		\item  Falls $\charak(K) > 0$ dann teilt $\charak(K)$ nicht $d = \deg(f)$.
+	\end{enumerate}
+	Dann hat $f$ keine mehrfachen Nullstellen.
+\end{corollary}
+
+\begin{proof}
+	Sei $f(x) = a_{d} x^{d} + a_{d-1} x^{d-1} + \ldots + a_0$, $a_{d} \neq 0, \deg(f) = d$. 
+	Dann ist $f'(x) = a_{d} d x^{d-1} + a_{d-1} (d-1) x^{d-2} + \ldots + a_1$.
+	Unter der Voraussetzung des Lemmas folgt $d \neq 0$ und somit $a_{d} d \neq 0$, also $\deg(f') = d-1$.
+	Falls $p \in K[X]$ mit $p$ dividiert $f$ und $f' \implies \deg(p) \leq d-1$ aber $f$ ist irreduzibel $\deg(f) = d$.
+	Folgt $\deg(p') = 0$ d.h.  $p \in K$. Weiters folgt $\gcd(f,f') = 1$.
+	Und somit mit dem Lemma folgt $f $ hat keine mehrfachen Nullstellen.
+\end{proof}
+
+\begin{definition}
+	\begin{enumerate}[(1)]
+		\item Ein irreduzibles Polynom ist \emph{separabel} falls es keine mehrfachen Nullstellen besitzt.
+		\item Ein Polynom ist \emph{separabel} falls alle seiner irreduziblen Faktoren separabel sind. 
+	\end{enumerate}
+\end{definition}
+
+\begin{eg}
+	$X^{4} + 1 \in Q[X]$ ist irreduzibel; da $\charak(\Q) = 0$ folgt aus dem Lemma, dass $X^{4}+ 1$ separabel ist.
+	Also ist auch $(X^{4} + 1)^{15}$ separabel.
+\end{eg}
+
+\begin{definition}[Wiederholung]
+	Sei $E / K$ eine Körpererweiterung und $\alpha \in E$ : $\nstack{ \varphi_{\alpha}: K[X] \to E}{P \mapsto P(\alpha)}$ ist ein Ringhomomorphismus.
+Sei $\ker(\varphi_{\alpha})$ sein Kern, dann ist $\ker(\varphi_{\alpha})$ ist ein Ideal in $K[X]$.
+Zwei Möglichkeiten
+\begin{enumerate}[(1)]
+	\item $\ker(\varphi_{\alpha}) = (0)$ dann heißt $\alpha$ transzendent über $K$.
+	\item $\ker(\varphi_{\alpha}) \neq (0)$ dann ist $\alpha$ algebraisch.
+		Da $K[X]$ ein Hauptidealring ist gibt es genau ein unitäres Polynom $\irr(\alpha,K)$,
+		das Minimalpolynom von $\alpha$ über $K$, das $\ker(\varphi_{\alpha})$ erzeugt: $\ker(\varphi_{\alpha}) = \irr(\alpha,K) \cdot K[X]$.
+\end{enumerate}
+\end{definition}
+
+Aus der Tatsache, dass $\irr(\alpha,K)$ irreduzibel ist und $K[X]$ ein euklidischer Ring folgt $\sfrac{K[X]}{\ker(\varphi_{\alpha})}$ ist ein Körper und
+\begin{lemma}
+	$\varphi_{\alpha}$ induziert einen Körperisomorphismus $\overline{\varphi_{\alpha}}: \sfrac{K[X]}{\ker(\varphi_{\alpha})} \overset{\sim}{\to} K(\alpha) (= K[\alpha])$
+\end{lemma}
+
+Sei $\varphi: K \to K'$ ein Körperisomorphismus; dieser induziert einen Ring Isomorphismus $\varphi_{*}: K[X] \to K'[X]$ mit
+\[
+	\varphi_{*}(a_{n}X^{n} + \ldots + a_0) := \varphi_{*}(a_{n}) X^{n} + \ldots + \varphi_{*}(a_{0})
+.\] 
+Da $\varphi_{*}$ ein Ringisomorphismus ist folgt $p \in K[X]$ ist genau dann irreduzibel, falls $\varphi_{*}(p)$ irreduzibel ist.
+Bemerke: $\deg(\varphi_{*}(p)) = \deg(p)$.
+
+\begin{lemma}
+	Sei $p \in K[X]$ irreduzibel, $p_{*} = \varphi_{*}(p) \in K'[X]$; seien $E \supseteq K$ und $E' \supseteq K'$ mit $R(p) \subseteq E$ und $R(p_{*}) \subseteq E'$.
+	Dann gilt: $\forall \alpha \in R(p) \forall \alpha' \in R(p_{*})$ gibt es einen Isomorphismus $\widehat{\varphi}: K(\alpha) \to K'(\alpha')$ der $\varphi$ erweitert
+	und $\widehat{\varphi}(\alpha) = \alpha'$
+	\[
+		\begin{tikzcd}
+			K \arrow[r, "\varphi"] \arrow[d, hook]    & K' \arrow[d, hook] \\
+			K(\alpha) \arrow[r, "\widehat{\varphi}"'] & K'(\alpha')       
+		\end{tikzcd}
+	.\]
+\end{lemma}
+
+\begin{proof}
+	%TODO Diagramm
+	Betrachte das linke Diagramm.
+	Da $p$ irreduzibel und $p(\alpha) = 0$ folgt $\ker(\varphi_{\alpha}) = p \cdot K[X]$.
+	Gleiches gilt für $p_{*}$ : $\ker(\varphi_{\alpha'}) = p_{*} K'[X]$.
+	Da $\varphi_{*}(p) = p_{*}$ folgt $\varphi_{*}(\ker(\varphi_{\alpha})) = \ker(\varphi_{\alpha'})$.
+	Daraus folgt, dass $\varphi_{*}$ einen Ringisomorphismus $\overline{\varphi_{*}}: \sfrac{K[X]}{\ker(\varphi_{\alpha})} \overset{\sim}{\to} \sfrac{K'[X]}{\ker(\varphi_{\alpha'})}$ 
+	induziert.\\
+	Betrachte das rechte Diagramm.
+	Die gesuchte Erweiterung $\widehat{\varphi} = \overline{\varphi_{\alpha'}} \circ \overline{\varphi_{*}} \circ \overline{\varphi_{\alpha}}^{-1}$
+	\[
+	\begin{tikzcd}
+		E \arrow[r, "\varphi_*"] \arrow[d, "\varphi_\alpha"] & E_* \arrow[d, "\varphi_{\alpha'}"] &  & \sfrac{K[X]}{\ker(\varphi_{\alpha})}
+\arrow[d, "\overline{\varphi_{\alpha}}"] \arrow[r,"\overline{\varphi_{*}}"] & \sfrac{K'[X]}{\ker(\varphi_{\alpha'})} \arrow[d, "\overline{\varphi_{\alpha'}}"] \\
+K(\alpha) \subset E                                  & K'(\alpha')                        &  & K(\alpha) \arrow[r, "\widehat{\varphi}"]   & K'(\alpha') 
+\end{tikzcd}
+	.\] 
+\end{proof}
+
+\begin{theorem}
+	Sei $\varphi: K \to K'$ ein Isomorphismus, $f \in K[X]$, $f_{*} = \varphi_{*}(f)$.
+	Sei $E / K$ ein Zerfällungskörper von $f$ und $E_{*}$ ein Zerfällungskörper von $f_{*}$.
+	\begin{enumerate}[(1)]
+		\item Annahme $f$ ist separabel. Dann gibt es genau $[E:K]$ Isomorphismen 
+			\[
+				\begin{tikzcd}
+					E \arrow[r, "\Phi"]                    & E_*                \\
+					K \arrow[r, "\varphi"] \arrow[u, hook] & K' \arrow[u, hook]
+				\end{tikzcd}
+			\]
+			die $\varphi$ erweitern.
+		\item Sei $E / K$ Zerfällungskörper eines separablen Polynoms dann ist $\abs{\gal(E / K)} = [E:K]$ 
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Beweis Idee]
+	\begin{enumerate}[(1)]
+		\item Induktion über $[E:K]$. Fall $[E:K] = 1$ klar.
+			Dann zerfällt $f \in K[X]$ in linear Faktoren in $K[X]$ und somit auch $f_{*}$.
+			Folgt $E_{*} = K'$	
+			\[
+				\begin{tikzcd}
+					E \arrow[r, "\varphi"']                               & E_*                               \\
+					K \arrow[r, "\varphi"] \arrow[u, equal] & K' \arrow[u,equal]
+				\end{tikzcd}
+			.\] 	
+		\item $[E:K] > 1$. Sei $f = p \cdot g$ wobei $p$ ein irreduzibler Faktor von $f$ von höchstem Grad $d$ ist, also  $d > 1$.
+			Sei $\deg(p) = \alpha$, also hat $p$ genau $d$ Nullstellen in $E$.
+			Somit hat  $p_{*}$ auch $d$ Nullstellen $\{\alpha_1^{*},\ldots, \alpha_{d}^{*}\}$.
+			Sei $\alpha \in R(p)$. Für alle $\alpha_{i}^{*} \in R(p_{*})$ existiert dann $\widehat{\varphi_{i}}: K(\alpha) \to K'(\alpha_{i}^{*})$.
+	\end{enumerate}
+	Beweis 2 aus 1: $K = K', \varphi = \id, E = E_{*}, f_{*} = f$.
+\end{proof}
 
 
 
