@@ -272,29 +272,156 @@ K(\alpha) \subset E                                  & K'(\alpha')              
 					K \arrow[r, "\varphi"] \arrow[u, hook] & K' \arrow[u, hook]
 				\end{tikzcd}
 			\]
-			die $\varphi$ erweitern.
+			die $\varphi$ erweitern, d.h. $\Phi \mid_{K} = \varphi$
 		\item Sei $E / K$ Zerfällungskörper eines separablen Polynoms dann ist $\abs{\gal(E / K)} = [E:K]$ 
 	\end{enumerate}
 \end{theorem}
 
-\begin{proof}[Beweis Idee]
-	\begin{enumerate}[(1)]
-		\item Induktion über $[E:K]$. Fall $[E:K] = 1$ klar.
-			Dann zerfällt $f \in K[X]$ in linear Faktoren in $K[X]$ und somit auch $f_{*}$.
-			Folgt $E_{*} = K'$	
+\begin{proof}
+	\begin{enumerate}
+		\item \begin{enumerate}
+			\item Wir hatten mittels $\varphi: K \to K'$ einen Ringhomomorphismus $\varphi_{K}: K[X] \to K'[X]$, nämlich
+				$h = a_{n} X^{n} + \ldots + a_0 \in K[X]$.
+				Dann ist $\varphi_{*}(h) = \varphi(a_{n}) X^{n} + \ldots + \varphi(a_0)$. Bemerke $\varphi_{*}(h_1 + h_2) = \varphi_{*}(h_1) + \varphi_{*}(h_2)$ und
+				$\varphi_{*}(h_1 h_2) = \varphi_{*}(h_1)\varphi_{*}(h_2), \varphi_{*}(\mathbbm{1}) = \mathbbm{1}$ und $\deg(\varphi_{*}(h)) = \deg(h)$.
+				Aus diesen Eigenschaften folgt $\varphi_{*}(\gcd(h_1, h_2)) = \gcd(\varphi_{*}(h_1), \varphi_{*}(h_2))$.
+
+				$f(X) = a_{n} X^{n} + \ldots + a_0$, $f'(X) = a_{n} n X^{n-1} + \ldots + a_1$.
+				Allgemeine Eigenschaft $\varphi: K \to K'$: $\varphi(m \xi) = m \varphi(\xi) \forall m \in \Z$.
+				\begin{align*}
+					\varphi_{*}(f) &= \varphi(a_{n}) X^{n} + \ldots + \varphi(a_0)\\
+					\varphi_{*}(f) &= \varphi(a_{n} n) X^{n-1} + \ldots + \varphi(a_1)\\
+								   &= \varphi(a_{n}) n X^{n-1} + \ldots + \varphi(a_1) = \varphi_{*}(f)'
+				.\end{align*}
+				Also folgt $\varphi_{*}(\gcd(f,f')) = \gcd(\varphi_{*}(f), \varphi_{*}(f)')$.
+				Da $f$ separabel ist folgt $\gcd(f,f') = \mathbbm{1} \implies \gcd(\varphi_{*}(f), \varphi_{*}(f)') = \mathbbm{1}$.
+				Und also $f_{*} = \varphi_{*}(f)$ separabel ist.
+			\item $[E : K] = 1$ dann $R(f) \subseteq E = K$, $f$ zerfällt also in lineare Faktoren woraus folgt $f_{*} = \varphi_{*}(f)$ in $K'[X]$ auch in
+				lineare Faktoren zerfällt $\implies E_{*} = K'$.
 			\[
 				\begin{tikzcd}
-					E \arrow[r, "\varphi"']                               & E_*                               \\
+					E \arrow[r, "\Phi"']                               & E_*                               \\
 					K \arrow[r, "\varphi"] \arrow[u, equal] & K' \arrow[u,equal]
 				\end{tikzcd}
-			.\] 	
-		\item $[E:K] > 1$. Sei $f = p \cdot g$ wobei $p$ ein irreduzibler Faktor von $f$ von höchstem Grad $d$ ist, also  $d > 1$.
-			Sei $\deg(p) = \alpha$, also hat $p$ genau $d$ Nullstellen in $E$.
-			Somit hat  $p_{*}$ auch $d$ Nullstellen $\{\alpha_1^{*},\ldots, \alpha_{d}^{*}\}$.
-			Sei $\alpha \in R(p)$. Für alle $\alpha_{i}^{*} \in R(p_{*})$ existiert dann $\widehat{\varphi_{i}}: K(\alpha) \to K'(\alpha_{i}^{*})$.
+				.\] 	
+			\item $[E : K] > 1:$ Dann gibt es $p \in K[X]$ irreduzibel mit $\deg(p) > 1$ und $p$ dividiert $f$. Notation $d := \deg(f) > 1$.
+				Sei $f = p g$ wobei $g \in K[X]$. Dann folgt $f_{*} = \varphi_{*}(f) = \underbrace{\varphi_{*}(p)}_{P_{*}}\underbrace{\varphi_{*}(g)}_{g_{*}} = f_{*} g_{*}$.
+				Aus $f$ separabel folgt $f_{*}$ separabel.
+
+				Aus $p$ irreduzibel folgt $p_{*}$ irreduzibel: Also ist $p_{*}$ irreduzibel und separabel. 
+				Da $\deg(p_{*}) = \deg(p) = d$ hat $f_{*}$ in $E_{*}$ genau $d$ Nullstellen $\alpha_{1}^{*},\ldots, \alpha_{d}^{*}$ alle in $E^{*}$ enthalten.
+
+				Sei $\alpha \in R(p) \subseteq E$. Aus Lemma 2.15 folgt, dass es für jedes $\alpha_{i}^{*}$ einen Isomorphismus
+				\[
+					\widehat{\varphi_{i}}: K(\alpha) \to K'(\alpha_{i}^{*}) \subseteq E_{*} \qq{mit} \widehat{\varphi_{i}}(\alpha) = \alpha_{i}^{*}
+				\] 
+				und erweitert $\varphi: K \to K'$. 
+
+				Sei $\alpha_{*} = \alpha_{i}^{*}, \widehat{\varphi} = \widehat{\varphi_{i}}$.
+				\[
+					\widehat{\varphi}: K(\alpha) \subseteq E \to  K'(\alpha_{*}) \subseteq E_{*}
+				.\] 
+				\begin{remark}
+					$f \in K(\alpha)[X]$ und $E$ ist Zerfällungskörper von $f \in K(\alpha)[X]$.
+					$f_{*} \in K'(\alpha)[X]$ und $E_{*}$ ist Zerfällungskörper von $f_{*} \in K'(\alpha)[X]$.
+					Es ist  $(\widehat{\varphi})_{*}: K(\alpha)[X] \to K'(\alpha_{*})[X]$ ein Isomorphismus.
+					Da $\widehat{\varphi} \mid_{K} = \varphi$ folgt $(\widehat{\varphi})_{*}(f) = f_{*}$.
+					$f$ und $f_{*}$ sind wieder separabel.
+				\end{remark}
+
+				Da nun $[E:K(\alpha)] = \frac{[E:K]}{[K(\alpha) : K]} = \frac{[E:K]}{d} < [E:K]$.
+				Nach Induktionshypothese gibt es $[E:K(\alpha)]$ Erweiterungen von $\widehat{\varphi}: K(\alpha) \to K'(\alpha_{*})$ auf $E \to E_{*}$.
+				$\forall 1 \leq i \leq d$ hat $\widehat{\varphi_{i}}: K(\alpha) \to K'(\alpha_{i}^{*})$ ist eine $[E : K(\alpha)]$-Erweiterung auf $E \to E_{*}$.
+				Mit dieser Konstruktion erhalten wir also $d [E : K(\alpha)] = [K(\alpha) : K] [E : K(\alpha)] = [E : K]$ Erweiterungen von $\varphi: K \to K'$.
+		\end{enumerate}
+		\begin{remark}[Einschub für weiter oben]
+		$h$ hat keine mehrfachen Nullstellen genau dann wenn $\gcd(h,h') = 1$: Zu zeigen $f$ separabel $\implies f_{*}$ separabel.
+		Sei $h$ ein irreduzibler Faktor von $f$ : $f = h \cdot u$, dann ist $f_{*} = \varphi_{*}(h) \varphi_{*}(u)$ : $\varphi_{*}(h)$ irreduzibel.
+		$h$ hat keine mehrfachen Nullstellen $\implies \gcd(h,h') = 1 \implies \gcd(\varphi_{*}(h),\varphi_{*}(h)') = 1 \implies \varphi_{*}(h)$ keine mehrfachen Nullstellen.
+		\end{remark}
+	\item Sei $E / K$ Zerfällungskörper eines separablen Polynoms: $\abs{\gal(E / K)} = [E:K]$.
+		$\gal(E/K) = \{\varphi: E \to E \text{ Isomorphismen die $\id:K \to K$}\}$ erweitern.
 	\end{enumerate}
-	Beweis 2 aus 1: $K = K', \varphi = \id, E = E_{*}, f_{*} = f$.
 \end{proof}
+
+\begin{corollary}
+	Sei $E / K$ ein Zerfällungskörper eines separablen Polynom $f \in K[X]$ von $\deg(f) = n$. 
+	Falls $f$ irreduzibel folgt: $n$ dividiert $\abs{\gal(E/K)}$.
+\end{corollary}
+
+\begin{proof}
+	Sei $\alpha \in R(f) \subseteq E$. Dann ist $K(\alpha) \subseteq E$ und da $f$ irreduzibel $[K(\alpha) : K] = n = \deg(f)$.
+	Aus Satz 2.17: $\abs{\gal(E/ K)} = [E:K] = [E: K(\alpha)] [K(\alpha) : K] = [E : K(\alpha)] \cdot n$.
+\end{proof}
+
+\begin{theorem}
+	Sei $p$ eine Primzahl, $n \in \N, n \geq 1$. Dann ist $\gal(\F_{p^{n}} / \F_{p}) \cong \sfrac{\Z}{n \Z}$ 
+	ein erzeugendes Element ist gegeben durch $Fr:\nstack{\F_{p^{n}} \to \F_{p^{n}}}{x \mapsto x^{p}}$
+\end{theorem}
+
+\begin{proof}[Beweisidee]
+	\begin{enumerate}
+		\item $\F_{p^{n}}: \abs{\F_{p^{n}}^{\times}} = p^{n}-1$ also ist $\F_{p^{n}}^{\times}$ genau die Menge der Nullstellen des Polynoms
+			\[
+				x^{p^{n}-1} -1 \in \F_{p}[X]
+			.\]
+			Dieses Polynom hat keine mehrfachen Nullstellen $\implies$ separabel und mit Satz 2.17 folgt:
+			\[
+				\abs{\gal(\F_{p^{n}} / \F_{p})} = [F_{p^{n}} : F_{p}] = n
+			.\]
+			Nun $Fr \in \gal(\F_{p^{n}} / \F_{p})$. Für $k \geq 1, k \in \N$. $Fr^{k}(\xi) = (\xi)^{p^{k}}$.
+			Sei $m$ die Ordnung von $Fr$ in $\gal(\F_{p^{n}} / \F_{p}): Fr^{m} = \id_{\F_{p^{n}}}: \forall \xi \in F_{p^{n}} \xi^{p^{m}} = \xi$.
+			Also ist $\F_{p^{n}}$ in der Menge der Nullstellen eines Polynoms von Grad $p^{m}$ enthalten $\implies p^{n} \leq p^{m}$.
+			Folgt $n \geq m \implies n = m$. Folgt dass $\gal(\F_{p^{n}} / \F_{p}) = \{\id, Fr, \ldots, Fr^{n}\} $
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+	Sei $p$ eine Primzahl und $f \in \Q[X]$ mit $\deg(f) = p$ und Zerfällungskörper $E$. Annahme:
+	\begin{enumerate}
+		\item $f$ ist irreduzibel
+		\item $f$ hat genau $p-2$ reelle Nullstellen.
+	\end{enumerate}
+	Dann ist $\gal(E / \Q) \cong S_{p}$.
+\end{theorem}
+
+\begin{corollary}
+	$p$ dividiert die Ordnung von $\gal(E / \Q)$.
+\end{corollary}
+
+\begin{lemma}[Cauchy]
+	Sei $G$ eine endliche Gruppe und $p$ eine Primzahl die die Ordnung von $G$ dividiert.
+	Dann enthält $G$ eine Element der Ordnung $p$.
+\end{lemma}
+
+\begin{proof}
+	Sei $\Gamma_{p} = \{(g_1,\ldots, g_{p}) \in G^{p}: g_1 \cdot \ldots \cdot g_{p} = e\} \subseteq G^{p}$.
+	Die Symmetrie Gruppe $S_{p}$ wirkt auf $G^{p}: \eta \in S_{p}$. $\eta_{*}(g_1,\ldots,g_{p}) = (g_{\eta(1)},\ldots,g_{\eta(p)})$.
+	Sei $\sigma = (1,2,\ldots,p)$ der $p$-Zykel.
+	Sei $(g_1,\ldots,g_{p}) \in \Gamma_{p}: g_1 \cdot \ldots \cdot g_{p} = e$.
+	\[
+		\underbrace{g_1^{-1} (g_1 \cdot \ldots\cdot g_{p}) g_{1}}_{g_2 \cdot \ldots\cdot g_{p} g_1 = e} = g_1^{-1} e g_1 = e \qq{und} g_{\sigma(1)} \cdot \ldots\cdot g_{\sigma(p)} = e
+	.\] 
+	Folglich lässt die durch $\sigma$ erzeugte zyklische Untergruppe von $S_{p}$ 
+	\[
+	C_{p} = \{\id, \sigma, ,\ldots, \sigma^{p-1}\} \quad \Gamma_{p} \text{ invariant}
+	.\]
+	Also ist $\Gamma_{p} = $ disjunkte Vereinigung der $C_{p}$-Bahnen in $\Gamma_{p}$.
+	Da $p$ Primzahl hat so eine Bahn entweder Kardinalität $1 $ oder $p$.
+	Sei $I = $ Menge der Bahnen mit Card $1$, $J$ = Menge der Bahnen mit Card $p$.
+	Dann ist  $\Gamma_{p} = \bigsqcup_{i \in I} O_{i} \sqcup \bigsqcup_{j \in J} O_{j}$ und $O_1 = \{(e,\ldots,e)\}$.
+	Es ist dann $\abs{G}^{p-1} = \abs{\Gamma_{p}} = \abs{I} \cdot 1 + \abs{J} \cdot p$.
+	Nun $p \mid \abs{G}^{p-1}$. Folgt $p \mid \abs{I} \implies \abs{I} \geq_2$.
+\end{proof}
+
+
+
+
+
+
+
+
+
 
 
 
