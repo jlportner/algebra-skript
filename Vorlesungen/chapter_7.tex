@@ -414,6 +414,113 @@ K(\alpha) \subset E                                  & K'(\alpha')              
 	Nun $p \mid \abs{G}^{p-1}$. Folgt $p \mid \abs{I} \implies \abs{I} \geq_2$.
 \end{proof}
 
+\begin{proof}[Beweis vom Theorem]
+	$f \in \Q[X]$ und $\Q \subseteq \C$. Da $\C$ algebraisch abgeschlossen ist können wir einen Zerfällungskörper $E$ von $f$ wählen mi $\Q \subseteq E \subseteq \C$.
+	Sei $R(f) = \{\alpha_1,\ldots,\alpha_{p}\}$ die Nullstellen von $f$ so geordnet, dass $\{\alpha_3,\ldots,\alpha_{p}\} \subseteq \R$.
+	Da die Koeffizienten von $f$ reell sind folgt:$\alpha_2 = \epsilon(\alpha_1), \alpha_1 = \epsilon(\alpha_2)$.
+	Hier ist $ \epsilon: \C \to \C$ die komplexe Konjugation: 
+	Mittels Lemma 2.7 können wir $\gal(E / \Q) \hookrightarrow S_{R(f)} = S_{p}$ mit einer Untergruppe von $S_{p}$ identifizieren.
+
+	Aus $\epsilon(\alpha_1) = \alpha_2, \epsilon(\alpha_2) = \alpha_1, me(\alpha_{i}) = \alpha_{i} 3 \leq i \leq p $ folgt
+	Da $E = \Q(\alpha_1,\ldots,\alpha_{p})$, dass $\epsilon(E) = E$ und $\epsilon \mid_{E} \in \gal(E / \Q)$ entspricht der Transposition $(12)$.
+	Aus Korollar 2.18 folgt $p$ dividiert $\abs{\gal(E / \Q)}$ aus Cauchy folgt dass $\gal(E / \Q)$ ein Element der Ordnung $p$ enthält, aber ein Element
+	der Ordnung  $p$ in $S_{p}$ ist ein $p$-Zykel. Und da $p$ eine Primzahl ist, folgt dass eine Transposition und ein $p$-Zykel $S_{p}$ erzeugen.
+\end{proof}
+
+\begin{corollary}
+	Die Galois Gruppe von $X^{5} - 4x + 2 \in \Q[X]$ ist $\cong S_{5}$.
+\end{corollary}
+
+\begin{proof}
+	\begin{enumerate}[(1)]
+		\item Eisensteinkriterium mit $q = 2 \implies X^{5} - 4x +2$ irreduzibel ist.
+		\item $f$ hat genau $3 = 5-2$ reelle Nullstellen. Betrachte $f : \R \to \R, f(x) = x^{5} - 4x + 2$.
+			$f'(x) = 5x^{4} - 4$ hat zwei Nullstellen: $- \sqrt[4]{\frac{4}{5}}, \sqrt[4]{\frac{4}{5}} $.
+			Falls $\abs{x} >  \sqrt[4]{\frac{4}{5}}$ dann ist $f'(x) > 0$.
+			Falls $\abs{x} < -\sqrt[4]{\frac{4}{5}}$ dann ist $f'(x) < 0$.
+			Außerdem ist $f(\sqrt[4]{\frac{4}{5})}) < 0$ und  $f(-\sqrt[4]{\frac{4}{5}}) < 0 $.
+			%TODO Image plot der Fkt mit Extrema und nullstellen hervorgehoben.
+			%\begin{tikzpicture}
+			%\draw[scale=0.5, domain=-3:3, smooth, blue] plot function {x**2}2};
+			%\end{tikzpicture}
+	\end{enumerate}
+	Die Aussage folgt nun aus vorherigem Theorem
+\end{proof}
+
+\subsection{Zusammenhang zwischen Irreduzibilität und Transitivität der Galois Gruppe}
+\begin{corollary}
+	Sei $f \in K[X]$ und $E$ ein Zerfällungskörper von $f$.
+	Dann gilt: $f$ irreduzibel $\Leftrightarrow$ $\gal(E / K)$ wirkt transitiv auf $R(f)$.
+\end{corollary}
+
+Sei $G \times X \to X$ eine Gruppenwirkung. Die Wirkung ist \emph{transitiv} falls $\forall x,y \in X \exists g \in G : g(x) = y$.
+
+\begin{claim}
+	$\implies$ : Gilt auch ohne Voraussetzung an die Nullstellen von $f$.
+\end{claim}
+
+\begin{proof}
+	$\implies$ : Sei $f$ irreduzibel. Seien $\alpha,\beta \in R(f)$.
+	Aus Lemma 2.15 folgt: Es gibt $\varphi: K(\alpha) \to K(\beta)$ ein Isomorphismus mit $\varphi \mid_{K} = \id_{K}$ und $\varphi(\alpha) = \beta$.
+	Nun ist $\varphi_{*}(f) = f$. Dann folgt aus Proposition 2.16, dass sich $\varphi$ zu einem Isomorphismus $\Phi: E \to E$ erweitern lässt ($\Phi \mid_{K(\alpha)} = \varphi$ ).
+	Also ist $\Phi \in \gal(E/K)$ mit $\Phi(\alpha) = \beta$.
+
+	$\impliedby$: Sei $f = p\cdot q$ mit $p,q \in K[X]$. Dann folgt $R(p) \subseteq R(f), R(q) \subseteq R(f)$.
+	Da $p,q$ Koeffizienten in $K$ hat folgt, dass $\gal(E /K)$ die Teilmengen $R(f)$ und $R(q)$ invariant lässt.
+	Da $f$ ohne mehrfachen Nullstellen ist, folgt $R(p) \cap R(q) = \emptyset$.
+	Aus der Transitivität von $\gal(E / K)$ auf $R(f)$ folgt $R(p) = \emptyset$ oder $R(q) = \emptyset$.
+	$\implies p$ ist eine Konstant und somit ist $f$ irreduzibel.
+\end{proof}
+
+\begin{eg}
+	$f$ irreduzibel $\implies \gal(E / K)$ transitiv auf $R(p)$. Aber  $g = f^2$ dann ist $E$ auch Zerfällungskörper von $g$ und $\gal(E / K)$ wirkt transitiv auf $R(f) = R(g)$.
+\end{eg}
+
+\begin{definition}
+	Eine Erweiterung $E / K$ heißt normal falls sie Zerfällungskörper eines Polynoms $f \in K[X]$ ist.
+\end{definition}
+
+\begin{claim}
+	Seien $K \subseteq B \subseteq E$ Körpererweiterungen. Falls $E / K$ normal ist so folgt, dass $E / B$ auch  normal ist.
+\end{claim}
+
+\begin{theorem}
+	Seien $K \subseteq B \subseteq E$ (endliche) Erweiterungen mit der der Eigenschaft, dass sowohl $E / K$ wie $B / K$ normale Erweiterungen sind.
+	Dann folgt $\forall \sigma \in \gal(E / K)$ ist $\sigma(B) = B$.
+
+	Und der Homomorphismus $\nstack{\gal(E / K) \to \gal(B / K)}{\sigma \mapsto \sigma \mid_{B}}$ ist surjektiv mit Kern $\gal(E / B)$.
+\end{theorem}
+
+\begin{proof}
+	Da $B / K$ normal, sei $f \in K[X]$ mit $B$ als Zerfällungskörper.
+	Aus Lemma 2.4 folgt
+	\[
+		\sigma(R(f)) = R(f) \forall  \sigma \in \gal(E / K)
+	.\] 
+	Aus $B = K(R(f))$ folgt $\sigma(B) = B$. Also ist $\sigma \mapsto \sigma \mid_{B}$ ein Wohldefinierter Homomorphismus von $\gal(E / K) \to \gal(B / K)$.
+	Der Kern ist offensichtlich $\gal(E / B)$.
+
+	Surjektivität: Da $E / K$ normal, sei $g \in K[X]$ mit Zerfällungskörper $E$.
+	Sei $\sigma \in \gal(B / K): $ 
+	\[
+		\begin{tikzcd}
+			\sigma: B \arrow[r]                          & B                 \\
+        	K \arrow[r, "\id_K"] \arrow[u, hook] & K \arrow[u, hook]
+		\end{tikzcd}
+	\]
+	Daraus folgt $\sigma_{*}(g) = g$. Aus Proposition 2.16 folgt, dass $\sigma$ sich auf $\Sigma: E \to E$ erweitert.
+	Dann folgt $\Sigma \mid_{B} = \sigma$ und $\Sigma \in \gal(E / K)$.
+\end{proof}
+
+\begin{theorem}
+	Eine endliche Erweiterung $E / K$ ist genau dann normal falls jedes irreduzible Polynom in $K[X]$,
+	dass eine Nullstelle in $E$ besitzt, in linear Faktoren in $E$ zerfällt.
+\end{theorem}
+
+\begin{proof}
+	Siehe Serie 4
+\end{proof}
+
 
 
 
