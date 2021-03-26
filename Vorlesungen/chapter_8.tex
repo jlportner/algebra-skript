@@ -1,14 +1,163 @@
 %! TEX root=../algebra.tex
 \graphicspath{{Images/}}
 
-\chapter{Auflösung durch Radikale und auflösbare Gruppen}
+\chapter{Lösung durch Radikale und auflösbare Gruppen}
 
-Die Wurzeln der allgemeinen Gleichung 5. Grades können nicht durch radikale dargestellt werden.
+Sei $K = k(u)$ eine Körpererweiterung von $k$, $u \neq 0$.
+Dann ist $\{n \in \Z \mid u^{n} \in k\}$ ist eine Untergruppe von $\Z$ und deshalb von der Form $m \Z$ wobei $m \in \N$
+eindeutig bestimmt.
+
+\begin{definition}
+	$k(u) / k$ ist eine reine Erweiterung vom Typ $m$ falls $m \Z = \{n \in \Z \mid u^{n} \in k\} \neq 0$
+\end{definition}
+
+\begin{definition}
+	Eine Körpererweiterung $K / k$ heißt radikal falls es einen Turm von Zwischenkörpern gibt
+	\[
+	k = K_0 \subseteq K_1 \subseteq \ldots \subseteq K_{t} = K
+	\] 
+	so dass $K_{i+1} / K_{i} \forall 0 \leq i \leq t-1$ reine Erweiterungen sind.
+\end{definition}
+
+\begin{definition}
+	Ein Polynom $f \in k[x]$ ist mittels \emph{redikalen Lösbar} falls ein Zerfällungskörper von $f$ in einer radikalen Erweiterung
+	von $k$ enthalten ist.
+\end{definition}
+
+$k(u) / k$ : $u^{m} \in k$ $u$ ist $m$-te Wurzel von einem Element in $k$.
+Sei $E$ der Zerfällungskörper von $f$.
+%TODO missing 8:28 26.03.2021
+
+\begin{eg}
+	Sei $f(x) = x^2 + b x + c \in k[x]$. Sei $E$ Zerfällungskörper von $f$ und $R(f) = \{\alpha_1,\alpha_2\}$. Sei $\alpha \in R(f)$.
+	\begin{align*}
+		\alpha^2 + b \alpha + c = 0 \implies (\alpha + \frac{b}{2})^2 + c - \frac{b^2}{4} = 0
+	.\end{align*}
+	Falls $u := \alpha_1 +\frac{b}{2} \in E \supseteq k(u)$. Dann ist $u^2 = \frac{b^2}{4}-c \in k$.
+	Da $E = k(\alpha_1,\alpha_2)$ : $\alpha_1 = u-\frac{b}{2}$, $\alpha_2 + \alpha_1 = -b \implies \alpha^2 = -b -\alpha_1 = -u -\frac{b}{2}$ 
+	ist  $\{\alpha_1,\alpha_2\} \in k(u) \implies E = k(u)$.
+\end{eg}
+
+Sei $k(u) / k$ eine reine Erweiterung von Typ $m \geq 1$.
+Sei $m = p_1 \cdot \ldots \cdot p_{r}$ eine Zerlegung in Primzahlen.
 \[
-x^{5} + px + q = 0
-.\] 
+	k(u) \supseteq k(u^{p_1}) \supseteq k(u^{p_1 p_2} \supseteq \ldots \supseteq k(u^{m}) = k
+\] 
+wobei die erste Erweiterung von Typ $p_1$, die zweite von Typ $p_2$ etc. ist.
+Dies Führt zum Studium von $x^{p} - c \in k[x]$.
 
-\begin{theorem}[Galois]
-	Falls $f \in K[x]$ und $E$ Zerfällungskörper von $K$.
-	Falls $f$ lösbar mittels radikalen ist dann folgt,dass $\gal(E/ K)$ auflösbar ist.
+\begin{lemma}
+	Sei $p$ ein Primzahl. Sei $f(x) = x^{p}-c \in k[x]$.
+	\begin{enumerate}[(1)]
+		\item Folgende Dichotomie:
+			\begin{enumerate}[({1}.1)]
+				\item $(f)$ ist irreduzibel
+				\item $c$ ist eine $p$-te Potenz eines Elements in $k$
+			\end{enumerate}
+		\item Sei $E / k$ der Zerfällungskörper von $f$. Wir nehmen an, $k$ enthält alle $p$-ten Wurzeln von $1$.
+			Sei $u \in E, u \in R(f)$. Dann ist $E = k(u)$.
+			\begin{enumerate}[(2.1)]
+				\item $f$ irreduzibel:
+					\begin{itemize}
+						\item Falls $\charak(k) \neq p$ ist $\gal(E / k) \cong \sfrac{\Z}{p \Z}$ 
+						\item Falls $\charak(k) = p$ ist $\gal(E / k) \cong e$.
+					\end{itemize}
+				\item $f$ reduzibel so ist $E = k$ und $\gal(E / k) \cong (e)$.
+			\end{enumerate}
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}[(1)]
+		\item Wir nehmen an $f$ ist reduzibel: $f = g \cdot h$ mit $g(x) = x^{d} + b_{d-1} x^{d-1} + \ldots + b_0, 1 \leq d < p$.
+			Sei $E$ Zerfällungskörper von $f(x) = x^{p}-c$ und $u \in R(f)$.
+
+			Bemerkung: $w \in R(f)$ dann ist $u^{p} = w^{p} = c \implies (\frac{u}{w})^{p} = 1$.
+
+			Daraus folgt $R(f) = \{u \cdot \xi \mid \xi^{p} = 1, \xi \in E\}$.
+			Da $R(g) \subseteq R(f)$ und $b_0$ das Produkt aller Nullstellen von $g$ ist, ist $b_0 = u^{d} \cdot \eta, \eta^{p} =1$.
+			Folgt $b_0^{p} = u^{d p} = (u^{p})^{d} = c^{d}$.
+			Da $p$ eine Primzahl ist und $1 \leq d < p$ sind $p$ und $d$ Teilerfremd $\implies \exists r,s \in \Z$ mit $r p + s d = 1$.
+			\[
+				c = c^{rp + sd} =  (c^{r})^{p} \cdot (c^{d})^{s} = (c^{r})^{p} \cdot (b_0^{p})^{s} = (c^{r} b_0^{s})^{p}.
+			.\] 
+		\item Es ist $k \supseteq \{\xi \in E \mid \xi^{p} = 1\} \implies E = k(u)$ weil $R(f) = \{u \xi \mid \xi^{p} = 1\}$.
+			\begin{enumerate}[(1)]
+				\item $f$ irreduzibel: Sei $\charak(k) \neq p$ dann ist $f' = p x^{p-1} \neq 0 \implies f, f'$ Teilerfremd.
+					Also ist $f$ separabel.
+					\[
+						\abs{\gal(E / k)} = [E : k] = [k(u) : k] = p
+					\] 
+					und also $\gal(E / k) \cong \frac{\Z}{p \Z}$.
+			\end{enumerate}
+			Der Rest ist Übung.
+	\end{enumerate}
+\end{proof}
+
+
+Sei $f \in k[x]$. $k \subseteq E \subseteq K$ mit $E$ Zerfällungskörper, $K$ Radikale Erweiterung. 
+In Verbindung bringen mit Galois Gruppe.
+Wir wollen zeigen, dass jede radikale Erweiterung $K / k$ in einer normalen radikalen Erweiterung $F$ enthalten ist.
+\[
+k \subseteq E \subseteq K \subseteq F
+\] 
+normal und Radikal. Aus Satz 2.26 folgt $\nstack{\gal(F / k) \to \gal( E / k)}{\sigma \mapsto \sigma \mid_{E}}$ surjektiv.
+Falls wir zeigen, dass $\gal(F / k)$ von $\frac{f}{k}$ normal radikal auflösbar ist.
+Dann folgt, dass $\gal(E / k)$ auflösbar ist.
+In Algebra I hatten wir den Satz
+\begin{theorem}
+	Jede Untergruppe und jeder Quotient einer auflösbaren Gruppe ist auflösbar.
 \end{theorem}
+
+Kontext folgender zwei Lemmata: Sei $B = k(u_1,\ldots,u_{t})$ eine endliche Erweiterung von $k$.
+Insbesondere sind $u_1,\ldots,u_{t}$ algebraisch über $k$.
+Sei $p_{i} = \irr(u_{i},k) \in k[x]$ das Minimalpolynom von $u_{i}$ über $k$.
+Sei $f = p_1 \ldots p_{t} \in k[x]$. Sei $E$ Zerfällungskörper von $f$ und $G = \gal(E / k)$.
+
+\begin{lemma}
+	$E = k(\sigma(u_1),\ldots,\sigma(u_{t}), \sigma \in G)$
+\end{lemma}
+
+\begin{proof}
+	Da $E$ Zerfällungskörper von $f$ und $f = p_1 \cdot \ldots\cdot p_{t}$ folgt $R(p_{i}) \subseteq E, 1 \leq i \leq t$.
+	Sei $1 \leq i \leq t$, $u, u'$ in $R(p_{i})$. Nach Lemma 2.15 gibt es einen Isomorphismus $\varphi: k(u) \subseteq E \to k(u') \subseteq E$ 
+	der $\id_{k}: k \to k$ erweitert, $\varphi(u) = u'$.
+	Da $f \in k[x] \subseteq k(u)[x]$ und $\varphi_{*}(f) = f$, da $E$ Zerfällungskörper von $f \in k(u)[x]$ ist
+	folgt aus Proposition 2.16, dass $\varphi$ sich zu einem Isomorphismus $\Phi: E \to E$ erweitert.
+	Insbesondere ist $\Phi \in \gal(E / k)$ und $\Phi(u) = u'$.
+
+	Insbesondere: angewendet auf $u_{i} \in R(p_{i})$ folgt $\forall u' \in R(p_{i}) \exists \sigma \in \gal(E / k)$ mit $\sigma(u_{i}) = u'_{i}$.
+	\[
+		R(f) = \bigcup_{i=1}^{t} R(p_{i}) \subseteq \{\sigma(u_{i}) \mid 1\leq i \leq t, \sigma \in \gal(E / k)\} 
+	.\] 
+	Folglich $R(f) \subseteq k(\sigma(u_1),\ldots,\sigma(u_{t}) \mid \sigma \in G) \subseteq E$.
+	Da $E$ Zerfällungskörper von $f$ ist folgt $k(\sigma(u_1),\ldots,\sigma(u_{t}) \mid \sigma \in G) = E$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
