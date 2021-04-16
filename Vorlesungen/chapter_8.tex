@@ -112,10 +112,14 @@ In Algebra I hatten wir den Satz
 Kontext folgender zwei Lemmata: Sei $B = k(u_1,\ldots,u_{t})$ eine endliche Erweiterung von $k$.
 Insbesondere sind $u_1,\ldots,u_{t}$ algebraisch über $k$.
 Sei $p_{i} = \irr(u_{i},k) \in k[x]$ das Minimalpolynom von $u_{i}$ über $k$.
-Sei $f = p_1 \ldots p_{t} \in k[x]$. Sei $E$ Zerfällungskörper von $f$ und $G = \gal(E / k)$.
+Sei $f = p_1 \ldots p_{t} \in k[x]$. Sei $E$ Zerfällungskörper von $f$ und $G = \gal(E / k) = \{\sigma_1,\ldots,\sigma_{l}\}	$.
 
 \begin{lemma}
-	$E = k(\sigma(u_1),\ldots,\sigma(u_{t}), \sigma \in G)$
+	$E = k(\sigma(u_1),\ldots,\sigma(u_{t}), \sigma \in G) = k \begin{pmatrix} 
+		\sigma_1(u_1), &\ldots, &\sigma_{l}(u_1)\\
+		\vdots & &\vdots\\
+		\sigma_1(u_{t}), &\ldots, &\sigma_{l}(u_{t})
+	\end{pmatrix} $
 \end{lemma}
 
 \begin{proof}
@@ -134,12 +138,132 @@ Sei $f = p_1 \ldots p_{t} \in k[x]$. Sei $E$ Zerfällungskörper von $f$ und $G 
 	Da $E$ Zerfällungskörper von $f$ ist folgt $k(\sigma(u_1),\ldots,\sigma(u_{t}) \mid \sigma \in G) = E$.
 \end{proof}
 
+\begin{lemma}
+	Im Kontext von Lemma 3.6 nehmen wir an, dass: $u_1^{m_1} \in k, u_2^{m_2} \in k(u_1),\ldots, u_{t}^{m_{t}} \in k(u_1,\ldots,u_{t-1})$.
+	Dann ist $E / k$ eine radikale Erweiterung.
+\end{lemma}
 
+\begin{proof}
+	Sei $B_1 = k(\sigma_1(u_1),\ldots,\sigma_{l}(u_{1}))$ und induktiv
+	\[
+		B_{j} = B_{j-1}(\sigma_1(u_{j}),\ldots,\sigma_{l}(u_{j})) \quad 2 \leq j \leq t
+	.\] 
+	Wir erhalten $k \subseteq B_1 \subseteq B_2 \subseteq \ldots \subseteq B_{t} = E$.
+	Wir zeigen, dass $B_{j}$ eine radikale Erweiterung von $B_{j-1}$ ist $\forall 2 \leq j \leq t$,
+	sowie, dass $B_1$ eine radikale Erweiterung von $k$ ist.
 
+	$B_{1} = k(\sigma_1(u_1),\ldots,\sigma_{l}(u_1))$.
+	\[
+		k \subseteq k(\sigma_1(u_1)) \subseteq k(\sigma_1(u_1),\sigma_2(u_1)) \subseteq \ldots \subseteq k(\sigma_1(u_1),\ldots,\sigma_{j-1}(u_1))
+		\subseteq \underbrace{k(\sigma_1(u_1),\ldots,\sigma_{j}(u_1))}_{k(\sigma_1(u_1),\ldots,\sigma_{j-1}(u_1))(\sigma_{j}(u_1)} \subseteq \ldots = B_1
+	.\] 
+	Nun ist $\sigma_{j}(u_1)^{m_1} = \sigma_{j}(\underbrace{u_1^{m_1}}_{\in k}) = u_1^{m_1} \in k \subseteq k(\sigma_1(u_1),\ldots,\sigma_{j-1}(u_1))$.
+	Folglich ist $\forall 1 \leq j \leq t$, $k(\sigma_{1}(u_1),\ldots,\sigma_{j}(u_1))$ eine reine Erweiterung von $k(\sigma_1(u_1),\ldots,\sigma_{j-1}(u_1))$.
+	Um zu zeigen, dass $B_{j}$ eine radikale Erweiterung von $B_{j-1}$ ist bemerken wir zuerst, dass $\sigma(B_{j}) = B_{j} \forall \sigma \in \gal(E / k)$.
 
+	\textbf{Induktiv:} Für $B_1 = k(\sigma_1(u_1),\ldots,\sigma_{l}(u_1))$: Betrachte $\sigma(B_1) = k(\sigma \sigma_1(u_1),\ldots, \sigma \sigma_{l}(u_1))$ 
+	da $\{\sigma \sigma_1,\ldots,\sigma \sigma_{l}\}$ eine Permutation von $\{\sigma_1,\ldots,\sigma_{l}\}$ ist folgt $= k(\sigma_1(u_1),\ldots,\sigma_{l}(u_1)) = B_1$.
+	Mit dem selben Argument folgt aus $\sigma(B_{j-1}) = B_{j-1}$, dass $\sigma(B_{j}) = B_{j}$.
 
+	\[
+		B_{j-1} \subseteq B_{j-1}(\sigma_1(u_{j})) \subseteq B_{j-1}(\sigma_1(u_{j}),\sigma_2(u_{j})) \subseteq \ldots \subseteq B_{j-1}(\sigma_1(u_{j}),\ldots,\sigma_{r-1}(u_{j}))
+		\subseteq \underbrace{B_{j-1}(\sigma_1(u_{j}),\ldots,\sigma_{r}(u_{j}))}_{B_{j-1}(\sigma_1(u_{j}),\ldots,\sigma_{r-1}(u_{j}))(\sigma_{r}(u_{j}))} \subseteq \ldots = B_{j}
+	.\] 
+	Weiters sei $u_{j}^{m_{j}} \in k(u_1,\ldots,u_{j-1}) \subseteq B_{j-1}$ dann ist
+	$\sigma_{r}(u_{j})^{m_{j}} = \sigma_{r}(u_{j}^{m_{j}}) \subseteq \sigma_{r}(B_{j-1}) = B_{j-1}$.
+\end{proof}
 
+\begin{corollary}
+	Sei $K / k$ eine radikale Erweiterung. Dann gibt es $k \subseteq K \subseteq F, F / k$ radikal und normal.
+\end{corollary}
 
+\begin{proof}
+	Lemma 3.7
+\end{proof}
+
+\begin{definition}[Algebra I]
+	Eine Gruppe $G$ ist auflösbar falls es eine subnormale Folge
+	\[
+	\{e\} = G_0 \lTri G_1 \lTri g_2 \lTri \ldots \lTri G_{t} = G
+	\]
+	gibt mit $\sfrac{G_{i+1}}{G_{i}}$ abelsch $0 \leq i \leq t-1$.
+\end{definition}
+
+\begin{eg}[Algebra I]
+	$A_{n},S_{n}$ sind auflösbar falls $n \leq 4$.\\
+	$A_{n}$ ist einfach (nicht abelsch) $\forall n \geq 5$.
+\end{eg}
+
+Es gibt ein Kriterium für Auflösbarkeit, dass iterierte Kommutatorunterguppen benützt.
+Für eine Gruppe $G$ bezeichnet $[G,G]$ die von $\{[a,b] \mid a,b \in G\} $ erzeugte Untergruppe.
+Hier ist $[a,b] = a b a^{-1} b^{-1}$.
+Die Untergruppe $[G,G]$ ist \emph{charakteristisch} d.h. $\forall \alpha \in \aut(G)$ ist $\alpha([G,G]) = [G,G]$.
+
+Wir führen folgende Notation ein $G^{(1)} = [G,G] = $ Kommutatorgruppe, $G^{(j)} = [G^{(j-1)},G^{(j-1)}]$.
+\begin{proposition}
+	$G$ ist genau dann auflösbar falls es $n$ gibt mit $G^{(n)} = (e)$.
+\end{proposition}
+
+\begin{proof}
+$\sfrac{G}{[G,G]} := G_{ab} = $ größte abelsche Quotient von $G$ in folgendem Sinn:
+\[
+\begin{tikzcd}
+G \arrow[d, "\pi"'] \arrow[r, "\varphi"]             & A \\
+{\sfrac{G}{[G,G]}} \arrow[ru, "\overline{\varphi}"'] &  
+\end{tikzcd}
+.\] 
+$\varphi$ hom. und $A$ abelsch.
+
+Betrachte $G \supseteq G^{(1)} \supseteq G^{(2)} \supseteq \ldots \supseteq G^{(j-1)} \supseteq G^{(j)} \supseteq \ldots \supseteq G^{(n)} = e$.
+Es ist $\sfrac{G^{(j-1)}}{G^{(j)}}$ abelsch.
+Dies zeigt, falls $G^{(n)} = e \implies G$ ist auflösbar.
+\end{proof}
+
+\begin{proposition}
+	\begin{enumerate}[(1)]
+		\item $H < G$ : $G$ auflösbar $\implies H$  auflösbar.
+		\item $N \lTri G$ : $G$ ist gdw. auflösbar falls $N$ und $\sfrac{G}{N}$ auflösbar ist.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Wir beginnen mit einer allgemeinen Bemerkung. 
+	Sei $\varphi: G \to L$ ein Homomorphismus.
+	Dann folgt $\varphi([a,b]) = [\varphi(a),\varphi(b)] \forall a,b \in G$. Woraus $\varphi([G,G]) \subseteq [L,L]$.
+	Falls $\varphi$ \emph{surjektiv} folgt $\varphi([G,G]) = [L,L]$.
+
+	Induktiv: $\varphi(G^{(j)}) \subseteq L^{(j)}$ und falls $\varphi$ surjektiv, $\varphi(G^{(j)}) = L^{(j)}$.
+	\begin{enumerate}[(1)]
+		\item $H < G \implies [H,H] \subseteq [G,G] \implies H^{(j)} \subseteq G^{(j)}$, falls es $n$ gibt mit $G^{(n)} = (e)$ folgt $H^{(n)} = (e)$.
+		\item Annahme: $G$ ist auflösbar, dann ist $N$ wegen $(1)$ auflösbar. Sei $\pi: G \to \sfrac{G}{N}$ der Quotientenhomomorphismus.
+			Da $\pi$ surjektiv ist, folgt
+			\[
+				\pi(G^{(j)}) = \left( \sfrac{G}{N} \right)^{(j)}
+			.\] 
+			Falls $G^{(n)} = e \implies (e) = \pi(G^{(n)}) = \left( \sfrac{G}{N} \right)^{(n)}$.
+			
+			Annahme: $N$ und $\sfrac{G}{N}$ auflösbar. Wir benützen $\pi(G^{(j)}) = \left( \sfrac{G}{N} \right)^{(j)}$.
+			Sei $n \geq 1$ mit $\left( \sfrac{G}{N} \right)^{(n)} = (e)$. Dann folgt
+			\[
+				\pi(G^{(n)}) = (e) \implies G^{(n)} \subseteq N
+			.\] 
+			Da $N$ auflösbar, gibt es $l \geq 1$ mit $N^{(l)} = (e)$. Woraus folgt: $G^{(n+l)} = \left( G^{(n)} \right)^{(l)} \subseteq N^{(l)} = (e)$.
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+	Sei $f \in k[X]$, $E$ ein Zerfällungskörper von $f$. Falls $f$ mittels Radikalen lösbar ist, folgt, dass $\gal(E / k)$ auflösbar ist.
+\end{theorem}
+
+\begin{lemma}
+	Sei $k = K_0 \subseteq K_1 \subseteq \ldots \subseteq K_{t}$ ein Turm von Erweiterungen wobei
+	\begin{enumerate}[(1)]
+		\item $K_{t} / k$ normale Erweiterung
+		\item $K_{i}$ ist eine reine Erweiterung von Primzahlen $p_{i}$ mit $1 \leq i \leq t$.
+		\item $k$ enthält alle $p_{i}$-ten Wurzeln von $1$, $1 \leq i \leq t$.
+	\end{enumerate}
+	Dann ist $\gal(K_{t} / k)$ auflösbar.
+\end{lemma}
 
 
 
