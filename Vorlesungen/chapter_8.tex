@@ -265,6 +265,135 @@ Dies zeigt, falls $G^{(n)} = e \implies G$ ist auflösbar.
 	Dann ist $\gal(K_{t} / k)$ auflösbar.
 \end{lemma}
 
+\begin{proof}
+	Sei $G = \gal(K_{t} /k)$, $k = K_0 \subseteq K_1 \subseteq \ldots \subseteq K_{t}$. Weiters sei $G_{j} = \gal(K_{t} / K_{j}) , 1 \leq j \leq t$.
+	\[
+		\{e\}  = G_{t} \subseteq G_{t-1} \subseteq \ldots \subseteq G_1 \subseteq G = \gal(K_{t} /k)
+	.\]
+	Sei $K_{i} = K_{i-1}(u_{i}), 1 \leq i \leq t$ wobei $u_{i}^{p_{i}} \in K_{i-1}$.
+	Sei $f_{i}(x) = X^{p_{i}}- c_{i}$ wobei $c_{i} = u_{i}^{p_{i}} \in K_{i-1}$.
+
+	In Lemma 3.5 haben wir gesehen, entweder ist $f_{i}$ irreduzibel in  $K_{i-1}[x]$ oder  $c_{i}$ ist eine $p_{i}$-te Potenz eines Elements in $K_{i-1}$.
+	Das ist durch die Annahme $u_{i} \not\in K_{i-1}$ ausgeschlossen. Aus $f_{i}$ irreduzibel und $K_{i-1} \subseteq k$ enthält alle $p_{i}$-ten Wurzeln von $1$ folgt,
+	dass $K_{i}$ ein Zerfällungskörper von $f_{i} \in K_{i-1}[x]$ ist. Und aus Lemma 3.5 folgt $\gal(K_{i} / K_{i-1}) \cong \sfrac{\Z}{p_{i} \Z}$ oder $(e)$.
+
+	Wir haben $K_{t}$ ist normale Erweiterung von $k$ und somit auch von $K_{2-1}$ und $K_{i}$ ist normale Erweiterung von $K_{i-1}$.
+	Also ist $K_{t} \supseteq K_{i} \supseteq K_{i-1} \implies G_{i} = \gal(K_{t} /K_{i}) \lTri G_{i-1} = \gal(K_{t} / K_{i-1})$ 
+	und $\frac{G_{i-1}}{G_{i}} \cong \gal(K_{i} / K_{i-1})$ abelsch.
+	Daraus folgt $G$ ist auflösbar.
+\end{proof}
+
+\begin{proof}[Beweis von Satz 3.14]
+	$f$ mittels Radikalen auflösbar, $E /k$. Mit Korollar 3.8 können wir annehmen $E \subseteq K$ wobei $K / k$ radikal und normal.
+	Sei $k = K_0 \subseteq K_{1} \subseteq \ldots \subseteq K_{t} = K$ wobei $K_{i} = K_{i-1}(u_{i})$ von Primzahlen $p_{i}$, also $u_{i}^{p_{i}} \in K_{i-1}$.
+	Sei $m = \prod_{i=1}^{t} p_{i}$ und $k^{*}$ Zerfällungskörper von $X^{m}-1 \in k[x]$ und $K^{*}$ Zerfällungskörper von $X^{m}-1 \in K[x]$.
+
+	Da $K / k$ eine normale Erweiterung ist und $K^{*} \supseteq K$ Zerfällungskörper von $X^{m} - 1 \in K[x]$ wobei $X^{m}-1 \in k[x]$ folgt, dass $K^{*}$ 
+	eine normale Erweiterung von $k$ ist.
+
+	Wie erhalten ein Diagramm von Erweiterungen: $k \subseteq K \subseteq K^{*}$ und $k \subseteq k^{*} \subseteq K^{*}$.
+	\begin{claim}
+		$\gal(K^{*} / k^{*})$ ist auflösbar.
+	\end{claim}
+	Sei $K^{*}_{0} = k^{*}$, $K^{*}_{1} = K_{0}^{*}(u_1),\ldots, K_{i}^{*} = K_{i-1}^{*}(u_{i)}$.
+	Dies ergibt einen Turm:
+	\[
+		k^{*} = K_0^{*} \subseteq K_1^{*} \subseteq \ldots \subseteq K_{t}^{*} = K^{*}
+	.\] 
+	Nun ist $u_{i}^{p_{i}} \in K_{i-1} \subseteq K_{i-1}^{*}$. Aus
+	\[
+	\Z \supseteq \{m \in \Z \mid u_{i}^{m} \in K_{i-1}^{*}\} \supseteq p_{i} \Z
+	\] 
+	folgen zwei Möglichkeiten $\{m \in \Z \mid u_{i}^{m} \in K_{i-1}^{*}\} = p_{i} \Z$ und somit ist $K_{i} / K_{i-1}$ von Pimzahltyp $p_{i}$ 
+	oder $\{m \in \Z \mid u_{i}^{m} \in K_{i-1}^{*}\} = \Z$ d.h. $u_{i} \in K_{i-1}^{*}$ woraus $K_{i}^{*} = K_{i-1}^{*}$ folgt.
+	Dann ist schließlich mit Lemma 3.15 $\gal(K^{*} /k^{*})$ auflösbar.
+
+	\begin{claim}
+		$\gal(k_{*} / k)$ auflösbar: Sei $\Gamma_{m}(k^{*}) = \{\xi \in k^{*} \mid \xi^{m} = 1\}$ die Menge der Nullstellen
+		von $X^{m}-1$ in $k^{*}$. Dann ist $\Gamma(k^{*})$ eine endliche Untergruppe von $(k^{*})^{\times}$ und somit zyklisch.
+
+		Wir wissen auch $\nstack{\gal(k^{*} / k \to \aut(\Gamma_{m}(k^{*}))}{\sigma \mapsto \sigma \mid_{\Gamma_{m}(k^{*})}}$
+		ist ein injektiver Gruppenhomomorphismus. Aber $\aut(\Gamma_{m}(k^{*}))$ ist abelsch.
+		Folglich ist $\gal(k^{*} / k)$ abelsch.
+	\end{claim}
+
+	Schließlich haben wir nun $k \subseteq k^{*} \subseteq K^{*}$, $\gal(K^{*} / k^{*})$ und $\gal(k^{*} / k)$ auflösbar
+	und $\sfrac{\gal(K^{*}/k)}{\gal(K^{*} / k^{*}} \cong \gal(k^{*} / k)$.
+	Aus Proposition 3.13 folgt nun $\gal(K^{*} / k)$ ist auflösbar.
+
+	Betrachte $E$ mit $k \subseteq E \subseteq K^{*}$. Dann ist $\gal(E / k) \cong \sfrac{\gal(K^{*} / k)}{\gal(K^{*} / E}$.
+	Da $\gal(K^{*} / k)$ auflösbar folgt $\gal(E / k)$ ist auflösbar.
+
+	Sei $f \in k[x]$ und $E = \operatorname{Zerf}(f)$.
+	%TODO Diagramm
+	\[
+	\begin{tikzcd}
+	& E \arrow[rd, hook]             &                    \\
+	k= K_0 \arrow[ru, hook] \arrow[d, hook'] \arrow[rrd, "\text{auflösbar}" description, no head] \arrow[ru, "\text{auflösbar}" description, no head, bend left=49] 
+	& \subseteq K_1 \subseteq \ldots \subseteq K_{i-1} \subseteq K_{i} \subseteq \ldots & K \arrow[d, hook'] \\
+	k^{*} = K_0^* \arrow[d,equal] & \subseteq K_1^{*} \subseteq \ldots \subseteq K_{i-1}^{*} \subseteq K_{i}^{*} \subseteq \ldots & K^* \arrow[d,equal] \\
+	\operatorname{Zerf}(x^{m}-1 \in k[x]) & & \operatorname{Zerf}(x^{m}-1 \in K[x])
+\end{tikzcd}
+	.\] 
+
+	$K_{i} = K_{i-1}(u_{i})$, $u_{i}^{p_{i}} \in K_{i-1}$ rein von Typ $p_{i}$. $m =  \prod_{i=1}^{t} p_{i}$ 
+	und $K_{i}^{*} = K_{i-1}^{*}(u_{i})$. Dann gibt es zwei Möglichkeiten
+	\[
+	\begin{cases}
+		K_{i}^{*} \text{ rein von Primzahltyp } p_{i} / K_{i-1}^{*}\\
+		K_{i}^{*} = K_{i-1}^{*}
+	\end{cases}
+	.\] 
+\end{proof}
+
+\begin{corollary}[Abels-Ruffini]
+	Für $n \geq 5$ ist das \enquote{allgemeine Polynom}
+	\[
+		f(x) = \prod_{i=1}^{n} (X-y_{i})
+	\] 
+	mittels Radikalen nicht lösbar.
+\end{corollary}
+
+\begin{proof}
+	Wir betrachten $f \in k(y_1,\ldots,y_{n})[x]$.
+	\begin{align*}
+		\prod_{i=1}^{n} (X-y_{i}) &= X^{n}-S_1 X^{n-1} + \ldots + (-1)^{n} S_{n}\\
+		&S_1 &= y_1+\ldots+y_{n}\\
+		&S_2 &= \sum_{i<J} y_i y_{j}\\
+		\vdots
+		S_{n} &= y_1 \cdot \ldots \cdot y_{n}
+	.\end{align*}
+	Sei$f \in k(s_1,\ldots,s_{n})[x]$ wobei $\underbrace{k(s_1,\ldots,s_{n})}_{F} \subseteq \underbrace{k(y_1,\ldots,y_{n})}_{E}$.
+	Es ist dann $\nstack{\gal(E/F) \to \operatorname{Sym} \{y_1,\ldots,y_{n}\}}{\sigma \mapsto \sigma \mid_{\{y_1,\ldots,y_{n}\}}}$ ein injektiver Gruppenhomomorphismus.
+	Also $\gal(E /F) \hookrightarrow S_{n}$.
+
+	Sei $s \in S_{n}$ und $R \in k(y_1,\ldots,y_{n})$, $(\sigma_{s}R)(y_1,\ldots,y_{n}) = R(y_{\sigma(1)},\ldots,y_{\sigma(n)})$.
+	Dann zeigt man leicht, dass $\sigma_{s} \in \aut(k(y_1,\ldots,y_{n})$ und $\sigma(s_{j}) = s_{j}, 1 \leq j \leq n$.
+	Dies impliziert $\sigma_{s} \in \gal(\sfrac{k(y_1,\ldots,y_{n})}{k(s_1,\ldots,s_{n})}) = \gal(E / F)$.
+	Woraus folgt: $\gal(E / F) \cong S_{n}$.
+
+	Falls $n \geq 5$ : Dann ist  $[S_{n}, S_{n}] = A_{n}$ und $A_{n}$ ist einfach, nicht abelsch: $[A_{n}, A_{n}] = A_{n} \implies S_{n}$ ist nicht auflösbar.
+\end{proof}
+
+\begin{corollary}
+	$f(x) = x^{5} - 4x + 2 \in \Q[x]$ ist nicht mittels Radikalen lösbar, da $\gal(f) \cong S_{5}$.
+\end{corollary}
+
+Sei $R$ ein angeordneter Körper mit
+\begin{enumerate}
+	\item jedes $x \geq 0$ ist ein Quadrat
+	\item jedes $P \in R[X]$ mit  $\deg(P)$ ungerade hat eine Nullstelle in $R$
+\end{enumerate}
+dann ist $R(\sqrt{-1})$ algebraisch abgeschlossen.
+
+
+
+
+
+
+
+
+
 
 
 
