@@ -1,0 +1,210 @@
+%! TEX root=../algebra.tex
+\graphicspath{{Images/}}
+
+\chapter{Galois Korrespondenz}
+
+\begin{definition}
+	Sei $E$ ein Körper und $H \subseteq \aut(E)$ dann ist $E^{H} := \{x \in E \mid \sigma(x) = x \forall \sigma \in H\} $ ist ein Unterkörper von $E$.
+	Dann ist $E^{H}$ der \emph{Fixkörper} von $H$.
+\end{definition}
+
+\begin{remark}
+	Die Korrespondenz $H \mapsto E^{H}$ hat folgende Monotonie Eigenschaft: $H_1 \subseteq H_2 \implies E^{H_2} \subseteq E^{H_1}$.
+\end{remark}
+
+\begin{eg}
+	$E / k$ Erweiterung $k \subseteq E^{\gal(E / k)}$; das Beispeil $k = \F_{p}(t)$ und $f(x) = X^{p}-t$, $E$ Zerfällungskörper von $f$, $\gal(E / k) = (e)$.
+	In diesem Fall $k \subsetneq E^{\gal(E / k)} = E$.
+\end{eg}
+
+\textbf{Ziel:} Bestimmung des Grades $[E : E^{H}]$ wobei $H < \aut(E)$ eine \emph{endliche Untergruppe} bezeichnet.
+
+\begin{definition}
+	Sei $G$ eine Gruppe, $E$ ein Körper.
+	Ein \emph{Charakter von $G$ in $E$} ist ein Gruppenhomomorphismus $G \to E^{\times}$.
+	Wobei $E^{\times}$ die Multiplikative Gruppe $E \setminus \{0\}$ ist.
+
+	Die Menge der Charaktere von $G$ in $E$ wird mit $\hom(G,E^{\times})$ bezeichnet.
+	Man kann $H(G,E^{\times})$ als Teilmenge des Vektorraums $F(G,E)$ aller $E$-wertigen Funktionen auf $G$.
+\end{definition}
+
+\begin{proposition}[Dedekind]
+	$\hom(G,E^{\times}) \subseteq F(G,E)$ ist linear unabhängig.
+\end{proposition}
+
+\begin{proof}
+	Sei $n \geq 1$ minimal so dass es $n$ Charaktere $\sigma_1,\ldots,\sigma_{n}$ gibt die in $F(G,E)$ linear abhängig sind.
+	Also gibt es $c_1 \neq  0,\ldots, c_{n} \neq 0$ in $E$ mit $c_1 \sigma_1(x) + \ldots + c_{n} \sigma_{n}(x) = 0 \forall x \in G$.
+
+	Da $\sigma_1 \neq \sigma_{n}$, sei $y \in G$ mit $\sigma_1(y) \neq \sigma_{n}(y)$.
+	Wir ersetzen $x$ durch $xy$ und erhalten
+	\[
+		c_1 \sigma_1(x) \sigma_1(y) + \ldots + c_{n} \sigma_{n}(x) \sigma_{n}(y) = 0 \implies c_1 \sigma_1(x) \frac{\sigma_1(y)}{\sigma_{n}(y)} + 
+		\ldots + c_{n-1} \sigma(x) \frac{\sigma_{n-1}(y)}{\sigma_{n}(y)} + c_{n} \sigma_{n}(x) = 0 \forall x \in G
+	.\] 
+	verwenden wir nun die erste Gleichung erhalten wir
+	\[
+		c_1 \sigma_1(x) \left( \frac{\sigma_1(y)}{\sigma_{n}(y)} - 1 \right) + \ldots + c_{n-1} \sigma_{n-1}(x) \left( \frac{\sigma_{n-1}(y)}{\sigma_{n}(y)} - 1 \right) 
+	.\]
+	Nicht triviale lineare Relation; $\frac{\sigma_1(y)}{\sigma_{n}(y)}- 1 \neq 0$ \contra
+\end{proof}
+
+Benutze diesen Satz um eine untere Schranke von $[E: E^{H}]$ zu bestimmen falls $H \subseteq \aut(E)$ eine \emph{endliche Teilmenge} besitzt.
+
+\begin{lemma}[Sublemma]
+	Sei $E$ ein Körper, $S$ eine Menge und $\{\sigma_1,\ldots,\sigma_{n}\} \subseteq G(S,E)$ linear unabhängig.
+	Dann gibt es $s_1,\ldots,s_{n} \in S$ mit 
+	\[
+		\begin{pmatrix} \sigma_1(s_1) \\ \vdots \\ \sigma_{n}(s_1) \end{pmatrix} ,\ldots, \begin{pmatrix} \sigma_1(s_{n}) \\ \vdots \\ \sigma_{n}(s_{n}) \end{pmatrix} 
+	\] 
+	in $E^{n}$ linear unabhängig sind.
+\end{lemma}
+
+\begin{lemma}
+	Sei $H = \{\sigma_1,\ldots,\sigma_{n}\} \subseteq \aut(E)$, Teilmenge mit $n$ Elementen.
+	Dann gilt $[E : E^{H}] \geq n$.
+\end{lemma}
+
+\begin{claim}
+	Falls $\left< H \right>	$ die von $H$ erzeugte Untergruppe von $\aut(E)$ bezeichnet so ist $E^{H} = E^{\left< H \right>}$.
+\end{claim}
+
+\begin{proof}
+	Wir betrachten $\sigma_1 \mid_{E^{\times}},\ldots, \sigma_{n} \mid_{E^{\times}}$ als Elemente von $\hom(E^{\times}, E^{\times})$.
+	Also sind sie in $F(E^{\times }, E)$ linear unabhängig (Dedekind) und es gibt (Sublemma) $y_1,\ldots,y_{n} $ in $E^{x} $ mit
+	\[
+		\begin{pmatrix} \sigma_1(y_1) \\ \vdots \\ \sigma_{n}(y_1) \end{pmatrix} ,\ldots, \begin{pmatrix} \sigma_1(y_{n}) \\ \vdots \\ \sigma_{n}(y_{n}) \end{pmatrix} 
+	\] 
+	linear unabhängig in $E^{n}$.
+	\begin{claim}
+		$y_1,\ldots,y_{n}$ sind linear unabhängig über  $E^{H}$.
+	\end{claim}
+	Sei $c_1,\ldots, c_{n} $ in $E^{H}$ mit $c_1 y_1 + \ldots + c_{n} y_{n} = 0$. Für alle $1 \leq j \leq n$ folgt:
+	\[
+		\underbrace{\sigma_{j}(c_1 y_1 + \ldots + c_{n} y_{n})}_{c_1 \sigma_{j}(y_1) + \ldots + c_{n} \sigma_{j}(y_{n}) = 0} = 0 
+	\] 
+	d.h.
+	\[
+	\begin{pmatrix} 
+		\sigma_{1}(y_1) &\ldots &\sigma_{1}(y_{n})\\
+		\vdots &&\vdots\\
+		\sigma_{n}(y_1) &\ldots &\sigma_{n}(y_{n})
+	\end{pmatrix}
+	\begin{pmatrix} 
+		c_1\\ \vdots\\ c_{n}
+	\end{pmatrix} = \begin{pmatrix} 
+		0\\ \vdots\\ 0
+	\end{pmatrix} 
+	.\] 
+	Diese Matrix hat Rang $n \implies c_1 = \ldots = c_{n} = 0$.
+\end{proof}
+
+\begin{proposition}
+	Sei $G < \aut(E)$ eine endliche Untergruppe. Dann gilt $[E : E^{G}] = \abs{G}$.
+\end{proposition}
+
+\begin{proof}
+	Sei $G = \{\sigma_1,\ldots,\sigma_{n}\}$ also $n = \abs{G}$. Aus Lemma folgt $[E : E^{G}] \geq n$.
+
+	\textbf{Annahme:} $[E: E^{G}] > n$. Seien $b_1,\ldots, b_{m} \in E$ linear unabhängig über $E^{G}$ mit $m > n$.
+
+	Wir definieren $T: E^{m} \to  E^{n}$
+	\[
+	\begin{pmatrix} 
+		x_1 \\ \vdots \\ x_{m}
+	\end{pmatrix} \mapsto \begin{pmatrix} 
+	\sigma_1(b_1) &\ldots &\sigma_{1}(b_{m})\\
+	\sigma_2(b_1) &\ldots &\sigma_{2}(b_{m})\\
+	\vdots & &\vdots\\
+	\sigma_n(b_1) &\ldots &\sigma_{n}(b_{m})
+	\end{pmatrix} \begin{pmatrix} 
+		x_1 \\ \vdots\\ x_{m}
+	\end{pmatrix} 
+	\] 
+	lineare Abbildung. Dann gilt:
+	\begin{enumerate}
+		\item $\ker(T) \neq 0$ (klar da $m > n$ )
+		\item  \[
+		\begin{pmatrix} 
+			x_1\\ \vdots\\ x_{m}
+		\end{pmatrix} \in \ker(T) \implies \begin{pmatrix} 
+		\sigma(x_1)\\ \vdots\\ \sigma(x_{m})
+	\end{pmatrix} \in \ker(T) \forall \sigma \in G
+		.\] 
+	\end{enumerate}
+	Wir zeigen $(2)$:  $(x_1,\ldots,x_{m})^{T} \in \ker(T) \Leftrightarrow \sum_{j=1}^{m} \sigma_{i}(b_{j})x_{j} = 0 \forall 1 \leq i \leq n :\implies \sum_{j=1}^{m} \sigma \sigma_{i}
+	(b_{j}) \sigma(x_{j}) = 0$. Gegeben $\sigma \in G$. Sei $s \in S_{n}, \sigma \sigma_{i} = \sigma_{s(i)}$ :
+	\[
+		\sum_{j=1}^{m} \sigma_{s(i)}(b_{j}) \sigma(x_{j}) = 0 \forall 1 \leq i \leq n \implies \begin{pmatrix} 
+			\sigma(x_1)\\ \vdots\\ \sigma(x_{n})
+		\end{pmatrix} \in \ker(T)
+	.\] 
+	Sei $r := \min \{k \in \N : k \geq 1, v \in \ker(T) \setminus \{0\} \text{ besitzt $k$ Koordinaten} \neq 0\} $.
+	Sei $(x_1,\ldots,x_{m})^{T} \in \ker(T)$ mit $r$ Koordinaten $\neq 0$. O.B.d.A sei $x_1 \neq 0$.
+	Dann folgt
+	\[
+		\frac{1}{\sigma(x_1)} \begin{pmatrix} 
+			\sigma(x_1) \\ \vdots \\ \sigma(x_{m})
+		\end{pmatrix} - \frac{1}{x_1} \begin{pmatrix} 
+			x_1 \\ \vdots \\ x_{m}
+		\end{pmatrix} \in \ker(T) = \begin{pmatrix} 
+		0\\ \frac{\sigma(x_2)}{\sigma(x_1)} - \frac{x_2}{x_1}\\ \vdots \\ \frac{\sigma(x_{m})}{\sigma(x_1)} - \frac{x_{m}}{x_1}
+		\end{pmatrix} = \begin{pmatrix} 
+			0 \\ 0 \\ \vdots \\ 0
+		\end{pmatrix}  
+	\]
+	aus Definition von $r$. Es ist $\sigma(\frac{x_{i}}{x_{i}} = \frac{x_{i}}{x_{i}} 1 \leq i \leq m$ d.h.
+	\[
+	\begin{pmatrix} 
+		1\\ \frac{x_2}{x_1}\\ \vdots \\ \frac{x_{m}}{x_1}
+	\end{pmatrix} = \frac{1}{x_1}\begin{pmatrix} 
+		x_1\\ x_2\\ \vdots \\ x_{m}
+	\end{pmatrix} \in \ker(T) \cap (E^{G})^{m}
+	.\]
+	Das heißt aber $\sum_{j=1}^{m} \sigma_{i}(b_{j}) \frac{x_{j}}{x_{1}} = 0 \forall \sigma_1,\ldots,\sigma_{n}$. Aber, da $\id \in G < \aut(E)$ ist
+	$\sum_{j=1}^{m} b_{j} \frac{x_{j}}{x_{i}} = 0$ d.h. $b_1 + b_2 \frac{x_2}{x_1} + \ldots + b_{m} \frac{x_{m}}{x_{1}} = 0$ 
+	ist eine nicht triviale lineare Relation über $E^{G}$. \contra 
+\end{proof}
+
+\begin{corollary}
+	Seien $G,H$ endliche Untergruppen von $\aut(E)$. Dann gilt $E^{G} \subseteq E^{H} \Leftrightarrow H < G$.
+\end{corollary}
+
+\begin{proof}
+	$\impliedby:$ trivial.\\
+	$\implies:$ Wir nehmen an $E^{G} \subseteq E^{H}$. Falls $H \neq G$ gibt es $\sigma \in H$ mit $\sigma \not\in G$.
+	Da $\sigma \in H$ fixiert $\sigma$ jedes Element von $E^{H}$ und deswegen auch von $E^{G}$ also $ E^{G} = E^{G \cup \{\sigma\} }$.
+
+	$\abs{G} = [E : E^{G}] = [E: E^{G \cup \{\sigma\}}] \geq \abs{G} + 1$. \contra
+\end{proof}
+
+\begin{corollary}
+	Seien $G,H$ endliche Untergruppen von $\aut(E)$. Dann ist $E^{G} = E^{H} \Leftrightarrow H = G$.
+\end{corollary}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
