@@ -182,6 +182,128 @@ Benutze diesen Satz um eine untere Schranke von $[E: E^{H}]$ zu bestimmen falls 
 	Seien $G,H$ endliche Untergruppen von $\aut(E)$. Dann ist $E^{G} = E^{H} \Leftrightarrow H = G$.
 \end{corollary}
 
+\begin{definition}[Wiederholung]
+	\begin{itemize}[-]
+		\item Ein irreduzibles Polynom ist separabel, falls es keine mehrfachen Nullstellen besitzt.
+		\item Ein Polynom ist separabel falls jeder seiner irreduziblen Faktoren separabel ist.
+	\end{itemize}
+\end{definition}
+
+Zwei wichtige Resultate:
+\begin{itemize}[-]
+	\item Falls $E / k$ Zerfällungskörper eines separablen Polynoms $f \in k[x]$ ist, dann ist $[E:k] = \abs{\gal(E / k)}$.
+	\item Ist $G \subseteq \aut(E)$ eine endliche Untergruppe, wobei $E$ beliebiger Körper, dann ist $[E : E^{G}] = \abs{G}$.
+\end{itemize}
+
+\begin{theorem}
+	Sei $E / k$ eine endliche Erweiterung mit Galois Gruppe $G = \gal(E / k)$. Folgende Eigenschaften sind äquivalent:
+	\begin{enumerate}[(1)]
+		\item $E$ ist Zerfällungskörper eines separablen Polynoms in $k[x]$.
+		\item $k = E^{G}$.
+		\item Jedes irreduzible Polynom in $k[x]$ mit einer Nullstelle in $E$ ist separabel und zerfällt in $E$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	$(1) \implies (2)$: Da $E$ Zerfällungskörper eines separablen Polynoms in $k[x]$ ist, folgt aus Theorem 17.2, $[E:k] = \abs{G}$.
+	Da $G < \aut(E)$ eine endliche Untergruppe von $\aut(E)$ ist, folgt aus Proposition 4.9, $[E:E^{G}] = \abs{G}$.
+	Da $E \supseteq E^{G} \supseteq k$, folgt
+	\[
+		[E^{G} : k] = \frac{[E : k]}{[E : E^{G}]} = \frac{\abs{G}}{\abs{G}} = 1 \implies E^{G} = k
+	.\] 
+	$(2) \implies (3)$ : Sei $p \in k[x]$ irreduzibel und $\alpha \in E$ mit $p(\alpha) = 0$. Wir können annehmen, dass $p$ unitär ist. Definiere
+	\[
+		q(X) := \prod_{\sigma \in \sfrac{G}{\operatorname{Stab}(\alpha)}} (X - \sigma(\alpha)) \qq{wobei} \operatorname{Stab}(\alpha) = \{\eta \in G \mid \eta(\alpha) = \alpha\}  
+	.\]
+	$q$ hat folgende Eigenschaften:
+	\begin{enumerate}[(1)]
+		\item $q$ unitär
+		\item $R(q) \subseteq R(p)$,da $p \in k[x], \alpha \in E, \sigma \in \gal(E / k)$. Dann folgt $0 = p(\alpha) = \sigma(p(\alpha)) = p(\sigma(a))$.
+		\item $q$ hat keine mehrfachen Nullstellen
+		\item $q \in E^{G}[x]$ (Serie 8, A1)
+	\end{enumerate}
+	Aus der Voraussetzung $E^{G} = k$ folgt $q \in k[x]$. Aus (2) folgt, dass $q$ das Polynom $p$ dividiert; daraus folgt $q = p$.
+
+	$(3) \implies (1)$ : Sei $k \subseteq E' \subseteq E$ maximal mit der Eigenschaft, dass $E'$ Zerfällungskörper eines separablen Polynoms $g$ in $k[x]$ ist.
+	Z.Z. $E' = E$. Falls $E \subsetneq E$, sei $\alpha \in E \setminus E'$. Dann ist das Minimalpolynom $\irr(\alpha,k) \in k[x]$ ein irreduzibles Polynom
+	mit einer Nullstellen in $E$, nämlich $\alpha$. Folglich ist $\irr(\alpha,k)$ separabel und zerfällt in $E$.
+	Sei $f = g \cdot \irr(\alpha,k)$. Dann ist $f \in k[x]$ separabel und zerfällt in $E$. 
+	Falls $E''$ Zerfällungskörper von $f$ ist, dann folgt $E' \subsetneq E'' \subseteq E$ \contra.
+\end{proof}
+
+\begin{definition}
+	Eine endliche Erweiterung $E / k$ ist eine \emph{Galoiserweiterung von $k$}, falls $E$ die äquivalenten Eigenschaften von vorherigem Theorem 4.11 besitzt.
+\end{definition}
+
+$k \subseteq B \subseteq E$. Falls $E / k$ Galois ist, dass muss $B / k$ nicht unbedingt Galois sein, weil eine Galois Erweiterung insbesondere normal ist.
+Andererseits sei $f \in k[x]$ separabel mit Zerfällungskörper $E$, dann ist $f \in B[x]$ immer noch separabel und folglich ist $E / B$ Galois.
+
+\begin{corollary}
+	Falls $k \subseteq B \subseteq E$ wobei $E / k $ Galois dann ist $E / B$ Galois.
+\end{corollary}
+
+\begin{proposition}
+	Sei $k \subseteq B \subseteq E$ mit $E / k$ Galois. Dann ist $B / k$ Galois genau dann, wenn $\sigma(B) = B \forall \sigma \in \gal(E / k)$.
+\end{proposition}
+
+\begin{proof}
+	$\implies:$ Falls $B / k$ Galois, ist insbesondere $B$ eine normale Erweiterung von $k$ d.h. $B$ ist Zerfällungskörper eines Polynoms in $k[x]$.
+	Dann folgt aus Theorem 2.26, dass $\sigma(B) = B \forall \sigma \in G = \gal(E / k)$.\\
+	$\impliedby:$ $E / k$ ist Galois und $\sigma(B) = B \forall \sigma \in \gal(E / k)$. Wir betrachten $\nstack{\gal(E / k) \to \gal(B / K)}{\sigma \mapsto \sigma \mid_{B}}$,
+	das ist ein Homomorphismus. Sei $H < \gal(B / k)$ sein Bild.
+
+	Wir haben $k \subseteq B^{\gal(B / k)} \subseteq B^{H} \subseteq E^{\gal(E / k)} = k$. Woraus folgt $k = B^{\gal(B / k)}$ also ist $B / k$ Galois.
+\end{proof}
+
+\begin{definition}
+	Sei $G$ eine Gruppe, dann bezeichnet $\operatorname{Sub}(G)$ die Menge der Untergruppen von $G$, geordnet via Inklusion.
+	Sei $E / k$ Körpererweiterung. Dann bezeichnet $\operatorname{Int}(E / k)$ die Menge der Zwischenkörper von $E / k$ d.h. Körpererweiterungen $B / k$ mit $B \subseteq E$.
+	Auch $\operatorname{Int}(E / k)$ ist geordnet via Inklusion.
+\end{definition}
+
+\begin{theorem}[Galois Korrespondenz]
+	Sei $E / k$ eine (endliche) Galois Erweiterung.
+	\begin{enumerate}[(1)]
+	\item Die Abbildung $\gamma: \nstack{\operatorname{Sub}(\gal(E / k)) \to \operatorname{Int}(E / k)}{H \mapsto E^{H}}$ ist eine inklusionsumkehrende Bijektion
+		mit Inverser $\delta: \nstack{\operatorname{Int}(E / k) \to \operatorname{Sub}(\gal(E / k))}{B \mapsto \gal(E / B)}$.
+	\item $B \in \operatorname{Int}(E / k)$ ist genau denn eine Galoiserweiterung von $k$ falls $\gal(E / B)$ eine \emph{normale} Untergruppe von $\gal(E / k)$ ist.
+		In diesem Fall ist $\sfrac{\gal(E / k)}{\gal(E / B)} \cong \gal(B / k)$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}[(1)]
+		\item $\gamma$ ist injektiv: Seien $H_1, H_2$ Untergruppen von $\gal(E / k)$ insbesondere sind $H_1, H_2$ endliche Untergruppen von $\aut(E)$.
+			Dann folgt aus der Annahme $E^{H_1} = E^{H_2}$  und Korollar 4.10, dass  $H_1 = H_2$.
+		\item $\gamma \circ \delta = \id_{\operatorname{Int}(E / k)}$ : Sei $k < B < E$,
+			\[
+				\gamma \delta(B) =  \gamma(\gal(E / B)) = E^{\gal(E / b)} \implies E^{\gal( E / B)} = B
+			.\]
+			In Korollar 4.13 hatten wir gezeigt, dass $E / k$ Galois $\implies E / B$ Galois. 
+			Daraus folgt $\gamma \circ \delta = \id$ und schlussendlich ist $\gamma$ eine Bijektion
+	\end{enumerate}
+	Annahme: $B / k$ ist eine Galoiserweiterung. Insbesondere ist $k \subseteq B \subseteq E$ und $B$ ist Zerfällungskörper eines Polynoms in $k[x]$.
+	Dann folgt schon aus Theorem 2.26, dass $\sigma(B) = B \forall \sigma \in \gal(E / k)$, $\gal(E / B)$ ist der Kern des Restriktionshomomorphismus.
+	\[
+		\nstack{\gal(E / K) \to \gal( B / k)}{\sigma \mapsto \sigma \mid_{B}}
+	.\] 
+	insbesondere $\gal(E / B) \lTri \gal(E / k)$, zudem induziert dieser Homomorphismus einen Isomorphismus  $\sfrac{\gal(E / k)}{\gal(E / B)} \cong \gal(B / k)$.
+
+	Annahme: $E / k$ Galois, $k \subseteq B \subseteq E$ und $\gal(E / B) \lTri \gal(E / K)$. Zu zeigen: $B / k$ ist Galois. 
+	Dazu benötigen wir die Charakterisierung von Proposition 4.14: es genügt zu zeigen, dass $\sigma(B) = B \forall \sigma \in \gal(E / k)$.\\
+	Da $E / B$ Galois ist, folgt $B = E^{\gal(E / B)}$.
+	Sei $\sigma \in \gal(E / K)$, $\xi \in B$ z.z. $\sigma(\xi) \in B \Leftrightarrow $ z.z. $\forall h \in \gal(E / B)$ gilt $h(\sigma(\xi)) = \sigma(\xi)$.
+	\[
+		h \sigma(\xi) = \sigma (\sigma^{-1} h \sigma)(\xi) = \sigma(\sigma^{-1} h \sigma(\xi)) = \sigma(\xi)
+	.\] 
+\end{proof}
+
+
+
+
+
+
+
 
 
 
