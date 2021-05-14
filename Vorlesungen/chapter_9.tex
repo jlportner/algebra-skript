@@ -298,6 +298,127 @@ Andererseits sei $f \in k[x]$ separabel mit Zerfällungskörper $E$, dann ist $f
 	.\] 
 \end{proof}
 
+\begin{eg}
+	$f(x) = X^2-2 \in \Q[X]$ ist irreduzibel und sei $E \subseteq \C$ Zerfällungskörper von $f$.
+	Dann ist $\gal(E / \Q) \cong S^{3}$.
+	Sei $\beta = \sqrt[3]{2} \in \R$, $\omega = e^{\frac{2 \pi i }{3}}$.
+	Nullstellen von $f$ sind dann: $\alpha_1 = \beta, \alpha_2 = \beta \omega, \alpha_3 = \beta \omega^2$.
+	
+	Sei $\sigma_{ij} \in S_{3}$ die Transposition die $\alpha_{i}$ mi $\alpha_{j}$ vertauscht.
+	Sei $\tau \in S_3$ die zyklische Permutation, $\alpha_1 \to \alpha_2 \to \alpha_3 \to \alpha_1$.
+	\[
+	\begin{tikzcd}
+                                               & S_3 \arrow[ld, no head] \arrow[d, no head] \arrow[rd, no head] \arrow[rrd, no head] &                                                &                                          &  &                                                   & \Q \arrow[d, no head] \arrow[rd, no head] \arrow[rrd, no head] \arrow[ld, no head] &                                                   &                                                  \\
+\langle \sigma_{12}\rangle \arrow[rd, no head] & \langle \sigma_{13}\rangle \arrow[d, no head]                                       & \langle \sigma_{23}\rangle \arrow[ld, no head] & \langle \tau\rangle \arrow[lld, no head] &  & \Q(\alpha_3) \arrow[rd, "2" description, no head] & \Q(\alpha_2) \arrow[d, "2" description, no head]                                   & \Q(\alpha_1) \arrow[ld, "2" description, no head] & \Q(\omega) \arrow[lld, "3" description, no head] \\
+                                               & \langle e\rangle                                                                    &                                                &                                          &  &                                                   & E                                                                                  &                                                   &                                                 
+\end{tikzcd}
+	.\] 
+\end{eg}
+
+Einfache Folgerungen der Galois Korrespondenz
+\begin{corollary}
+	Eine endliche Galois Erweiterung hat nur endlich viele Zwischenkörper.
+\end{corollary}
+
+\begin{definition}
+	Eine Erweiterung $E / k$ ist \emph{einfach} falls es $u \in E$ gibt mit $E = k(u)$.
+\end{definition}
+
+\begin{proposition}
+	Eine endliche Erweiterung $E / k$ ist genau dann einfach, falls es nur endlich viele Zwischenkörper gibt.
+\end{proposition}
+
+\begin{proof}
+	$(\impliedby):$ Annahme: Es gibt nur endlich viele Zwischenkörper.
+	\begin{enumerate}[{Fall} 1:]
+		\item $k$ ist uneneldich; $E$ ist ein $k$-Vektorraum und da $k$ unendlich ist kann $E$ nicht Vereinigung seiner (endlich vielen)
+			echten Zwischenkörper sein (Serie 8 A4). Also gibt es $x \in E$, dass in keinem echten Zwischenkörper enthalten ist $\implies E = k(x)$.
+		\item $k$ endlich, $k = \F_{q}$, $E = \F_{q^{n}}$ wobei $n = [E : k]$.
+			Sei $u$ ein Erzeuger der zyklischen Gruppe $\F_{q^{n}}^{\times}$ dann folgt $E = k(u)$.
+	\end{enumerate}
+
+	$(\implies):$ Sei $E = k(x)$. Sei $k \subseteq F \subseteq E$ ein Zwischenkörper.
+	Sei $f_{F}(T) := \irr(x,F)(T) \in F[T] = T^{n} + a_{n-1} T^{n-1} + \ldots + a_0$.
+	Sei $F_{0} = K(a_{n-1},\ldots,a_0) \subseteq F$.
+	Es ist $f_{F}$ irreduzibel in $F[T]$ und folglich auch in $F_0[T]$. Weiters ist
+	\begin{align*}
+		[E:F] = [F(x):F] = n \qquad [E:F_0] = [F_0(x):F_0] = n
+	\end{align*}
+	und folglich $F = F_0$.
+	\begin{remark}
+		$\irr(x,F)$ dividiert in $E[T]$ das Minimalpolynom $\irr(x,k)$. Also ist die Anzahl der Zwischenkörper kleiner gleich der Anzahl der
+		Polynome in $E[T]$ die $\irr(x,k)$ dividieren.
+	\end{remark}
+\end{proof}
+
+\begin{corollary}
+	Eine (endliche) Galois Erweiterung $E / k$ ist immer einfach.
+\end{corollary}
+
+\begin{eg}
+	$E = \F_{p}(X,X), k = \F_{p}(X^{p},Y^{p})$.
+	Dann ist $[E : k] = p^2$ und für $f \in E$ ist $f^{p} \in k$. Folgt es gibt kein $x \in E$ mit $E = k(x)$.
+\end{eg}
+
+\begin{theorem}
+	Sei $E / k$ eine endliche Galois Erweiterung mit $\charak = 0$. Falls $\gal(E / k)$ auflösbar ist, so ist $E$ in einer radikalen Erweiterung von $k$ enthalten.
+\end{theorem}
+
+$G$ endlich auflösbar mit $\abs{G} \geq 2$ $\implies [G,G]  \subsetneq G$.
+$\sfrac{G}{[G,G]}$ ist eine endliche abelsche Gruppe $\neq (e)$. Also ein Produkt von $\sfrac{\Z}{p^{n} \Z}$ wobei $p$ Primzahl und $n \geq 1$.
+
+Insbesondere: $\sfrac{\Z}{p^{n}\Z} \supseteq \sfrac{\Z}{p^{n-1} \Z}$ mit Index $p$.
+Also enthält $\sfrac{G}{[G,G]}$ eine Untergruppe $M < \sfrac{G}{[G,G]}$ mit Index $p$.
+Sei $p : G \to \sfrac{G}{[G,G]}$ und $N := p^{-1}(M)$. Dann ist $N \lTri G$ und hat Index $p$.
+
+$N \lTri G = \gal(E / k)$ und $E^{N} \supseteq k$.
+$E^{N}$ ist eine Galois Erweiterung von $k$ von Grad $p$, $p$ eine Primzahl.
+
+\begin{lemma}
+	$E / k$ endliche Galois Erweiterung mit  $p := [E : k]$ Primzahl.
+	Falls $k$ eine $p$-te Wurzel von $1$ enthält mit $w \neq 1$ dann gibt es $\xi \in E$ mit $\xi^{p} \in k$ und $E = k(\xi)$.
+\end{lemma}
+
+\begin{proof}
+	$\gal(E / k)$ ist zyklisch der Ordnung $p$, sei $\sigma \in \gal(E / k)$ ein Erzeuger.
+	Wir betrachten $\sigma: E \to E$ als $k$-lineare Abbildung.
+	Wir bemerken $\sigma^{p} = \id_{E}$. Behauptung $X^{p}-1$ ist das Minimalpolynom von $\sigma$.
+	
+	Falls es ein Polynom $P \in k[x]$ gibt  mit $\deg(P) \leq p-1$ und $P(\sigma) = 0$.
+	dann folgt $ \sum_{i=0}^{p-1} a_{i} \sigma^{i} = 0$, $a_{i} \in k$. Aber $1,\sigma,\ldots,\sigma^{p-1}$ sind Paarweise verschiedene Charaktere
+	in $\hom(E^{\times}, E^{\times})$ und daher (nach Prop 4.5) linear unabhängig in $F(E^{\times},E)$. Also $P \cong 0$.
+	Folglich ist $X^{p}-1$ das charakteristische Polynom von $\sigma$.
+	Folglich ist $\omega \in k$ ein Eigenwert von $\sigma$. Sei $\xi \in E \setminus \{0\}$ ein Eigenvektor mit $\sigma(\xi) = \omega \xi$ :
+	Da $\omega \neq 1$ folgt $\xi \neq k$ und somit $E = k(\xi)$.
+
+	Zudem: $\sigma(\xi^{p}) = \sigma(\xi)^{p} = \omega^{p} \xi^{p} = \xi^{p}$. Da $\sigma$ die Galoisgruppe $\gal(E / k)$ erzeugt folgt $\xi^{p} \in E^{\gal(E / k)} = k$.
+\end{proof}
+
+\begin{proof}[Beweis vom Satz]
+	Sei $E / k$ Galois mit $\gal(E / k)$ auflösbar. 
+	Induktiv über $[E:k]$. Falls $[E:k] = 1$ ok.
+	Annahme: $[E:k] \geq 2$, $\abs{\gal(E / k)} = [E:k] \geq 2$.
+	Es gibt eine Primzahl $p$ und $N \lTri \gal(E / k)$ von Index $p$.
+
+	$k \subseteq E^{N}$. Also ist $E^{N} / k$ eine Galois Erweiterung von Grad $p$.
+	Sei $k^{*} / k$ ein Zerfällungskörper von $X^{p}-1 \in k[x]$ und $w \in k^{*}$ eine erzeugende $\{\eta \in (k^{*})^{\times} \mid \eta^{p} = 1\}$. Also $w \neq 1$.
+
+	\begin{enumerate}[{Fall} 1]
+		\item $w \in k$. Dann (Lemma 4.25) $E^{N} / k$ reine Erweiterung. Und $[E:E^{N}] < [E:k]$.
+			Außerdem $\gal(E / E^{N}) = N$ und $N < \gal(E / k)$, daher auflösbar.
+			Also folgt aus Induktionshypothese, dass es einen Turm von Erweiterungen gibt,
+			\[
+			K_1 = E^{N} \subseteq K_2 \subseteq \ldots \subseteq K_{t}
+			\] 
+			wobei $K_{i} / K_{i-1}$ rein ist, $2 \leq i \leq t$.
+			Also ist $k \subseteq K_1 = E^{N} \subseteq K_2 \subseteq \ldots \subseteq K_{t}$ und $K_{t}$ eine radikale Erweiterung von $k$ mit $K_{t} \supseteq E$.
+
+			%TODO Fall 2
+	\end{enumerate}
+\end{proof}
+
+
+
 
 
 
