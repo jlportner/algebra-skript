@@ -417,15 +417,121 @@ $E^{N}$ ist eine Galois Erweiterung von $k$ von Grad $p$, $p$ eine Primzahl.
 	\end{enumerate}
 \end{proof}
 
+\section{Kreisteilunskörper (Cyclotomic fields)}
+
+Sei $n \geq 1$ natürliche Zahl; $k$ ein Körper. Sei $k[n]$ ein Zerfällungskörper von $X^{n}-1 \in k[x]$.
+Sei $\mu \subseteq k[n]$ die Menge der Nullstellen. Dann ist $\mu_{n}$ eine endliche Untergruppe von $k[n]^{\times}$ 
+und daher zyklisch. Wir nennen \emph{$n$-te primitive Einheitswurzel} einen erzeugender dieser Gruppe.
+Falls $\xi \in \mu_{n}$ eine $n$-te primitive Einheitswurzel ist, so folgt $k[n] = k(\xi)$.
+
+\textbf{Annahme:} Entweder $\charak = 0$ oder $\charak t$ teilt $n$ nicht.
+Das ist nach Lemma 2.10 äquivalent zur Eigenschaft, dass $X^{n}-1$ keine mehrfachen Nullstellen besitzt (weil $X^{n}-1$ und $n X^{n-1}$ teilerfremd sind).
+Insbesondere ist $X^{n}-1$ separabel und daher (Def 4.12 und Satz 4.11) ist $k[n]$ eine Galois Erweiterung von $k$.
+Das Problem ist $\gal(k[n] / k)$ zu bestimmen.
+
+Sei $\xi$ eine $n $-te primitive Einheitswurzel: $\nstack{\sfrac{\Z}{n \Z} \to \mu_{n}}{k \mapsto \xi^{k}}$.
+Sei $\sigma \in \gal(k[n] / k) < \aut(\mu_{n})$. Dann gibt es $a_{\sigma} \in \sfrac{\Z}{n \Z}$ 
+so dass $\sigma(\xi) = \xi^{a_{\sigma}}$, also ist $a_{\sigma} \in \left( \sfrac{\Z}{n \Z} \right)^{\times}$.
 
 
+Damit erhalten wir einen injektiven Homomorphismus $\nstack{\gal(k[n] / k) \to \left( \sfrac{\Z}{n\Z} \right)^{\times}}{\sigma \mapsto \alpha_{\sigma}}$:
+Was ist das Bild?
 
+\begin{theorem}
+	$\nstack{\gal(\Q[n] / \Q) \to \left( \sfrac{\Z}{n \Z} \right)^{\times}}{\sigma \mapsto a_{\sigma}} $ ist ein Isomorphismus.
+\end{theorem}
 
+Beweis stammt von Dedekind 1857.
 
+\begin{lemma}[Gauss]
+	Sei $p = R \cdot Q$ wobei $p \in \Z[X]$ und $R,Q \in \Q[X]$. So gibt es $\lambda, \mu \in \Q^{\times}$ mit $q = \lambda \Q \in \Z[X], r = \mu R \in \Z[X]$.
+	und $p = r q$. Falls zudem  $p, R$ und $Q$ unitär sind so folgt $R,Q \in \Z[X]$.
+\end{lemma}
 
+\begin{proof}[Beweis Idee]
+	Aus $R,Q$ unitär und $l R, \mu Q \in \Z[X]$ folgt $\lambda \in \Z, \mu \in \Z$.
+	Da $f$ unitär folgt $\lambda \mu = 1 \implies \lambda = \pm 1, \mu = \pm 1 \implies R, Q \in \Z[X]$.
+\end{proof}
 
+\begin{proof}[Beweis vom Satz]
+	Seien $\xi, \xi^{n} \in \mu_{n}$ $n$-te primitive Einheitswurzeln, insbesondere $(a,n) = 1$.
+	Wir wollen zeigen, dass es $\sigma \in \gal(k[n] / k)$ mit $\sigma(\xi) = \xi^{a}$ gibt.
+	Sei $f = \irr(\xi,\Q), g = \irr(\xi^{q},\Q)$ ; Behauptung $f=g$. 
 
+	\textbf{Behauptung $\implies$ Theorem}: Aus $f = g$ folgt $f(\xi^{a}) = 0$. Da $f$ irreduzibel ist und $\Q[n]$ Zerfällungskörper von $f$ ($\Q[n] = \Q(\xi)$ )
+	dann folgt aus Korollar 2.23, dass $\gal(\Q[n] / \Q)$ auf den Nullstellen von $f$ transitiv wirkt.
+	Da $f(\xi) = f(\xi^{a}) = 0$ folgt $\exists \sigma \in \gal(\Q[n] / \Q)$ mit $\sigma(\xi) = \xi^{a}$.
 
+	$a = p_1 \cdot \ldots \cdot p_{r}$. $\xi, \xi^{p_1}, (\xi^{p_1})^{p_2},\ldots, \xi^{a}$. 
+	Falls wir zeigen: $\forall \eta \in \mu_{n}$ primitive Einheitswurzel und $p$ Primzahl $(p,n) = 1$ und 
+	$\irr(\eta, \Q) = \irr(\eta^{p},\Q)$ dann folgt $\irr(\xi, \Q) = \irr(\xi^{a},\Q)$.
+
+	Wir können annehmen $a = p$ Primzahl, $(p,n) = 1$. $f = \irr(\xi,\Q)$ und $g = \irr(\xi^{p},\Q)$.\\
+	Annahme: $f \neq g$. Beide teilen $X^{n}-1$ : $f$ und $g$ sind irreduzible Faktoren in der Faktorzerlegung von $X^{n}-1$ in $\Q(X)$.
+	Aus $f \neq g$ und $f,g$ unitär folgt $X^{n}-1 = f(x) g(x) h(x)$ wobei $h$ auch unitär ist. 
+	Also (Gauss Lemma) $f,g,h \in \Z[X]$.
+
+	Reduziere modulo $p$ : $X^{n}-1 = \overline{f}(x) \overline{g}(x) \overline{h}(x)$, $\overline{f},\overline{g},\overline{h} \in \F_{p}[X]$ die reduzierten modulo $p$ von $f,g,h$.
+	Da $(p,n) = 1$ hat $X^{n}-1 \in \F_{p}[X]$ keine mehrfachen Nullstellen.
+	Also haben $\overline{f}, \overline{g}$ keine gemeinsamen Nullstellen (in einem Zerfällungskörper von $X^{n}-1$ )
+	also sind $\overline{f},\overline{g} \in \F_{p}[X]$ teilerfremd.
+
+	$g(\xi^{p}) = 0$ : also ist $\xi$ eine Nullstelle von $g(x^{p}) \in \Z[X]$.
+	Da $f = \irr(\xi,\Q)$ Minimalpolynom von $\xi$ folgt $g(x^{p}) = f(x) k(x)$
+	wobei $k$ unitär in  $\Q[X]$ und daher nach Gauss Lemma in $\Z[X]$.
+	Dann folgt: $(\overline{g}(x))^{p} = \overline{g}(x^{p}) = \overline{f}(x) \overline{k}(x)$ Widerspruch mit der Tatsache,
+	dass $\overline{g}$ und $f$ teilerfremd sind.
+\end{proof}
+
+Sei $\xi \in \C$ eine $n$-te primitive Einheitswurzel von $1$ ; $\xi = e^{\frac{2\pi i}{n}}$ dann $\Q[n] \subseteq \C$.
+
+\begin{definition}
+	Das $n $-te Zyklotomische Polynom $\Phi_{n}(x) = \prod_{\substack{(a,n) = 1\\ 1 \leq a \leq n-1}} (X-\xi^{a})$
+\end{definition}
+
+\begin{corollary}
+	$\Phi_{n} \in \Z[X]$ und ist in $\Q[x]$ irreduzibel.
+\end{corollary}
+
+\begin{proof}
+	$\Q[n] = \Q(\xi)$ und aus Theorem 4.26 folgt $\Phi_{n}(x) = \prod_{\sigma \in \gal(\Q[n] / \Q} (x-\sigma(\xi)) \implies \Phi_{n} \in \Q[n]^{\gal(\Q[n] / \Q} = \Q[x]$.
+	Andererseits $\Phi_{n}(x)$ teilt $X^{n}-1$.
+	Aus Gauss Lemma $\Phi_{n} \in \Z[x]$.
+\end{proof}
+
+\begin{itemize}
+	\item $\Phi_{n}$ ist irreduzibel: $\Q[n] = \Q(\xi)$ ist Zerfällungskörper von $\Phi_{n}$ und $\gal(\Q[n] / \Q)$ wirkt transitiv auf den Nullstellen von $\Phi_{n} \implies \Phi_{n}$ 
+ist irreduzibel.
+	\item $\deg(\Phi_{n}) = \varphi(n)$ (Eulersche Phi Funktion). Insbesondere, falls $p$ Primzahl ist $\Phi_{p}(x) = X^{p-1} + \ldots + x + 1$.
+	\item $\Phi_{105}$ ist das erste Zyklotomische Polynom das einen Koeffizienten $a \not\in \{-1,0,1\}$ hat.
+\end{itemize}
+
+\begin{proposition}
+	\begin{enumerate}
+		\item $X^{n}-1 = \prod_{d \mid n} \Phi_{d}(x)$ (also $\Phi_{1}(x) = x-1$, und $\Phi_{n}(x)$ kommen vor)
+		\item $p$ Primzahl: $\Phi_{p}(x) = X^{p-1} + x^{p-2} + \ldots + 1$
+		\item $n \geq 2$ : $\Phi_{n}(x) = X^{\varphi(n)} \Phi_{n}(\frac{1}{x})$
+		\item $\Phi_{p^{r}}(x) = \Phi_{p}(X^{p^{r-1}})$ 
+		\item $p$ Primzahl und $(p,n) = 1$ dann ist
+			\[
+				\Phi_{pn} = \frac{\Phi_{n}(X^{p})}{\Phi_{n}(x)}
+			.\]
+		\item $\Phi_{n}(x) = \prod_{d \mid n} (X^{\frac{n}{d}}-1)^{\mu(d)}$ Wobei $\nstack{\mu: \N^{*} \to {-1,0,1}}{\mu(n) = \begin{cases}
+					0 &\text{falls $n$ durch $p^2$ für eine Primzahl $p$ teilbar ist}\\
+				(-1)^{r} &\text{falls } n = p_1 \cdot \ldots\cdot p_{r} \text{ paarweise verschieden sind}\\
+			1 &\text{falls } n = 1
+	\end{cases}}$
+	\end{enumerate}
+\end{proposition}
+
+\begin{theorem}
+	$(p,n) = 1$. $\gal(\F_{p}[n] / \F_{p}) \to  (\sfrac{\Z}{n\Z})^{\times}$ 
+	Das Bild ist gleich der durch $p$ modulo $n$ erzeugten zyklischen Gruppe.
+
+	$p \equiv 1 (n) \Leftrightarrow \F_{p}[n] = \F_{p}$.
+\end{theorem}
+
+Dirichlet: $\exists! p $ Primzahlen, $p \equiv a (n)$ wobei $a$ und $n$ Teilerfremd.
 
 
 
