@@ -1,0 +1,265 @@
+%! TEX root=../algebra.tex
+\graphicspath{{Images/}}
+
+\chapter{Galois Korrespondenz}
+
+\begin{definition}
+	Sei $E$ ein Körper und $H \subseteq \aut(E)$ dann ist $E^{H} := \{x \in E \mid \sigma(x) = x \forall \sigma \in H\} $ ist ein Unterkörper von $E$.
+	Dann ist $E^{H}$ der \emph{Fixkörper} von $H$.
+\end{definition}
+
+\begin{remark}
+	Die Korrespondenz $H \mapsto E^{H}$ hat folgende Monotonie Eigenschaft: $H_1 \subseteq H_2 \implies E^{H_2} \subseteq E^{H_1}$.
+\end{remark}
+
+
+\textbf{Ziel:} Bestimmung des Grades $[E : E^{H}]$ wobei $H < \aut(E)$ eine \emph{endliche Untergruppe} bezeichnet.
+
+\begin{definition}
+	Sei $G$ eine Gruppe, $E$ ein Körper.
+	Ein \emph{Charakter von $G$ in $E$} ist ein Gruppenhomomorphismus $G \to E^{\times}$.
+	Wobei $E^{\times}$ die Multiplikative Gruppe $E \setminus \{0\}$ ist.
+
+	Die Menge der Charaktere von $G$ in $E$ wird mit $\hom(G,E^{\times})$ bezeichnet.
+	Man kann $H(G,E^{\times})$ als Teilmenge des Vektorraums $F(G,E)$ aller $E$-wertigen Funktionen auf $G$.
+\end{definition}
+
+\begin{proposition}[Dedekind]
+	$\hom(G,E^{\times}) \subseteq F(G,E)$ ist linear unabhängig.
+\end{proposition}
+
+
+Benutze diesen Satz um eine untere Schranke von $[E: E^{H}]$ zu bestimmen falls $H \subseteq \aut(E)$ eine \emph{endliche Teilmenge} besitzt.
+
+\begin{lemma}[Sublemma]
+	Sei $E$ ein Körper, $S$ eine Menge und $\{\sigma_1,\ldots,\sigma_{n}\} \subseteq G(S,E)$ linear unabhängig.
+	Dann gibt es $s_1,\ldots,s_{n} \in S$ mit 
+	\[
+		\begin{pmatrix} \sigma_1(s_1) \\ \vdots \\ \sigma_{n}(s_1) \end{pmatrix} ,\ldots, \begin{pmatrix} \sigma_1(s_{n}) \\ \vdots \\ \sigma_{n}(s_{n}) \end{pmatrix} 
+	\] 
+	in $E^{n}$ linear unabhängig sind.
+\end{lemma}
+
+\begin{lemma}
+	Sei $H = \{\sigma_1,\ldots,\sigma_{n}\} \subseteq \aut(E)$, Teilmenge mit $n$ Elementen.
+	Dann gilt $[E : E^{H}] \geq n$.
+\end{lemma}
+
+\begin{claim}
+	Falls $\left< H \right>	$ die von $H$ erzeugte Untergruppe von $\aut(E)$ bezeichnet so ist $E^{H} = E^{\left< H \right>}$.
+\end{claim}
+
+
+\begin{proposition}
+	Sei $G < \aut(E)$ eine endliche Untergruppe. Dann gilt $[E : E^{G}] = \abs{G}$.
+\end{proposition}
+
+
+\begin{corollary}
+	Seien $G,H$ endliche Untergruppen von $\aut(E)$. Dann gilt $E^{G} \subseteq E^{H} \Leftrightarrow H < G$.
+\end{corollary}
+
+
+\begin{corollary}
+	Seien $G,H$ endliche Untergruppen von $\aut(E)$. Dann ist $E^{G} = E^{H} \Leftrightarrow H = G$.
+\end{corollary}
+
+\begin{definition}[Wiederholung]
+	\begin{itemize}[-]
+		\item Ein irreduzibles Polynom ist separabel, falls es keine mehrfachen Nullstellen besitzt.
+		\item Ein Polynom ist separabel falls jeder seiner irreduziblen Faktoren separabel ist.
+	\end{itemize}
+\end{definition}
+
+Zwei wichtige Resultate:
+\begin{itemize}[-]
+	\item Falls $E / k$ Zerfällungskörper eines separablen Polynoms $f \in k[x]$ ist, dann ist $[E:k] = \abs{\gal(E / k)}$.
+	\item Ist $G \subseteq \aut(E)$ eine endliche Untergruppe, wobei $E$ beliebiger Körper, dann ist $[E : E^{G}] = \abs{G}$.
+\end{itemize}
+
+\begin{theorem}
+	Sei $E / k$ eine endliche Erweiterung mit Galois Gruppe $G = \gal(E / k)$. Folgende Eigenschaften sind äquivalent:
+	\begin{enumerate}[(1)]
+		\item $E$ ist Zerfällungskörper eines separablen Polynoms in $k[x]$.
+		\item $k = E^{G}$.
+		\item Jedes irreduzible Polynom in $k[x]$ mit einer Nullstelle in $E$ ist separabel und zerfällt in $E$.
+	\end{enumerate}
+\end{theorem}
+
+
+\begin{definition}
+	Eine endliche Erweiterung $E / k$ ist eine \emph{Galoiserweiterung von $k$}, falls $E$ die äquivalenten Eigenschaften von vorherigem Theorem 4.11 besitzt.
+\end{definition}
+
+$k \subseteq B \subseteq E$. Falls $E / k$ Galois ist, dass muss $B / k$ nicht unbedingt Galois sein, weil eine Galois Erweiterung insbesondere normal ist.
+Andererseits sei $f \in k[x]$ separabel mit Zerfällungskörper $E$, dann ist $f \in B[x]$ immer noch separabel und folglich ist $E / B$ Galois.
+
+\begin{corollary}
+	Falls $k \subseteq B \subseteq E$ wobei $E / k $ Galois dann ist $E / B$ Galois.
+\end{corollary}
+
+\begin{proposition}
+	Sei $k \subseteq B \subseteq E$ mit $E / k$ Galois. Dann ist $B / k$ Galois genau dann, wenn $\sigma(B) = B \forall \sigma \in \gal(E / k)$.
+\end{proposition}
+
+
+\begin{definition}
+	Sei $G$ eine Gruppe, dann bezeichnet $\operatorname{Sub}(G)$ die Menge der Untergruppen von $G$, geordnet via Inklusion.
+	Sei $E / k$ Körpererweiterung. Dann bezeichnet $\operatorname{Int}(E / k)$ die Menge der Zwischenkörper von $E / k$ d.h. Körpererweiterungen $B / k$ mit $B \subseteq E$.
+	Auch $\operatorname{Int}(E / k)$ ist geordnet via Inklusion.
+\end{definition}
+
+\begin{theorem}[Galois Korrespondenz]
+	Sei $E / k$ eine (endliche) Galois Erweiterung.
+	\begin{enumerate}[(1)]
+	\item Die Abbildung $\gamma: \nstack{\operatorname{Sub}(\gal(E / k)) \to \operatorname{Int}(E / k)}{H \mapsto E^{H}}$ ist eine inklusionsumkehrende Bijektion
+		mit Inverser $\delta: \nstack{\operatorname{Int}(E / k) \to \operatorname{Sub}(\gal(E / k))}{B \mapsto \gal(E / B)}$.
+	\item $B \in \operatorname{Int}(E / k)$ ist genau denn eine Galoiserweiterung von $k$ falls $\gal(E / B)$ eine \emph{normale} Untergruppe von $\gal(E / k)$ ist.
+		In diesem Fall ist $\sfrac{\gal(E / k)}{\gal(E / B)} \cong \gal(B / k)$.
+	\end{enumerate}
+\end{theorem}
+
+
+
+Einfache Folgerungen der Galois Korrespondenz
+\begin{corollary}
+	Eine endliche Galois Erweiterung hat nur endlich viele Zwischenkörper.
+\end{corollary}
+
+\begin{definition}
+	Eine Erweiterung $E / k$ ist \emph{einfach} falls es $u \in E$ gibt mit $E = k(u)$.
+\end{definition}
+
+\begin{proposition}
+	Eine endliche Erweiterung $E / k$ ist genau dann einfach, falls es nur endlich viele Zwischenkörper gibt.
+\end{proposition}
+
+
+\begin{corollary}
+	Eine (endliche) Galois Erweiterung $E / k$ ist immer einfach.
+\end{corollary}
+
+
+\begin{theorem}
+	Sei $E / k$ eine endliche Galois Erweiterung mit $\charak = 0$. Falls $\gal(E / k)$ auflösbar ist, so ist $E$ in einer radikalen Erweiterung von $k$ enthalten.
+\end{theorem}
+
+$G$ endlich auflösbar mit $\abs{G} \geq 2$ $\implies [G,G]  \subsetneq G$.
+$\sfrac{G}{[G,G]}$ ist eine endliche abelsche Gruppe $\neq (e)$. Also ein Produkt von $\sfrac{\Z}{p^{n} \Z}$ wobei $p$ Primzahl und $n \geq 1$.
+
+Insbesondere: $\sfrac{\Z}{p^{n}\Z} \supseteq \sfrac{\Z}{p^{n-1} \Z}$ mit Index $p$.
+Also enthält $\sfrac{G}{[G,G]}$ eine Untergruppe $M < \sfrac{G}{[G,G]}$ mit Index $p$.
+Sei $p : G \to \sfrac{G}{[G,G]}$ und $N := p^{-1}(M)$. Dann ist $N \lTri G$ und hat Index $p$.
+
+$N \lTri G = \gal(E / k)$ und $E^{N} \supseteq k$.
+$E^{N}$ ist eine Galois Erweiterung von $k$ von Grad $p$, $p$ eine Primzahl.
+
+\begin{lemma}
+	$E / k$ endliche Galois Erweiterung mit  $p := [E : k]$ Primzahl.
+	Falls $k$ eine $p$-te Wurzel von $1$ enthält mit $w \neq 1$ dann gibt es $\xi \in E$ mit $\xi^{p} \in k$ und $E = k(\xi)$.
+\end{lemma}
+
+
+
+\section{Kreisteilunskörper (Cyclotomic fields)}
+
+Sei $n \geq 1$ natürliche Zahl; $k$ ein Körper. Sei $k[n]$ ein Zerfällungskörper von $X^{n}-1 \in k[x]$.
+Sei $\mu \subseteq k[n]$ die Menge der Nullstellen. Dann ist $\mu_{n}$ eine endliche Untergruppe von $k[n]^{\times}$ 
+und daher zyklisch. Wir nennen \emph{$n$-te primitive Einheitswurzel} einen erzeugender dieser Gruppe.
+Falls $\xi \in \mu_{n}$ eine $n$-te primitive Einheitswurzel ist, so folgt $k[n] = k(\xi)$.
+
+\textbf{Annahme:} Entweder $\charak = 0$ oder $\charak t$ teilt $n$ nicht.
+Das ist nach Lemma 2.10 äquivalent zur Eigenschaft, dass $X^{n}-1$ keine mehrfachen Nullstellen besitzt (weil $X^{n}-1$ und $n X^{n-1}$ teilerfremd sind).
+Insbesondere ist $X^{n}-1$ separabel und daher (Def 4.12 und Satz 4.11) ist $k[n]$ eine Galois Erweiterung von $k$.
+Das Problem ist $\gal(k[n] / k)$ zu bestimmen.
+
+Sei $\xi$ eine $n $-te primitive Einheitswurzel: $\nstack{\sfrac{\Z}{n \Z} \to \mu_{n}}{k \mapsto \xi^{k}}$.
+Sei $\sigma \in \gal(k[n] / k) < \aut(\mu_{n})$. Dann gibt es $a_{\sigma} \in \sfrac{\Z}{n \Z}$ 
+so dass $\sigma(\xi) = \xi^{a_{\sigma}}$, also ist $a_{\sigma} \in \left( \sfrac{\Z}{n \Z} \right)^{\times}$.
+
+
+Damit erhalten wir einen injektiven Homomorphismus $\nstack{\gal(k[n] / k) \to \left( \sfrac{\Z}{n\Z} \right)^{\times}}{\sigma \mapsto \alpha_{\sigma}}$:
+Was ist das Bild?
+
+\begin{theorem}
+	$\nstack{\gal(\Q[n] / \Q) \to \left( \sfrac{\Z}{n \Z} \right)^{\times}}{\sigma \mapsto a_{\sigma}} $ ist ein Isomorphismus.
+\end{theorem}
+
+Beweis stammt von Dedekind 1857.
+
+\begin{lemma}[Gauss]
+	Sei $p = R \cdot Q$ wobei $p \in \Z[X]$ und $R,Q \in \Q[X]$. So gibt es $\lambda, \mu \in \Q^{\times}$ mit $q = \lambda \Q \in \Z[X], r = \mu R \in \Z[X]$.
+	und $p = r q$. Falls zudem  $p, R$ und $Q$ unitär sind so folgt $R,Q \in \Z[X]$.
+\end{lemma}
+
+
+
+Sei $\xi \in \C$ eine $n$-te primitive Einheitswurzel von $1$ ; $\xi = e^{\frac{2\pi i}{n}}$ dann $\Q[n] \subseteq \C$.
+
+\begin{definition}
+	Das $n $-te Zyklotomische Polynom $\Phi_{n}(x) = \prod_{\substack{(a,n) = 1\\ 1 \leq a \leq n-1}} (X-\xi^{a})$
+\end{definition}
+
+\begin{corollary}
+	$\Phi_{n} \in \Z[X]$ und ist in $\Q[x]$ irreduzibel.
+\end{corollary}
+
+
+\begin{itemize}
+	\item $\Phi_{n}$ ist irreduzibel: $\Q[n] = \Q(\xi)$ ist Zerfällungskörper von $\Phi_{n}$ und $\gal(\Q[n] / \Q)$ wirkt transitiv auf den Nullstellen von $\Phi_{n} \implies \Phi_{n}$ 
+ist irreduzibel.
+	\item $\deg(\Phi_{n}) = \varphi(n)$ (Eulersche Phi Funktion). Insbesondere, falls $p$ Primzahl ist $\Phi_{p}(x) = X^{p-1} + \ldots + x + 1$.
+	\item $\Phi_{105}$ ist das erste Zyklotomische Polynom das einen Koeffizienten $a \not\in \{-1,0,1\}$ hat.
+\end{itemize}
+
+\begin{proposition}
+	\begin{enumerate}
+		\item $X^{n}-1 = \prod_{d \mid n} \Phi_{d}(x)$ (also $\Phi_{1}(x) = x-1$, und $\Phi_{n}(x)$ kommen vor)
+		\item $p$ Primzahl: $\Phi_{p}(x) = X^{p-1} + x^{p-2} + \ldots + 1$
+		\item $n \geq 2$ : $\Phi_{n}(x) = X^{\varphi(n)} \Phi_{n}(\frac{1}{x})$
+		\item $\Phi_{p^{r}}(x) = \Phi_{p}(X^{p^{r-1}})$ 
+		\item $p$ Primzahl und $(p,n) = 1$ dann ist
+			\[
+				\Phi_{pn} = \frac{\Phi_{n}(X^{p})}{\Phi_{n}(x)}
+			.\]
+		\item $\Phi_{n}(x) = \prod_{d \mid n} (X^{\frac{n}{d}}-1)^{\mu(d)}$ Wobei $\nstack{\mu: \N^{*} \to {-1,0,1}}{\mu(n) = \begin{cases}
+					0 &\text{falls $n$ durch $p^2$ für eine Primzahl $p$ teilbar ist}\\
+				(-1)^{r} &\text{falls } n = p_1 \cdot \ldots\cdot p_{r} \text{ paarweise verschieden sind}\\
+			1 &\text{falls } n = 1
+	\end{cases}}$
+	\end{enumerate}
+\end{proposition}
+
+\begin{theorem}
+	$(p,n) = 1$. $\gal(\F_{p}[n] / \F_{p}) \to  (\sfrac{\Z}{n\Z})^{\times}$ 
+	Das Bild ist gleich der durch $p$ modulo $n$ erzeugten zyklischen Gruppe.
+
+	$p \equiv 1 (n) \Leftrightarrow \F_{p}[n] = \F_{p}$.
+\end{theorem}
+
+Dirichlet: $\exists! p $ Primzahlen, $p \equiv a (n)$ wobei $a$ und $n$ Teilerfremd.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

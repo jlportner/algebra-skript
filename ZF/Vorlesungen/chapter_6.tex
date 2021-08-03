@@ -1,0 +1,295 @@
+%! TEX root=../algebra.tex
+\graphicspath{{Images/}}
+
+\chapter{Körpertheorie}
+
+\section{Körpererweiterungen}
+\begin{remark}
+	Ein Ringhomomorphismus $\varphi: K \to L$ von einem Körper zu einem anderen Körper ist immer injektiv 
+	%TODO missing
+\end{remark}
+
+\begin{definition}
+	Sei $L$ ein Körper und $K \subseteq L$ ein Unterring und auch ein Körper.
+	Dann heißt $K \subseteq L$ auch ein \emph{Unterkörper} und $L$ wird eine \emph{Körpererweiterung} von  $K$ genannt.
+	Wir schreiben auch $L \mid K$ (\enquote{$L$ über $K$}) falls $L$ eine Körpererweiterung von $K$ ist.
+	Da $L$ in diesem Fall ein Vektorraum über $K$ ist, können wir die Dimension von $L$ über $K$ betrachten -
+	diese wir als der \emph{Grad $[L:K]$ der Körpererweiterung  $L \mid K$} bezeichnet.
+	Falls $[L:K] < \infty$, so heißt $L$ eine \emph{endliche Körpererweiterung von $K$}.
+\end{definition}
+
+
+\begin{theorem}[Multiplikativität dere Grade]
+	Angenommen $F \mid L $ und $L \mid K$ sind (endliche) Körpererweiterungen.
+	Dann gilt $[F:K] = [F:L] [L:K]$.
+\end{theorem}
+
+
+\begin{definition}
+	Sei $L \mid K$ eine Körpererweiterung, $x \in L$, und $\varphi_{x}: K[T] \to L, f \mapsto f(x)$ der Auswertungshomomorphismus.
+
+	Falls $\varphi_{x}$ injektiv ist, so heißt $x$ \emph{transzendent} über $K$ 
+
+	Falls $\varphi_{x}$ nicht injektiv ist, so heißt $x$ \emph{algebraisch} über $K$.
+	In diesem Fall ist $\ker(\varphi_{x}) = (m_{x}(T))$ \& $m_{x}(T)$ heißt das
+	\emph{Minimalpolynom von $X$}, der Grad von $m_{x}(T)$ ist auch der \emph{Grad von $X$}.
+\end{definition}
+
+
+\begin{proposition}
+	Sei $L \mid K$ und $x \in L$. Falls $x$ transzendent ist, so ist 
+	\[
+		K[X] = \Im(\varphi_{x}) \cong K[T]
+	.\] 
+	und der kleinste Unterkörper $K(X)$ von $L$, der sowohl $K$ als auch $x$ enthält ist, erfüllt
+	\[
+		K(X) \cong K(T)
+	\] 
+	mit  $K(T)$ der Körper der rationalen Funktionen.
+
+	Falls $x$ algebraisch ist, so ist
+	\[
+		K[X] = \Im(\varphi_{x}) \cong \sfrac{K[T]}{(m_{x}(T))}
+	\] 
+	bereits der kleinste Unterkörper $K(X)$, der sowohl $K$ als auch $e$ enthält.
+	Es gilt
+	\[
+		[K(x):K] = \deg(m_x(T))
+	.\] 
+\end{proposition}
+
+
+\begin{definition}
+	Sei $L \mid K$ und $x_1,\ldots,x_{n} \in L$. Dann bezeichnen wir den kleinsten Unterkörper der sowohl $K$ als auch $x_1,\ldots,x_{n}$ enthält mit
+	\[
+		K(x_1,\ldots,x_{n}) = \{\frac{f(x_1,\ldots,x_{n})}{g(x_1,\ldots,x_{n})} \mid f,g \in K[T_1,\ldots,T_{n}], g(x_1,\ldots,x_{n}) \neq 0\} 
+	.\] 
+\end{definition}
+
+\begin{corollary}[Wantzel, 1837]
+	Mit Zirkel und Linear lassen sich weder $\sqrt[3]{2}$ noch ein Winkel von $29^{\circ}$ konstruieren.
+	Des Weiteren gilt: Falls $p > 2$ eine Primzahl ist und das regelmäßige $p$-Ecke mit
+	Zirkel und Lineal konstruierbar ist, so ist $p$ eine Fermat-Primzahl ($p-1 = 2^{2^{n}}$ ).
+\end{corollary}
+
+
+\begin{definition}
+	Eine Körpererweiterung $L \mid K$ heißt \emph{algebraisch} falls jedes $x \in L$ algebraisch über $K$ ist.
+\end{definition}
+
+\begin{lemma}
+	Eine endliche Körpererweiterung ist algebraisch.
+\end{lemma}
+
+
+\begin{corollary}
+	Sei $L \mid K$ und $x,y \in L$ algebraisch über $K$. Dann sind auch $x+y, x\cdot y, x-y, \frac{1}{x}$ für $x\neq 0$ algebraisch über $K$.
+\end{corollary}
+
+
+\begin{corollary}
+	Angenommen $F \mid L$ und $L \mid K$. Dann ist \emph{$F \mid K $ ist algebraisch} genau dann wenn  \emph{$F \mid L$ algebraish ist und $L \mid K$ algebraisch ist}.
+\end{corollary}
+
+
+
+\section{Zerfällungskörper}
+
+\begin{theorem}[Kronecker]
+	Sei $K$ ein Körper, $f \in K[T]$ mit $n = \deg(f) > 0$. Dann existiert eine Körpererweiterung $L$ von $K$, so dass
+	\[
+		f(T) = a \prod_{i=1}^{n} (T-\alpha_{i}),
+	\] 
+	$a \in k$, $\alpha_1,\ldots,\alpha_{n} \in L$.
+\end{theorem}
+
+
+
+\begin{definition}
+	Sei $K$ ein Körper, $f \in K[T]$ mit $\deg(f) > 0$.
+	Ein \emph{Zerfällungskörper von $f$ über $K$ } ist eine Körpererweiterung $L \mid K$ so dass
+	\begin{enumerate}[1)]
+		\item $f$ zerfällt (in Linearfaktoren) in $L[i]$.
+		\item Falls $K \subseteq E \subsetneq L$, dann zerfällt $f$ über $E$ nicht.
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	\begin{itemize}
+		\item Ein Zerfällungskörper existiert immer (und ist bis auf Isomorphie eindeutig).
+			Falls $f \in K[T]$ und $F \mid K$ eine Körpererweiterung, so dass $f$ in $F[T]$ zerfällt (Kronecker)
+			mit Nullstellen $\alpha_1,\ldots,\alpha_{n} \in F$ so ist $L := K(\alpha_1,\ldots,\alpha_{n})$ ein Zerfällungskörper.
+		\item Ein Zerfällungskörper ist eine algebraische Körpererweiterung von $K$.
+	\end{itemize}
+\end{remark}
+
+
+\begin{remark}
+	Sei $K$ ein Körper, $f \in K[T]$ und $L$ ein Zerfällungskörper von $f$ über $K$, dann gilt
+	\[
+		[L:K] \leq (\deg(f))!
+	.\]
+	Ist $f$ über $K$ irreduzibel, so gilt $[L:K] \geq \deg(f)$.
+	\begin{itemize}
+		\item $T^3-2$ irreduzibel über $\Q$ mit Grad $6$.
+		\item $T^2+1$ irreduzibel über $\Q$ mit Grad $2$.
+		\item $T^3-2$ nicht irreduzibel über $\R$ und hat Zerfällungskörper mit Grad $2$.
+	\end{itemize}
+\end{remark}
+
+\section{Algebraischer Abschluss}
+\begin{definition}
+	Sei $K$ ein Körper. $K$ ist \emph{algebraisch abgeschlossen}, falls jedes Polynom $f \in K[T]$ 
+	mindestens eine Nullstelle in $K$ hat.
+\end{definition}
+
+Es folgt (Induktion), dass $f$ über $K$ zerfällt.
+
+\begin{remark}
+	Ein algebraisch abgeschlossener Körper hat unendlich viele Elemente.
+\end{remark}
+
+\begin{proposition}
+	Sei $L \mid K$ eine Körpererweiterung und $L$ algebraisch abgeschlossen.
+	Dann ist 
+	\[
+		E = \{x \in L \mid x \text{ ist algebraisch über } K\}
+	\]
+	eine algebraisch abgeschlossene algebraische Körpererweiterung von $K$.
+\end{proposition}
+
+\begin{definition}
+	Wir nennen $E$ wie in der Proposition den \emph{algebraischen Abgschluss $\overline{K}$ } von $K$
+\end{definition}
+
+
+\begin{remark}
+	\begin{itemize}
+		\item $K$ endlich $\implies \overline{K}$ ist abzählbar
+		\item $K$ abzählbar $\implies \overline{K}$ ist abzählbar [Bsp: $\Q, \overline{\Q} = \Q_{\on{alg}} = \{z \in \C \mid z \text{ alg. über } \Q\}$ genannt algebraische Zahlen]
+	\end{itemize}
+\end{remark}
+
+\begin{theorem}
+	Sei $K$ ein Körper, dann existiert eine Körpererweiterung $L \mid K$ mit $L$ algebraisch abgeschlossen ($L$ ist bis auf Isomorphie eindeutig).
+\end{theorem}
+
+
+\section{Eindeutigkeit}
+(Seite $343$, Teile auch Seite $88$ )
+
+Wir haben gesehen: 
+\begin{itemize}
+	\item Für jedes $f \in K[T]$ gibt es einen Zerfällungskörper.
+	\item Es gibt einen algebraischen Abschluss.
+\end{itemize}
+Sind diese (bis auf Isomorphie) eindeutig?
+
+\begin{theorem}
+	Sei $K$ ein Körper, $L \mid K$ eine Körpererweiterung und $L$ algebraisch abgeschlossen.
+	\begin{enumerate}
+		\item Falls $E = K[\alpha]$ eine endliche Körpererweiterung von $K$ ist, so gibt es mindestens eine
+			und höchstens $[E:K]$ Körpereinbettungen $\sigma: E \to L$ mit $\underbrace{\sigma \mid_{K} = \id_{K}}_{\sigma \; K\text{-linear}}$.
+			Falls $\charak(K)=0$, so gibt es genau $[E:K]$ derartige Einbettungen.
+		\item Falls $E \mid K$ eine algebraische Körpererweiterung ist, so gibt es eine $K$-lineare Körpereinbettung
+			$\sigma: E \to L$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{lemma}
+	Sei $K$ eine Körper, $m(T) \in K[T]$ coprim zu $m'(T)$. Dann hat $m$ in einer algebraisch abgeschlossenen Körpererweiterung
+	genau $\deg(m(T))$ viele einfache Nullstellen.
+
+	Dies gilt z.B. wenn $\charak(K) = 0$ und $m(T)$ irreduzibel in $K[T]$ ist.
+\end{lemma}
+
+
+\begin{remark}
+	 Für $K = \F_{p}$ und $m(T) = T^{p}$ gilt $m'(T) = 0$ und daher nicht $\deg(m'(T)) = \deg(m(T)) -1$.
+\end{remark}
+
+
+
+
+\begin{corollary}
+	Sei $K$ ein Körper
+	\begin{enumerate}[1)]
+		\item Für jedes $f \in K[T]$ ist die Zerfällungskörper bis auf einen $K$-linearen Körperisomorphismus eindeutig bestimmt.
+		\item Je zwei algebraische Abschlüsse von $K$ sind $K$-linear isomorph.
+	\end{enumerate}
+\end{corollary}
+
+
+\section{Endliche Körper}
+$\F_{p} = \sfrac{\Z}{(p)}$ für $p \in \N$ prim ist ein endlicher Körper.\\
+Gibt es weitere? Können wir diese klassifizieren?
+
+\begin{theorem}[Gauss, Galois]
+	\begin{enumerate}
+		\item Falls $K$ ein endlicher Körper ist, so ist $\abs{K} = p^{n}$ für eine Primzahl $p \in \N$ und ein $n \geq 1$.
+		\item Für jede Primzahlpotenz $p^{n}$ gibt es einen bis auf Isomorphie eindeutig bestimmten Körper mit $p^{n}$ Elementen.
+		\item Sei $p \in \N$ prim und $K$ ein algebraischer Abschluss von $\F_{p}$. Dann enthält $K$ einen eindeutig bestimmten
+			Unterkörper $\F_{p^{n}}$ mit $p^{n}$ Elementen.
+			\[
+				\F_{p^{n}} = \{x \in K \mid x^{\left( p^{n} \right) = x}\} 
+			.\] 
+		\item Für $m,n \geq 1$ und die Körper wie in $3)$ gilt
+			\[
+			F^{p^{m}} \subseteq F^{p^{n}} \Leftrightarrow m \mid n
+			.\] 
+	\end{enumerate}
+\end{theorem}
+
+
+\begin{theorem}
+	Sei $K$ ein Körper und $G \subseteq K^{\times}$ eine endliche Untergruppe.
+	Dann ist $G$ zyklisch. Insbesondere ist $\F_{p^{n}}^{\times}$ zyklisch für jede Primzahlpotenz $p^{n}$.
+\end{theorem}
+
+
+\begin{corollary}
+	Sei $p > 2$ eine Primzahl. Für $a \in \F_{p}$ gilt 
+	\[
+		a^{\frac{p-1}{2}} = \begin{cases}
+			0 &\text{ falls } a = 0\\
+			1 &\text{ falls } a = b^{2} \text{ für ein } b \in \F_{p}^{\times}\\
+			-1 &\text{ sonst }
+		\end{cases}
+	\]
+\end{corollary}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

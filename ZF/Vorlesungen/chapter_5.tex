@@ -5,10 +5,10 @@
 (siehe Seite $288$, aber \enquote{kommutativ})
 
 \section{Definition \& Beispiel}
-\enquote{Modukb verhalten sich zu Ringen wie Vektorräume zu Körpern.}
+\enquote{Moduln verhalten sich zu Ringen wie Vektorräume zu Körpern.}
 
 \begin{definition}
-	Sei $R$ ein Ring. Ein \emph{$R$-Modul $M$} ist eine abelsche gruppe gemeinsam mit einer Skalarmultiplikation $R \times M \to M, (a,m) \mapsto a \cdot m$
+	Sei $R$ ein Ring. Ein \emph{$R$-Modul $M$} ist eine abelsche Gruppe gemeinsam mit einer Skalarmultiplikation $R \times M \to M, (a,m) \mapsto a \cdot m$
 	mit folgenden Eigenschaften:
 	\begin{itemize}
 		\item $a \cdot (m_1 + m_2) = a m_1 + a m_2$ für $a \in R, m_1,m_2 \in M$.
@@ -86,13 +86,13 @@ Welche Ringe könnten interessant sein?
 
 
 Wir wollen endlich erzeugte Moduln über Hauptidealringen klassifizieren!\\
-$\overset{\Z}{\longrightarrow}$ Klassifikation von endlich erzeugten abelschen Grupppen.\\
+$\overset{\Z}{\longrightarrow}$ Klassifikation von endlich erzeugten abelschen Gruppen.\\
 $\overset{K[X]}{\longrightarrow}$ Satz über Jordan Normalform.
 
 \section{Freie Moduln}
 
 \begin{definition}
-	Sei $I$ eine Menge und $R$ ein Rnig. Wir bezeichnen
+	Sei $I$ eine Menge und $R$ ein Ring. Wir bezeichnen
 	\[
 		R^{(I)} = \{x : I \to R \mid x_{i} = 0 \text{ für alle bis auf endlich viele } i \in I\} 
 	\] 
@@ -138,7 +138,7 @@ $\overset{K[X]}{\longrightarrow}$ Satz über Jordan Normalform.
 \end{definition}
 
 
-\section{Struktur von endlich erzeugten Moduln über Hauptidealringe}
+\section{Struktur von endlich erzeugten Moduln über Hauptidealringen}
 
 \begin{definition}
 	Sei $R$ ein Ring und $M $ ein $R$-Modul.
@@ -151,7 +151,7 @@ $\overset{K[X]}{\longrightarrow}$ Satz über Jordan Normalform.
 \end{definition}
 
 
-Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul von $R$ wieder frei mit Rang $0$ oder $1$.
+Wir wollen ab nun nur Hauptidealringe betrachten - dort wäre jeder Untermodul von $R$ wieder frei mit Rang $0$ oder $1$.
 
 \begin{theorem}[Klassifikationssatz (1. Teil)]
 	Sei $R$ ein Hauptidealring und $M$ ein endlich erzeugter Modul über $R$.
@@ -170,7 +170,7 @@ Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul 
 
 
 \begin{theorem}[Klassifikationssatz (2. Teil)]
-	Sei $R$ ein Hauptidealring und $M_{\on{tors}}$ ein endlich erzeigter Torsionsmodul. 
+	Sei $R$ ein Hauptidealring und $M_{\on{tors}}$ ein endlich erzeugter Torsionsmodul. 
 	Dann existieren $d_1 \mid d_2 \mid \ldots \mid d_{n}$ in $R \setminus \{0\} $ so dass
 	\[
 		M_{\on{tors}} = \sfrac{R}{(d_1)} \times \ldots \times \sfrac{R}{(d_{n})}
@@ -179,7 +179,7 @@ Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul 
 	\[
 		M_{\on{tors}} \cong \prod_{j=1}^{k} M_{\on{tors}}^{(p_{j})}
 	\]
-	wobei $p_1,\ldots,p_{k} \in R$ inäquivalente Primzahlen in $R$ sind und %TODO was ist inäquivalent ist das richtig
+	wobei $p_1,\ldots,p_{k} \in R$ inäquivalente Primzahlen in $R$ sind und
 	\[
 		M_{\on{tors}}^{(p_{j})} = \{m \in M_{\on{tors}} \mid \text{ es existiert ein $l \in \N$ mit } p_{j}^{l} m = 0\} \cong 
 		\sfrac{R}{(p_{j}^{n_{j,1}})} \times \ldots \times \sfrac{R}{(p_{j}^{n_{j,n}})}
@@ -187,7 +187,7 @@ Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul 
 \end{theorem}
 
 \begin{theorem}[Smith Normalform]
-	Sei $R$ ein Hauptideal ring, $k,l \geq 1$ natürliche Zahlen und $A \in \mat_{kl}(R)$.
+	Sei $R$ ein Hauptidealring, $k,l \geq 1$ natürliche Zahlen und $A \in \mat_{kl}(R)$.
 	Dann existieren $g \in \GL_{k}(R)$ und $h \in \GL_{l}(R)$ so dass
 	\[
 	g A h^{-1} = \begin{pmatrix} 
@@ -203,7 +203,7 @@ Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul 
 
 \begin{itemize}
 	\item Wir beweisen diesen Satz nur für Euklidische Ringe.
-	\item Im Gauss'schen Eliminationsalgo entsprechen Zeilenoperationen einer Linksmultiplikation und Spaltenoperationen einer Rechtsmulitplikation.
+	\item Im Gauss'schen Eliminationsalgorithmus entsprechen Zeilenoperationen einer Linksmultiplikation und Spaltenoperationen einer Rechtsmultiplikation.
 	\item Wir kombinieren Gauss mit Division mit Rest.
 	\item Falls $R = K$ ein Körper ist, so können wir $d_1 = d_2 = \ldots = d_{n} = 1$ annehmen und $n = $ Rang von  $A$.
 \end{itemize}
@@ -248,7 +248,7 @@ Wir wollen ab nun nur Hauptidealreinge betrachten - dort wäre jeder Untermodul 
 \end{theorem}
 
 
-
+%TODO vl die Wiederholung zur Klassifikation endlich erzeugter abelscher Gruppen am ende von 28.Körper
 
 
 

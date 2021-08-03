@@ -34,7 +34,7 @@ Im Folgenden ist $R$ immer ein Integritätsbereich.
 
 \section{Euklidische Ringe}
 \begin{definition}
-	Ein Integritätsbereich $R$ heißt ein \emph{Euklidischer Ring} falls es eine gradfunktion $N: R \setminus \{0\}  \to \N$ gibt,
+	Ein Integritätsbereich $R$ heißt ein \emph{Euklidischer Ring} falls es eine Gradfunktion $N: R \setminus \{0\}  \to \N$ gibt,
 	so dass die beiden folgenden Eigenschaften gelten:
 	\begin{itemize}
 		\item \emph{Gradungleichung}: $N(f) \leq N(fg)$ für alle $f,g \in R \setminus \{0\} $.
@@ -109,7 +109,7 @@ In einem Euklidischen Ring kann man einen ggT von $f,g \in R \setminus \{0\} $ d
 
 Für den Beweis vom Satz über Prime Elemente Eigenschaft 2 verwenden wir:
 \begin{proposition}
-	Sei $R$ ein Hauptidealring und seien $J_0 \subseteq J_1 \subseteq J_2 \subseteq \ldots$ eine austeigende Kette von Idealen in $R$.
+	Sei $R$ ein Hauptidealring und seien $J_0 \subseteq J_1 \subseteq J_2 \subseteq \ldots$ eine aufsteigende Kette von Idealen in $R$.
 	Dann gibt es ein $n \in \N$ mit $J_{m} = J_{n}$ für alle $m \geq n$.
 \end{proposition}
 
@@ -145,7 +145,7 @@ Für den Beweis vom Satz über Prime Elemente Eigenschaft 2 verwenden wir:
 
 \begin{definition}
 	Ein Integritätsbereich $R$ heißt ein \emph{faktorieller Ring} falls jedes $a \in R \setminus \{0\}$ sich als ein Produkt von einer Einheit
-	und endlich vielen Primelemente von $R$ schreiben lässt: $a = u \cdot  p_1 \cdot \ldots \cdot p_{m}$ für $u \in R^{\times}, m \in \N, p_1,\ldots p_{m} \in R$ prim.
+	und endlich vielen Primelementen von $R$ schreiben lässt: $a = u \cdot  p_1 \cdot \ldots \cdot p_{m}$ für $u \in R^{\times}, m \in \N, p_1,\ldots p_{m} \in R$ prim.
 \end{definition}
 
 
@@ -213,7 +213,7 @@ Für den Beweis vom Satz über Prime Elemente Eigenschaft 2 verwenden wir:
 
 \begin{theorem}[Eindeutige Primfaktorzerlegung]
 	Sei $R$ ein faktorieller Ring und $P \subseteq R$ eine Repräsentantenmenge.
-	Dann besitzt jedes $a \in R \setminus \{0\}$ eine eindeutige Primfaktorzerlegug
+	Dann besitzt jedes $a \in R \setminus \{0\}$ eine eindeutige Primfaktorzerlegung
 	der Form 
 	\[
 		a = u \prod_{p \in P} p^{n_p} \left[ = u \prod_{\substack{p \in P\\ n_{p} > 0}} p^{n_{p}}  \right]
@@ -238,7 +238,7 @@ Für den Beweis vom Satz über Prime Elemente Eigenschaft 2 verwenden wir:
 \end{proposition}
 
 
-Wir können analog den ggT von mehreren Elementen $a_1,\ldots, a_{l} \in R$ definneren und die obige Proposition gilt analog.
+Wir können analog den ggT von mehreren Elementen $a_1,\ldots, a_{l} \in R$ definieren und die obige Proposition gilt analog.
 
 \begin{definition}
 	Sei $R$ ein faktorieller Ring. Wir sagen $a_1,\ldots,a_{l} \in R$ sind \emph{coprim} falls $1$ ein ggT von
@@ -276,7 +276,7 @@ Auf $K$ definieren wir die Normfunktion
 \[
 	N(a+b \sqrt{d} ) = (a+b \sqrt{d} )(a-b \sqrt{d}) = a^2 - d b^2 
 \]
-so dasss $N : K \to \Q$ multiplikativ ist, daher 
+so dass $N : K \to \Q$ multiplikativ ist, daher 
 \[
 	N(zw) = (zw) \underbrace{\tau(zw)}_{\tau(z) \tau(w)} = N(z) N(w) \qq{ für } z,w \in K
 .\] 
@@ -300,7 +300,7 @@ Sei $R = \Z[\sqrt{d}]$.
 
 \begin{lemma}
 	Falls $p \in \Z$ eine Primzahl in $\Z$ ist, so dass weder  $p$ noch $-p$ eine Norm von einem Element
-	iin $R$ ist, so ist $p$ ein irreduzibles Element in $R$.
+	in $R$ ist, so ist $p$ ein irreduzibles Element in $R$.
 \end{lemma}
 
 
@@ -344,7 +344,7 @@ Sei $R = \Z[\sqrt{d}]$.
 
 \begin{theorem}
 	Im $R_{falsch} = \Z[\sqrt{3}i]$ funktioniert Division mit Rest nicht wie in den obigen Fällen.
-	Aber in $R_{richtig} = \Z[\zeta] = \{a+b \zeta : a,b \in \Z\} $ für $\zeta = \frac{1+\sqrt{3} i}{2}$ funktionert dies wieder.
+	Aber in $R_{richtig} = \Z[\zeta] = \{a+b \zeta : a,b \in \Z\} $ für $\zeta = \frac{1+\sqrt{3} i}{2}$ funktioniert dies wieder.
 \end{theorem}
 
 
@@ -373,11 +373,11 @@ Sei $R = \Z[\sqrt{d}]$.
 
 \paragraph{Beobachtungen}
 \begin{itemize}
-	\item Jedes normierte Polynom is primitiv.
+	\item Jedes normierte Polynom ist primitiv.
 	\item Für $a \in R \setminus \{0\}, f \in R[x] \setminus \{0\} $ gilt $I(af) \sim a I(f)$.
 	\item Falls  $f \in R[x]$ irreduzibel ist, so ist entweder
 		$f \in R$ oder $f$ ist primitiv.
-		(Grad $f = 0 \implies f \in R$, Grad $f > 0 \implies f = a f^{*}, a \in R, f^{*}$ primitv.
+		(Grad $f = 0 \implies f \in R$, Grad $f > 0 \implies f = a f^{*}, a \in R, f^{*}$ primitiv.
 		Folgt $a$ oder $f^{*}$ ist eine Einheit $\implies$ $\deg(f^{*}) = \deg(f) > 0$ also $f^{*}$ ist keine Einheit)
 \end{itemize}
 
@@ -387,7 +387,7 @@ Sei $R = \Z[\sqrt{d}]$.
 	wobei $d \in K^{\times}$ und $f^{*} \in R[x]$ ist primitiv.
 	Diese Darstellung ist bis auf Assoziierung eindeutig:\\
 	Falls $f = d_1 f_1^{*} = d_2 f_2^{*}$, $d_1,d_2 \in K^{\times}$,
-	$f_1^{*},f_2^{*} \in R[x]$ primitv, dann ist $d_1 \sim_{R} d_2, f_1^{*} \sim_{R} f_2^{*}$.
+	$f_1^{*},f_2^{*} \in R[x]$ primitiv, dann ist $d_1 \sim_{R} d_2, f_1^{*} \sim_{R} f_2^{*}$.
 	
 	Wobei $\sim_{R}$  assoziiert über eine Einheit in $R$ bedeutet.
 \end{lemma}

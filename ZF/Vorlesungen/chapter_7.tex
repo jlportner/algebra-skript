@@ -1,0 +1,319 @@
+%! TEX root=../algebra.tex
+\graphicspath{{Images/}}
+
+\chapter{Galois Theorie}
+
+\section{Einleitung}
+Das motivierende Problem der Galois Theorie ist folgendes:
+Finde eine \enquote{Formel} für die Lösungen der Gleichung
+$x^{n} + a_{n-1} x^{n-1} + \ldots + a_0 = 0$ in Funktion von den Koeffizienten $a_0,\ldots.,a_{n-1}$.
+
+Methoden für den linearen und quadratischen Fall waren schon babylonischen Mathematikern bekannt.  $\sim 1700$ B.C.\\
+Euklid ($\sim 300$ B.C.) hat die Lösung von Quadratischen Gleichungen auf geometrische Probleme zurückgeführt.\\
+al-Khwarizmi ($780 - 850$): Systematische Behandlung von linearen und quadratischen Gleichungen.\\
+16. Jh: Gleichung 3. Grades: Seipione del Ferro 1515. 4.Grades: Ludovico Ferrarr.
+
+Cardano \enquote{Ars Magna} 1545: Cardano's Formeln für  3. Grad.
+Sei $x^{3} + a x^{2} + bx + c = 0$. Durch die Substitution $z = x - \frac{a}{3}$ erhält man eine Gleichung der Form:
+$z^3 + p z + q = 0$.
+
+Idee: $z = y + u$ wobei man später  $u$ geeignet wählen kann. Durch Substitution in $z^3 + pz + q = 0$ erhalten wir:
+\[
+	y^3 + \underbrace{2y^2 u + 3yu^2}_{3yu (y+u)} + u^3 + p(y+u) + q = 0
+\] 
+und erhalten $y^3 + (y+u)(3yu + p) + u^3 + q = 0$.
+Setze $3yu +p = 0$ also $u = -\frac{p}{3y}$.
+\[
+	y^{4} - \frac{p^3}{27 y^3} + q = 0 \implies y^{6} + p y^3 - (\frac{p}{3})^3 = 0 \quad (\text{Resolvente})
+.\] 
+Diese Gleichung ist quadratisch in $y^3$:
+\[
+	y^3 = \frac{-q \pm \sqrt{q^2 + 4 (\frac{p}{3})^3} }{2}
+.\] 
+und bekommt für $z$ die Formel:
+\[
+	z = \sqrt[3]{-\frac{p}{2} + \sqrt{\left(\frac{q}{2}\right)^2 + \left(\frac{p}{3}\right)^3}} + \sqrt[3]{-\frac{p}{2} - \sqrt{\left(\frac{q}{2}\right)^2 + \left(\frac{p}{3}\right)^3}} 
+.\] 
+
+Wesentlicher Schritt: Lagrange (1736-1813): Falls $z_1, z_2, z_3$ Lösungen von $z^3 + pz + q = 0$ sind.
+Sind $w = e^{\frac{2}{3}\pi i }$ primitive 3. Wurzeln von $1$. Dann sind die $6$ Lösungen der Resolvente
+$y^6 + q y^3 - \left( \frac{p}{3} \right)^3 = 0$ sind gegeben durch
+\[
+	y_{\sigma} := \frac{1}{3}\left( z_{\sigma(1)} + w z_{\sigma(2)} + w^2 z_{\sigma(3)} \right) 
+\] 
+wobei $\sigma$ die Menge der Permutationen über $3$ Elemente durch läuft.
+
+Fundamentale Einsicht: $\left( z_{\sigma(1)} + w z_{\sigma(2)} + w^2 z_{\sigma(3)} \right)^3$ nimmt nur $2$ Werte an.
+
+Paolo Raffini: Zeige dass die allgemeine Gleichung 5. Grades keine \enquote{Lösung} besitzt.
+Rationale Funktionen $f(z_1,\ldots,z_{5})$ wobei $z_1,\ldots, z_5$ Wurzeln der Gleichung $z_5 + \ldots + a_0 = 0$ sind.
+Hat realisiert, dass die Menge der $\sigma \in S_{5}$ für welche $f(z_1,\ldots,z_5) = f(z_{\sigma(1)},\ldots,z_{\sigma(5)})$ 
+ist eine \emph{Untergruppe} von $S_{5}$.
+
+Untergruppen von $S_{5}$ klassifiziert. Niels Abels (1812-1829)
+
+\begin{theorem}[Abels-Raffini]
+	Die allgemeine Gleichung $5.$ Grades $x^{5} + a x^{4}  + b x^3 + c x^2 + d x + e = 0$ ist mittels Radikalen nicht auflösbar.
+\end{theorem}
+Eine Lösung mittels Radikalen ist eine \emph{Formel} die endlich viele arithmetische Operationen und Wurzelziehen der Koeffizienten zulässt.
+
+Galois Theorie und Thm. Die alternierende Gruppe $A_{5}$ ist nicht abelsch und einfach.
+
+Wir werden jedem Polynom $f(x) = x^{n} + a_{n-1} x^{n-1} + \ldots + a_0 \in K[x]$, $K$ Körper
+ordnen wir eine Gruppe $\gal(f) < S_{n}$.
+
+\begin{theorem}
+	Falls $K$ gute Eigenschaften besitzt (z.B. $\charak = 0$)
+	$f(x) = 0$ ist genau dann Mittels Radikalen Lösbar falls $\gal(f)$ \emph{auflösbar}.
+\end{theorem}
+
+\section{Galois Gruppe einer Körpererweiterung: grundlegende Eigenschaften und Beispiele}
+Sei $E$ ein Körper. Die Menge $\aut(E) = \{\sigma: E \to E \mid \sigma \text{ ist eine Körperisomorphismus}\} $ 
+ist für die Operation der Verkettung von Abbildungen eine Gruppe.
+
+Sei $K \subseteq E$ eine Unterkörper; $E$ ist eine Körpererweiterung von $K$.
+\[
+	\gal(E / K) = \{\sigma \in \aut(E) \mid \sigma(x) = x \forall x \in K\} 
+\]
+ist eine Untergruppe von $\aut(E)$.
+\begin{definition}
+	$\gal(E / K)$ ist eine Galoisgruppe der Erweiterung $E / K$.
+\end{definition}
+Aus der Algebra I wissen wir, dass $E$ ein $K$-Vektorraum ist.
+
+\textbf{Übung:} Jedes $\sigma \in \gal(E / K)$ ist ein Isomorphismus des $K$-Vektorraums $E$.
+
+\textbf{Übung:} Sei $K = \R$ und $E = \C$ dann ist $\gal(\C / \R) = \{\id_{\C}, \sigma\} $ wobei $\sigma(x+iy) = x-iy, x,y \in \R$.
+Wie \emph{groß} ist $\aut(\C)$.
+
+Sei $f \in K[x]$ ein Polynom und $E / K $ eine Körpererweiterung so dass in $E[x] f$ Produkt von linearen Faktoren ist.
+Sei $R(f) \subseteq E$ die Menge der Nullstellen von $f$.
+
+\begin{lemma}
+	Jedes $\sigma \in \gal(E / K)$ induziert eine Permutation der Menge $R(f)$ der Nullstellen von $f$.
+\end{lemma}
+
+
+Sei $f \in K[X]$.
+\begin{definition}
+	Die Galois Gruppe $\gal(f)$ von $f$ ist die Galois Gruppe $\gal(E / K)$ wobei $E / K$ ein Zerfällungskörper
+	von $f$ bezeichnet.
+\end{definition}
+Existenz: Kronecker + Eindeutigkeit bis auf Isomorphismus siehe Algebra I
+
+\textbf{Übung:} Zeige dass falls $E / K$ und $E' / K$ Zerfällungskörper von $f$ bezeichnen, die Gruppen
+$\gal(E / K)$ und $\gal(E'/K)$ isomorph sind.
+
+\begin{notation}
+	Sei $X$ eine Menge. Wir bezeichnen mit $S_{X}$ die Gruppe aller Bijektionen (Permutationen) von $X \to X$.
+	Falls $X = \{1,2,\ldots,n\}$ dann setzen wir $S_{X} = S_{n}$.
+\end{notation}
+
+\begin{lemma}
+	Sei $E / K$ Zerfällungskörper eines Polynoms $f \in K[X]$ und $R(f) \subseteq E$ die Menge der Nullstellen.
+	Dann ist die Restriktionsabbildung 
+	\[
+		\nstack{\gal(E / K) \to S_{R(f)}}{\sigma \mapsto  \sigma \mid_{R(f)}}
+	\] 
+	ist eine \emph{injektiver} Gruppenhomomorphismus.
+\end{lemma}
+
+
+
+Sei $E / K$ eine Körpererweiterung, $\alpha \in E$. Dann ist $K[\alpha] := $ Bild des Evaluationshomomorphismus $\nstack{K[X] \to E]}{P \mapsto P(\alpha)}$ 
+Da $E$ Körper ist $K[X]$ ein Integritätsbereich und $K(X)$ der Quotientenkörper von $K[\alpha]$.
+
+Im allgemeinen ist $\abs{R(f)} \leq \deg(f)$. 
+
+\textbf{Ziel:} $f \in K[X]$ irreduzibles Polynom mit $\abs{R(f)} = \deg(f)$ dann ist  $\abs{\gal(E / K)} = [E:K]$.
+
+\begin{definition}
+	Ein Polynom $f \in K[X]$ hat keine mehrfachen Nullstellen falls in einem Zerfällungskörper $\abs{R(f)} = \deg(f)$.
+\end{definition}
+
+\begin{lemma}[Übung]
+	Sei $f \in K[X]$ und $f' \in K[X]$ die (formelle) Ableitung von $f$.
+	$f$ hat keine mehrfachen Nullstellen genau dann wenn $\gcd(f,f') = 1$.
+\end{lemma}
+
+\begin{remark}
+	Gegeben $f,g \in K[X]$, der euklidische Algorithmus berechnet $\gcd(f,g)$.
+\end{remark}
+
+\begin{corollary}
+	Sei $f \in K[X]$ irreduzibel und sei eine der folgenden Voraussetzungen erfüllt:
+	\begin{enumerate}[(1)]
+		\item $\charak(K) = 0$
+		\item  Falls $\charak(K) > 0$ dann teilt $\charak(K)$ nicht $d = \deg(f)$.
+	\end{enumerate}
+	Dann hat $f$ keine mehrfachen Nullstellen.
+\end{corollary}
+
+
+\begin{definition}
+	\begin{enumerate}[(1)]
+		\item Ein irreduzibles Polynom ist \emph{separabel} falls es keine mehrfachen Nullstellen besitzt.
+		\item Ein Polynom ist \emph{separabel} falls alle seiner irreduziblen Faktoren separabel sind. 
+	\end{enumerate}
+\end{definition}
+
+
+\begin{definition}[Wiederholung]
+	Sei $E / K$ eine Körpererweiterung und $\alpha \in E$ : $\nstack{ \varphi_{\alpha}: K[X] \to E}{P \mapsto P(\alpha)}$ ist ein Ringhomomorphismus.
+Sei $\ker(\varphi_{\alpha})$ sein Kern, dann ist $\ker(\varphi_{\alpha})$ ist ein Ideal in $K[X]$.
+Zwei Möglichkeiten
+\begin{enumerate}[(1)]
+	\item $\ker(\varphi_{\alpha}) = (0)$ dann heißt $\alpha$ transzendent über $K$.
+	\item $\ker(\varphi_{\alpha}) \neq (0)$ dann ist $\alpha$ algebraisch.
+		Da $K[X]$ ein Hauptidealring ist gibt es genau ein unitäres Polynom $\irr(\alpha,K)$,
+		das Minimalpolynom von $\alpha$ über $K$, das $\ker(\varphi_{\alpha})$ erzeugt: $\ker(\varphi_{\alpha}) = \irr(\alpha,K) \cdot K[X]$.
+\end{enumerate}
+\end{definition}
+
+Aus der Tatsache, dass $\irr(\alpha,K)$ irreduzibel ist und $K[X]$ ein euklidischer Ring folgt $\sfrac{K[X]}{\ker(\varphi_{\alpha})}$ ist ein Körper und
+\begin{lemma}
+	$\varphi_{\alpha}$ induziert einen Körperisomorphismus $\overline{\varphi_{\alpha}}: \sfrac{K[X]}{\ker(\varphi_{\alpha})} \overset{\sim}{\to} K(\alpha) (= K[\alpha])$
+\end{lemma}
+
+Sei $\varphi: K \to K'$ ein Körperisomorphismus; dieser induziert einen Ring Isomorphismus $\varphi_{*}: K[X] \to K'[X]$ mit
+\[
+	\varphi_{*}(a_{n}X^{n} + \ldots + a_0) := \varphi_{*}(a_{n}) X^{n} + \ldots + \varphi_{*}(a_{0})
+.\] 
+Da $\varphi_{*}$ ein Ringisomorphismus ist folgt $p \in K[X]$ ist genau dann irreduzibel, falls $\varphi_{*}(p)$ irreduzibel ist.
+Bemerke: $\deg(\varphi_{*}(p)) = \deg(p)$.
+
+\begin{lemma}
+	Sei $p \in K[X]$ irreduzibel, $p_{*} = \varphi_{*}(p) \in K'[X]$; seien $E \supseteq K$ und $E' \supseteq K'$ mit $R(p) \subseteq E$ und $R(p_{*}) \subseteq E'$.
+	Dann gilt: $\forall \alpha \in R(p) \forall \alpha' \in R(p_{*})$ gibt es einen Isomorphismus $\widehat{\varphi}: K(\alpha) \to K'(\alpha')$ der $\varphi$ erweitert
+	und $\widehat{\varphi}(\alpha) = \alpha'$
+	\[
+		\begin{tikzcd}
+			K \arrow[r, "\varphi"] \arrow[d, hook]    & K' \arrow[d, hook] \\
+			K(\alpha) \arrow[r, "\widehat{\varphi}"'] & K'(\alpha')       
+		\end{tikzcd}
+	.\]
+\end{lemma}
+
+
+\begin{theorem}
+	Sei $\varphi: K \to K'$ ein Isomorphismus, $f \in K[X]$, $f_{*} = \varphi_{*}(f)$.
+	Sei $E / K$ ein Zerfällungskörper von $f$ und $E_{*}$ ein Zerfällungskörper von $f_{*}$.
+	\begin{enumerate}[(1)]
+		\item Annahme $f$ ist separabel. Dann gibt es genau $[E:K]$ Isomorphismen 
+			\[
+				\begin{tikzcd}
+					E \arrow[r, "\Phi"]                    & E_*                \\
+					K \arrow[r, "\varphi"] \arrow[u, hook] & K' \arrow[u, hook]
+				\end{tikzcd}
+			\]
+			die $\varphi$ erweitern, d.h. $\Phi \mid_{K} = \varphi$
+		\item Sei $E / K$ Zerfällungskörper eines separablen Polynoms dann ist $\abs{\gal(E / K)} = [E:K]$ 
+	\end{enumerate}
+\end{theorem}
+
+
+\begin{corollary}
+	Sei $E / K$ ein Zerfällungskörper eines separablen Polynom $f \in K[X]$ von $\deg(f) = n$. 
+	Falls $f$ irreduzibel folgt: $n$ dividiert $\abs{\gal(E/K)}$.
+\end{corollary}
+
+
+\begin{theorem}
+	Sei $p$ eine Primzahl, $n \in \N, n \geq 1$. Dann ist $\gal(\F_{p^{n}} / \F_{p}) \cong \sfrac{\Z}{n \Z}$ 
+	ein erzeugendes Element ist gegeben durch $Fr:\nstack{\F_{p^{n}} \to \F_{p^{n}}}{x \mapsto x^{p}}$
+\end{theorem}
+
+
+\begin{theorem}
+	Sei $p$ eine Primzahl und $f \in \Q[X]$ mit $\deg(f) = p$ und Zerfällungskörper $E$. Annahme:
+	\begin{enumerate}
+		\item $f$ ist irreduzibel
+		\item $f$ hat genau $p-2$ reelle Nullstellen.
+	\end{enumerate}
+	Dann ist $\gal(E / \Q) \cong S_{p}$.
+\end{theorem}
+
+\begin{corollary}
+	$p$ dividiert die Ordnung von $\gal(E / \Q)$.
+\end{corollary}
+
+\begin{lemma}[Cauchy]
+	Sei $G$ eine endliche Gruppe und $p$ eine Primzahl die die Ordnung von $G$ dividiert.
+	Dann enthält $G$ eine Element der Ordnung $p$.
+\end{lemma}
+
+
+
+\begin{corollary}
+	Die Galois Gruppe von $X^{5} - 4x + 2 \in \Q[X]$ ist $\cong S_{5}$.
+\end{corollary}
+
+
+\subsection{Zusammenhang zwischen Irreduzibilität und Transitivität der Galois Gruppe}
+\begin{corollary}
+	Sei $f \in K[X]$ und $E$ ein Zerfällungskörper von $f$.
+	Dann gilt: $f$ irreduzibel $\Leftrightarrow$ $\gal(E / K)$ wirkt transitiv auf $R(f)$.
+\end{corollary}
+
+Sei $G \times X \to X$ eine Gruppenwirkung. Die Wirkung ist \emph{transitiv} falls $\forall x,y \in X \exists g \in G : g(x) = y$.
+
+\begin{claim}
+	$\implies$ : Gilt auch ohne Voraussetzung an die Nullstellen von $f$.
+\end{claim}
+
+
+
+\begin{definition}
+	Eine Erweiterung $E / K$ heißt normal falls sie Zerfällungskörper eines Polynoms $f \in K[X]$ ist.
+\end{definition}
+
+\begin{claim}
+	Seien $K \subseteq B \subseteq E$ Körpererweiterungen. Falls $E / K$ normal ist so folgt, dass $E / B$ auch  normal ist.
+\end{claim}
+
+\begin{theorem}
+	Seien $K \subseteq B \subseteq E$ (endliche) Erweiterungen mit der der Eigenschaft, dass sowohl $E / K$ wie $B / K$ normale Erweiterungen sind.
+	Dann folgt $\forall \sigma \in \gal(E / K)$ ist $\sigma(B) = B$.
+
+	Und der Homomorphismus $\nstack{\gal(E / K) \to \gal(B / K)}{\sigma \mapsto \sigma \mid_{B}}$ ist surjektiv mit Kern $\gal(E / B)$.
+\end{theorem}
+
+
+\begin{theorem}
+	Eine endliche Erweiterung $E / K$ ist genau dann normal falls jedes irreduzible Polynom in $K[X]$,
+	dass eine Nullstelle in $E$ besitzt, in linear Faktoren in $E$ zerfällt.
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
